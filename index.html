@@ -20,26 +20,36 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #660000;
+      background: #ffff00;
       touch-action: none;
       font-family: 'Inter', sans-serif;
-      color: white;
+      color: black;
     }
 
     #app {
       width: 100vw;
       height: 100vh;
       position: relative;
+      background: #ffff00;
     }
 
     #js-check {
       position: absolute;
       top: 10px;
       left: 10px;
-      padding: 5px;
-      background: red;
+      padding: 10px;
+      background: white;
+      border: 2px solid black;
       z-index: 1000;
-      color: white;
+      color: black;
+      font-weight: bold;
+    }
+
+    #loading-text {
+      position: absolute;
+      top: 100px;
+      left: 10px;
+      color: black;
       font-weight: bold;
     }
 
@@ -116,10 +126,10 @@
 </head>
 
 <body>
-  <div id="js-check">JS STATUS: FAILED (JavaScript NOT Running)</div>
+  <script>alert("HTML BODY LOADED");</script>
+  <div id="js-check">JS STATUS: WAITING FOR START...</div>
   <div id="app">
-    <div id="loading-text" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">Loading
-      Pitching Game... (Checking WebGL)</div>
+    <div id="loading-text">IF YOU SEE THIS YELLOW BACKGROUND AND THIS TEXT, HTML IS OK. CHECKING JS...</div>
     <div id="ui-layer">
       <div class="stats-panel">
         <div id="speed-text">SPEED: - km/h</div>
@@ -133,7 +143,7 @@
       <div id="message-overlay">STRIKE!</div>
     </div>
   </div>
-  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

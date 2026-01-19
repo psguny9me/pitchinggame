@@ -1,7 +1,7 @@
-import * as THREE from 'three';
-import { SceneSetup } from './SceneSetup';
-import { Physics } from './Physics';
 import { BallInteraction } from './BallInteraction';
+
+alert("MAIN.JS STARTING...");
+console.log("Main.js Entry point hit");
 
 class Game {
   constructor() {
