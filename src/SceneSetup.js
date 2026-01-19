@@ -8,7 +8,8 @@ export class SceneSetup {
 
         this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
         // Narrower FOV for better focus
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        this.renderer.setClearColor(0x334466); // Set clear color explicitly
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.container.appendChild(this.renderer.domElement);
@@ -32,12 +33,19 @@ export class SceneSetup {
     }
 
     initEnvironment() {
-        // Ground - Brighter green
+        // Ground - using MeshBasicMaterial to ensure it shows up without lighting
         const groundGeo = new THREE.PlaneGeometry(100, 100);
-        const groundMat = new THREE.MeshLambertMaterial({ color: 0x44aa44 });
+        const groundMat = new THREE.MeshBasicMaterial({ color: 0x44aa44 });
         const ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
         this.scene.add(ground);
+
+        // Debug Cube - Very bright, should be visible even if lights fail
+        const testGeo = new THREE.BoxGeometry(1, 1, 1);
+        const testMat = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+        const testCube = new THREE.Mesh(testGeo, testMat);
+        testCube.position.set(-2, 0.5, -5);
+        this.scene.add(testCube);
 
         // Mound
         const moundGeo = new THREE.CylinderGeometry(2, 2.5, 0.2, 32);
@@ -79,7 +87,7 @@ export class SceneSetup {
 
     createBallMesh(radius) {
         const geo = new THREE.SphereGeometry(radius, 32, 32);
-        const mat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+        const mat = new THREE.MeshBasicMaterial({ color: 0xffffff });
         const mesh = new THREE.Mesh(geo, mat);
         this.scene.add(mesh);
         return mesh;
