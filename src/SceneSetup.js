@@ -4,9 +4,10 @@ export class SceneSetup {
     constructor(container) {
         this.container = container;
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1a1a2e); // Dark blue night sky
+        this.scene.background = new THREE.Color(0x334466); // Brighter blue sky
 
-        this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000); // Narrower FOV for better focus
+        this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // Narrower FOV for better focus
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -17,18 +18,23 @@ export class SceneSetup {
     }
 
     initLights() {
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        // High intensity ambient light to ensure visibility
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         this.scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(10, 20, 10);
-        this.scene.add(directionalLight);
+        // Hemisphere light provides a nice sky/ground gradient fill
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.0);
+        this.scene.add(hemiLight);
+
+        const spotLight = new THREE.SpotLight(0xffffff, 2.0);
+        spotLight.position.set(10, 20, 10);
+        this.scene.add(spotLight);
     }
 
     initEnvironment() {
-        // Ground
+        // Ground - Brighter green
         const groundGeo = new THREE.PlaneGeometry(100, 100);
-        const groundMat = new THREE.MeshStandardMaterial({ color: 0x228b22 }); // Forest Green
+        const groundMat = new THREE.MeshLambertMaterial({ color: 0x44aa44 });
         const ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
         this.scene.add(ground);
@@ -73,8 +79,7 @@ export class SceneSetup {
 
     createBallMesh(radius) {
         const geo = new THREE.SphereGeometry(radius, 32, 32);
-        const mat = new THREE.MeshStandardMaterial({ color: 0xffffff });
-        // Add texture or lines later
+        const mat = new THREE.MeshLambertMaterial({ color: 0xffffff });
         const mesh = new THREE.Mesh(geo, mat);
         this.scene.add(mesh);
         return mesh;
