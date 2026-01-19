@@ -40,14 +40,52 @@ class Game {
 
     this.state = 'FLYING';
 
-    // Velocity from interaction (simplified mapping)
-    this.ballBody.velocity.set(data.velocity.x, data.velocity.y, data.velocity.z);
+    // Release accuracy logic
+    const sweetSpot = 0.85;
+    const accuracyError = Math.abs(data.releasePoint - sweetSpot);
+    const penaltyScale = 15; // Tuning factor for how much error affects trajectory
+
+    // Apply deviation based on accuracy error
+    const deviationX = (Math.random() - 0.5) * accuracyError * penaltyScale;
+    const deviationY = (Math.random() - 0.5) * accuracyError * penaltyScale;
+
+    // Velocity from interaction + penalty
+    const finalVX = data.velocity.x + deviationX;
+    const finalVY = data.velocity.y + deviationY;
+    const finalVZ = data.velocity.z;
+
+    this.ballBody.velocity.set(finalVX, finalVY, finalVZ);
     this.ballBody.angularVelocity.set(data.spin.x, data.spin.y, data.spin.z);
 
     // Show speed and spin in UI
-    const speedKmh = Math.round(Math.abs(data.velocity.z) * 3.6 * 2); // Factor to make it feel like baseball speeds
+    const speedKmh = Math.round(Math.abs(data.velocity.z) * 3.6 * 2.5);
     const spinRpm = Math.round(Math.sqrt(data.spin.x ** 2 + data.spin.y ** 2 + data.spin.z ** 2) * 60);
     this.updateStats(speedKmh, spinRpm);
+
+    // Visual feedback for release timing
+    this.showReleaseFeedback(accuracyError);
+  }
+
+  showReleaseFeedback(error) {
+    const msgOverlay = document.getElementById('message-overlay');
+    let text = 'PERFECT!';
+    let color = '#ffd700';
+
+    if (error > 0.3) {
+      text = 'LATE / EARLY';
+      color = '#ff4d4d';
+    } else if (error > 0.1) {
+      text = 'GOOD';
+      color = '#4facfe';
+    }
+
+    msgOverlay.innerText = text;
+    msgOverlay.style.color = color;
+    msgOverlay.style.opacity = 1;
+
+    setTimeout(() => {
+      if (this.state === 'FLYING') msgOverlay.style.opacity = 0;
+    }, 800);
   }
 
   updateStats(speed, spin) {

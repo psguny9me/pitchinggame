@@ -1,35 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>최고의 투수 - Pitching Simulation</title>
-    <style>
-      body { margin: 0; overflow: hidden; background: #000; touch-action: none; font-family: 'Inter', sans-serif; }
-      #app { width: 100vw; height: 100vh; position: relative; }
-      #ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-      .gauge-container { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); width: 20px; height: 200px; background: rgba(255,255,255,0.2); border-radius: 10px; overflow: hidden; }
-      #release-gauge { width: 100%; height: 0%; background: linear-gradient(to top, #4facfe 0%, #00f2fe 100%); transition: height 0.1s linear; }
-      .stats-panel { position: absolute; top: 20px; left: 20px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-      .streak-display { position: absolute; top: 20px; right: 20px; color: #ffd700; font-size: 24px; font-weight: bold; }
-      #message-overlay { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 48px; font-weight: bold; opacity: 0; transition: opacity 0.3s; }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <div id="ui-layer">
-        <div class="stats-panel">
-          <div id="speed-text">SPEED: - km/h</div>
-          <div id="spin-text">SPIN: - RPM</div>
-        </div>
-        <div class="streak-display">STREAK: <span id="streak-count">0</span></div>
-        <div class="gauge-container">
-          <div id="release-gauge"></div>
-        </div>
-        <div id="message-overlay">STRIKE!</div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>최고의 투수 - Pitching Simulation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      touch-action: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    #app {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    #ui-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .gauge-container {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+    }
+
+    #release-gauge {
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to top, #4facfe 0%, #00f2fe 100%);
+      transition: height 0.05s linear;
+    }
+
+    #sweet-spot {
+      position: absolute;
+      bottom: 80%;
+      width: 100%;
+      height: 20px;
+      background: rgba(255, 215, 0, 0.4);
+      border-top: 2px solid #ffd700;
+      border-bottom: 2px solid #ffd700;
+      pointer-events: none;
+    }
+
+    .stats-panel {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .streak-display {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #ffd700;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #message-overlay {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="ui-layer">
+      <div class="stats-panel">
+        <div id="speed-text">SPEED: - km/h</div>
+        <div id="spin-text">SPIN: - RPM</div>
       </div>
+      <div class="streak-display">STREAK: <span id="streak-count">0</span></div>
+      <div class="gauge-container">
+        <div id="release-gauge"></div>
+        <div id="sweet-spot"></div>
+      </div>
+      <div id="message-overlay">STRIKE!</div>
     </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
