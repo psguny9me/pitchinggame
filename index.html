@@ -20,7 +20,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #ffff00;
+      background: #00ff00 !important;
       touch-action: none;
       font-family: 'Inter', sans-serif;
       color: black;
@@ -30,7 +30,20 @@
       width: 100vw;
       height: 100vh;
       position: relative;
-      background: #ffff00;
+      background: #00ff00;
+    }
+
+    #debug-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      color: black;
+      z-index: 9999;
+      padding: 10px;
+      border-bottom: 2px solid black;
+      font-size: 14px;
     }
 
     #js-check {
@@ -126,10 +139,8 @@
 </head>
 
 <body>
-  <script>alert("HTML BODY LOADED");</script>
-  <div id="js-check">JS STATUS: WAITING FOR START...</div>
+  <div id="debug-box">WAITING FOR JS... (v6)</div>
   <div id="app">
-    <div id="loading-text">IF YOU SEE THIS YELLOW BACKGROUND AND THIS TEXT, HTML IS OK. CHECKING JS...</div>
     <div id="ui-layer">
       <div class="stats-panel">
         <div id="speed-text">SPEED: - km/h</div>
@@ -143,7 +154,7 @@
       <div id="message-overlay">STRIKE!</div>
     </div>
   </div>
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="src/main.js"></script>
 </body>
 
 </html>
