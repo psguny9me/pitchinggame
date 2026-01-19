@@ -11,7 +11,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #444;
+      background: #660000;
       touch-action: none;
       font-family: 'Inter', sans-serif;
       color: white;
@@ -21,9 +21,17 @@
       width: 100vw;
       height: 100vh;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    #js-check {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px;
+      background: red;
+      z-index: 1000;
+      color: white;
+      font-weight: bold;
     }
 
     #ui-layer {
@@ -99,8 +107,10 @@
 </head>
 
 <body>
+  <div id="js-check">JS STATUS: FAILED (JavaScript NOT Running)</div>
   <div id="app">
-    <div id="loading-text">Loading Pitching Game... (If you see this, JS might have failed)</div>
+    <div id="loading-text" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">Loading
+      Pitching Game... (Checking WebGL)</div>
     <div id="ui-layer">
       <div class="stats-panel">
         <div id="speed-text">SPEED: - km/h</div>

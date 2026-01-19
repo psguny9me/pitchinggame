@@ -5,14 +5,14 @@ import { BallInteraction } from './BallInteraction';
 
 class Game {
   constructor() {
+    console.log("Game Constructor Started");
+    const jsCheck = document.getElementById('js-check');
+    if (jsCheck) {
+      jsCheck.innerText = "JS STATUS: RUNNING (WebGL Starting...)";
+      jsCheck.style.background = "orange";
+    }
+
     try {
-      console.log("Game Constructor Started");
-      const loadingText = document.getElementById('loading-text');
-      if (loadingText) loadingText.style.display = 'none';
-
-      document.body.style.backgroundColor = "#334466"; // Force background color via CSS as well
-
-      this.container = document.getElementById('app');
       this.sceneSetup = new SceneSetup(this.container);
       this.physics = new Physics();
 
@@ -32,9 +32,18 @@ class Game {
       this.animate();
 
       this.resetGame();
+
+      if (jsCheck) {
+        jsCheck.innerText = "JS STATUS: OK (3D Running)";
+        jsCheck.style.background = "green";
+        setTimeout(() => jsCheck.style.display = 'none', 3000);
+      }
     } catch (e) {
-      alert("Error starting game: " + e.message);
-      console.error(e);
+      if (jsCheck) {
+        jsCheck.innerText = "JS ERROR: " + e.message;
+        jsCheck.style.background = "red";
+      }
+      alert("Error: " + e.message);
     }
   }
 
