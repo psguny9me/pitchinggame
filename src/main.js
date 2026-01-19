@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.160.0';
+import * as THREE from 'https://esm.sh/three@0.160.0';
 import { SceneSetup } from './SceneSetup';
 import { Physics } from './Physics';
 import { BallInteraction } from './BallInteraction';

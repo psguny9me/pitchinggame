@@ -1,4 +1,4 @@
-import * as CANNON from 'https://cdn.skypack.dev/cannon-es';
+import * as CANNON from 'https://esm.sh/cannon-es';
 
 export class Physics {
     constructor() {
