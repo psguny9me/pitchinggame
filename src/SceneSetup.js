@@ -53,27 +53,28 @@ export class SceneSetup {
         testCube.position.set(-2, 0.5, -5);
         this.scene.add(testCube);
 
-        // Mound
+        // Mound - MeshBasicMaterial
         const moundGeo = new THREE.CylinderGeometry(2, 2.5, 0.2, 32);
-        const moundMat = new THREE.MeshStandardMaterial({ color: 0x8b4513 });
+        const moundMat = new THREE.MeshBasicMaterial({ color: 0x8b4513 });
         const mound = new THREE.Mesh(moundGeo, moundMat);
         mound.position.set(0, 0.1, 0);
         this.scene.add(mound);
 
-        // Catcher's Glow / Target Area - Enlarged for better visibility
-        const strikeZoneGeo = new THREE.BoxGeometry(1.2, 1.8, 0.05); // Bigger strike zone
-        const strikeZoneMat = new THREE.MeshStandardMaterial({
+        // Catcher's Glow / Target Area - MeshBasicMaterial for guaranteed visibility
+        const strikeZoneGeo = new THREE.BoxGeometry(1.2, 1.8, 0.05);
+        const strikeZoneMat = new THREE.MeshBasicMaterial({
             color: 0x00f2fe,
             transparent: true,
-            opacity: 0.3,
-            emissive: 0x00f2fe,
-            emissiveIntensity: 0.5,
-            metalness: 0.8,
-            roughness: 0.2
+            opacity: 0.4
         });
         const strikeZone = new THREE.Mesh(strikeZoneGeo, strikeZoneMat);
         strikeZone.position.set(0, 1.5, -18.44);
         this.scene.add(strikeZone);
+
+        // Strike Zone Frame
+        const edges = new THREE.EdgesGeometry(strikeZoneGeo);
+        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x00f2fe }));
+        strikeZone.add(line);
 
         this.strikeZone = strikeZone;
 

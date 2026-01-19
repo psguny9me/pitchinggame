@@ -5,6 +5,9 @@ import { BallInteraction } from './BallInteraction';
 
 class Game {
   constructor() {
+    console.log("Game Constructor Started");
+    document.body.style.backgroundColor = "#334466"; // Force background color via CSS as well
+
     this.container = document.getElementById('app');
     this.sceneSetup = new SceneSetup(this.container);
     this.physics = new Physics();
