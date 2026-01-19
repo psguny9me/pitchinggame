@@ -8,42 +8,49 @@ class Game {
     console.log("Game Constructor Started");
     const jsCheck = document.getElementById('js-check');
     if (jsCheck) {
-      jsCheck.innerText = "JS STATUS: RUNNING (WebGL Starting...)";
+      jsCheck.innerText = "JS STATUS: RUNNING (v5)";
       jsCheck.style.background = "orange";
     }
 
     try {
+      console.log("Initializing Scene...");
+      this.container = document.getElementById('app');
       this.sceneSetup = new SceneSetup(this.container);
+
+      console.log("Initializing Physics...");
       this.physics = new Physics();
 
+      console.log("Creating Ball...");
       this.ballBody = this.physics.initBall();
       this.ballMesh = this.sceneSetup.createBallMesh(this.physics.ballRadius);
       this.impactMarker = this.sceneSetup.createImpactMarker();
 
-      this.state = 'WAIT'; // WAIT, FLYING, RESULT
+      this.state = 'WAIT';
       this.streak = 0;
       this.balls = 0;
 
+      console.log("Setting up Interaction...");
       this.interaction = new BallInteraction(this.sceneSetup.renderer.domElement, (data) => this.throwBall(data));
 
       window.addEventListener('resize', () => this.sceneSetup.onWindowResize());
 
       this.lastTime = performance.now();
+      console.log("Starting Animation Loop...");
       this.animate();
 
       this.resetGame();
 
       if (jsCheck) {
-        jsCheck.innerText = "JS STATUS: OK (3D Running)";
+        jsCheck.innerText = "JS STATUS: OK (v5 active)";
         jsCheck.style.background = "green";
-        setTimeout(() => jsCheck.style.display = 'none', 3000);
       }
     } catch (e) {
+      console.error("Game Init Error: ", e);
       if (jsCheck) {
-        jsCheck.innerText = "JS ERROR: " + e.message;
+        jsCheck.innerText = "CRITICAL ERROR: " + e.message;
         jsCheck.style.background = "red";
       }
-      alert("Error: " + e.message);
+      alert("Critical Game Error: " + e.message);
     }
   }
 

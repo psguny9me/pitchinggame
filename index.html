@@ -7,6 +7,15 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>최고의 투수 - Pitching Simulation</title>
+  <script>
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      alert('JS Error: ' + msg + '\nLine: ' + lineNo + '\nURL: ' + url);
+      return false;
+    };
+    window.addEventListener('unhandledrejection', function (event) {
+      alert('Promise Error: ' + event.reason);
+    });
+  </script>
   <style>
     body {
       margin: 0;
