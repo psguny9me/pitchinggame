@@ -40,18 +40,20 @@ class Game {
 
     this.state = 'FLYING';
 
-    // Release accuracy logic
+    // Release accuracy logic - Sweet Spot 0.85
     const sweetSpot = 0.85;
-    const accuracyError = Math.abs(data.releasePoint - sweetSpot);
-    const penaltyScale = 15; // Tuning factor for how much error affects trajectory
+    const diff = data.releasePoint - sweetSpot; // negative = early, positive = late
+    const accuracyError = Math.abs(diff);
 
-    // Apply deviation based on accuracy error
-    const deviationX = (Math.random() - 0.5) * accuracyError * penaltyScale;
-    const deviationY = (Math.random() - 0.5) * accuracyError * penaltyScale;
+    // Simulation accuracy:
+    // Early release (diff < 0) -> Ball tends to stay HIGH
+    // Late release (diff > 0) -> Ball tends to sink LOW
+    const verticalPenalty = -diff * 30; // Early release (+Y), Late release (-Y)
+    const horizontalPenalty = (Math.random() - 0.5) * accuracyError * 10;
 
     // Velocity from interaction + penalty
-    const finalVX = data.velocity.x + deviationX;
-    const finalVY = data.velocity.y + deviationY;
+    const finalVX = data.velocity.x + horizontalPenalty;
+    const finalVY = data.velocity.y + verticalPenalty;
     const finalVZ = data.velocity.z;
 
     this.ballBody.velocity.set(finalVX, finalVY, finalVZ);
@@ -63,18 +65,18 @@ class Game {
     this.updateStats(speedKmh, spinRpm);
 
     // Visual feedback for release timing
-    this.showReleaseFeedback(accuracyError);
+    this.showReleaseFeedback(accuracyError, diff);
   }
 
-  showReleaseFeedback(error) {
+  showReleaseFeedback(error, diff) {
     const msgOverlay = document.getElementById('message-overlay');
     let text = 'PERFECT!';
     let color = '#ffd700';
 
-    if (error > 0.3) {
-      text = 'LATE / EARLY';
+    if (error > 0.15) {
+      text = diff < 0 ? 'EARLY (HIGH)' : 'LATE (LOW)';
       color = '#ff4d4d';
-    } else if (error > 0.1) {
+    } else if (error > 0.05) {
       text = 'GOOD';
       color = '#4facfe';
     }
