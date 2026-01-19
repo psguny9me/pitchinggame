@@ -5,29 +5,37 @@ import { BallInteraction } from './BallInteraction';
 
 class Game {
   constructor() {
-    console.log("Game Constructor Started");
-    document.body.style.backgroundColor = "#334466"; // Force background color via CSS as well
+    try {
+      console.log("Game Constructor Started");
+      const loadingText = document.getElementById('loading-text');
+      if (loadingText) loadingText.style.display = 'none';
 
-    this.container = document.getElementById('app');
-    this.sceneSetup = new SceneSetup(this.container);
-    this.physics = new Physics();
+      document.body.style.backgroundColor = "#334466"; // Force background color via CSS as well
 
-    this.ballBody = this.physics.initBall();
-    this.ballMesh = this.sceneSetup.createBallMesh(this.physics.ballRadius);
-    this.impactMarker = this.sceneSetup.createImpactMarker();
+      this.container = document.getElementById('app');
+      this.sceneSetup = new SceneSetup(this.container);
+      this.physics = new Physics();
 
-    this.state = 'WAIT'; // WAIT, FLYING, RESULT
-    this.streak = 0;
-    this.balls = 0;
+      this.ballBody = this.physics.initBall();
+      this.ballMesh = this.sceneSetup.createBallMesh(this.physics.ballRadius);
+      this.impactMarker = this.sceneSetup.createImpactMarker();
 
-    this.interaction = new BallInteraction(this.sceneSetup.renderer.domElement, (data) => this.throwBall(data));
+      this.state = 'WAIT'; // WAIT, FLYING, RESULT
+      this.streak = 0;
+      this.balls = 0;
 
-    window.addEventListener('resize', () => this.sceneSetup.onWindowResize());
+      this.interaction = new BallInteraction(this.sceneSetup.renderer.domElement, (data) => this.throwBall(data));
 
-    this.lastTime = performance.now();
-    this.animate();
+      window.addEventListener('resize', () => this.sceneSetup.onWindowResize());
 
-    this.resetGame();
+      this.lastTime = performance.now();
+      this.animate();
+
+      this.resetGame();
+    } catch (e) {
+      alert("Error starting game: " + e.message);
+      console.error(e);
+    }
   }
 
   resetGame() {

@@ -11,15 +11,19 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #000;
+      background: #444;
       touch-action: none;
       font-family: 'Inter', sans-serif;
+      color: white;
     }
 
     #app {
       width: 100vw;
       height: 100vh;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #ui-layer {
@@ -96,6 +100,7 @@
 
 <body>
   <div id="app">
+    <div id="loading-text">Loading Pitching Game... (If you see this, JS might have failed)</div>
     <div id="ui-layer">
       <div class="stats-panel">
         <div id="speed-text">SPEED: - km/h</div>
@@ -109,7 +114,7 @@
       <div id="message-overlay">STRIKE!</div>
     </div>
   </div>
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

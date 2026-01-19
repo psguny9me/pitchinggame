@@ -10,8 +10,7 @@ export class SceneSetup {
         // Narrower FOV for better focus
         this.renderer = new THREE.WebGLRenderer({
             antialias: false,
-            alpha: false,
-            powerPreference: 'high-performance'
+            alpha: false
         });
         this.renderer.setClearColor(0x334466, 1);
         this.renderer.setSize(window.innerWidth, window.innerHeight);
