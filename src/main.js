@@ -1,6 +1,9 @@
+import * as THREE from 'three';
+import { SceneSetup } from './SceneSetup';
+import { Physics } from './Physics';
 import { BallInteraction } from './BallInteraction';
 
-alert("MAIN.JS STARTING...");
+alert("MAIN.JS LOADED - STARTING ENGINE...");
 console.log("Main.js Entry point hit");
 
 class Game {
@@ -14,12 +17,15 @@ class Game {
 
     try {
       console.log("Initializing Scene...");
+      alert("STEP 1: INITIALIZING SCENE...");
       this.container = document.getElementById('app');
       this.sceneSetup = new SceneSetup(this.container);
 
+      alert("STEP 2: INITIALIZING PHYSICS...");
       console.log("Initializing Physics...");
       this.physics = new Physics();
 
+      alert("STEP 3: CREATING BALL...");
       console.log("Creating Ball...");
       this.ballBody = this.physics.initBall();
       this.ballMesh = this.sceneSetup.createBallMesh(this.physics.ballRadius);
@@ -29,6 +35,7 @@ class Game {
       this.streak = 0;
       this.balls = 0;
 
+      alert("STEP 4: INTERACTION...");
       console.log("Setting up Interaction...");
       this.interaction = new BallInteraction(this.sceneSetup.renderer.domElement, (data) => this.throwBall(data));
 
