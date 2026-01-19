@@ -8,11 +8,17 @@ export class SceneSetup {
 
         this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
         // Narrower FOV for better focus
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        this.renderer.setClearColor(0x334466); // Set clear color explicitly
+        this.renderer = new THREE.WebGLRenderer({
+            antialias: false,
+            alpha: false,
+            powerPreference: 'high-performance'
+        });
+        this.renderer.setClearColor(0x334466, 1);
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for mobile performance
         this.container.appendChild(this.renderer.domElement);
+
+        console.log("Renderer initialized: ", window.innerWidth, "x", window.innerHeight);
 
         this.initLights();
         this.initEnvironment();
