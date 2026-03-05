@@ -1,828 +1,828 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-김규리,878,feat: OTEL 환경변수 설정,1,0,unknown
-김규리,877,Feat/apply button,1,1,unknown
-김규리,875,feat: ApplyButton 스타일 및 텍스트를 모바일과 동일하게 변경,2,1,unknown
-김규리,873,refactor: update applyOnPass implementation and enhance external path...,1,0,unknown
-김규리,868,Feature/apply popup,2,1,unknown
-김규리,867,feat: 즉시지원 버튼 클릭시 신규 입사지원 플로우 개선 팝업 노출,3,1,unknown
-김규리,862,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,1,unknown
-김규리,861,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,0,unknown
-김규리,859,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,2,0,unknown
-김규리,858,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,0,unknown
-김규리,857,feat: Add Hotjar tracking script to RootLayout,1,0,unknown
-김규리,856,feat: Hotjar 스크립트 컴포넌트 추가,3,0,unknown
-김규리,847,Refactor/api route,4,0,unknown
-김규리,845,fix: RecruitDetailLayout 관련 추상화 제거,2,1,unknown
-김규리,843,feat: 한국 시간대에 맞춘 날짜 부분 추출 헬퍼 함수 추가 및 마감일 포맷팅 함수 리팩토링,4,1,unknown
-김규리,826,fix: server-env.ts 환경 변수에서 'X-FORWARDED-FOR' 제거,2,1,unknown
-김규리,824,fix: 공고 상세 링크에 쿼리 파라미터 추가,2,1,unknown
-김규리,820,Fix/onepick,0,0,unknown
-김규리,818,fix: 여러 API에서 cookies 관련 코드 제거 및 NextHeaders로 통일,0,0,unknown
-김규리,817,Next header 사용하도록 변경,2,1,unknown
-김규리,810,fix: 경력 범위 from 값이 null일 경우 0으로 처리,2,1,unknown
-김규리,809,fix: 경력 범위 from 값이 null일 경우 0으로 처리,0,0,unknown
-김규리,808,Fix/workplace,2,1,unknown
-김규리,807,test: workplace 텍스트 생성 함수에 대한 단위 테스트 추가,0,0,unknown
-김규리,805,Fix/workplace,0,0,unknown
-김규리,797,fix: 태그 관련 API에만 DEV 환경에서 IP 화이트리스트 헤더 생성 로직 추가,0,0,unknown
-김규리,794,fix: 태그 관련 API에만 DEV 환경에서 IP 화이트리스트 헤더 생성 로직 추가,0,0,unknown
-김규리,793,modify: template default.md 에서 release.md로 변경,0,0,unknown
-김규리,792,Fix/ip address,0,0,unknown
-김규리,791,Fix/ip address,0,0,unknown
-김규리,785,Fix/career,0,0,unknown
-김규리,782,fix: 환경 변수에서 'X-FORWARDED-FOR' 항목 제거 및 관련 코드 수정,1,1,unknown
-김규리,780,Fix/tracking,0,1,unknown
-김규리,777,fix: 트래킹 로직 롤백,1,1,unknown
-김규리,774,fix: criteo 스크립트 실행 방식 변경,2,1,unknown
-김규리,769,fix: next/script를 script로 변경,1,1,unknown
-김규리,766,feat: MR description 템플릿 추가,2,1,unknown
-김규리,764,Refactor/tracking,2,1,unknown
-김규리,763,fix: API status 400  401  404 로그 레벨 글로벌 설정,2,1,unknown
-김규리,762,Refactor/fetch,1,0,unknown
-김규리,761,fix: sentry 에러 레벨 설정,0,0,unknown
-김규리,756,fix: 고용형태 빈배열일 경우 미노출,0,0,unknown
-김규리,755,fix: jobDetail이 없을 경우 기본 메타데이터 반환 추가,0,0,unknown
-김규리,754,Refactor/fetch,0,0,unknown
-김규리,753,fix: border-radius 수정,0,0,unknown
-김규리,752,Refactor/fetch,0,0,unknown
-김규리,749,fix: getV1JobsId 비동기 함수로 변경,0,0,unknown
-김규리,748,feat: sentry error category [FETCH API] 추가,0,0,unknown
-김규리,746,fix: fetch json response 분리 및 error throw 추가,0,0,unknown
-김규리,743,fix: 인메모리 캐시 반환 수정,0,0,unknown
-김규리,742,fix: 변수 접근시 옵셔널 처리 추가,0,0,unknown
-김규리,739,Fix/custom event,0,0,unknown
-김규리,738,Fix/custom event,0,0,unknown
-김규리,737,Fix/custom event,0,0,unknown
-김규리,735,fix: Event `CustomEvent` (type=unhandledrejection) captured as promise rejection,0,0,unknown
-김규리,734,Refactor/code,0,0,unknown
-김규리,733,Refactor/code,0,0,unknown
-김규리,731,Refactor/code,0,0,unknown
-김규리,730,Refactor/code,0,0,unknown
-김규리,729,fix: client error 발생 시 디폴트 리턴에서 throw error로 변경,0,0,unknown
-김규리,728,Refactor/code,0,0,unknown
-김규리,726,fix: dmp 에러 처리 추가,0,0,unknown
-김규리,725,Refactor/code,0,0,unknown
-김규리,724,Refactor/code,0,0,unknown
-김규리,723,fix: code api 디폴트값 설정,0,0,unknown
-김규리,715,Feature/refactor,0,0,unknown
-김규리,714,modify: response text도 sentry에서 출력,0,0,unknown
-김규리,713,modify: fetchCommonCode sentry log 추가,0,0,unknown
-김규리,711,fix: fetchCode  fetchDmp no-store 적용,0,0,unknown
-김규리,707,fix: dmp error response 처리,0,0,unknown
-김규리,705,Feature/refactor,0,0,unknown
-김규리,696,fix: prd env 수정,0,0,unknown
-김규리,695,Feature/refactor,0,0,unknown
-김규리,694,fix: 서류 합격 예측 서비스 등록 조건 수정,0,0,unknown
-김규리,693,fix: 합격축하금 신청 팝업 정보 조회 API method 변경,0,0,unknown
-김규리,691,Feature/refactor,0,0,unknown
-김규리,690,fix: 개인회원 쿼리 prefetch 로직 개선 및 불필요한 주석 제거,0,0,unknown
-김규리,689,Feature/refactor,0,0,unknown
-김규리,688,fix: 개인회원에 대한 쿼리 prefetch 로직 추가 및 관련 쿼리 조건 수정,0,0,unknown
-김규리,687,chore: sentry 설정 변경,0,0,unknown
-김규리,686,fix: 텍스트 중앙정렬 및 콘솔 로그 삭제,0,0,unknown
-김규리,685,feat: h1  h2 태그 적용,0,0,unknown
-김규리,684,feat: 메타데이터 및 구조화 데이터 추가,0,0,unknown
-김규리,681,feat: aria-label 추가,0,0,unknown
-김규리,678,chore: dmp url 변경,0,0,unknown
-김규리,675,Feature/refactor,0,0,unknown
-김규리,667,fix: notfound 주석처리,0,0,unknown
-김규리,665,fix: 헤드헌팅 공고 442 에러 처리 추가,0,0,unknown
-김규리,664,fix: 불필요한 주석 삭제 및 알럿 에러처리 추가,0,0,unknown
-김규리,662,fix: 불필요한 주석 삭제,0,0,unknown
-김규리,660,fix: STG 환경변수 수정,0,0,unknown
-김규리,658,fix: 로그인 후 invalidate 확인 로직 추가,0,0,unknown
-김규리,656,fix: 스마트핏 query key 타입 수정,0,0,unknown
-김규리,655,fix: 추천공고 query key 타입 수정,0,0,unknown
-김규리,652,modify: STG 확인용 헤더 정보 콘솔 출력,0,0,unknown
-김규리,649,fix: STG 이벤트 확인용 로그 추가,0,0,unknown
-김규리,648,feat: applyHomepage 함수에 sourceCode 매개변수 추가 및 로깅 기능 추가,0,0,unknown
-김규리,641,modify: dmp-collection-info 생성 시 쿠키 로그 추가,0,0,unknown
-김규리,640,fix: 스테이징 로그인 모달 104 서버로 변경,0,0,unknown
-김규리,638,feat: 즉시지원  홈페이지 지원 시 dmp-collection-info 쿠키 추가,0,0,unknown
-김규리,633,fix: 미사용 변수 삭제,0,0,unknown
-김규리,632,fix: stg 환경 변수 변경,0,0,unknown
-김규리,631,fix: 이메일 모달 baseUrl 수정,0,0,unknown
-김규리,620,fix: dmp 로그값 옵셔널 처리,0,0,unknown
-김규리,616,fix: Sentry replay off,0,0,unknown
-김규리,615,fix: dmp 날짜 요청 포맷팅,0,0,unknown
-김규리,610,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
-김규리,609,fix: GA 및 트래킹 코드 initializer 위치 변경,0,0,unknown
-김규리,607,fix: 추천공고 로그 출력 위치 변경,0,0,unknown
-김규리,606,fix: 확인용 로그 수정,0,0,unknown
-김규리,604,fix: 타입에러 수정,0,0,unknown
-김규리,603,feat: DMP 로그 추가 및 기존 로그 정리,0,0,unknown
-김규리,602,feat: prefetchJobsQuery에서 searchParams를 받을 수 있도록 구조 변경,0,0,unknown
-김규리,600,feat: 이미 클릭된 공고인 경우 DMP 로그 전송을 방지하는 로직 추가,0,0,unknown
-김규리,598,fix: 주석 추가 및 dmp 호출시 jobHubId 설정,0,0,unknown
-김규리,597,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
-김규리,595,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
-김규리,593,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
-김규리,592,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
-김규리,590,fix: 클릭/노출 로그 전송시 jobHubId 수정,0,0,unknown
-김규리,586,fix: code revert  불필요한 파일 삭제,0,0,unknown
-김규리,584,Feature/refactor,0,0,unknown
-김규리,583,modify: 로그 추가,0,0,unknown
-김규리,582,Feature/refactor,0,0,unknown
-김규리,581,Feature/refactor,0,0,unknown
-김규리,580,feat: AI 추천 공고 리스트에 DMP 로그 전송 기능 추가 및 관련 훅 구현,0,0,unknown
-김규리,577,Feature/refactor,0,0,unknown
-김규리,572,fix: api 호출 이슈로 칩태그 컴포넌트 구조 변경,0,0,unknown
-김규리,569,fix: ensureJobTagsQuery 및 ensureOnepickWelfareTagQuery에서 400 상태 코드 추가 처리,0,0,unknown
-김규리,567,fix: ensureCorpInfoQuery에서 400 상태 코드 추가 처리,0,0,unknown
-김규리,565,feat: 타이틀  태그 iframe 밖으로 이동,0,0,unknown
-김규리,564,fix: useRelatedTags에서 로딩 중 데이터가 없을 때 빈 배열 반환 위치 수정,0,0,unknown
-김규리,563,fix: getDescriptionHtmlContent에 기본값 추가,0,0,unknown
-김규리,562,fix: 아이콘 이미지 BaseImage를 보도록 설정,0,0,unknown
-김규리,561,feat: 트위터 공유 템플릿 실섭 이슈 반영하여 수정,0,0,unknown
-김규리,559,feat: 트위터 공유 시 템플릿 적용,0,0,unknown
-김규리,557,fix: dmp 로그인시 회원 정보 전송,0,0,unknown
-김규리,552,fix: 자사양식 다운로드 버튼 노출 값 수정,0,0,unknown
-김규리,536,Feature/refactor,0,0,unknown
-김규리,535,Feature/refactor,0,0,unknown
-김규리,534,feat: dmp 타입 수정 및 전송,0,0,unknown
-김규리,533,Feature/refactor,0,0,unknown
-김규리,532,Feature/refactor,0,0,unknown
-김규리,525,Feature/refactor,0,0,unknown
-김규리,524,Feature/refactor,0,0,unknown
-김규리,523,Feature/refactor,0,0,unknown
-김규리,521,Feature/refactor,0,0,unknown
-김규리,520,Feature/refactor,0,0,unknown
-김규리,519,Feature/refactor,0,0,unknown
-김규리,518,Feature/refactor,0,0,unknown
-김규리,516,Feature/refactor,0,0,unknown
-김규리,513,Feature/refactor,0,0,unknown
-김규리,510,Feature/refactor,0,0,unknown
-김규리,509,Feature/refactor,0,0,unknown
-김규리,508,Feature/refactor,0,0,unknown
-김규리,504,Feature/refactor,0,0,unknown
-김규리,502,Feature/refactor,0,0,unknown
-김규리,499,fix: 경력 표기 케이스 추가,0,0,unknown
-김규리,498,Feature/refactor,0,0,unknown
-김규리,496,style: 디자인 검수 변경사항 적용,0,0,unknown
-김규리,493,fix: 디자인 수정,0,0,unknown
-김규리,492,Feature/refactor,0,0,unknown
-김규리,491,feat: 원픽용 경력 텍스트 포맷 추가,0,0,unknown
-김규리,488,fix: 경력 연도 포맷 개선 및 표시 방식 수정,0,0,unknown
-김규리,487,fix: 탭 변경 핸들러 제거 및 코드 정리,0,0,unknown
-김규리,486,feat: 스마트핏 앵커 영역 추가,0,0,unknown
-김규리,483,fix: 로컬에서 아이콘 표시 되도록 rewrite 설정 추가,0,0,unknown
-김규리,480,modify: 서버 확인용 로그 추가,0,0,unknown
-김규리,478,fix: 서류합격예측 대상자 등록 params 수정,0,0,unknown
-김규리,477,fix: useOnepickChipTagsServer 에서 API 병렬 호출로 변경,0,0,unknown
-김규리,476,fix: DetailContentSkeleton 컴포넌트에서 margin-top 제거,0,0,unknown
-김규리,475,fix: auto-complete API 파라미터 변경 (maxCount -> pageSize),0,0,unknown
-김규리,473,fix: pass-prediction -> acceptance-prediction 백엔드 네이밍 변경에 따른 프론트 변경 사항 적용,0,0,unknown
-김규리,468,fix: 파트타임 -> 아르바이트 문구 수정,0,0,unknown
-김규리,466,fix: 아이콘 경로 변경,0,0,unknown
-김규리,464,feat: 합격 축하금 신청 불가 조건 추가,0,0,unknown
-김규리,462,Feature/refactor,0,0,unknown
-김규리,461,fix: 산업 코드 데이터 접근 방식 수정 및 링크 생성 로직 개선,0,0,unknown
-김규리,460,fix: 기업 정보 미노출 설정에 따른 회사 정보 쿼리 및 데이터 접근 API 방식 수정,0,0,unknown
-김규리,458,feat: 원픽 공고 상단 태그 추가,0,0,unknown
-김규리,452,Feature/refactor,0,0,unknown
-김규리,451,fix: 상세요강참고 API 호출 조건 변경,0,0,unknown
-김규리,450,fix: 즉시지원 체크 로직에서 POSTING 체크 확인 로직 제거,0,0,unknown
-김규리,442,feat: 서류합격예측 결과 컴포넌트 url 추가,0,0,unknown
-김규리,441,feat: 서류합격예측 inactive 상태 클릭시 페이지 이동,0,0,unknown
-김규리,440,Feature/refactor,0,0,unknown
-김규리,438,fix: 합격축하금 신청 공통화,0,0,unknown
-김규리,429,feat: 사이드바 합격축하금 신청 버튼 추가,0,0,unknown
-김규리,428,fix: 원픽 합격 예측 서비스 대상자 아닐 경우 비로그인 상태 배너 노출,0,0,unknown
-김규리,427,feat: 합격축하금 컴포넌트 수정,0,0,unknown
-김규리,425,fix: 경력 필드 컴포넌트에서 관리자 입력 경력 처리 로직 개선,0,0,unknown
-김규리,423,Feature/refactor,0,0,unknown
-김규리,408,modify: 원픽 급여 텍스트 확정/예측 분기,0,0,unknown
-김규리,401,Feature/refactor,0,0,unknown
-김규리,398,modify: 탭 변경 후 되돌리기 시 리렌더링에 의하여 새창이 다시 켜지는 현상 수정,0,0,unknown
-김규리,396,modify: 전문채용관 클릭 디바운스 추가,0,0,unknown
-김규리,380,fix: 홈페이지 지원 시 개인회원 체크 대신 로그인 여부만 체크하도록 수정,0,0,unknown
-김규리,378,fix: 코드 롤백,0,0,unknown
-김규리,377,Feature/refactor,0,0,unknown
-김규리,375,style: 지원 완료  우편  FAX 방문 버튼 컬러 변경,0,0,unknown
-김규리,371,test: employment.util 테스트에서 admin 입력 관련 함수 제거 및 스타일 수정,0,0,unknown
-김규리,369,fix: ResumeDownloadPopup 컴포넌트에서 링크를 Flex 컨테이너로 감싸 레이아웃 개선,0,0,unknown
-김규리,368,fix: applyHomepage 함수 백엔드 응답 url로 적용되도록 수정,0,0,unknown
-김규리,365,fix: Skeleton 컴포넌트 제거 및 로딩 상태에서 null 반환으로 변경,0,0,unknown
-김규리,364,fix: 접수 버튼 텍스트 수정 (우편접수  방문접수  FAX접수),0,0,unknown
-김규리,363,fix: 전지역 표시 방식 수정,0,0,unknown
-김규리,362,fix: 팩스 접수 텍스트 수정 (FAX 접수로 변경),0,0,unknown
-김규리,361,fix: 전문채용관 동적 설정,0,0,unknown
-김규리,360,Feature/refactor,0,0,unknown
-김규리,358,fix: 고용형태 관리자 입력 고려하여 모든 내용 조합 후 빈 문자열 반환 처리 추가,0,0,unknown
-김규리,356,feat: 즉시지원 버튼 노출 조건 및 이력서 다운로드 버튼 노출 조건 수정,0,0,unknown
-김규리,355,Feature/refactor,0,0,unknown
-김규리,354,Feature/refactor,0,0,unknown
-김규리,352,feat: 스크롤 오프셋 상수 추가 및 탭 렌더링 함수 리팩토링,0,0,unknown
-김규리,348,feat: 지원 타입 우선순위 업데이트,0,0,unknown
-김규리,347,feat: 경력 관련 로직 통합 및 기존 코드 리팩토링,0,0,unknown
-김규리,346,Feature/refactor,0,0,unknown
-김규리,342,fix: print.css에서 패딩을 0으로 설정하여 인쇄 스타일 최적화,0,0,unknown
-김규리,341,fix: ContentOnlyLayout에 패딩 추가,0,0,unknown
-김규리,340,Feature/refactor,0,0,unknown
-김규리,339,fix: 불필요한 console.log 제거 및 Suspense 컴포넌트 추가로 렌더링 최적화,0,0,unknown
-김규리,338,fix: 근무지역 텍스트 생성 로직 리팩토링 및 유틸리티 함수 추가,0,0,unknown
-김규리,337,fix: iframe 프린트 최적화 및 페이지 브레이크 조정,0,0,unknown
-김규리,336,fix: JobInfoItem 컴포넌트에서 TooltipSquare를 TooltipBox로 변경 및 레이아웃 수정,0,0,unknown
-김규리,334,feat: 타이틀 이미지 오버레이 컴포넌트 및 스타일 추가,0,0,unknown
-김규리,331,fix: 마감일 포맷 함수에 대한 테스트 케이스 추가 및 수정,0,0,unknown
-김규리,329,modify: pay 관련 타입 및 상수 추가  usePay 수정 [TEST-71983],0,0,unknown
-김규리,318,feat: 트위터 공유 제목을 데이터에서 동적으로 가져오도록 수정,0,0,unknown
-김규리,317,feat: 공고 수정 버튼 노출 조건 로직을 useDisplayEdit 훅으로 분리,0,0,unknown
-김규리,316,Feature/refactor,0,0,unknown
-김규리,314,fix: console.log를 logger로 변경,0,0,unknown
-김규리,310,feat: 근무지역 요약 생성 로직 리팩토링 및 테스트 케이스 추가,0,0,unknown
-김규리,307,fix: 트위터 및 페이스북 공유 링크 생성 로직 수정,0,0,unknown
-김규리,303,fix: 세종시 제외 관련 주석 추가 및 전지역 코드 처리 로직 개선,0,0,unknown
-김규리,300,feat: usePrint 훅 및 IframeViewer에서 iframe 로딩 상태 관리 개선,0,0,unknown
-김규리,295,feat: 프린트 레이아웃 개선,0,0,unknown
-김규리,293,feat: 급여 정보 표시 기능 개선,0,0,unknown
-김규리,290,feat: 급여 정보 표시 기능 추가,0,0,unknown
-김규리,282,Feature/job summary,0,0,unknown
-김규리,277,refactor: Anchor Tab 컴포넌트 리팩토링,0,0,unknown
-김규리,276,feat: 공고 수정 기능 추가,0,0,unknown
-김규리,275,refactor: 지원 타입 및 공고 정보 로직 개선,0,0,unknown
-김규리,271,style: TitleImage 컴포넌트의 네비게이션 버튼 디자인 개선,0,0,unknown
-김규리,269,feat: 공고 이미지 Swiper 네비게이션 기능 구현,0,0,unknown
-김규리,265,feat: 지원 타입 및 조건 로직 추가,0,0,unknown
-김규리,264,feat: 지원 타입 및 조건 로직 추가,0,0,unknown
-김규리,259,feat: GIPreviewPage 이름 변경 및 프린트 스타일 추가,0,0,unknown
-김규리,258,Feature/apply button,0,0,unknown
-김규리,257,Feature/related chips,0,0,unknown
-김규리,256,feat: 원픽채용관 관련태그 api 추가,0,0,unknown
-김규리,252,feat: recruit-sro 엔티티 구조 개선 및 랜덤 링크 기능 추가,0,0,unknown
-김규리,251,feat: 지역 코드 및 사용자 인증 관련 API 클라이언트 추가 및 리팩토링,0,0,unknown
-김규리,250,feat: 지역 코드 및 사용자 인증 관련 API 클라이언트 추가 및 리팩토링,0,0,unknown
-김규리,248,feat: 직무 요약버전 텍스트 변환 및 주석 추가,0,0,unknown
-김규리,241,fix: 타입 에러 수정,0,0,unknown
-김규리,240,feat: 연관태그 SRO API 및 데이터 모델 추가,0,0,unknown
-김규리,239,feat: 연관태그 SRO API 및 데이터 모델 추가,0,0,unknown
-김규리,238,modify: 앵커 탭 스크롤 동작 개선 및 버그 수정,0,0,unknown
-김규리,236,feat: 직무 키워드 및 산업 관련 데이터 조회 링크 생성 기능 추가,0,0,unknown
-김규리,233,Feature/path,0,0,unknown
-김규리,230,modify: 회사 링크에 JOBKOREA_URL 추가,0,0,unknown
-김규리,224,feat: 디바운스 훅 추가,0,0,unknown
-김규리,216,Feature/refactor,0,0,unknown
-김규리,214,feat: 로그인 체크 훅 추가 및 함수명 변경,0,0,unknown
-김규리,209,refactor: jobs entities 폴더 내 model 디렉토리 파일명 수정,0,0,unknown
-김규리,202,Feature/job info,0,0,unknown
-김규리,200,Feature/job info,0,0,unknown
-김규리,199,Feature/job info,0,0,unknown
-김규리,197,Feature/job info,0,0,unknown
-김규리,195,Feature/job info,0,0,unknown
-김규리,194,feat: 데이터 패칭 시 로딩 처리 추가,0,0,unknown
-김규리,192,modify: barrel export 수정,0,0,unknown
-김규리,190,Feature/test,0,0,unknown
-김규리,187,Feature/jobs,0,0,unknown
-김규리,166,feat: PassPrediction 컴포넌트 테스트 코드 추가,0,0,unknown
-김규리,165,feat: PassPrediction 컴포넌트 리팩토링 및 조건부 로직 개선,0,0,unknown
-김규리,161,modify: 공유 기능에서 단축 URL 생성 로직 개선,0,0,unknown
-김규리,160,modify: 공유 기능에서 단축 URL 생성 로직 개선,0,0,unknown
-김규리,159,modify: shorten-url API 호출 경로 수정 및 로그 제거,0,0,unknown
-김규리,158,refactor: job-info 기능을 widgets에서 features로 이동,0,0,unknown
-김규리,156,feat: 관련 태그 채용관 정보 추가,0,0,unknown
-김규리,151,modify: 이메일 모달 기능 개선 및 사용 방식 변경,0,0,unknown
-김규리,148,modify: 이메일 폼 baseUrl 주소 변경,0,0,unknown
-김규리,147,Feature/share,0,0,unknown
-김규리,146,feat: 코드 api 수정 및 환경변수 설정,0,0,unknown
-김규리,144,Feature/share,0,0,unknown
-김규리,134,fix: HOST_URL search 주소에서 jobs 주소로 변경,0,0,unknown
-김규리,128,chore: env 변경 (internal eks 주소에서 서버 주소로 변경),0,0,unknown
-김규리,127,modify: 주석 추가 및 api 함수명 통일,0,0,unknown
-김규리,125,chore: docker에서 주입되는 환경변수 env파일에서 주석처리,0,0,unknown
-김규리,123,fix: 로그인 API에 client env로 되어있던 부분 server env로 변경,0,0,unknown
-김규리,120,Feature/related chips,0,0,unknown
-김규리,119,feat: 서버 queryclient 캐시 처리,0,0,unknown
-김규리,116,Feature/dmp,0,0,unknown
-김규리,114,Feature/chips,0,0,unknown
-김규리,111,feat: 타이틀 칩스 API 연동,0,0,unknown
-김규리,108,chore: jds/tooltip lockfile 추가,1,0,unknown
-김규리,107,chore: jds/tooltip 패키지 다운로드,1,0,unknown
-김규리,105,feat: 원픽공고 합격축하금 컴포넌트 추가,1,0,unknown
-김규리,104,feat: 툴팁 컴포넌트 추가,0,0,unknown
-김규리,100,Feature/title,0,0,unknown
-김규리,92,feat: 원픽 사이드바 추가,1,1,unknown
-김규리,87,feat: 하단 텍스트 광고 정렬,1,0,unknown
-김규리,84,Feature/ads,1,0,unknown
-김규리,82,fix: Image 컴포넌트의 에러 핸들링 개선,1,0,unknown
-김규리,80,modify: 채용 상세 페이지 서버/클라이언트 컴포넌트 분리 및 기능 개선,1,0,unknown
-김규리,68,fix: shared 컴포넌트 디렉토리 변경,1,0,unknown
-김규리,66,Feature/fsd,1,0,unknown
-김규리,62,modify: 디렉토리 구조 변경,1,0,unknown
-김규리,49,feat: 사이드바 컴포넌트 추가 및 관련 태그와의 스티키 기능 구현. 광고 이미지 추가 및 관련 태그 스타일 수정.,1,0,unknown
-김규리,45,modify: 스크랩 버튼 경로 수정,1,0,unknown
-김규리,44,Feature/fsd,1,0,unknown
-김규리,40,* modify: remove any type,1,0,unknown
-김규리,31,Fix: 디렉토리 구조 변경,1,0,unknown
-김규리,30,fix: 빌드 에러 해결,1,0,unknown
-김규리,29,Feature/title,1,1,unknown
-김규리,28,feat: 레이아웃 영역 잡기,1,1,unknown
-김규리,27,feat: 기업 정보 컴포넌트 추가,1,0,unknown
-이로움,872,remove: 즉시지원 시 얼럿 제거,1,0,unknown
-이로움,871,fix: next  react 취약점 버전 수정,1,0,unknown
-이로움,870,Feature/sentry,1,1,unknown
-이로움,865,"Revert ""* feat: Integrate OpenTelemetry support and update environment variables",1,0,unknown
-이로움,863,fix: dmp 비로그인 시 memberNo null 추가,3,1,unknown
-이로움,853,fix: 스키마 업데이트,2,1,unknown
-이로움,852,fix: 헤더 이미지 제거 건,1,1,unknown
-이로움,851,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
-이로움,850,Feature/remove demension,7,1,unknown
-이로움,849,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
-이로움,846,feat: 기타 복리후생 노출 조건 추가,6,0,unknown
-이로움,844,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
-이로움,841,Feature/jk 25478,0,0,unknown
-이로움,839,Feature/remove shadow dom,3,0,unknown
-이로움,838,Feature/ga dimension,0,0,unknown
-이로움,837,Feature/remove shadow dom,0,0,unknown
-이로움,835,Feature/remove shadow dom,0,0,unknown
-이로움,833,Feature/remove shadow dom,0,0,unknown
-이로움,832,Feature/ga dimension,0,0,unknown
-이로움,830,Feature/remove shadow dom,0,0,unknown
-이로움,829,Fix/onepick,0,0,unknown
-이로움,828,Feature/ga dimension,0,0,unknown
-이로움,822,Feature/remove shadow dom,0,0,unknown
-이로움,819,Feature/ga dimension,0,0,unknown
-이로움,816,Feature/fix query params,1,1,unknown
-이로움,815,"Revert ""modify: local env DISPLAY_API_URL_JOBS""",0,0,unknown
-이로움,814,Feature/fix sentry filter,0,0,unknown
-이로움,813,"Revert ""modify: local env DISPLAY_API_URL_JOBS""",0,0,unknown
-이로움,811,fix: response 값 있을 경우에만 센트리 에러 트레킹,0,0,unknown
-이로움,804,Feature/fix sentry filter,0,0,unknown
-이로움,802,remove: 미사용 커스텀 이벤트 삭제,0,0,unknown
-이로움,790,feat: 변우석 이미지 우측 배너 제거,2,1,unknown
-이로움,789,Feature/fix banner,0,0,unknown
-이로움,787,Feature/fix banner,1,1,unknown
-이로움,784,fix: 센트리 thirdPartyError 필터 추가,0,0,unknown
-이로움,772,Feature/fix iframe,2,1,unknown
-이로움,767,feat: 기업컨텐츠 호버 시 밑줄 추가,1,1,unknown
-이로움,751,fix: css 캐싱 우회 파일명 변경,0,0,unknown
-이로움,750,remove: 미사용 css 제거,0,0,unknown
-이로움,744,Feature/fix form,0,0,unknown
-이로움,740,remove: insertBefore 삭제,0,0,unknown
-이로움,727,Feature/fix query key,0,0,unknown
-이로움,718,feat: 헤더 잘못된 인코딩 케이스 감지,0,0,unknown
-이로움,710,"Revert ""* remove: 미사용 코드 삭제""",0,0,unknown
-이로움,709,Feature/fix 404,0,0,unknown
-이로움,708,Feature/fix 404,0,0,unknown
-이로움,704,fix: 에러처리 404 추가 후 테스트,0,0,unknown
-이로움,702,Feature/fix throw error,0,0,unknown
-이로움,701,fix: 코드 api 로그 찍기,0,0,unknown
-이로움,700,Feature/fix footer,0,0,unknown
-이로움,699,fix: footer url,0,0,unknown
-이로움,697,fix: 원픽 공고 chip 컴포넌트 없을 때 마진 삭제,0,0,unknown
-이로움,692,fix: 스킴리스 처리 추가,0,0,unknown
-이로움,682,fix: 고용형태 데이터 추가,0,0,unknown
-이로움,680,fix: 프린트 페이지 케이스 고려하여 parameter 추가,0,0,unknown
-이로움,679,Test 72330,0,0,unknown
-이로움,676,Test 72330,0,0,unknown
-이로움,673,Feature/fix iframe preview,0,0,unknown
-이로움,672,Feature/fix iframe preview,0,0,unknown
-이로움,671,fix: 아이프레임 높이 페이지 타입별 구조화,0,0,unknown
-이로움,668,feat: 아이프레임 부모페이지 미리보기 여부 체크 추가,0,0,unknown
-이로움,666,fix: 아이프레임 조건별 마진 변경,0,0,unknown
-이로움,663,Test 72330,0,0,unknown
-이로움,659,remove: 미사용 api 삭제,0,0,unknown
-이로움,657,"Revert ""* fix: 테스트 코드 추가""",0,0,unknown
-이로움,654,fix: 테스트 코드 추가,0,0,unknown
-이로움,647,remove: 불필요 template type 삭제,0,0,unknown
-이로움,645,fix: 레이아웃 충돌 수정,0,0,unknown
-이로움,644,Test 72330,0,0,unknown
-이로움,639,Feature/fix origin site,0,0,unknown
-이로움,624,fix: 원픽 css 분기처리,0,0,unknown
-이로움,621,fix: 기업정보 말줄임 수정,0,0,unknown
-이로움,619,Feature/fix type error,0,0,unknown
-이로움,617,feat: matchList optional 추가,0,0,unknown
-이로움,614,Test 72611,0,0,unknown
-이로움,612,feat: 기업정보 key 추가,0,0,unknown
-이로움,608,Test 72470,0,0,unknown
-이로움,601,fix: 기업정보 디자인 추가 수정,0,0,unknown
-이로움,599,fix: tab style 수정,0,0,unknown
-이로움,596,Test 72478,0,0,unknown
-이로움,594,fix: 디자인 추가 수정 반영,0,0,unknown
-이로움,591,fix: jobCategoryName 추가,0,0,unknown
-이로움,588,feat: jds 스타일 아이프레임 내부 리셋 테스트,0,0,unknown
-이로움,587,feat: JDS 스타일 우선순위 변경 테스트,0,0,unknown
-이로움,585,fix: print hooks 분리,0,0,unknown
-이로움,579,"Revert ""* fix: 탭 영역 수정""",0,0,unknown
-이로움,578,"Revert ""* fix: 탭 영역 수정""",0,0,unknown
-이로움,576,fix: 탭 영역 수정,0,0,unknown
-이로움,575,fix: iframe url 오기입 수정,0,0,unknown
-이로움,573,fix: 알바몬 iframe 높이 조정을 위하여 postmessage 수정,0,0,unknown
-이로움,570,fix: 디자인 수정사항 반영,0,0,unknown
-이로움,558,fix: 아이프레임 내부 tag 영역 높이 observer 추가,0,0,unknown
-이로움,555,remove: 다운로드 blank 창 제거,0,0,unknown
-이로움,554,fix: 새창이동 링크 추가,0,0,unknown
-이로움,553,Feature/fix design,0,0,unknown
-이로움,551,fix: footer 링크 추가,0,0,unknown
-이로움,550,fix: 지원방법 디자인 수정,0,0,unknown
-이로움,549,fix: footer 링크 새창이동 추가,0,0,unknown
-이로움,548,Test 72405,0,0,unknown
-이로움,547,Test 72405,0,0,unknown
-이로움,545,fix: company api 404 페이지 우회,0,0,unknown
-이로움,543,fix: 인쇄 미리보기 버튼 클릭 차단,0,0,unknown
-이로움,540,Test 72363,0,0,unknown
-이로움,539,Test 72363,0,0,unknown
-이로움,528,fix: secDetailRead id로 선택자 수정,0,0,unknown
-이로움,527,fix: 미리보기 css 수정,0,0,unknown
-이로움,517,Test 71985,0,0,unknown
-이로움,515,fix: 아이프레임 미리보기 클레스 명 추가,0,0,unknown
-이로움,511,fix: typo 말줄임 추가,0,0,unknown
-이로움,506,Test 72008,0,0,unknown
-이로움,505,fix: 마감공고시간변경,0,0,unknown
-이로움,503,Test 72166,0,0,unknown
-이로움,501,fix: 리패치 시간 변경,0,0,unknown
-이로움,500,Test 72166,0,0,unknown
-이로움,489,fix: 코드 api 직무 mapping hook 도입,0,0,unknown
-이로움,485,fix: 영문+국문 이력서 케이스 추가,0,0,unknown
-이로움,484,Test 72212,0,0,unknown
-이로움,482,fix: 인사담당자 툴팁 마진 추가,0,0,unknown
-이로움,481,fix: 인사담당자 부서 길 경우 처리,0,0,unknown
-이로움,479,Test 72231,0,0,unknown
-이로움,474,Test 72231,0,0,unknown
-이로움,472,feat: 자소서 작성하러 가기 이동 링크 추가,0,0,unknown
-이로움,471,remove: 자소서 전체 항목 tab 불필요함으로 삭제,0,0,unknown
-이로움,470,fix: 모의고사 새창이동 로직수정,0,0,unknown
-이로움,467,fix: 추천 모의고사 ui 틀어짐 해결,0,0,unknown
-이로움,465,fix: 접수방법 케이스에 applyType 추가,0,0,unknown
-이로움,459,Test 72192,0,0,unknown
-이로움,457,fix: 상세요강참고 시 지원양식 미노출 추가,0,0,unknown
-이로움,456,fix: posting type 대기중일 경우 마감 시간 케이스 추가,0,0,unknown
-이로움,455,Test 72184,0,0,unknown
-이로움,454,fix: 관리자 상세요강 참조 여부 추가,0,0,unknown
-이로움,453,fix: null 값일 때 기업정보 미노출,0,0,unknown
-이로움,448,fix: 인적성후기 링크 이동 변수 타입 수정,0,0,unknown
-이로움,447,fix: 직무인터뷰 상세 url 수정,0,0,unknown
-이로움,446,Test 72170,0,0,unknown
-이로움,445,Test 72170,0,0,unknown
-이로움,444,fix: 직무인터뷰 4개 까지만 노출되도록 수정,0,0,unknown
-이로움,443,Test 72158,0,0,unknown
-이로움,439,remove: 불필요 테스트 코드 삭제,0,0,unknown
-이로움,437,fix: 테스트코드 - 부모 높이 변경 테스트,0,0,unknown
-이로움,432,fix: 디버깅 로그 추가,0,0,unknown
-이로움,431,remove: 불필요 코드 삭제,0,0,unknown
-이로움,430,fix: 아이프레임 디버깅 코드 추가,0,0,unknown
-이로움,426,Test 72038,0,0,unknown
-이로움,424,fix: 기업정보 스키마 업데이트,0,0,unknown
-이로움,422,fix: 유틸함수 useReceptionDomArray 훅으로 변경,0,0,unknown
-이로움,420,fix: a 태그 button 변경,0,0,unknown
-이로움,419,fix: 잡코리아 즉시지원 케이스 추가 - 이메일 지원,0,0,unknown
-이로움,412,fix: 로그인 새창이동 삭제 및 auth 모달 노출,0,0,unknown
-이로움,405,remove: 인사담당자 아이콘 클릭 시 불필요 링크이동 삭제,0,0,unknown
-이로움,402,Test 72069,0,0,unknown
-이로움,400,fix: 접수방법 쉼표 수정,0,0,unknown
-이로움,399,fix: 파일 다운로드 형식 공통화,0,0,unknown
-이로움,381,fix: 스키마 업데이트 건 전체 반영,0,0,unknown
-이로움,374,feat: 나인하이어 배너 추가,0,0,unknown
-이로움,367,Test 72036,0,0,unknown
-이로움,366,fix: 직원수 오타 수정,0,0,unknown
-이로움,353,fix: iframe bg color 추가,0,0,unknown
-이로움,351,fix: fix type errors,0,0,unknown
-이로움,349,Test 71985,0,0,unknown
-이로움,333,fix: 마감 일자 시간까지 표현,0,0,unknown
-이로움,315,feat: 파일 확장자 추가,0,0,unknown
-이로움,313,fix: fix type error,0,0,unknown
-이로움,311,Feature/ticker,0,0,unknown
-이로움,305,Feature/params,0,0,unknown
-이로움,304,fix: add optional 처리,0,0,unknown
-이로움,301,Feature/url,0,0,unknown
-이로움,298,fix: 빌드 에러 수정,0,0,unknown
-이로움,294,Feature/iframe,0,0,unknown
-이로움,291,Feature/contents,0,0,unknown
-이로움,287,fix: next  api path 환경변수 설정,0,0,unknown
-이로움,283,fix: type error,0,0,unknown
-이로움,281,feat: 기업정보 더보기 조건추가,0,0,unknown
-이로움,280,Feature/map,0,0,unknown
-이로움,279,Feature/map,0,0,unknown
-이로움,278,Feature/iframe,0,0,unknown
-이로움,274,Feature/iframe,0,0,unknown
-이로움,268,Feature/iframe,0,0,unknown
-이로움,262,Feature/iframe,0,0,unknown
-이로움,261,Feature/iframe,0,0,unknown
-이로움,260,Feature/iframe,0,0,unknown
-이로움,254,Feature/cover letter,0,0,unknown
-이로움,253,Feature/notice,0,0,unknown
-이로움,228,fix: job-hub로 안 들어오는 케이스 수정,0,0,unknown
-이로움,227,fix: stg에러 발생으로 임시 하드코딩 처리,0,0,unknown
-이로움,226,Feature/corp info,0,0,unknown
-이로움,223,fix: giNo type error 수정,0,0,unknown
-이로움,219,Feature/timer,0,0,unknown
-이로움,217,Feature/footer,0,0,unknown
-이로움,211,fix: 폴더명 수정,0,0,unknown
-이로움,188,remove: gitignore 파일에서 css 제거,0,0,unknown
-이로움,186,feat: fix replace-img-url 스크립트 수정,0,0,unknown
-이로움,184,remove: 오타 삭제,0,0,unknown
-이로움,183,fix: build error 스크립트 수정,0,0,unknown
-이로움,178,Feature/iframe,0,0,unknown
-이로움,177,Feature/iframe,0,0,unknown
-이로움,176,Feature/fix folder,0,0,unknown
-이로움,174,remove: remove legacy - 폴더명 대소문자 변경,0,0,unknown
-이로움,173,Feature/company info,0,0,unknown
-이로움,169,fix: 취업 전략 데이터 없을 때 분기처리,0,0,unknown
-이로움,168,Feature/strategy,0,0,unknown
-이로움,167,Feature/timer,0,0,unknown
-이로움,155,feat: fix env script to excute it at postbuild,0,0,unknown
-이로움,153,fix: fix iframe auto height,0,0,unknown
-이로움,150,feat: add image env and env setting script,0,0,unknown
-이로움,145,feat: add jobko-html viewer css,0,0,unknown
-이로움,142,Feature/env,0,0,unknown
-이로움,133,remove: remove legacy props in htmlViewer,0,0,unknown
-이로움,126,Feature/one pick,0,0,unknown
-이로움,124,Feature/code api,0,0,unknown
-이로움,118,feat: 실제 공고 번호에 따른 원픽 공고 여부 분기처리,0,0,unknown
-이로움,115,fix: fix clientEnv to baseUrl,0,0,unknown
-이로움,113,fix: replace the unused asset to css-style,0,0,unknown
-이로움,112,Feature/iframe,0,0,unknown
-이로움,102,fix: add cookie in prefetch header,0,0,unknown
-이로움,98,remove: remove unused gitlab-ci file for untracking sorna-qube errors,0,0,unknown
-이로움,95,Feature/toast,1,0,unknown
-이로움,81,Feature/toast,1,0,unknown
-이로움,79,feat: add footer,1,0,unknown
-이로움,76,Feature/apply strategy,1,0,unknown
-이로움,71,refactor: fix file dir,1,0,unknown
-이로움,70,fix: remove comments in pre-commit,1,0,unknown
-이로움,69,* feat: AI추천공고 리스트 추가,4,0,unknown
-이로움,65,* feat: AI추천공고 리스트 추가,1,0,unknown
-이로움,63,feat: Husky Git Hook 설정 추가,1,0,unknown
-이로움,59,Feature/apply methods,1,0,unknown
-이로움,54,Feature/corp info img,1,0,unknown
-이로움,53,fix: apply the FSD structure,1,0,unknown
-이로움,52,Feature/corp info,1,0,unknown
-이로움,48,Feature/content img,1,0,unknown
-이로움,43,Feature/content img,1,0,unknown
-이로움,42,Feature/content img,1,0,unknown
-이로움,41,Feature/content img,1,0,unknown
-이로움,39,Feature/content img,1,0,unknown
-이로움,36,Feature/content img,1,0,unknown
-이로움,35,Feature/content img,1,0,unknown
-이로움,34,Feature/content img,1,0,unknown
-이로움,26,Feature/component tabs,1,0,unknown
-이로움,24,Feature/code api,1,0,unknown
-이로움,23,Feature/contents,1,0,unknown
-이로움,16,Feature/layout,1,0,unknown
-이로움,14,feat: Add layout components - footer  sidebar,1,0,unknown
-이로움,12,feat: modify ga file's folder location,1,0,unknown
-이로움,10,Feature/ga settings,1,0,unknown
-이로움,8,Feature/ga settings,1,0,unknown
-최문경,855,Modify/skills field,2,0,unknown
-최문경,854,modify: Qualification skills field,3,0,unknown
-최문경,781,modify: 마감된 공고인 경우 AI추천인재리스트 prefetch 하지 않기,0,1,unknown
-최문경,779,Fix/subway,0,0,unknown
-최문경,778,modify: groupByStationName,0,0,unknown
-최문경,775,modify: NearbySubwayField 거리 기준 그룹화에서 지하철역 이름 기준 그룹화로 수정,1,0,unknown
-최문경,773,modify: AI추천공고리스트 api 호출 조건 추가,1,1,unknown
-최문경,747,modify: server.mjs에 URI malformed 검사 미들웨어 추가,0,0,unknown
-최문경,745,modify: 지원자 현황 통계 router.push 삭제,0,0,unknown
-최문경,741,fix: useApplicantStatistics applicantStatisticDisplayStatus,0,0,unknown
-최문경,736,fix: search push to href,0,0,unknown
-최문경,732,modify: decodeURIComponent를 decodeURIComponentSafe 로 변경,0,0,unknown
-최문경,722,Fix/ga,0,0,unknown
-최문경,721,modify: ga logics,0,0,unknown
-최문경,720,fix: braze 로직 변경,0,0,unknown
-최문경,717,modify: ga  braze,0,0,unknown
-최문경,716,modify: currentUrl decodeURIComponent 추가,0,0,unknown
-최문경,706,modify: card styles,0,0,unknown
-최문경,703,Fix/ga,0,0,unknown
-최문경,698,modify: redDot 노출 기간,0,0,unknown
-최문경,683,modify: header version update,0,0,unknown
-최문경,677,modify: redDot 오늘까지만 노출,0,0,unknown
-최문경,674,modify: header red dot 추가,0,0,unknown
-최문경,670,Feature/error,0,0,unknown
-최문경,669,modify: Error page,0,0,unknown
-최문경,653,modify: 기업과 적합도 체크 노출 조건,0,0,unknown
-최문경,651,modify: 전문채용관 ga 추가,0,0,unknown
-최문경,650,modify: header qa issues,0,0,unknown
-최문경,643,modify: layout,0,0,unknown
-최문경,642,modify: ga,0,0,unknown
-최문경,637,modify: header version update,0,0,unknown
-최문경,636,modify: 메인메뉴  서비스 target,0,0,unknown
-최문경,635,modify: prefetch  invalidate,0,0,unknown
-최문경,634,Feature/mobile redirect,0,0,unknown
-최문경,630,Feature/mobile redirect,0,0,unknown
-최문경,629,Feature/mobile redirect,0,0,unknown
-최문경,628,modify: handleMiddleware 디버깅 헤더 추가,0,0,unknown
-최문경,627,Feature/redirect mobile,0,0,unknown
-최문경,626,Feature/redirect mobile,0,0,unknown
-최문경,625,modify: 미들웨어 삭제  server.mjs에 모바일 리다이렉트 코드 추가,0,0,unknown
-최문경,622,modify: useApply  applyImmediate,0,0,unknown
-최문경,613,modify: dmp  즉시지원 쿼리스트링 [TEST-72592],0,0,unknown
-최문경,611,modify: 헤더 버전 업데이트,0,0,unknown
-최문경,605,modify: 추천 공고 썸네일 딤드,0,0,unknown
-최문경,589,modify: useStickyState,0,0,unknown
-최문경,574,modify: prefetchJobDetailQuery,0,0,unknown
-최문경,571,modify: jobs api request params 수정,0,0,unknown
-최문경,568,feat: 모바일 감지용 미들웨어 추가,0,0,unknown
-최문경,566,modify: ssr ua 추가  기타 이슈,0,0,unknown
-최문경,560,modify: getV1JobsId request params,0,0,unknown
-최문경,556,fix: 툴팁 이슈 [TEST-72117] [TEST-72411],0,0,unknown
-최문경,546,modify: mict 결과 확인 팝업 닫기 시 페이지 새로고침 됨 [TEST-72417],0,0,unknown
-최문경,544,modify: ga  스마트핏 이슈,0,0,unknown
-최문경,542,modify: ga issues,0,0,unknown
-최문경,541,Feature/smart fit,0,0,unknown
-최문경,538,modify: 스마트핏 이슈들,0,0,unknown
-최문경,537,feat: ensureJobsQuery 에 쿠키 추가,0,0,unknown
-최문경,531,Fix/test 72363,0,0,unknown
-최문경,530,fix: 공고뷰 > 홈페이지지원 선택시 홈페이지지원 클릭수 누적 안 됨 [TEST-72363],0,0,unknown
-최문경,529,modify: 디자인 이슈 수정,0,0,unknown
-최문경,526,Feature/meta,0,0,unknown
-최문경,522,fix: 스마트핏 리스트 > 로고 노출 상이 건 [TEST-72308],0,0,unknown
-최문경,512,Feature/braze,0,0,unknown
-최문경,507,Fix/smart fit,0,0,unknown
-최문경,497,fix: 합격축하금 변경사항 동기화 [TEST-72275],0,0,unknown
-최문경,495,Feature/ga,0,0,unknown
-최문경,494,modify: ga,0,0,unknown
-최문경,490,modify: 디자인 이슈 수정 [TEST-72150],0,0,unknown
-최문경,469,fix: 실근무기업 노출 조건 [TEST-72195],0,0,unknown
-최문경,463,fix: smart-fit issues,0,0,unknown
-최문경,449,modify: 일반공고 > 지원자 현황 통계 노출 상이 건 [TEST-72017],0,0,unknown
-최문경,436,modify: AI추천 리스트 > 모든 공고 [즉시지원] 클릭시 > 현재 공고뷰의 입사지원레이어로 발생 됨 [TEST-72138],0,0,unknown
-최문경,435,modify: 공고뷰(기본우대 1개이상&외국어 1개만) > 지원자격 > 우대조건 > 외국어 > 점수 비노출 됨 [TEST-72125],0,0,unknown
-최문경,434,modify: 공고뷰(우대조건-직적추가만 등록) > 지원자격 > 우대조건 비노출 됨 [TEST-72124],0,0,unknown
-최문경,433,modify: getWorkWeekTypeText [TEST-72114],0,0,unknown
-최문경,418,modify: 공고뷰(근무요일-격주/격일/협의가능) > 모집요강 > 근무시간 비노출 됨 [TEST-72096],0,0,unknown
-최문경,417,modify: 공고뷰(기업회원) > 궁금해요 버튼 > 취업톡톡 클릭 시 기업회원 홈으로 이동됨 [TEST-72099],0,0,unknown
-최문경,416,fix: 공고뷰(해외근무지) > 모집요강 > 근무지주소 '지도보기>'버튼 노출 됨 [TEST-72100],0,0,unknown
-최문경,415,modify: AI추천 리스트 > 타이틀 영역 노출 상이 [TEST-72107],0,0,unknown
-최문경,414,Fix/error,0,0,unknown
-최문경,413,modify: Sidebar  RelatedTags 주석 for test,0,0,unknown
-최문경,411,Fix/error,0,0,unknown
-최문경,410,Fix/error,0,0,unknown
-최문경,409,Fix/error,0,0,unknown
-최문경,407,Fix/error,0,0,unknown
-최문경,406,modify: provider  global-error,0,0,unknown
-최문경,404,modify: 합격축하금 공고 링크  스마트핏 리스트 노출 조건  provider,0,0,unknown
-최문경,403,modify: AppProvider for debugging,0,0,unknown
-최문경,397,modify: AppProvider ErrorBoundary,0,0,unknown
-최문경,395,modify: error.tsx 삭제 global-error.tsx 수정 provider.tsx 수정,0,0,unknown
-최문경,394,"Revert ""modify: server component to client component""",0,0,unknown
-최문경,393,Fix/ip,0,0,unknown
-최문경,392,Fix/ip,0,0,unknown
-최문경,391,modify: ensureJobsQuery result null,0,0,unknown
-최문경,390,Fix/ip,0,0,unknown
-최문경,389,modify: smart-fit api slot,0,0,unknown
-최문경,388,Fix/ip,0,0,unknown
-최문경,387,modify: formatRequestHeaders,0,0,unknown
-최문경,386,modify: GoogleAnalytics,0,0,unknown
-최문경,385,Fix/ip,0,0,unknown
-최문경,384,Fix/ip,0,0,unknown
-최문경,383,modify: ensureJobsQuery,0,0,unknown
-최문경,382,modify: onepick list title [TEST-72047],0,0,unknown
-최문경,376,Feature/ip test,0,0,unknown
-최문경,373,modify: ip-test codes,0,0,unknown
-최문경,372,Feature/ip test,0,0,unknown
-최문경,370,modify: ip-test 추가,0,0,unknown
-최문경,359,modify: 이미지 objectFit,0,0,unknown
-최문경,357,fix: mict 검사 완료 후 새로고침 안됨  위탁 텍스트 변경 [TEST-72021][TEST-72009],0,0,unknown
-최문경,345,modify: ensureJobsQuery,0,0,unknown
-최문경,344,fix: 지원자 현황 통계 노출 조건,0,0,unknown
-최문경,343,Fix/corp fitness,0,0,unknown
-최문경,335,fix: 모집요강 admin 입력정보 노출 안됨 [TEST-72006],0,0,unknown
-최문경,332,modify: ensureJobsQuery header [TEST-71983],0,0,unknown
-최문경,330,modify: ensureJobsQuery [TEST-71983],0,0,unknown
-최문경,328,modify: ensureJobsQuery [TEST-71983],0,0,unknown
-최문경,327,Fix/test 71983,0,0,unknown
-최문경,326,Fix/test 71983,0,0,unknown
-최문경,325,Fix/test 71983,0,0,unknown
-최문경,324,Fix/test 71983,0,0,unknown
-최문경,323,Fix/test 71983,0,0,unknown
-최문경,322,Fix/test 71983,0,0,unknown
-최문경,321,Fix/test 71983,0,0,unknown
-최문경,320,modify: notFound 주석 처리,0,0,unknown
-최문경,319,fix: notFound 주석 처리,0,0,unknown
-최문경,312,modify: update version of JAMS (toast),0,0,unknown
-최문경,309,modify: ga dimension,0,0,unknown
-최문경,306,modify: AI추천인재 모달 저장된 제안 내용 선택 수정,0,0,unknown
-최문경,302,modify: toast JAMS 사용,0,0,unknown
-최문경,299,modify: AI추천인재 카드  타이틀 스티키 스타일,0,0,unknown
-최문경,297,Feature/apply,0,0,unknown
-최문경,296,modify: 즉시지원 external-path,0,0,unknown
-최문경,292,feat: 메타데이터 추가,0,0,unknown
-최문경,289,modify: 검색 결과 박스 zIndex,0,0,unknown
-최문경,288,modify: 원픽 ga 추가,0,0,unknown
-최문경,286,fix: type error,0,0,unknown
-최문경,285,Feature/ga2,0,0,unknown
-최문경,272,modify: ai추천인재 모달 제안하기 추가,0,0,unknown
-최문경,267,modify: gnb 스타일,0,0,unknown
-최문경,266,modify: 너비 줄어들었을 때 타이틀 스타일 깨짐,0,0,unknown
-최문경,263,Feature/ai recommend modal,0,0,unknown
-최문경,255,modify: paths -> externalPaths 네이밍 변경  인사지원 제안 모달 생성,0,0,unknown
-최문경,247,Feature/ai recommend modal,0,0,unknown
-최문경,246,modify: 잡코리아  원픽 템플릿 구조,0,0,unknown
-최문경,237,refactor: title 컴포넌트 리팩토링,0,0,unknown
-최문경,235,feat: 에러페이지 추가 및 기타 작업,0,0,unknown
-최문경,234,Feature/title,0,0,unknown
-최문경,232,modify: 문의  신고하기 경로 수정,0,0,unknown
-최문경,229,modify: 스마트핏  ai추천인재 리스트 api baseUrl 수정,0,0,unknown
-최문경,225,modify: ChipSubway 적용,0,0,unknown
-최문경,222,modify: update version of jds,0,0,unknown
-최문경,221,Feature/hiring bonus,0,0,unknown
-최문경,215,modify: 함수에 주석 추가,0,0,unknown
-최문경,213,refactor: 복리후생 리팩토링,0,0,unknown
-최문경,212,modify: 복리후생 수정,0,0,unknown
-최문경,210,Feature/convention,0,0,unknown
-최문경,208,modify: 네이밍 수정 path to external-path,0,0,unknown
-최문경,207,modify: 스크랩  관심기업에 낙관적 UI 적용,0,0,unknown
-최문경,206,modify: ModalAuth iframe option,0,0,unknown
-최문경,205,modify: server component to client component,0,0,unknown
-최문경,203,modify: 스크랩  관심기업 로직,0,0,unknown
-최문경,201,Feature/signing bonus,0,0,unknown
-최문경,198,modify: 즉시지원  홈페이지 지원 로직,0,0,unknown
-최문경,196,modify: 지원자 현황 통계 로그인 버튼 hover  맞춤 공고 기업명 말줄임,0,0,unknown
-최문경,193,modify: feature 하위에 model 폴더 없는 경우 생성,0,0,unknown
-최문경,191,modify: recruit-detail 폴더 삭제,0,0,unknown
-최문경,189,Feature/convention,0,0,unknown
-최문경,185,Feature/signing bonus,0,0,unknown
-최문경,179,Feature/ai recommend modal,0,0,unknown
-최문경,172,Feature/locator rollback,0,0,unknown
-최문경,171,modify: locatorJS 삭제,0,0,unknown
-최문경,170,modify: 맞춤공고 hover style  지원자 현황 통계 로그인 버튼 hover style,0,0,unknown
-최문경,164,Feature/education,0,0,unknown
-최문경,163,modify: logout api 변경 (search -> neo),0,0,unknown
-최문경,162,modify: 지원자격  근무조건 수정,0,0,unknown
-최문경,157,modify: 모집요강  지원자격  ai추천공고 리스트,0,0,unknown
-최문경,154,modify: 스크랩  관심기업 훅 수정 (onRefetch -> onSuccess) AI추천공고 리스트 스크랩  관심기업 프론트에서 관리,0,0,unknown
-최문경,152,modify: not-found  스마트핏 컴포넌트,0,0,unknown
-최문경,149,modify: 스마트핏 디자인 수정  프리미엄 태그 추가,0,0,unknown
-최문경,143,modify: 모집요강  지원자격 컴포넌트 수정,0,0,unknown
-최문경,138,modify: api to jobs/api,0,0,unknown
-최문경,136,Feature/recruitment code,0,0,unknown
-최문경,130,Feature/qualification code,0,0,unknown
-최문경,122,Feature/corp fitness,0,0,unknown
-최문경,109,feat: AI 추천공고 리스트 api 연동,1,0,unknown
-최문경,106,modify: 스마트핏  AI추천공고 api 연동,1,0,unknown
-최문경,103,modify: types 폴더 위치 변경,0,0,unknown
-최문경,96,modify: page hydration 삭제,1,0,unknown
-최문경,90,modify: 원픽 공고 추천 api 연동 작업,1,0,unknown
-최문경,88,modify: 지원자 현황 통계 api 연동,1,0,unknown
-최문경,86,modify: 적합도 체크 api 연동  리팩토링,1,0,unknown
-최문경,85,feat: 폴더 구조 변경  기업 적합도 체크 api 연동,1,0,unknown
-최문경,83,feat: 추천공고 리스트 리팩토링  이모지 컴포넌트 삭제 및 react-share 패키지 설치,1,0,unknown
-최문경,77,feat: 탑버튼  궁금해요 버튼 추가,1,0,unknown
-최문경,75,modify: ui 클릭 이벤트 관련 수정,1,0,unknown
-최문경,73,feat: 공고뷰 헤더 sticky 추가,1,0,unknown
-최문경,64,modify: 적합도 체크  지원자 현황 통계 비로그인 디자인 추가,1,0,unknown
-최문경,61,feat: 적합도 체크  지원자 현황 체크 세부사항 수정(차트 옵션 수정  클릭 핸들러 추가),1,0,unknown
-최문경,60,feat: AI추천공고 리스트 추가,1,0,unknown
-최문경,58,feat: 스마트클릭  딱! 맞는 원픽 공고 리스트 추가,1,0,unknown
-최문경,56,feature: 모집요강  지원자격 추가,1,0,unknown
-최문경,55,feat: 지원자 현황 통계 ui 추가,1,0,unknown
-최문경,51,modify: 전체메뉴 열릴 때 body overflow: hidden 삭제,1,0,unknown
-최문경,50,feat: 폴더 구조 수정,1,0,unknown
-최문경,47,modify: port number  ScrapButton component handleScrapClick,1,0,unknown
-최문경,46,feature: 스크랩  관심기업 api 추가,1,0,unknown
-최문경,38,feat: 적합도 체크 추가,1,0,unknown
-최문경,37,modify: 스크랩  관심기업 기능 수정,1,0,unknown
-최문경,33,fix: type error,1,0,unknown
-최문경,25,feat: 메인메뉴 추가  퀵메뉴 수정,1,0,unknown
-최문경,21,modify: 공고뷰 display-api 추가  authCheck search api -> jobs api 로 변경,1,0,unknown
-최문경,20,feat: 알람  퀵메뉴 기능,1,0,unknown
-최문경,19,feat: gnb에 검색 추가,1,0,unknown
-최문경,15,modify: 서비스들  알림  마이 아이콘 추가,1,0,unknown
-최문경,13,Feature/gnb,1,0,unknown
-최문경,11,Feature/gnb,1,0,unknown
-최문경,9,modify: 기본적인 클라이언트 컴포넌트들 추가,1,1,unknown
-최문경,7,feat: 인증 기능 구현,1,0,unknown
-최문경,6,feat: 인증 기능 구현,1,1,unknown
-이동현,866,feat: Integrate OpenTelemetry support and update environment variables,1,0,unknown
-이동현,864,feat: Integrate OpenTelemetry support and update environment variables,2,0,unknown
-이동현,421,modify: Dockerfile에서 ASSETS_BASE_PATH 및 ASSETS_S3_PATH 경로 설정 개선,0,0,unknown
-이동현,308,fix: Dockerfile의 Node.js 버전을 22-alpine에서 22.17.1-alpine으로 업데이트,0,0,unknown
-이동현,273,modify: Dockerfile 및 스크립트에서 환경 변수 파일 경로를 'config' 디렉토리로 변경하여 클라이언트 사이드에서 접근...,0,0,unknown
-이동현,249,modify: 리플레이 기능 관련 주석 추가 및 Sentry 리플레이 통합 설정 주석 처리,0,0,unknown
-이동현,245,fix: CSS 링크 경로 수정,0,0,unknown
-이동현,244,feat: assetPrefix를 사용하여 CSS 링크 동적으로 설정,0,0,unknown
-이동현,231,Feature/dockerfile,0,0,unknown
-이동현,182,modify: package.json에서 Node.js 버전을 22.17.1로 업데이트,0,0,unknown
-이동현,181,modify: package.json에서 Node.js 버전을 22.17.1로 업데이트,0,0,unknown
-이동현,180,modify: Dockerfile에 Node.js 버전 출력 추가,0,0,unknown
-이동현,141,modify: HOST_URL 및 NEXT_PUBLIC_HOST_URL을 jts.jobkorea.co.kr로 변경,0,0,unknown
-이동현,140,modify: HOST_URL 슬래시 제거,0,0,unknown
-이동현,139,modify: HOST_URL에서 슬래시 제거 및 next.config.ts 리다이렉트 경로 수정,0,0,unknown
-이동현,137,modify: NewRecruit(임시) 경로에 대한 리다이렉트 추가,0,0,unknown
-이동현,135,modify: instrumentation 위치 변경,0,0,unknown
-이동현,132,modify: 이미지 최적화 설정 변경 및 불필요한 리다이렉트 제거,0,0,unknown
-이동현,131,modify: Dockerfile에 .next 캐시 경로 추가,0,0,unknown
-이동현,129,modify: 이미지 경로 설정 변경 및 리다이렉트 추가,0,0,unknown
-이동현,117,feat: OpenTelemetry 설정 개선,0,0,unknown
-이동현,110,Feature/deploy,1,0,unknown
-이동현,101,chore: postbuild.sh에서 npm을 pnpm으로 변경,0,0,unknown
-이동현,97,refactor: instrumentation-client.ts 파일 생성 및 Sentry 초기화 로직 추가,1,0,unknown
-이동현,78,feat: Dockerfile 및 next.config.ts 수정,1,0,unknown
-이동현,74,refactor: Dockerfile 및 package.json 수정  healthz API 추가,1,0,unknown
-이동현,72,refactor: Dockerfile 및 스크립트 파일 수정,1,0,unknown
-이동현,5,fix: Sentry DSN 업데이트,1,0,unknown
-이동현,4,fix: 인증서 생성 스크립트 수정 및 의존성 업데이트,1,0,unknown
-이동현,3,fix: 테마 이름 변경,1,0,unknown
-이동현,2,fix: Sentry 프로젝트 이름 및 호스트네임 수정,1,0,unknown
-이동현,1,docs: 문서 파일 삭제,1,0,unknown
-문승연,803,Feature/client ip,0,0,unknown
-문승연,799,feat: 클라이언트 IP 주소를 가져오는 API 추가 및 Sentry 이벤트에 IP 태그 추가,0,0,unknown
-문승연,796,modify: 클라이언트 IP 주소를 가져오는 API 경로를 수정하고  DEV 환경에서의 IP 화이트리스트 헤더 추가 로직을 제거했습니다.,0,0,unknown
-문승연,795,Feature/real ip,0,0,unknown
-문승연,783,modify: 20250905 deply,0,0,unknown
-문승연,771,fix: 네트워크 요청 실패 시 undefined 에러 해결,2,2,unknown
-문승연,770,fix: iframe 로딩 시 타임아웃 관리 및 언마운트 시 정리 로직 추가,1,0,unknown
-문승연,768,fix: iframe 높이 계산 및 postMessage 전송 시 에러 핸들링 개선  디바운싱 추가,4,2,unknown
-문승연,760,fix: gitlab-ci.yml에서 Git 설치 확인 주석 제거,0,0,unknown
-문승연,758,fix: jds/mrnotification@0.0.46 버전을 package.json 및 pnpm-lock.yaml에 추가,0,0,unknown
-문승연,757,fix: Sentry 초기화 시 개발 환경에서만 비활성화 설정,0,0,unknown
-장호철,874,feat: update-version-15.5.9,1,0,unknown
-장호철,869,feat: header design 업데이트,3,0,unknown
+ㄱㄱㄹ,878,feat: OTEL 환경변수 설정,1,0,unknown
+ㄱㄱㄹ,877,Feat/apply button,1,1,unknown
+ㄱㄱㄹ,875,feat: ApplyButton 스타일 및 텍스트를 모바일과 동일하게 변경,2,1,unknown
+ㄱㄱㄹ,873,refactor: update applyOnPass implementation and enhance external path...,1,0,unknown
+ㄱㄱㄹ,868,Feature/apply popup,2,1,unknown
+ㄱㄱㄹ,867,feat: 즉시지원 버튼 클릭시 신규 입사지원 플로우 개선 팝업 노출,3,1,unknown
+ㄱㄱㄹ,862,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,1,unknown
+ㄱㄱㄹ,861,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,0,unknown
+ㄱㄱㄹ,859,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,2,0,unknown
+ㄱㄱㄹ,858,feat: Integrate Hotjar tracking script directly in RootLayout and remove...,1,0,unknown
+ㄱㄱㄹ,857,feat: Add Hotjar tracking script to RootLayout,1,0,unknown
+ㄱㄱㄹ,856,feat: Hotjar 스크립트 컴포넌트 추가,3,0,unknown
+ㄱㄱㄹ,847,Refactor/api route,4,0,unknown
+ㄱㄱㄹ,845,fix: RecruitDetailLayout 관련 추상화 제거,2,1,unknown
+ㄱㄱㄹ,843,feat: 한국 시간대에 맞춘 날짜 부분 추출 헬퍼 함수 추가 및 마감일 포맷팅 함수 리팩토링,4,1,unknown
+ㄱㄱㄹ,826,fix: server-env.ts 환경 변수에서 'X-FORWARDED-FOR' 제거,2,1,unknown
+ㄱㄱㄹ,824,fix: 공고 상세 링크에 쿼리 파라미터 추가,2,1,unknown
+ㄱㄱㄹ,820,Fix/onepick,0,0,unknown
+ㄱㄱㄹ,818,fix: 여러 API에서 cookies 관련 코드 제거 및 NextHeaders로 통일,0,0,unknown
+ㄱㄱㄹ,817,Next header 사용하도록 변경,2,1,unknown
+ㄱㄱㄹ,810,fix: 경력 범위 from 값이 null일 경우 0으로 처리,2,1,unknown
+ㄱㄱㄹ,809,fix: 경력 범위 from 값이 null일 경우 0으로 처리,0,0,unknown
+ㄱㄱㄹ,808,Fix/workplace,2,1,unknown
+ㄱㄱㄹ,807,test: workplace 텍스트 생성 함수에 대한 단위 테스트 추가,0,0,unknown
+ㄱㄱㄹ,805,Fix/workplace,0,0,unknown
+ㄱㄱㄹ,797,fix: 태그 관련 API에만 DEV 환경에서 IP 화이트리스트 헤더 생성 로직 추가,0,0,unknown
+ㄱㄱㄹ,794,fix: 태그 관련 API에만 DEV 환경에서 IP 화이트리스트 헤더 생성 로직 추가,0,0,unknown
+ㄱㄱㄹ,793,modify: template default.md 에서 release.md로 변경,0,0,unknown
+ㄱㄱㄹ,792,Fix/ip address,0,0,unknown
+ㄱㄱㄹ,791,Fix/ip address,0,0,unknown
+ㄱㄱㄹ,785,Fix/career,0,0,unknown
+ㄱㄱㄹ,782,fix: 환경 변수에서 'X-FORWARDED-FOR' 항목 제거 및 관련 코드 수정,1,1,unknown
+ㄱㄱㄹ,780,Fix/tracking,0,1,unknown
+ㄱㄱㄹ,777,fix: 트래킹 로직 롤백,1,1,unknown
+ㄱㄱㄹ,774,fix: criteo 스크립트 실행 방식 변경,2,1,unknown
+ㄱㄱㄹ,769,fix: next/script를 script로 변경,1,1,unknown
+ㄱㄱㄹ,766,feat: MR description 템플릿 추가,2,1,unknown
+ㄱㄱㄹ,764,Refactor/tracking,2,1,unknown
+ㄱㄱㄹ,763,fix: API status 400  401  404 로그 레벨 글로벌 설정,2,1,unknown
+ㄱㄱㄹ,762,Refactor/fetch,1,0,unknown
+ㄱㄱㄹ,761,fix: sentry 에러 레벨 설정,0,0,unknown
+ㄱㄱㄹ,756,fix: 고용형태 빈배열일 경우 미노출,0,0,unknown
+ㄱㄱㄹ,755,fix: jobDetail이 없을 경우 기본 메타데이터 반환 추가,0,0,unknown
+ㄱㄱㄹ,754,Refactor/fetch,0,0,unknown
+ㄱㄱㄹ,753,fix: border-radius 수정,0,0,unknown
+ㄱㄱㄹ,752,Refactor/fetch,0,0,unknown
+ㄱㄱㄹ,749,fix: getV1JobsId 비동기 함수로 변경,0,0,unknown
+ㄱㄱㄹ,748,feat: sentry error category [FETCH API] 추가,0,0,unknown
+ㄱㄱㄹ,746,fix: fetch json response 분리 및 error throw 추가,0,0,unknown
+ㄱㄱㄹ,743,fix: 인메모리 캐시 반환 수정,0,0,unknown
+ㄱㄱㄹ,742,fix: 변수 접근시 옵셔널 처리 추가,0,0,unknown
+ㄱㄱㄹ,739,Fix/custom event,0,0,unknown
+ㄱㄱㄹ,738,Fix/custom event,0,0,unknown
+ㄱㄱㄹ,737,Fix/custom event,0,0,unknown
+ㄱㄱㄹ,735,fix: Event `CustomEvent` (type=unhandledrejection) captured as promise rejection,0,0,unknown
+ㄱㄱㄹ,734,Refactor/code,0,0,unknown
+ㄱㄱㄹ,733,Refactor/code,0,0,unknown
+ㄱㄱㄹ,731,Refactor/code,0,0,unknown
+ㄱㄱㄹ,730,Refactor/code,0,0,unknown
+ㄱㄱㄹ,729,fix: client error 발생 시 디폴트 리턴에서 throw error로 변경,0,0,unknown
+ㄱㄱㄹ,728,Refactor/code,0,0,unknown
+ㄱㄱㄹ,726,fix: dmp 에러 처리 추가,0,0,unknown
+ㄱㄱㄹ,725,Refactor/code,0,0,unknown
+ㄱㄱㄹ,724,Refactor/code,0,0,unknown
+ㄱㄱㄹ,723,fix: code api 디폴트값 설정,0,0,unknown
+ㄱㄱㄹ,715,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,714,modify: response text도 sentry에서 출력,0,0,unknown
+ㄱㄱㄹ,713,modify: fetchCommonCode sentry log 추가,0,0,unknown
+ㄱㄱㄹ,711,fix: fetchCode  fetchDmp no-store 적용,0,0,unknown
+ㄱㄱㄹ,707,fix: dmp error response 처리,0,0,unknown
+ㄱㄱㄹ,705,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,696,fix: prd env 수정,0,0,unknown
+ㄱㄱㄹ,695,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,694,fix: 서류 합격 예측 서비스 등록 조건 수정,0,0,unknown
+ㄱㄱㄹ,693,fix: 합격축하금 신청 팝업 정보 조회 API method 변경,0,0,unknown
+ㄱㄱㄹ,691,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,690,fix: 개인회원 쿼리 prefetch 로직 개선 및 불필요한 주석 제거,0,0,unknown
+ㄱㄱㄹ,689,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,688,fix: 개인회원에 대한 쿼리 prefetch 로직 추가 및 관련 쿼리 조건 수정,0,0,unknown
+ㄱㄱㄹ,687,chore: sentry 설정 변경,0,0,unknown
+ㄱㄱㄹ,686,fix: 텍스트 중앙정렬 및 콘솔 로그 삭제,0,0,unknown
+ㄱㄱㄹ,685,feat: h1  h2 태그 적용,0,0,unknown
+ㄱㄱㄹ,684,feat: 메타데이터 및 구조화 데이터 추가,0,0,unknown
+ㄱㄱㄹ,681,feat: aria-label 추가,0,0,unknown
+ㄱㄱㄹ,678,chore: dmp url 변경,0,0,unknown
+ㄱㄱㄹ,675,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,667,fix: notfound 주석처리,0,0,unknown
+ㄱㄱㄹ,665,fix: 헤드헌팅 공고 442 에러 처리 추가,0,0,unknown
+ㄱㄱㄹ,664,fix: 불필요한 주석 삭제 및 알럿 에러처리 추가,0,0,unknown
+ㄱㄱㄹ,662,fix: 불필요한 주석 삭제,0,0,unknown
+ㄱㄱㄹ,660,fix: STG 환경변수 수정,0,0,unknown
+ㄱㄱㄹ,658,fix: 로그인 후 invalidate 확인 로직 추가,0,0,unknown
+ㄱㄱㄹ,656,fix: 스마트핏 query key 타입 수정,0,0,unknown
+ㄱㄱㄹ,655,fix: 추천공고 query key 타입 수정,0,0,unknown
+ㄱㄱㄹ,652,modify: STG 확인용 헤더 정보 콘솔 출력,0,0,unknown
+ㄱㄱㄹ,649,fix: STG 이벤트 확인용 로그 추가,0,0,unknown
+ㄱㄱㄹ,648,feat: applyHomepage 함수에 sourceCode 매개변수 추가 및 로깅 기능 추가,0,0,unknown
+ㄱㄱㄹ,641,modify: dmp-collection-info 생성 시 쿠키 로그 추가,0,0,unknown
+ㄱㄱㄹ,640,fix: 스테이징 로그인 모달 104 서버로 변경,0,0,unknown
+ㄱㄱㄹ,638,feat: 즉시지원  홈페이지 지원 시 dmp-collection-info 쿠키 추가,0,0,unknown
+ㄱㄱㄹ,633,fix: 미사용 변수 삭제,0,0,unknown
+ㄱㄱㄹ,632,fix: stg 환경 변수 변경,0,0,unknown
+ㄱㄱㄹ,631,fix: 이메일 모달 baseUrl 수정,0,0,unknown
+ㄱㄱㄹ,620,fix: dmp 로그값 옵셔널 처리,0,0,unknown
+ㄱㄱㄹ,616,fix: Sentry replay off,0,0,unknown
+ㄱㄱㄹ,615,fix: dmp 날짜 요청 포맷팅,0,0,unknown
+ㄱㄱㄹ,610,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
+ㄱㄱㄹ,609,fix: GA 및 트래킹 코드 initializer 위치 변경,0,0,unknown
+ㄱㄱㄹ,607,fix: 추천공고 로그 출력 위치 변경,0,0,unknown
+ㄱㄱㄹ,606,fix: 확인용 로그 수정,0,0,unknown
+ㄱㄱㄹ,604,fix: 타입에러 수정,0,0,unknown
+ㄱㄱㄹ,603,feat: DMP 로그 추가 및 기존 로그 정리,0,0,unknown
+ㄱㄱㄹ,602,feat: prefetchJobsQuery에서 searchParams를 받을 수 있도록 구조 변경,0,0,unknown
+ㄱㄱㄹ,600,feat: 이미 클릭된 공고인 경우 DMP 로그 전송을 방지하는 로직 추가,0,0,unknown
+ㄱㄱㄹ,598,fix: 주석 추가 및 dmp 호출시 jobHubId 설정,0,0,unknown
+ㄱㄱㄹ,597,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
+ㄱㄱㄹ,595,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
+ㄱㄱㄹ,593,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
+ㄱㄱㄹ,592,refactor: useCallback으로 getRecruitSroWithLinks 및 getRandomRecruitSroLink 최적화 ...,0,0,unknown
+ㄱㄱㄹ,590,fix: 클릭/노출 로그 전송시 jobHubId 수정,0,0,unknown
+ㄱㄱㄹ,586,fix: code revert  불필요한 파일 삭제,0,0,unknown
+ㄱㄱㄹ,584,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,583,modify: 로그 추가,0,0,unknown
+ㄱㄱㄹ,582,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,581,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,580,feat: AI 추천 공고 리스트에 DMP 로그 전송 기능 추가 및 관련 훅 구현,0,0,unknown
+ㄱㄱㄹ,577,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,572,fix: api 호출 이슈로 칩태그 컴포넌트 구조 변경,0,0,unknown
+ㄱㄱㄹ,569,fix: ensureJobTagsQuery 및 ensureOnepickWelfareTagQuery에서 400 상태 코드 추가 처리,0,0,unknown
+ㄱㄱㄹ,567,fix: ensureCorpInfoQuery에서 400 상태 코드 추가 처리,0,0,unknown
+ㄱㄱㄹ,565,feat: 타이틀  태그 iframe 밖으로 이동,0,0,unknown
+ㄱㄱㄹ,564,fix: useRelatedTags에서 로딩 중 데이터가 없을 때 빈 배열 반환 위치 수정,0,0,unknown
+ㄱㄱㄹ,563,fix: getDescriptionHtmlContent에 기본값 추가,0,0,unknown
+ㄱㄱㄹ,562,fix: 아이콘 이미지 BaseImage를 보도록 설정,0,0,unknown
+ㄱㄱㄹ,561,feat: 트위터 공유 템플릿 실섭 이슈 반영하여 수정,0,0,unknown
+ㄱㄱㄹ,559,feat: 트위터 공유 시 템플릿 적용,0,0,unknown
+ㄱㄱㄹ,557,fix: dmp 로그인시 회원 정보 전송,0,0,unknown
+ㄱㄱㄹ,552,fix: 자사양식 다운로드 버튼 노출 값 수정,0,0,unknown
+ㄱㄱㄹ,536,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,535,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,534,feat: dmp 타입 수정 및 전송,0,0,unknown
+ㄱㄱㄹ,533,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,532,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,525,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,524,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,523,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,521,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,520,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,519,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,518,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,516,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,513,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,510,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,509,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,508,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,504,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,502,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,499,fix: 경력 표기 케이스 추가,0,0,unknown
+ㄱㄱㄹ,498,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,496,style: 디자인 검수 변경사항 적용,0,0,unknown
+ㄱㄱㄹ,493,fix: 디자인 수정,0,0,unknown
+ㄱㄱㄹ,492,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,491,feat: 원픽용 경력 텍스트 포맷 추가,0,0,unknown
+ㄱㄱㄹ,488,fix: 경력 연도 포맷 개선 및 표시 방식 수정,0,0,unknown
+ㄱㄱㄹ,487,fix: 탭 변경 핸들러 제거 및 코드 정리,0,0,unknown
+ㄱㄱㄹ,486,feat: 스마트핏 앵커 영역 추가,0,0,unknown
+ㄱㄱㄹ,483,fix: 로컬에서 아이콘 표시 되도록 rewrite 설정 추가,0,0,unknown
+ㄱㄱㄹ,480,modify: 서버 확인용 로그 추가,0,0,unknown
+ㄱㄱㄹ,478,fix: 서류합격예측 대상자 등록 params 수정,0,0,unknown
+ㄱㄱㄹ,477,fix: useOnepickChipTagsServer 에서 API 병렬 호출로 변경,0,0,unknown
+ㄱㄱㄹ,476,fix: DetailContentSkeleton 컴포넌트에서 margin-top 제거,0,0,unknown
+ㄱㄱㄹ,475,fix: auto-complete API 파라미터 변경 (maxCount -> pageSize),0,0,unknown
+ㄱㄱㄹ,473,fix: pass-prediction -> acceptance-prediction 백엔드 네이밍 변경에 따른 프론트 변경 사항 적용,0,0,unknown
+ㄱㄱㄹ,468,fix: 파트타임 -> 아르바이트 문구 수정,0,0,unknown
+ㄱㄱㄹ,466,fix: 아이콘 경로 변경,0,0,unknown
+ㄱㄱㄹ,464,feat: 합격 축하금 신청 불가 조건 추가,0,0,unknown
+ㄱㄱㄹ,462,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,461,fix: 산업 코드 데이터 접근 방식 수정 및 링크 생성 로직 개선,0,0,unknown
+ㄱㄱㄹ,460,fix: 기업 정보 미노출 설정에 따른 회사 정보 쿼리 및 데이터 접근 API 방식 수정,0,0,unknown
+ㄱㄱㄹ,458,feat: 원픽 공고 상단 태그 추가,0,0,unknown
+ㄱㄱㄹ,452,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,451,fix: 상세요강참고 API 호출 조건 변경,0,0,unknown
+ㄱㄱㄹ,450,fix: 즉시지원 체크 로직에서 POSTING 체크 확인 로직 제거,0,0,unknown
+ㄱㄱㄹ,442,feat: 서류합격예측 결과 컴포넌트 url 추가,0,0,unknown
+ㄱㄱㄹ,441,feat: 서류합격예측 inactive 상태 클릭시 페이지 이동,0,0,unknown
+ㄱㄱㄹ,440,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,438,fix: 합격축하금 신청 공통화,0,0,unknown
+ㄱㄱㄹ,429,feat: 사이드바 합격축하금 신청 버튼 추가,0,0,unknown
+ㄱㄱㄹ,428,fix: 원픽 합격 예측 서비스 대상자 아닐 경우 비로그인 상태 배너 노출,0,0,unknown
+ㄱㄱㄹ,427,feat: 합격축하금 컴포넌트 수정,0,0,unknown
+ㄱㄱㄹ,425,fix: 경력 필드 컴포넌트에서 관리자 입력 경력 처리 로직 개선,0,0,unknown
+ㄱㄱㄹ,423,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,408,modify: 원픽 급여 텍스트 확정/예측 분기,0,0,unknown
+ㄱㄱㄹ,401,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,398,modify: 탭 변경 후 되돌리기 시 리렌더링에 의하여 새창이 다시 켜지는 현상 수정,0,0,unknown
+ㄱㄱㄹ,396,modify: 전문채용관 클릭 디바운스 추가,0,0,unknown
+ㄱㄱㄹ,380,fix: 홈페이지 지원 시 개인회원 체크 대신 로그인 여부만 체크하도록 수정,0,0,unknown
+ㄱㄱㄹ,378,fix: 코드 롤백,0,0,unknown
+ㄱㄱㄹ,377,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,375,style: 지원 완료  우편  FAX 방문 버튼 컬러 변경,0,0,unknown
+ㄱㄱㄹ,371,test: employment.util 테스트에서 admin 입력 관련 함수 제거 및 스타일 수정,0,0,unknown
+ㄱㄱㄹ,369,fix: ResumeDownloadPopup 컴포넌트에서 링크를 Flex 컨테이너로 감싸 레이아웃 개선,0,0,unknown
+ㄱㄱㄹ,368,fix: applyHomepage 함수 백엔드 응답 url로 적용되도록 수정,0,0,unknown
+ㄱㄱㄹ,365,fix: Skeleton 컴포넌트 제거 및 로딩 상태에서 null 반환으로 변경,0,0,unknown
+ㄱㄱㄹ,364,fix: 접수 버튼 텍스트 수정 (우편접수  방문접수  FAX접수),0,0,unknown
+ㄱㄱㄹ,363,fix: 전지역 표시 방식 수정,0,0,unknown
+ㄱㄱㄹ,362,fix: 팩스 접수 텍스트 수정 (FAX 접수로 변경),0,0,unknown
+ㄱㄱㄹ,361,fix: 전문채용관 동적 설정,0,0,unknown
+ㄱㄱㄹ,360,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,358,fix: 고용형태 관리자 입력 고려하여 모든 내용 조합 후 빈 문자열 반환 처리 추가,0,0,unknown
+ㄱㄱㄹ,356,feat: 즉시지원 버튼 노출 조건 및 이력서 다운로드 버튼 노출 조건 수정,0,0,unknown
+ㄱㄱㄹ,355,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,354,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,352,feat: 스크롤 오프셋 상수 추가 및 탭 렌더링 함수 리팩토링,0,0,unknown
+ㄱㄱㄹ,348,feat: 지원 타입 우선순위 업데이트,0,0,unknown
+ㄱㄱㄹ,347,feat: 경력 관련 로직 통합 및 기존 코드 리팩토링,0,0,unknown
+ㄱㄱㄹ,346,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,342,fix: print.css에서 패딩을 0으로 설정하여 인쇄 스타일 최적화,0,0,unknown
+ㄱㄱㄹ,341,fix: ContentOnlyLayout에 패딩 추가,0,0,unknown
+ㄱㄱㄹ,340,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,339,fix: 불필요한 console.log 제거 및 Suspense 컴포넌트 추가로 렌더링 최적화,0,0,unknown
+ㄱㄱㄹ,338,fix: 근무지역 텍스트 생성 로직 리팩토링 및 유틸리티 함수 추가,0,0,unknown
+ㄱㄱㄹ,337,fix: iframe 프린트 최적화 및 페이지 브레이크 조정,0,0,unknown
+ㄱㄱㄹ,336,fix: JobInfoItem 컴포넌트에서 TooltipSquare를 TooltipBox로 변경 및 레이아웃 수정,0,0,unknown
+ㄱㄱㄹ,334,feat: 타이틀 이미지 오버레이 컴포넌트 및 스타일 추가,0,0,unknown
+ㄱㄱㄹ,331,fix: 마감일 포맷 함수에 대한 테스트 케이스 추가 및 수정,0,0,unknown
+ㄱㄱㄹ,329,modify: pay 관련 타입 및 상수 추가  usePay 수정 [TEST-71983],0,0,unknown
+ㄱㄱㄹ,318,feat: 트위터 공유 제목을 데이터에서 동적으로 가져오도록 수정,0,0,unknown
+ㄱㄱㄹ,317,feat: 공고 수정 버튼 노출 조건 로직을 useDisplayEdit 훅으로 분리,0,0,unknown
+ㄱㄱㄹ,316,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,314,fix: console.log를 logger로 변경,0,0,unknown
+ㄱㄱㄹ,310,feat: 근무지역 요약 생성 로직 리팩토링 및 테스트 케이스 추가,0,0,unknown
+ㄱㄱㄹ,307,fix: 트위터 및 페이스북 공유 링크 생성 로직 수정,0,0,unknown
+ㄱㄱㄹ,303,fix: 세종시 제외 관련 주석 추가 및 전지역 코드 처리 로직 개선,0,0,unknown
+ㄱㄱㄹ,300,feat: usePrint 훅 및 IframeViewer에서 iframe 로딩 상태 관리 개선,0,0,unknown
+ㄱㄱㄹ,295,feat: 프린트 레이아웃 개선,0,0,unknown
+ㄱㄱㄹ,293,feat: 급여 정보 표시 기능 개선,0,0,unknown
+ㄱㄱㄹ,290,feat: 급여 정보 표시 기능 추가,0,0,unknown
+ㄱㄱㄹ,282,Feature/job summary,0,0,unknown
+ㄱㄱㄹ,277,refactor: Anchor Tab 컴포넌트 리팩토링,0,0,unknown
+ㄱㄱㄹ,276,feat: 공고 수정 기능 추가,0,0,unknown
+ㄱㄱㄹ,275,refactor: 지원 타입 및 공고 정보 로직 개선,0,0,unknown
+ㄱㄱㄹ,271,style: TitleImage 컴포넌트의 네비게이션 버튼 디자인 개선,0,0,unknown
+ㄱㄱㄹ,269,feat: 공고 이미지 Swiper 네비게이션 기능 구현,0,0,unknown
+ㄱㄱㄹ,265,feat: 지원 타입 및 조건 로직 추가,0,0,unknown
+ㄱㄱㄹ,264,feat: 지원 타입 및 조건 로직 추가,0,0,unknown
+ㄱㄱㄹ,259,feat: GIPreviewPage 이름 변경 및 프린트 스타일 추가,0,0,unknown
+ㄱㄱㄹ,258,Feature/apply button,0,0,unknown
+ㄱㄱㄹ,257,Feature/related chips,0,0,unknown
+ㄱㄱㄹ,256,feat: 원픽채용관 관련태그 api 추가,0,0,unknown
+ㄱㄱㄹ,252,feat: recruit-sro 엔티티 구조 개선 및 랜덤 링크 기능 추가,0,0,unknown
+ㄱㄱㄹ,251,feat: 지역 코드 및 사용자 인증 관련 API 클라이언트 추가 및 리팩토링,0,0,unknown
+ㄱㄱㄹ,250,feat: 지역 코드 및 사용자 인증 관련 API 클라이언트 추가 및 리팩토링,0,0,unknown
+ㄱㄱㄹ,248,feat: 직무 요약버전 텍스트 변환 및 주석 추가,0,0,unknown
+ㄱㄱㄹ,241,fix: 타입 에러 수정,0,0,unknown
+ㄱㄱㄹ,240,feat: 연관태그 SRO API 및 데이터 모델 추가,0,0,unknown
+ㄱㄱㄹ,239,feat: 연관태그 SRO API 및 데이터 모델 추가,0,0,unknown
+ㄱㄱㄹ,238,modify: 앵커 탭 스크롤 동작 개선 및 버그 수정,0,0,unknown
+ㄱㄱㄹ,236,feat: 직무 키워드 및 산업 관련 데이터 조회 링크 생성 기능 추가,0,0,unknown
+ㄱㄱㄹ,233,Feature/path,0,0,unknown
+ㄱㄱㄹ,230,modify: 회사 링크에 JOBKOREA_URL 추가,0,0,unknown
+ㄱㄱㄹ,224,feat: 디바운스 훅 추가,0,0,unknown
+ㄱㄱㄹ,216,Feature/refactor,0,0,unknown
+ㄱㄱㄹ,214,feat: 로그인 체크 훅 추가 및 함수명 변경,0,0,unknown
+ㄱㄱㄹ,209,refactor: jobs entities 폴더 내 model 디렉토리 파일명 수정,0,0,unknown
+ㄱㄱㄹ,202,Feature/job info,0,0,unknown
+ㄱㄱㄹ,200,Feature/job info,0,0,unknown
+ㄱㄱㄹ,199,Feature/job info,0,0,unknown
+ㄱㄱㄹ,197,Feature/job info,0,0,unknown
+ㄱㄱㄹ,195,Feature/job info,0,0,unknown
+ㄱㄱㄹ,194,feat: 데이터 패칭 시 로딩 처리 추가,0,0,unknown
+ㄱㄱㄹ,192,modify: barrel export 수정,0,0,unknown
+ㄱㄱㄹ,190,Feature/test,0,0,unknown
+ㄱㄱㄹ,187,Feature/jobs,0,0,unknown
+ㄱㄱㄹ,166,feat: PassPrediction 컴포넌트 테스트 코드 추가,0,0,unknown
+ㄱㄱㄹ,165,feat: PassPrediction 컴포넌트 리팩토링 및 조건부 로직 개선,0,0,unknown
+ㄱㄱㄹ,161,modify: 공유 기능에서 단축 URL 생성 로직 개선,0,0,unknown
+ㄱㄱㄹ,160,modify: 공유 기능에서 단축 URL 생성 로직 개선,0,0,unknown
+ㄱㄱㄹ,159,modify: shorten-url API 호출 경로 수정 및 로그 제거,0,0,unknown
+ㄱㄱㄹ,158,refactor: job-info 기능을 widgets에서 features로 이동,0,0,unknown
+ㄱㄱㄹ,156,feat: 관련 태그 채용관 정보 추가,0,0,unknown
+ㄱㄱㄹ,151,modify: 이메일 모달 기능 개선 및 사용 방식 변경,0,0,unknown
+ㄱㄱㄹ,148,modify: 이메일 폼 baseUrl 주소 변경,0,0,unknown
+ㄱㄱㄹ,147,Feature/share,0,0,unknown
+ㄱㄱㄹ,146,feat: 코드 api 수정 및 환경변수 설정,0,0,unknown
+ㄱㄱㄹ,144,Feature/share,0,0,unknown
+ㄱㄱㄹ,134,fix: HOST_URL search 주소에서 jobs 주소로 변경,0,0,unknown
+ㄱㄱㄹ,128,chore: env 변경 (internal eks 주소에서 서버 주소로 변경),0,0,unknown
+ㄱㄱㄹ,127,modify: 주석 추가 및 api 함수명 통일,0,0,unknown
+ㄱㄱㄹ,125,chore: docker에서 주입되는 환경변수 env파일에서 주석처리,0,0,unknown
+ㄱㄱㄹ,123,fix: 로그인 API에 client env로 되어있던 부분 server env로 변경,0,0,unknown
+ㄱㄱㄹ,120,Feature/related chips,0,0,unknown
+ㄱㄱㄹ,119,feat: 서버 queryclient 캐시 처리,0,0,unknown
+ㄱㄱㄹ,116,Feature/dmp,0,0,unknown
+ㄱㄱㄹ,114,Feature/chips,0,0,unknown
+ㄱㄱㄹ,111,feat: 타이틀 칩스 API 연동,0,0,unknown
+ㄱㄱㄹ,108,chore: jds/tooltip lockfile 추가,1,0,unknown
+ㄱㄱㄹ,107,chore: jds/tooltip 패키지 다운로드,1,0,unknown
+ㄱㄱㄹ,105,feat: 원픽공고 합격축하금 컴포넌트 추가,1,0,unknown
+ㄱㄱㄹ,104,feat: 툴팁 컴포넌트 추가,0,0,unknown
+ㄱㄱㄹ,100,Feature/title,0,0,unknown
+ㄱㄱㄹ,92,feat: 원픽 사이드바 추가,1,1,unknown
+ㄱㄱㄹ,87,feat: 하단 텍스트 광고 정렬,1,0,unknown
+ㄱㄱㄹ,84,Feature/ads,1,0,unknown
+ㄱㄱㄹ,82,fix: Image 컴포넌트의 에러 핸들링 개선,1,0,unknown
+ㄱㄱㄹ,80,modify: 채용 상세 페이지 서버/클라이언트 컴포넌트 분리 및 기능 개선,1,0,unknown
+ㄱㄱㄹ,68,fix: shared 컴포넌트 디렉토리 변경,1,0,unknown
+ㄱㄱㄹ,66,Feature/fsd,1,0,unknown
+ㄱㄱㄹ,62,modify: 디렉토리 구조 변경,1,0,unknown
+ㄱㄱㄹ,49,feat: 사이드바 컴포넌트 추가 및 관련 태그와의 스티키 기능 구현. 광고 이미지 추가 및 관련 태그 스타일 수정.,1,0,unknown
+ㄱㄱㄹ,45,modify: 스크랩 버튼 경로 수정,1,0,unknown
+ㄱㄱㄹ,44,Feature/fsd,1,0,unknown
+ㄱㄱㄹ,40,* modify: remove any type,1,0,unknown
+ㄱㄱㄹ,31,Fix: 디렉토리 구조 변경,1,0,unknown
+ㄱㄱㄹ,30,fix: 빌드 에러 해결,1,0,unknown
+ㄱㄱㄹ,29,Feature/title,1,1,unknown
+ㄱㄱㄹ,28,feat: 레이아웃 영역 잡기,1,1,unknown
+ㄱㄱㄹ,27,feat: 기업 정보 컴포넌트 추가,1,0,unknown
+ㅇㄹㅇ,872,remove: 즉시지원 시 얼럿 제거,1,0,unknown
+ㅇㄹㅇ,871,fix: next  react 취약점 버전 수정,1,0,unknown
+ㅇㄹㅇ,870,Feature/sentry,1,1,unknown
+ㅇㄹㅇ,865,"Revert ""* feat: Integrate OpenTelemetry support and update environment variables",1,0,unknown
+ㅇㄹㅇ,863,fix: dmp 비로그인 시 memberNo null 추가,3,1,unknown
+ㅇㄹㅇ,853,fix: 스키마 업데이트,2,1,unknown
+ㅇㄹㅇ,852,fix: 헤더 이미지 제거 건,1,1,unknown
+ㅇㄹㅇ,851,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
+ㅇㄹㅇ,850,Feature/remove demension,7,1,unknown
+ㅇㄹㅇ,849,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
+ㅇㄹㅇ,846,feat: 기타 복리후생 노출 조건 추가,6,0,unknown
+ㅇㄹㅇ,844,* test: googleAnalytics.test.ts 파일 삭제,1,0,unknown
+ㅇㄹㅇ,841,Feature/jk 25478,0,0,unknown
+ㅇㄹㅇ,839,Feature/remove shadow dom,3,0,unknown
+ㅇㄹㅇ,838,Feature/ga dimension,0,0,unknown
+ㅇㄹㅇ,837,Feature/remove shadow dom,0,0,unknown
+ㅇㄹㅇ,835,Feature/remove shadow dom,0,0,unknown
+ㅇㄹㅇ,833,Feature/remove shadow dom,0,0,unknown
+ㅇㄹㅇ,832,Feature/ga dimension,0,0,unknown
+ㅇㄹㅇ,830,Feature/remove shadow dom,0,0,unknown
+ㅇㄹㅇ,829,Fix/onepick,0,0,unknown
+ㅇㄹㅇ,828,Feature/ga dimension,0,0,unknown
+ㅇㄹㅇ,822,Feature/remove shadow dom,0,0,unknown
+ㅇㄹㅇ,819,Feature/ga dimension,0,0,unknown
+ㅇㄹㅇ,816,Feature/fix query params,1,1,unknown
+ㅇㄹㅇ,815,"Revert ""modify: local env DISPLAY_API_URL_JOBS""",0,0,unknown
+ㅇㄹㅇ,814,Feature/fix sentry filter,0,0,unknown
+ㅇㄹㅇ,813,"Revert ""modify: local env DISPLAY_API_URL_JOBS""",0,0,unknown
+ㅇㄹㅇ,811,fix: response 값 있을 경우에만 센트리 에러 트레킹,0,0,unknown
+ㅇㄹㅇ,804,Feature/fix sentry filter,0,0,unknown
+ㅇㄹㅇ,802,remove: 미사용 커스텀 이벤트 삭제,0,0,unknown
+ㅇㄹㅇ,790,feat: 변우석 이미지 우측 배너 제거,2,1,unknown
+ㅇㄹㅇ,789,Feature/fix banner,0,0,unknown
+ㅇㄹㅇ,787,Feature/fix banner,1,1,unknown
+ㅇㄹㅇ,784,fix: 센트리 thirdPartyError 필터 추가,0,0,unknown
+ㅇㄹㅇ,772,Feature/fix iframe,2,1,unknown
+ㅇㄹㅇ,767,feat: 기업컨텐츠 호버 시 밑줄 추가,1,1,unknown
+ㅇㄹㅇ,751,fix: css 캐싱 우회 파일명 변경,0,0,unknown
+ㅇㄹㅇ,750,remove: 미사용 css 제거,0,0,unknown
+ㅇㄹㅇ,744,Feature/fix form,0,0,unknown
+ㅇㄹㅇ,740,remove: insertBefore 삭제,0,0,unknown
+ㅇㄹㅇ,727,Feature/fix query key,0,0,unknown
+ㅇㄹㅇ,718,feat: 헤더 잘못된 인코딩 케이스 감지,0,0,unknown
+ㅇㄹㅇ,710,"Revert ""* remove: 미사용 코드 삭제""",0,0,unknown
+ㅇㄹㅇ,709,Feature/fix 404,0,0,unknown
+ㅇㄹㅇ,708,Feature/fix 404,0,0,unknown
+ㅇㄹㅇ,704,fix: 에러처리 404 추가 후 테스트,0,0,unknown
+ㅇㄹㅇ,702,Feature/fix throw error,0,0,unknown
+ㅇㄹㅇ,701,fix: 코드 api 로그 찍기,0,0,unknown
+ㅇㄹㅇ,700,Feature/fix footer,0,0,unknown
+ㅇㄹㅇ,699,fix: footer url,0,0,unknown
+ㅇㄹㅇ,697,fix: 원픽 공고 chip 컴포넌트 없을 때 마진 삭제,0,0,unknown
+ㅇㄹㅇ,692,fix: 스킴리스 처리 추가,0,0,unknown
+ㅇㄹㅇ,682,fix: 고용형태 데이터 추가,0,0,unknown
+ㅇㄹㅇ,680,fix: 프린트 페이지 케이스 고려하여 parameter 추가,0,0,unknown
+ㅇㄹㅇ,679,Test 72330,0,0,unknown
+ㅇㄹㅇ,676,Test 72330,0,0,unknown
+ㅇㄹㅇ,673,Feature/fix iframe preview,0,0,unknown
+ㅇㄹㅇ,672,Feature/fix iframe preview,0,0,unknown
+ㅇㄹㅇ,671,fix: 아이프레임 높이 페이지 타입별 구조화,0,0,unknown
+ㅇㄹㅇ,668,feat: 아이프레임 부모페이지 미리보기 여부 체크 추가,0,0,unknown
+ㅇㄹㅇ,666,fix: 아이프레임 조건별 마진 변경,0,0,unknown
+ㅇㄹㅇ,663,Test 72330,0,0,unknown
+ㅇㄹㅇ,659,remove: 미사용 api 삭제,0,0,unknown
+ㅇㄹㅇ,657,"Revert ""* fix: 테스트 코드 추가""",0,0,unknown
+ㅇㄹㅇ,654,fix: 테스트 코드 추가,0,0,unknown
+ㅇㄹㅇ,647,remove: 불필요 template type 삭제,0,0,unknown
+ㅇㄹㅇ,645,fix: 레이아웃 충돌 수정,0,0,unknown
+ㅇㄹㅇ,644,Test 72330,0,0,unknown
+ㅇㄹㅇ,639,Feature/fix origin site,0,0,unknown
+ㅇㄹㅇ,624,fix: 원픽 css 분기처리,0,0,unknown
+ㅇㄹㅇ,621,fix: 기업정보 말줄임 수정,0,0,unknown
+ㅇㄹㅇ,619,Feature/fix type error,0,0,unknown
+ㅇㄹㅇ,617,feat: matchList optional 추가,0,0,unknown
+ㅇㄹㅇ,614,Test 72611,0,0,unknown
+ㅇㄹㅇ,612,feat: 기업정보 key 추가,0,0,unknown
+ㅇㄹㅇ,608,Test 72470,0,0,unknown
+ㅇㄹㅇ,601,fix: 기업정보 디자인 추가 수정,0,0,unknown
+ㅇㄹㅇ,599,fix: tab style 수정,0,0,unknown
+ㅇㄹㅇ,596,Test 72478,0,0,unknown
+ㅇㄹㅇ,594,fix: 디자인 추가 수정 반영,0,0,unknown
+ㅇㄹㅇ,591,fix: jobCategoryName 추가,0,0,unknown
+ㅇㄹㅇ,588,feat: jds 스타일 아이프레임 내부 리셋 테스트,0,0,unknown
+ㅇㄹㅇ,587,feat: JDS 스타일 우선순위 변경 테스트,0,0,unknown
+ㅇㄹㅇ,585,fix: print hooks 분리,0,0,unknown
+ㅇㄹㅇ,579,"Revert ""* fix: 탭 영역 수정""",0,0,unknown
+ㅇㄹㅇ,578,"Revert ""* fix: 탭 영역 수정""",0,0,unknown
+ㅇㄹㅇ,576,fix: 탭 영역 수정,0,0,unknown
+ㅇㄹㅇ,575,fix: iframe url 오기입 수정,0,0,unknown
+ㅇㄹㅇ,573,fix: 알바몬 iframe 높이 조정을 위하여 postmessage 수정,0,0,unknown
+ㅇㄹㅇ,570,fix: 디자인 수정사항 반영,0,0,unknown
+ㅇㄹㅇ,558,fix: 아이프레임 내부 tag 영역 높이 observer 추가,0,0,unknown
+ㅇㄹㅇ,555,remove: 다운로드 blank 창 제거,0,0,unknown
+ㅇㄹㅇ,554,fix: 새창이동 링크 추가,0,0,unknown
+ㅇㄹㅇ,553,Feature/fix design,0,0,unknown
+ㅇㄹㅇ,551,fix: footer 링크 추가,0,0,unknown
+ㅇㄹㅇ,550,fix: 지원방법 디자인 수정,0,0,unknown
+ㅇㄹㅇ,549,fix: footer 링크 새창이동 추가,0,0,unknown
+ㅇㄹㅇ,548,Test 72405,0,0,unknown
+ㅇㄹㅇ,547,Test 72405,0,0,unknown
+ㅇㄹㅇ,545,fix: company api 404 페이지 우회,0,0,unknown
+ㅇㄹㅇ,543,fix: 인쇄 미리보기 버튼 클릭 차단,0,0,unknown
+ㅇㄹㅇ,540,Test 72363,0,0,unknown
+ㅇㄹㅇ,539,Test 72363,0,0,unknown
+ㅇㄹㅇ,528,fix: secDetailRead id로 선택자 수정,0,0,unknown
+ㅇㄹㅇ,527,fix: 미리보기 css 수정,0,0,unknown
+ㅇㄹㅇ,517,Test 71985,0,0,unknown
+ㅇㄹㅇ,515,fix: 아이프레임 미리보기 클레스 명 추가,0,0,unknown
+ㅇㄹㅇ,511,fix: typo 말줄임 추가,0,0,unknown
+ㅇㄹㅇ,506,Test 72008,0,0,unknown
+ㅇㄹㅇ,505,fix: 마감공고시간변경,0,0,unknown
+ㅇㄹㅇ,503,Test 72166,0,0,unknown
+ㅇㄹㅇ,501,fix: 리패치 시간 변경,0,0,unknown
+ㅇㄹㅇ,500,Test 72166,0,0,unknown
+ㅇㄹㅇ,489,fix: 코드 api 직무 mapping hook 도입,0,0,unknown
+ㅇㄹㅇ,485,fix: 영문+국문 이력서 케이스 추가,0,0,unknown
+ㅇㄹㅇ,484,Test 72212,0,0,unknown
+ㅇㄹㅇ,482,fix: 인사담당자 툴팁 마진 추가,0,0,unknown
+ㅇㄹㅇ,481,fix: 인사담당자 부서 길 경우 처리,0,0,unknown
+ㅇㄹㅇ,479,Test 72231,0,0,unknown
+ㅇㄹㅇ,474,Test 72231,0,0,unknown
+ㅇㄹㅇ,472,feat: 자소서 작성하러 가기 이동 링크 추가,0,0,unknown
+ㅇㄹㅇ,471,remove: 자소서 전체 항목 tab 불필요함으로 삭제,0,0,unknown
+ㅇㄹㅇ,470,fix: 모의고사 새창이동 로직수정,0,0,unknown
+ㅇㄹㅇ,467,fix: 추천 모의고사 ui 틀어짐 해결,0,0,unknown
+ㅇㄹㅇ,465,fix: 접수방법 케이스에 applyType 추가,0,0,unknown
+ㅇㄹㅇ,459,Test 72192,0,0,unknown
+ㅇㄹㅇ,457,fix: 상세요강참고 시 지원양식 미노출 추가,0,0,unknown
+ㅇㄹㅇ,456,fix: posting type 대기중일 경우 마감 시간 케이스 추가,0,0,unknown
+ㅇㄹㅇ,455,Test 72184,0,0,unknown
+ㅇㄹㅇ,454,fix: 관리자 상세요강 참조 여부 추가,0,0,unknown
+ㅇㄹㅇ,453,fix: null 값일 때 기업정보 미노출,0,0,unknown
+ㅇㄹㅇ,448,fix: 인적성후기 링크 이동 변수 타입 수정,0,0,unknown
+ㅇㄹㅇ,447,fix: 직무인터뷰 상세 url 수정,0,0,unknown
+ㅇㄹㅇ,446,Test 72170,0,0,unknown
+ㅇㄹㅇ,445,Test 72170,0,0,unknown
+ㅇㄹㅇ,444,fix: 직무인터뷰 4개 까지만 노출되도록 수정,0,0,unknown
+ㅇㄹㅇ,443,Test 72158,0,0,unknown
+ㅇㄹㅇ,439,remove: 불필요 테스트 코드 삭제,0,0,unknown
+ㅇㄹㅇ,437,fix: 테스트코드 - 부모 높이 변경 테스트,0,0,unknown
+ㅇㄹㅇ,432,fix: 디버깅 로그 추가,0,0,unknown
+ㅇㄹㅇ,431,remove: 불필요 코드 삭제,0,0,unknown
+ㅇㄹㅇ,430,fix: 아이프레임 디버깅 코드 추가,0,0,unknown
+ㅇㄹㅇ,426,Test 72038,0,0,unknown
+ㅇㄹㅇ,424,fix: 기업정보 스키마 업데이트,0,0,unknown
+ㅇㄹㅇ,422,fix: 유틸함수 useReceptionDomArray 훅으로 변경,0,0,unknown
+ㅇㄹㅇ,420,fix: a 태그 button 변경,0,0,unknown
+ㅇㄹㅇ,419,fix: 잡코리아 즉시지원 케이스 추가 - 이메일 지원,0,0,unknown
+ㅇㄹㅇ,412,fix: 로그인 새창이동 삭제 및 auth 모달 노출,0,0,unknown
+ㅇㄹㅇ,405,remove: 인사담당자 아이콘 클릭 시 불필요 링크이동 삭제,0,0,unknown
+ㅇㄹㅇ,402,Test 72069,0,0,unknown
+ㅇㄹㅇ,400,fix: 접수방법 쉼표 수정,0,0,unknown
+ㅇㄹㅇ,399,fix: 파일 다운로드 형식 공통화,0,0,unknown
+ㅇㄹㅇ,381,fix: 스키마 업데이트 건 전체 반영,0,0,unknown
+ㅇㄹㅇ,374,feat: 나인하이어 배너 추가,0,0,unknown
+ㅇㄹㅇ,367,Test 72036,0,0,unknown
+ㅇㄹㅇ,366,fix: 직원수 오타 수정,0,0,unknown
+ㅇㄹㅇ,353,fix: iframe bg color 추가,0,0,unknown
+ㅇㄹㅇ,351,fix: fix type errors,0,0,unknown
+ㅇㄹㅇ,349,Test 71985,0,0,unknown
+ㅇㄹㅇ,333,fix: 마감 일자 시간까지 표현,0,0,unknown
+ㅇㄹㅇ,315,feat: 파일 확장자 추가,0,0,unknown
+ㅇㄹㅇ,313,fix: fix type error,0,0,unknown
+ㅇㄹㅇ,311,Feature/ticker,0,0,unknown
+ㅇㄹㅇ,305,Feature/params,0,0,unknown
+ㅇㄹㅇ,304,fix: add optional 처리,0,0,unknown
+ㅇㄹㅇ,301,Feature/url,0,0,unknown
+ㅇㄹㅇ,298,fix: 빌드 에러 수정,0,0,unknown
+ㅇㄹㅇ,294,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,291,Feature/contents,0,0,unknown
+ㅇㄹㅇ,287,fix: next  api path 환경변수 설정,0,0,unknown
+ㅇㄹㅇ,283,fix: type error,0,0,unknown
+ㅇㄹㅇ,281,feat: 기업정보 더보기 조건추가,0,0,unknown
+ㅇㄹㅇ,280,Feature/map,0,0,unknown
+ㅇㄹㅇ,279,Feature/map,0,0,unknown
+ㅇㄹㅇ,278,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,274,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,268,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,262,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,261,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,260,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,254,Feature/cover letter,0,0,unknown
+ㅇㄹㅇ,253,Feature/notice,0,0,unknown
+ㅇㄹㅇ,228,fix: job-hub로 안 들어오는 케이스 수정,0,0,unknown
+ㅇㄹㅇ,227,fix: stg에러 발생으로 임시 하드코딩 처리,0,0,unknown
+ㅇㄹㅇ,226,Feature/corp info,0,0,unknown
+ㅇㄹㅇ,223,fix: giNo type error 수정,0,0,unknown
+ㅇㄹㅇ,219,Feature/timer,0,0,unknown
+ㅇㄹㅇ,217,Feature/footer,0,0,unknown
+ㅇㄹㅇ,211,fix: 폴더명 수정,0,0,unknown
+ㅇㄹㅇ,188,remove: gitignore 파일에서 css 제거,0,0,unknown
+ㅇㄹㅇ,186,feat: fix replace-img-url 스크립트 수정,0,0,unknown
+ㅇㄹㅇ,184,remove: 오타 삭제,0,0,unknown
+ㅇㄹㅇ,183,fix: build error 스크립트 수정,0,0,unknown
+ㅇㄹㅇ,178,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,177,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,176,Feature/fix folder,0,0,unknown
+ㅇㄹㅇ,174,remove: remove legacy - 폴더명 대소문자 변경,0,0,unknown
+ㅇㄹㅇ,173,Feature/company info,0,0,unknown
+ㅇㄹㅇ,169,fix: 취업 전략 데이터 없을 때 분기처리,0,0,unknown
+ㅇㄹㅇ,168,Feature/strategy,0,0,unknown
+ㅇㄹㅇ,167,Feature/timer,0,0,unknown
+ㅇㄹㅇ,155,feat: fix env script to excute it at postbuild,0,0,unknown
+ㅇㄹㅇ,153,fix: fix iframe auto height,0,0,unknown
+ㅇㄹㅇ,150,feat: add image env and env setting script,0,0,unknown
+ㅇㄹㅇ,145,feat: add jobko-html viewer css,0,0,unknown
+ㅇㄹㅇ,142,Feature/env,0,0,unknown
+ㅇㄹㅇ,133,remove: remove legacy props in htmlViewer,0,0,unknown
+ㅇㄹㅇ,126,Feature/one pick,0,0,unknown
+ㅇㄹㅇ,124,Feature/code api,0,0,unknown
+ㅇㄹㅇ,118,feat: 실제 공고 번호에 따른 원픽 공고 여부 분기처리,0,0,unknown
+ㅇㄹㅇ,115,fix: fix clientEnv to baseUrl,0,0,unknown
+ㅇㄹㅇ,113,fix: replace the unused asset to css-style,0,0,unknown
+ㅇㄹㅇ,112,Feature/iframe,0,0,unknown
+ㅇㄹㅇ,102,fix: add cookie in prefetch header,0,0,unknown
+ㅇㄹㅇ,98,remove: remove unused gitlab-ci file for untracking sorna-qube errors,0,0,unknown
+ㅇㄹㅇ,95,Feature/toast,1,0,unknown
+ㅇㄹㅇ,81,Feature/toast,1,0,unknown
+ㅇㄹㅇ,79,feat: add footer,1,0,unknown
+ㅇㄹㅇ,76,Feature/apply strategy,1,0,unknown
+ㅇㄹㅇ,71,refactor: fix file dir,1,0,unknown
+ㅇㄹㅇ,70,fix: remove comments in pre-commit,1,0,unknown
+ㅇㄹㅇ,69,* feat: AI추천공고 리스트 추가,4,0,unknown
+ㅇㄹㅇ,65,* feat: AI추천공고 리스트 추가,1,0,unknown
+ㅇㄹㅇ,63,feat: Husky Git Hook 설정 추가,1,0,unknown
+ㅇㄹㅇ,59,Feature/apply methods,1,0,unknown
+ㅇㄹㅇ,54,Feature/corp info img,1,0,unknown
+ㅇㄹㅇ,53,fix: apply the FSD structure,1,0,unknown
+ㅇㄹㅇ,52,Feature/corp info,1,0,unknown
+ㅇㄹㅇ,48,Feature/content img,1,0,unknown
+ㅇㄹㅇ,43,Feature/content img,1,0,unknown
+ㅇㄹㅇ,42,Feature/content img,1,0,unknown
+ㅇㄹㅇ,41,Feature/content img,1,0,unknown
+ㅇㄹㅇ,39,Feature/content img,1,0,unknown
+ㅇㄹㅇ,36,Feature/content img,1,0,unknown
+ㅇㄹㅇ,35,Feature/content img,1,0,unknown
+ㅇㄹㅇ,34,Feature/content img,1,0,unknown
+ㅇㄹㅇ,26,Feature/component tabs,1,0,unknown
+ㅇㄹㅇ,24,Feature/code api,1,0,unknown
+ㅇㄹㅇ,23,Feature/contents,1,0,unknown
+ㅇㄹㅇ,16,Feature/layout,1,0,unknown
+ㅇㄹㅇ,14,feat: Add layout components - footer  sidebar,1,0,unknown
+ㅇㄹㅇ,12,feat: modify ga file's folder location,1,0,unknown
+ㅇㄹㅇ,10,Feature/ga settings,1,0,unknown
+ㅇㄹㅇ,8,Feature/ga settings,1,0,unknown
+ㅊㅁㄱ,855,Modify/skills field,2,0,unknown
+ㅊㅁㄱ,854,modify: Qualification skills field,3,0,unknown
+ㅊㅁㄱ,781,modify: 마감된 공고인 경우 AI추천인재리스트 prefetch 하지 않기,0,1,unknown
+ㅊㅁㄱ,779,Fix/subway,0,0,unknown
+ㅊㅁㄱ,778,modify: groupByStationName,0,0,unknown
+ㅊㅁㄱ,775,modify: NearbySubwayField 거리 기준 그룹화에서 지하철역 이름 기준 그룹화로 수정,1,0,unknown
+ㅊㅁㄱ,773,modify: AI추천공고리스트 api 호출 조건 추가,1,1,unknown
+ㅊㅁㄱ,747,modify: server.mjs에 URI malformed 검사 미들웨어 추가,0,0,unknown
+ㅊㅁㄱ,745,modify: 지원자 현황 통계 router.push 삭제,0,0,unknown
+ㅊㅁㄱ,741,fix: useApplicantStatistics applicantStatisticDisplayStatus,0,0,unknown
+ㅊㅁㄱ,736,fix: search push to href,0,0,unknown
+ㅊㅁㄱ,732,modify: decodeURIComponent를 decodeURIComponentSafe 로 변경,0,0,unknown
+ㅊㅁㄱ,722,Fix/ga,0,0,unknown
+ㅊㅁㄱ,721,modify: ga logics,0,0,unknown
+ㅊㅁㄱ,720,fix: braze 로직 변경,0,0,unknown
+ㅊㅁㄱ,717,modify: ga  braze,0,0,unknown
+ㅊㅁㄱ,716,modify: currentUrl decodeURIComponent 추가,0,0,unknown
+ㅊㅁㄱ,706,modify: card styles,0,0,unknown
+ㅊㅁㄱ,703,Fix/ga,0,0,unknown
+ㅊㅁㄱ,698,modify: redDot 노출 기간,0,0,unknown
+ㅊㅁㄱ,683,modify: header version update,0,0,unknown
+ㅊㅁㄱ,677,modify: redDot 오늘까지만 노출,0,0,unknown
+ㅊㅁㄱ,674,modify: header red dot 추가,0,0,unknown
+ㅊㅁㄱ,670,Feature/error,0,0,unknown
+ㅊㅁㄱ,669,modify: Error page,0,0,unknown
+ㅊㅁㄱ,653,modify: 기업과 적합도 체크 노출 조건,0,0,unknown
+ㅊㅁㄱ,651,modify: 전문채용관 ga 추가,0,0,unknown
+ㅊㅁㄱ,650,modify: header qa issues,0,0,unknown
+ㅊㅁㄱ,643,modify: layout,0,0,unknown
+ㅊㅁㄱ,642,modify: ga,0,0,unknown
+ㅊㅁㄱ,637,modify: header version update,0,0,unknown
+ㅊㅁㄱ,636,modify: 메인메뉴  서비스 target,0,0,unknown
+ㅊㅁㄱ,635,modify: prefetch  invalidate,0,0,unknown
+ㅊㅁㄱ,634,Feature/mobile redirect,0,0,unknown
+ㅊㅁㄱ,630,Feature/mobile redirect,0,0,unknown
+ㅊㅁㄱ,629,Feature/mobile redirect,0,0,unknown
+ㅊㅁㄱ,628,modify: handleMiddleware 디버깅 헤더 추가,0,0,unknown
+ㅊㅁㄱ,627,Feature/redirect mobile,0,0,unknown
+ㅊㅁㄱ,626,Feature/redirect mobile,0,0,unknown
+ㅊㅁㄱ,625,modify: 미들웨어 삭제  server.mjs에 모바일 리다이렉트 코드 추가,0,0,unknown
+ㅊㅁㄱ,622,modify: useApply  applyImmediate,0,0,unknown
+ㅊㅁㄱ,613,modify: dmp  즉시지원 쿼리스트링 [TEST-72592],0,0,unknown
+ㅊㅁㄱ,611,modify: 헤더 버전 업데이트,0,0,unknown
+ㅊㅁㄱ,605,modify: 추천 공고 썸네일 딤드,0,0,unknown
+ㅊㅁㄱ,589,modify: useStickyState,0,0,unknown
+ㅊㅁㄱ,574,modify: prefetchJobDetailQuery,0,0,unknown
+ㅊㅁㄱ,571,modify: jobs api request params 수정,0,0,unknown
+ㅊㅁㄱ,568,feat: 모바일 감지용 미들웨어 추가,0,0,unknown
+ㅊㅁㄱ,566,modify: ssr ua 추가  기타 이슈,0,0,unknown
+ㅊㅁㄱ,560,modify: getV1JobsId request params,0,0,unknown
+ㅊㅁㄱ,556,fix: 툴팁 이슈 [TEST-72117] [TEST-72411],0,0,unknown
+ㅊㅁㄱ,546,modify: mict 결과 확인 팝업 닫기 시 페이지 새로고침 됨 [TEST-72417],0,0,unknown
+ㅊㅁㄱ,544,modify: ga  스마트핏 이슈,0,0,unknown
+ㅊㅁㄱ,542,modify: ga issues,0,0,unknown
+ㅊㅁㄱ,541,Feature/smart fit,0,0,unknown
+ㅊㅁㄱ,538,modify: 스마트핏 이슈들,0,0,unknown
+ㅊㅁㄱ,537,feat: ensureJobsQuery 에 쿠키 추가,0,0,unknown
+ㅊㅁㄱ,531,Fix/test 72363,0,0,unknown
+ㅊㅁㄱ,530,fix: 공고뷰 > 홈페이지지원 선택시 홈페이지지원 클릭수 누적 안 됨 [TEST-72363],0,0,unknown
+ㅊㅁㄱ,529,modify: 디자인 이슈 수정,0,0,unknown
+ㅊㅁㄱ,526,Feature/meta,0,0,unknown
+ㅊㅁㄱ,522,fix: 스마트핏 리스트 > 로고 노출 상이 건 [TEST-72308],0,0,unknown
+ㅊㅁㄱ,512,Feature/braze,0,0,unknown
+ㅊㅁㄱ,507,Fix/smart fit,0,0,unknown
+ㅊㅁㄱ,497,fix: 합격축하금 변경사항 동기화 [TEST-72275],0,0,unknown
+ㅊㅁㄱ,495,Feature/ga,0,0,unknown
+ㅊㅁㄱ,494,modify: ga,0,0,unknown
+ㅊㅁㄱ,490,modify: 디자인 이슈 수정 [TEST-72150],0,0,unknown
+ㅊㅁㄱ,469,fix: 실근무기업 노출 조건 [TEST-72195],0,0,unknown
+ㅊㅁㄱ,463,fix: smart-fit issues,0,0,unknown
+ㅊㅁㄱ,449,modify: 일반공고 > 지원자 현황 통계 노출 상이 건 [TEST-72017],0,0,unknown
+ㅊㅁㄱ,436,modify: AI추천 리스트 > 모든 공고 [즉시지원] 클릭시 > 현재 공고뷰의 입사지원레이어로 발생 됨 [TEST-72138],0,0,unknown
+ㅊㅁㄱ,435,modify: 공고뷰(기본우대 1개이상&외국어 1개만) > 지원자격 > 우대조건 > 외국어 > 점수 비노출 됨 [TEST-72125],0,0,unknown
+ㅊㅁㄱ,434,modify: 공고뷰(우대조건-직적추가만 등록) > 지원자격 > 우대조건 비노출 됨 [TEST-72124],0,0,unknown
+ㅊㅁㄱ,433,modify: getWorkWeekTypeText [TEST-72114],0,0,unknown
+ㅊㅁㄱ,418,modify: 공고뷰(근무요일-격주/격일/협의가능) > 모집요강 > 근무시간 비노출 됨 [TEST-72096],0,0,unknown
+ㅊㅁㄱ,417,modify: 공고뷰(기업회원) > 궁금해요 버튼 > 취업톡톡 클릭 시 기업회원 홈으로 이동됨 [TEST-72099],0,0,unknown
+ㅊㅁㄱ,416,fix: 공고뷰(해외근무지) > 모집요강 > 근무지주소 '지도보기>'버튼 노출 됨 [TEST-72100],0,0,unknown
+ㅊㅁㄱ,415,modify: AI추천 리스트 > 타이틀 영역 노출 상이 [TEST-72107],0,0,unknown
+ㅊㅁㄱ,414,Fix/error,0,0,unknown
+ㅊㅁㄱ,413,modify: Sidebar  RelatedTags 주석 for test,0,0,unknown
+ㅊㅁㄱ,411,Fix/error,0,0,unknown
+ㅊㅁㄱ,410,Fix/error,0,0,unknown
+ㅊㅁㄱ,409,Fix/error,0,0,unknown
+ㅊㅁㄱ,407,Fix/error,0,0,unknown
+ㅊㅁㄱ,406,modify: provider  global-error,0,0,unknown
+ㅊㅁㄱ,404,modify: 합격축하금 공고 링크  스마트핏 리스트 노출 조건  provider,0,0,unknown
+ㅊㅁㄱ,403,modify: AppProvider for debugging,0,0,unknown
+ㅊㅁㄱ,397,modify: AppProvider ErrorBoundary,0,0,unknown
+ㅊㅁㄱ,395,modify: error.tsx 삭제 global-error.tsx 수정 provider.tsx 수정,0,0,unknown
+ㅊㅁㄱ,394,"Revert ""modify: server component to client component""",0,0,unknown
+ㅊㅁㄱ,393,Fix/ip,0,0,unknown
+ㅊㅁㄱ,392,Fix/ip,0,0,unknown
+ㅊㅁㄱ,391,modify: ensureJobsQuery result null,0,0,unknown
+ㅊㅁㄱ,390,Fix/ip,0,0,unknown
+ㅊㅁㄱ,389,modify: smart-fit api slot,0,0,unknown
+ㅊㅁㄱ,388,Fix/ip,0,0,unknown
+ㅊㅁㄱ,387,modify: formatRequestHeaders,0,0,unknown
+ㅊㅁㄱ,386,modify: GoogleAnalytics,0,0,unknown
+ㅊㅁㄱ,385,Fix/ip,0,0,unknown
+ㅊㅁㄱ,384,Fix/ip,0,0,unknown
+ㅊㅁㄱ,383,modify: ensureJobsQuery,0,0,unknown
+ㅊㅁㄱ,382,modify: onepick list title [TEST-72047],0,0,unknown
+ㅊㅁㄱ,376,Feature/ip test,0,0,unknown
+ㅊㅁㄱ,373,modify: ip-test codes,0,0,unknown
+ㅊㅁㄱ,372,Feature/ip test,0,0,unknown
+ㅊㅁㄱ,370,modify: ip-test 추가,0,0,unknown
+ㅊㅁㄱ,359,modify: 이미지 objectFit,0,0,unknown
+ㅊㅁㄱ,357,fix: mict 검사 완료 후 새로고침 안됨  위탁 텍스트 변경 [TEST-72021][TEST-72009],0,0,unknown
+ㅊㅁㄱ,345,modify: ensureJobsQuery,0,0,unknown
+ㅊㅁㄱ,344,fix: 지원자 현황 통계 노출 조건,0,0,unknown
+ㅊㅁㄱ,343,Fix/corp fitness,0,0,unknown
+ㅊㅁㄱ,335,fix: 모집요강 admin 입력정보 노출 안됨 [TEST-72006],0,0,unknown
+ㅊㅁㄱ,332,modify: ensureJobsQuery header [TEST-71983],0,0,unknown
+ㅊㅁㄱ,330,modify: ensureJobsQuery [TEST-71983],0,0,unknown
+ㅊㅁㄱ,328,modify: ensureJobsQuery [TEST-71983],0,0,unknown
+ㅊㅁㄱ,327,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,326,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,325,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,324,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,323,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,322,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,321,Fix/test 71983,0,0,unknown
+ㅊㅁㄱ,320,modify: notFound 주석 처리,0,0,unknown
+ㅊㅁㄱ,319,fix: notFound 주석 처리,0,0,unknown
+ㅊㅁㄱ,312,modify: update version of JAMS (toast),0,0,unknown
+ㅊㅁㄱ,309,modify: ga dimension,0,0,unknown
+ㅊㅁㄱ,306,modify: AI추천인재 모달 저장된 제안 내용 선택 수정,0,0,unknown
+ㅊㅁㄱ,302,modify: toast JAMS 사용,0,0,unknown
+ㅊㅁㄱ,299,modify: AI추천인재 카드  타이틀 스티키 스타일,0,0,unknown
+ㅊㅁㄱ,297,Feature/apply,0,0,unknown
+ㅊㅁㄱ,296,modify: 즉시지원 external-path,0,0,unknown
+ㅊㅁㄱ,292,feat: 메타데이터 추가,0,0,unknown
+ㅊㅁㄱ,289,modify: 검색 결과 박스 zIndex,0,0,unknown
+ㅊㅁㄱ,288,modify: 원픽 ga 추가,0,0,unknown
+ㅊㅁㄱ,286,fix: type error,0,0,unknown
+ㅊㅁㄱ,285,Feature/ga2,0,0,unknown
+ㅊㅁㄱ,272,modify: ai추천인재 모달 제안하기 추가,0,0,unknown
+ㅊㅁㄱ,267,modify: gnb 스타일,0,0,unknown
+ㅊㅁㄱ,266,modify: 너비 줄어들었을 때 타이틀 스타일 깨짐,0,0,unknown
+ㅊㅁㄱ,263,Feature/ai recommend modal,0,0,unknown
+ㅊㅁㄱ,255,modify: paths -> externalPaths 네이밍 변경  인사지원 제안 모달 생성,0,0,unknown
+ㅊㅁㄱ,247,Feature/ai recommend modal,0,0,unknown
+ㅊㅁㄱ,246,modify: 잡코리아  원픽 템플릿 구조,0,0,unknown
+ㅊㅁㄱ,237,refactor: title 컴포넌트 리팩토링,0,0,unknown
+ㅊㅁㄱ,235,feat: 에러페이지 추가 및 기타 작업,0,0,unknown
+ㅊㅁㄱ,234,Feature/title,0,0,unknown
+ㅊㅁㄱ,232,modify: 문의  신고하기 경로 수정,0,0,unknown
+ㅊㅁㄱ,229,modify: 스마트핏  ai추천인재 리스트 api baseUrl 수정,0,0,unknown
+ㅊㅁㄱ,225,modify: ChipSubway 적용,0,0,unknown
+ㅊㅁㄱ,222,modify: update version of jds,0,0,unknown
+ㅊㅁㄱ,221,Feature/hiring bonus,0,0,unknown
+ㅊㅁㄱ,215,modify: 함수에 주석 추가,0,0,unknown
+ㅊㅁㄱ,213,refactor: 복리후생 리팩토링,0,0,unknown
+ㅊㅁㄱ,212,modify: 복리후생 수정,0,0,unknown
+ㅊㅁㄱ,210,Feature/convention,0,0,unknown
+ㅊㅁㄱ,208,modify: 네이밍 수정 path to external-path,0,0,unknown
+ㅊㅁㄱ,207,modify: 스크랩  관심기업에 낙관적 UI 적용,0,0,unknown
+ㅊㅁㄱ,206,modify: ModalAuth iframe option,0,0,unknown
+ㅊㅁㄱ,205,modify: server component to client component,0,0,unknown
+ㅊㅁㄱ,203,modify: 스크랩  관심기업 로직,0,0,unknown
+ㅊㅁㄱ,201,Feature/signing bonus,0,0,unknown
+ㅊㅁㄱ,198,modify: 즉시지원  홈페이지 지원 로직,0,0,unknown
+ㅊㅁㄱ,196,modify: 지원자 현황 통계 로그인 버튼 hover  맞춤 공고 기업명 말줄임,0,0,unknown
+ㅊㅁㄱ,193,modify: feature 하위에 model 폴더 없는 경우 생성,0,0,unknown
+ㅊㅁㄱ,191,modify: recruit-detail 폴더 삭제,0,0,unknown
+ㅊㅁㄱ,189,Feature/convention,0,0,unknown
+ㅊㅁㄱ,185,Feature/signing bonus,0,0,unknown
+ㅊㅁㄱ,179,Feature/ai recommend modal,0,0,unknown
+ㅊㅁㄱ,172,Feature/locator rollback,0,0,unknown
+ㅊㅁㄱ,171,modify: locatorJS 삭제,0,0,unknown
+ㅊㅁㄱ,170,modify: 맞춤공고 hover style  지원자 현황 통계 로그인 버튼 hover style,0,0,unknown
+ㅊㅁㄱ,164,Feature/education,0,0,unknown
+ㅊㅁㄱ,163,modify: logout api 변경 (search -> neo),0,0,unknown
+ㅊㅁㄱ,162,modify: 지원자격  근무조건 수정,0,0,unknown
+ㅊㅁㄱ,157,modify: 모집요강  지원자격  ai추천공고 리스트,0,0,unknown
+ㅊㅁㄱ,154,modify: 스크랩  관심기업 훅 수정 (onRefetch -> onSuccess) AI추천공고 리스트 스크랩  관심기업 프론트에서 관리,0,0,unknown
+ㅊㅁㄱ,152,modify: not-found  스마트핏 컴포넌트,0,0,unknown
+ㅊㅁㄱ,149,modify: 스마트핏 디자인 수정  프리미엄 태그 추가,0,0,unknown
+ㅊㅁㄱ,143,modify: 모집요강  지원자격 컴포넌트 수정,0,0,unknown
+ㅊㅁㄱ,138,modify: api to jobs/api,0,0,unknown
+ㅊㅁㄱ,136,Feature/recruitment code,0,0,unknown
+ㅊㅁㄱ,130,Feature/qualification code,0,0,unknown
+ㅊㅁㄱ,122,Feature/corp fitness,0,0,unknown
+ㅊㅁㄱ,109,feat: AI 추천공고 리스트 api 연동,1,0,unknown
+ㅊㅁㄱ,106,modify: 스마트핏  AI추천공고 api 연동,1,0,unknown
+ㅊㅁㄱ,103,modify: types 폴더 위치 변경,0,0,unknown
+ㅊㅁㄱ,96,modify: page hydration 삭제,1,0,unknown
+ㅊㅁㄱ,90,modify: 원픽 공고 추천 api 연동 작업,1,0,unknown
+ㅊㅁㄱ,88,modify: 지원자 현황 통계 api 연동,1,0,unknown
+ㅊㅁㄱ,86,modify: 적합도 체크 api 연동  리팩토링,1,0,unknown
+ㅊㅁㄱ,85,feat: 폴더 구조 변경  기업 적합도 체크 api 연동,1,0,unknown
+ㅊㅁㄱ,83,feat: 추천공고 리스트 리팩토링  이모지 컴포넌트 삭제 및 react-share 패키지 설치,1,0,unknown
+ㅊㅁㄱ,77,feat: 탑버튼  궁금해요 버튼 추가,1,0,unknown
+ㅊㅁㄱ,75,modify: ui 클릭 이벤트 관련 수정,1,0,unknown
+ㅊㅁㄱ,73,feat: 공고뷰 헤더 sticky 추가,1,0,unknown
+ㅊㅁㄱ,64,modify: 적합도 체크  지원자 현황 통계 비로그인 디자인 추가,1,0,unknown
+ㅊㅁㄱ,61,feat: 적합도 체크  지원자 현황 체크 세부사항 수정(차트 옵션 수정  클릭 핸들러 추가),1,0,unknown
+ㅊㅁㄱ,60,feat: AI추천공고 리스트 추가,1,0,unknown
+ㅊㅁㄱ,58,feat: 스마트클릭  딱! 맞는 원픽 공고 리스트 추가,1,0,unknown
+ㅊㅁㄱ,56,feature: 모집요강  지원자격 추가,1,0,unknown
+ㅊㅁㄱ,55,feat: 지원자 현황 통계 ui 추가,1,0,unknown
+ㅊㅁㄱ,51,modify: 전체메뉴 열릴 때 body overflow: hidden 삭제,1,0,unknown
+ㅊㅁㄱ,50,feat: 폴더 구조 수정,1,0,unknown
+ㅊㅁㄱ,47,modify: port number  ScrapButton component handleScrapClick,1,0,unknown
+ㅊㅁㄱ,46,feature: 스크랩  관심기업 api 추가,1,0,unknown
+ㅊㅁㄱ,38,feat: 적합도 체크 추가,1,0,unknown
+ㅊㅁㄱ,37,modify: 스크랩  관심기업 기능 수정,1,0,unknown
+ㅊㅁㄱ,33,fix: type error,1,0,unknown
+ㅊㅁㄱ,25,feat: 메인메뉴 추가  퀵메뉴 수정,1,0,unknown
+ㅊㅁㄱ,21,modify: 공고뷰 display-api 추가  authCheck search api -> jobs api 로 변경,1,0,unknown
+ㅊㅁㄱ,20,feat: 알람  퀵메뉴 기능,1,0,unknown
+ㅊㅁㄱ,19,feat: gnb에 검색 추가,1,0,unknown
+ㅊㅁㄱ,15,modify: 서비스들  알림  마이 아이콘 추가,1,0,unknown
+ㅊㅁㄱ,13,Feature/gnb,1,0,unknown
+ㅊㅁㄱ,11,Feature/gnb,1,0,unknown
+ㅊㅁㄱ,9,modify: 기본적인 클라이언트 컴포넌트들 추가,1,1,unknown
+ㅊㅁㄱ,7,feat: 인증 기능 구현,1,0,unknown
+ㅊㅁㄱ,6,feat: 인증 기능 구현,1,1,unknown
+ㅇㄷㅎ2,866,feat: Integrate OpenTelemetry support and update environment variables,1,0,unknown
+ㅇㄷㅎ2,864,feat: Integrate OpenTelemetry support and update environment variables,2,0,unknown
+ㅇㄷㅎ2,421,modify: Dockerfile에서 ASSETS_BASE_PATH 및 ASSETS_S3_PATH 경로 설정 개선,0,0,unknown
+ㅇㄷㅎ2,308,fix: Dockerfile의 Node.js 버전을 22-alpine에서 22.17.1-alpine으로 업데이트,0,0,unknown
+ㅇㄷㅎ2,273,modify: Dockerfile 및 스크립트에서 환경 변수 파일 경로를 'config' 디렉토리로 변경하여 클라이언트 사이드에서 접근...,0,0,unknown
+ㅇㄷㅎ2,249,modify: 리플레이 기능 관련 주석 추가 및 Sentry 리플레이 통합 설정 주석 처리,0,0,unknown
+ㅇㄷㅎ2,245,fix: CSS 링크 경로 수정,0,0,unknown
+ㅇㄷㅎ2,244,feat: assetPrefix를 사용하여 CSS 링크 동적으로 설정,0,0,unknown
+ㅇㄷㅎ2,231,Feature/dockerfile,0,0,unknown
+ㅇㄷㅎ2,182,modify: package.json에서 Node.js 버전을 22.17.1로 업데이트,0,0,unknown
+ㅇㄷㅎ2,181,modify: package.json에서 Node.js 버전을 22.17.1로 업데이트,0,0,unknown
+ㅇㄷㅎ2,180,modify: Dockerfile에 Node.js 버전 출력 추가,0,0,unknown
+ㅇㄷㅎ2,141,modify: HOST_URL 및 NEXT_PUBLIC_HOST_URL을 jts.jobkorea.co.kr로 변경,0,0,unknown
+ㅇㄷㅎ2,140,modify: HOST_URL 슬래시 제거,0,0,unknown
+ㅇㄷㅎ2,139,modify: HOST_URL에서 슬래시 제거 및 next.config.ts 리다이렉트 경로 수정,0,0,unknown
+ㅇㄷㅎ2,137,modify: NewRecruit(임시) 경로에 대한 리다이렉트 추가,0,0,unknown
+ㅇㄷㅎ2,135,modify: instrumentation 위치 변경,0,0,unknown
+ㅇㄷㅎ2,132,modify: 이미지 최적화 설정 변경 및 불필요한 리다이렉트 제거,0,0,unknown
+ㅇㄷㅎ2,131,modify: Dockerfile에 .next 캐시 경로 추가,0,0,unknown
+ㅇㄷㅎ2,129,modify: 이미지 경로 설정 변경 및 리다이렉트 추가,0,0,unknown
+ㅇㄷㅎ2,117,feat: OpenTelemetry 설정 개선,0,0,unknown
+ㅇㄷㅎ2,110,Feature/deploy,1,0,unknown
+ㅇㄷㅎ2,101,chore: postbuild.sh에서 npm을 pnpm으로 변경,0,0,unknown
+ㅇㄷㅎ2,97,refactor: instrumentation-client.ts 파일 생성 및 Sentry 초기화 로직 추가,1,0,unknown
+ㅇㄷㅎ2,78,feat: Dockerfile 및 next.config.ts 수정,1,0,unknown
+ㅇㄷㅎ2,74,refactor: Dockerfile 및 package.json 수정  healthz API 추가,1,0,unknown
+ㅇㄷㅎ2,72,refactor: Dockerfile 및 스크립트 파일 수정,1,0,unknown
+ㅇㄷㅎ2,5,fix: Sentry DSN 업데이트,1,0,unknown
+ㅇㄷㅎ2,4,fix: 인증서 생성 스크립트 수정 및 의존성 업데이트,1,0,unknown
+ㅇㄷㅎ2,3,fix: 테마 이름 변경,1,0,unknown
+ㅇㄷㅎ2,2,fix: Sentry 프로젝트 이름 및 호스트네임 수정,1,0,unknown
+ㅇㄷㅎ2,1,docs: 문서 파일 삭제,1,0,unknown
+ㅁㅅㅇ,803,Feature/client ip,0,0,unknown
+ㅁㅅㅇ,799,feat: 클라이언트 IP 주소를 가져오는 API 추가 및 Sentry 이벤트에 IP 태그 추가,0,0,unknown
+ㅁㅅㅇ,796,modify: 클라이언트 IP 주소를 가져오는 API 경로를 수정하고  DEV 환경에서의 IP 화이트리스트 헤더 추가 로직을 제거했습니다.,0,0,unknown
+ㅁㅅㅇ,795,Feature/real ip,0,0,unknown
+ㅁㅅㅇ,783,modify: 20250905 deply,0,0,unknown
+ㅁㅅㅇ,771,fix: 네트워크 요청 실패 시 undefined 에러 해결,2,2,unknown
+ㅁㅅㅇ,770,fix: iframe 로딩 시 타임아웃 관리 및 언마운트 시 정리 로직 추가,1,0,unknown
+ㅁㅅㅇ,768,fix: iframe 높이 계산 및 postMessage 전송 시 에러 핸들링 개선  디바운싱 추가,4,2,unknown
+ㅁㅅㅇ,760,fix: gitlab-ci.yml에서 Git 설치 확인 주석 제거,0,0,unknown
+ㅁㅅㅇ,758,fix: jds/mrnotification@0.0.46 버전을 package.json 및 pnpm-lock.yaml에 추가,0,0,unknown
+ㅁㅅㅇ,757,fix: Sentry 초기화 시 개발 환경에서만 비활성화 설정,0,0,unknown
+ㅈㅎㅊ,874,feat: update-version-15.5.9,1,0,unknown
+ㅈㅎㅊ,869,feat: header design 업데이트,3,0,unknown

@@ -1,128 +1,128 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-김규리,130,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,129,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,128,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,127,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,126,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,125,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
-김규리,124,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,1,unknown
-김규리,123,fix: 이력서 간편 등록 API 클라이언트 변경,1,0,unknown
-김규리,120,feat: 이력서 API 에러 처리 및 메시지 개선,1,0,unknown
-김규리,119,feat: career 및 education 매퍼 테스트 개선,0,0,unknown
-김규리,118,feat: 전화번호 포맷팅 함수 개선,1,0,unknown
-김규리,117,feat: 이력서 간편 제출 상태 관리 개선,1,0,unknown
-김규리,116,feat: 코드 API 및 내부 이력서 API 리팩토링,1,1,unknown
-김규리,115,feat: UploadForm에서 쿠키를 통한 리다이렉트 기능 추가,1,1,unknown
-김규리,113,feat: display-kit 패키지 버전 업데이트 및 로컬 설치 스크립트 추가,1,0,unknown
-김규리,112,fix: getUserInfo API 호출에 timeout 설정 추가,1,1,unknown
-김규리,111,fix: React 보안 취약점 패치 (CVE-2025-5518),2,1,unknown
-김규리,110,fix: 불필요한 css 삭제,2,1,unknown
-김규리,109,* feat: 테스트 디렉토리 및 매핑 테스트 추가,2,1,unknown
-김규리,108,feat: PM 설정 미들웨어 및 환경 변수 추가,2,1,unknown
-김규리,107,feat: SENTRY_AUTH_TOKEN 및 SENTRY_DSN 업데이트,0,0,unknown
-김규리,106,feat: 테스트 디렉토리 및 매핑 테스트 추가,0,0,unknown
-김규리,105,Feature/apply popup,0,1,unknown
-김규리,96,fix: GA 이벤트 카테고리 수정,0,0,unknown
-김규리,95,feat: EducationCard에서 학력 정보 조건부 표시 개선,0,0,unknown
-김규리,94,feat: EducationCardItem 컴포넌트 추가 및 EducationCard 수정,0,0,unknown
-김규리,93,fix: 환경 변수 AUTH_API_URL 제거 및 DISPLAY_API_URL로 변경,0,0,unknown
-김규리,91,feat: 인증 서버에서 쿠키 로그 추가,0,0,unknown
-김규리,90,fix: 환경 변수 AUTH_API_URL 추가 및 수정,0,0,unknown
-김규리,89,fix: 환경 변수 AUTH_API_URL 추가 및 수정,0,0,unknown
-김규리,86,fix: env 변수 변경,0,0,unknown
-김규리,85,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
-김규리,82,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
-김규리,81,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
-김규리,80,fix: 이력서 체크리스트 검증 로직 수정,0,0,unknown
-김규리,79,fix: 이력서 체크리스트 검증 로직 수정,0,0,unknown
-김규리,77,fix: Google Analytics 관련 코드 정리,0,0,unknown
-김규리,76,fix: 학적 상태 기본값 변경,0,0,unknown
-김규리,75,fix: SSE 에러 메시지 및 경로 처리 개선,0,0,unknown
-김규리,74,fix: 학력 카드의 Flex 컴포넌트 간격 수정,0,0,unknown
-김규리,73,fix: 학력 스키마에서 대학원 학위 검증 제거,0,0,unknown
-김규리,72,fix: 사용자 정보 매핑 함수에서 null 및 undefined 처리 개선,0,0,unknown
-김규리,71,fix: 경력 스키마에서 jobClassifications 필드 수정,0,0,unknown
-김규리,70,fix: 경력 스키마에서 코드 및 부모 코드 필드 null 허용,0,0,unknown
-김규리,69,fix: 삭제 버튼의 기본값 submit 방지,0,0,unknown
-김규리,68,fix: 학력 카드의 비어있는 상태 체크 로직 개선,0,0,unknown
-김규리,67,feat: 경력 폼 정책 변경 작업 계획 문서 추가,0,0,unknown
-김규리,65,feat: 이력서 업로드 폼에서 디버깅 정보 추가,0,0,unknown
-김규리,64,fix: 이력서 생성 성공 시 처리 로직 개선,0,0,unknown
-김규리,63,Testing webview,0,1,unknown
-김규리,62,fix: 개인정보 Hook에서 에러 처리 및 필드 검증 로직 수정,0,0,unknown
-김규리,61,fix: 필터 컴포넌트에서 초기화시 상위 컴포넌트로 빈 배열 전달 코드 제거,0,0,unknown
-김규리,60,feat: 이력서 폼에서 사용자 수정 필드 추적 기능 추가,0,0,unknown
-김규리,59,Fix/qa,0,0,unknown
-김규리,58,Fix/qa,0,0,unknown
-김규리,57,feat: FileInput 컴포넌트 파일 업로드 유효성 검사 개선,0,0,unknown
-김규리,56,feat: 개인 정보 및 이력서 관련 데이터 처리 개선,0,0,unknown
-김규리,55,feat: 개인 정보 스키마 및 UI에서 전화번호 용어 수정,0,0,unknown
-김규리,54,fix: 교육 정보 입력 조건 개선,0,0,unknown
-김규리,53,fix: 교육 정보 및 경력 카드 컴포넌트 수정,0,0,unknown
-김규리,52,fix: 패키지 버전 업데이트 및 새로운 문서 추가,0,0,unknown
-김규리,51,fix: 인증 모듈 업데이트에 따른 타입 변경,0,0,unknown
-김규리,50,fix: 불필요한 로그 및 alert 제거,0,0,unknown
-김규리,49,fix: 교육 폼 초기값 설정 및 리셋 로직 개선,0,0,unknown
-김규리,48,feat: 이력서 폼에서 useTypedField 훅 통합,3,1,unknown
-김규리,47,fix: getSelectedItemText 함수에서 중분류 처리 로직 제거,0,0,unknown
-김규리,46,Fix/qa,0,0,unknown
-김규리,45,fix: 패키지 버전 업데이트,0,0,unknown
-김규리,44,feat: 이력서 폼에서 선택 항목 처리 로직 개선,0,0,unknown
-김규리,43,feat: 기본정보 카드 표시 조건 변경,0,1,unknown
-김규리,42,fix: 이력서 카드에서 오류 메시지 포맷 수정,0,1,unknown
-김규리,41,feat: @jds/jams2에서 @jds/display-kit으로 전환,1,0,unknown
-김규리,40,refactor: 이력서 폼에서 개발 모드 패널 제거,0,0,unknown
-김규리,39,refactor: 개발 환경에서의 console.log 제거,0,0,unknown
-김규리,38,feat: 이력서 데이터 추출 및 매핑 로직 개선,0,0,unknown
-김규리,37,feat: 이력서 생성 완료 후 부모 페이지 복귀 기능 추가,0,0,unknown
-김규리,36,feat: 이력서 데이터 매핑 및 분석 요청 개선,0,0,unknown
-김규리,35,feat: 이력서 폼 SSE 데이터 처리 및 개선,0,0,unknown
-김규리,34,feat: @jds/jams2 및 @hookform/resolvers 의존성 업데이트,0,0,unknown
-김규리,33,feat: 이력서 API 및 인증 관련 환경 변수 추가,0,0,unknown
-김규리,32,feat: validation 시스템 추가,0,0,unknown
-김규리,31,chore: 패키지 버전 업데이트 및 PostCSS 설정 추가,1,0,unknown
-김규리,30,feat: implement upload cancellation with AbortSignal (US4 partial),0,0,unknown
-김규리,29,refactor: consolidate duplicate BottomSheets and simplify props (US1),0,0,unknown
-김규리,28,feat: ResponsiveLayout 컴포넌트 하단 패딩 동적 조정 기능 추가,0,0,unknown
-김규리,27,feat: package.json 및 pnpm-lock.yaml 수정,0,0,unknown
-김규리,26,feat: Dockerfile 및 next.config.ts 수정,0,0,unknown
-김규리,25,feat: Dockerfile에서 서버 실행 파일 변경,0,0,unknown
-김규리,24,feat: prestart 환경 변수 경로 수정,0,0,unknown
-김규리,23,feat: Dockerfile 및 환경 변수 경로 수정,0,0,unknown
-김규리,22,feat: Next.js 런타임 환경 변수 생성 스크립트 변경,0,0,unknown
-김규리,21,feat: Dockerfile 및 ResumeForm 수정,1,0,unknown
-김규리,20,feat: 개발 모드 체크 로직 수정,0,0,unknown
-김규리,19,feat: 이력서 API의 BASE_URL 하드코딩 변경,0,0,unknown
-김규리,18,feat: 이력서 업로드 및 상태 조회 기능 추가,0,0,unknown
-김규리,17,007 resume form pages,0,0,unknown
-김규리,16,fix: Dockerfile 환경 변수 설정 방식 통일,0,0,unknown
-김규리,15,fix: Dockerfile에서 prestart 스크립트 실행 주석 제거,0,0,unknown
-김규리,14,feat: 이력서 업로드 및 폼 페이지 데이터 모델 및 계획 문서 추가,0,0,unknown
-김규리,13,feat: 반응형 레이아웃 및 파일 업로드 UI 개선,0,0,unknown
-김규리,12,feat: @jds/jams2 디자인 시스템을 적용한 이력서 업로드 페이지 UI 리팩토링,0,0,unknown
-김규리,11,feat: Migrate AreaFilter component from search-front to jk-resume-fe,0,0,unknown
-김규리,10,feat: 파일 업로드 최대 크기 및 지원 형식 변경,0,0,unknown
-김규리,9,feat: 파일 업로드 지원 형식 및 오류 메시지 수정,0,0,unknown
-김규리,8,refactor: UploadForm 컴포넌트의 FileInput 리팩토링,0,0,unknown
-김규리,7,refactor: FileInput 컴포넌트의 accept 기본값 수정,0,0,unknown
-김규리,6,refactor: FileInputProps 인터페이스 수정 및 파일 입력 컴포넌트 개선,0,0,unknown
-김규리,5,docs: Introduce SSE event type specification and quality checklist,0,0,unknown
-김규리,4,feat: Add SSEProgressEvent and SSEStatusEvent interfaces for enhanced event hand,0,0,unknown
-김규리,2,refactor: Update resume upload flow to use uploadId and improve SSE connection h,0,0,unknown
-김규리,1,docs: Add development guidelines  Vitest configuration  and various command...,0,0,unknown
-이로움,104,Feature/fix close,0,0,unknown
-이로움,103,Feature/fix close,0,0,unknown
-이로움,102,Feature/fix close,0,0,unknown
-이로움,101,fix: X 버튼 클릭 시 앱브릿지 추가,0,0,unknown
-이로움,100,Test 74682,0,0,unknown
-이로움,99,Test 74682,0,0,unknown
-이로움,98,fix: router back을 os별 고정 url 로 변경,0,0,unknown
-이로움,97,fix: 통합과정 -> 석박사 로 명칭 변경,0,1,unknown
-이로움,92,Feature/fix calendar,0,0,unknown
-이로움,88,Feature/fix calendar,0,0,unknown
-이로움,87,fix: display-kit 업데이트,0,0,unknown
-이로움,84,Feature/fix calendar,0,0,unknown
-이로움,83,fix: display-kit 업데이트,0,0,unknown
-장호철,114,feat: update-version-15.5.9,1,0,unknown
-장호철,66,Update app bridge,0,0,unknown
-이동현,78,fix: Dockerfile 및 환경 변수 처리 개선,0,0,unknown
+ㄱㄱㄹ,130,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,129,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,128,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,127,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,126,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,125,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,0,unknown
+ㄱㄱㄹ,124,feat: OpenTelemetry 및 Web Vitals 통합 기능 추가,1,1,unknown
+ㄱㄱㄹ,123,fix: 이력서 간편 등록 API 클라이언트 변경,1,0,unknown
+ㄱㄱㄹ,120,feat: 이력서 API 에러 처리 및 메시지 개선,1,0,unknown
+ㄱㄱㄹ,119,feat: career 및 education 매퍼 테스트 개선,0,0,unknown
+ㄱㄱㄹ,118,feat: 전화번호 포맷팅 함수 개선,1,0,unknown
+ㄱㄱㄹ,117,feat: 이력서 간편 제출 상태 관리 개선,1,0,unknown
+ㄱㄱㄹ,116,feat: 코드 API 및 내부 이력서 API 리팩토링,1,1,unknown
+ㄱㄱㄹ,115,feat: UploadForm에서 쿠키를 통한 리다이렉트 기능 추가,1,1,unknown
+ㄱㄱㄹ,113,feat: display-kit 패키지 버전 업데이트 및 로컬 설치 스크립트 추가,1,0,unknown
+ㄱㄱㄹ,112,fix: getUserInfo API 호출에 timeout 설정 추가,1,1,unknown
+ㄱㄱㄹ,111,fix: React 보안 취약점 패치 (CVE-2025-5518),2,1,unknown
+ㄱㄱㄹ,110,fix: 불필요한 css 삭제,2,1,unknown
+ㄱㄱㄹ,109,* feat: 테스트 디렉토리 및 매핑 테스트 추가,2,1,unknown
+ㄱㄱㄹ,108,feat: PM 설정 미들웨어 및 환경 변수 추가,2,1,unknown
+ㄱㄱㄹ,107,feat: SENTRY_AUTH_TOKEN 및 SENTRY_DSN 업데이트,0,0,unknown
+ㄱㄱㄹ,106,feat: 테스트 디렉토리 및 매핑 테스트 추가,0,0,unknown
+ㄱㄱㄹ,105,Feature/apply popup,0,1,unknown
+ㄱㄱㄹ,96,fix: GA 이벤트 카테고리 수정,0,0,unknown
+ㄱㄱㄹ,95,feat: EducationCard에서 학력 정보 조건부 표시 개선,0,0,unknown
+ㄱㄱㄹ,94,feat: EducationCardItem 컴포넌트 추가 및 EducationCard 수정,0,0,unknown
+ㄱㄱㄹ,93,fix: 환경 변수 AUTH_API_URL 제거 및 DISPLAY_API_URL로 변경,0,0,unknown
+ㄱㄱㄹ,91,feat: 인증 서버에서 쿠키 로그 추가,0,0,unknown
+ㄱㄱㄹ,90,fix: 환경 변수 AUTH_API_URL 추가 및 수정,0,0,unknown
+ㄱㄱㄹ,89,fix: 환경 변수 AUTH_API_URL 추가 및 수정,0,0,unknown
+ㄱㄱㄹ,86,fix: env 변수 변경,0,0,unknown
+ㄱㄱㄹ,85,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
+ㄱㄱㄹ,82,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
+ㄱㄱㄹ,81,fix: 경고 아이콘 SVG 파일 삭제 및 이모지로 대체,0,0,unknown
+ㄱㄱㄹ,80,fix: 이력서 체크리스트 검증 로직 수정,0,0,unknown
+ㄱㄱㄹ,79,fix: 이력서 체크리스트 검증 로직 수정,0,0,unknown
+ㄱㄱㄹ,77,fix: Google Analytics 관련 코드 정리,0,0,unknown
+ㄱㄱㄹ,76,fix: 학적 상태 기본값 변경,0,0,unknown
+ㄱㄱㄹ,75,fix: SSE 에러 메시지 및 경로 처리 개선,0,0,unknown
+ㄱㄱㄹ,74,fix: 학력 카드의 Flex 컴포넌트 간격 수정,0,0,unknown
+ㄱㄱㄹ,73,fix: 학력 스키마에서 대학원 학위 검증 제거,0,0,unknown
+ㄱㄱㄹ,72,fix: 사용자 정보 매핑 함수에서 null 및 undefined 처리 개선,0,0,unknown
+ㄱㄱㄹ,71,fix: 경력 스키마에서 jobClassifications 필드 수정,0,0,unknown
+ㄱㄱㄹ,70,fix: 경력 스키마에서 코드 및 부모 코드 필드 null 허용,0,0,unknown
+ㄱㄱㄹ,69,fix: 삭제 버튼의 기본값 submit 방지,0,0,unknown
+ㄱㄱㄹ,68,fix: 학력 카드의 비어있는 상태 체크 로직 개선,0,0,unknown
+ㄱㄱㄹ,67,feat: 경력 폼 정책 변경 작업 계획 문서 추가,0,0,unknown
+ㄱㄱㄹ,65,feat: 이력서 업로드 폼에서 디버깅 정보 추가,0,0,unknown
+ㄱㄱㄹ,64,fix: 이력서 생성 성공 시 처리 로직 개선,0,0,unknown
+ㄱㄱㄹ,63,Testing webview,0,1,unknown
+ㄱㄱㄹ,62,fix: 개인정보 Hook에서 에러 처리 및 필드 검증 로직 수정,0,0,unknown
+ㄱㄱㄹ,61,fix: 필터 컴포넌트에서 초기화시 상위 컴포넌트로 빈 배열 전달 코드 제거,0,0,unknown
+ㄱㄱㄹ,60,feat: 이력서 폼에서 사용자 수정 필드 추적 기능 추가,0,0,unknown
+ㄱㄱㄹ,59,Fix/qa,0,0,unknown
+ㄱㄱㄹ,58,Fix/qa,0,0,unknown
+ㄱㄱㄹ,57,feat: FileInput 컴포넌트 파일 업로드 유효성 검사 개선,0,0,unknown
+ㄱㄱㄹ,56,feat: 개인 정보 및 이력서 관련 데이터 처리 개선,0,0,unknown
+ㄱㄱㄹ,55,feat: 개인 정보 스키마 및 UI에서 전화번호 용어 수정,0,0,unknown
+ㄱㄱㄹ,54,fix: 교육 정보 입력 조건 개선,0,0,unknown
+ㄱㄱㄹ,53,fix: 교육 정보 및 경력 카드 컴포넌트 수정,0,0,unknown
+ㄱㄱㄹ,52,fix: 패키지 버전 업데이트 및 새로운 문서 추가,0,0,unknown
+ㄱㄱㄹ,51,fix: 인증 모듈 업데이트에 따른 타입 변경,0,0,unknown
+ㄱㄱㄹ,50,fix: 불필요한 로그 및 alert 제거,0,0,unknown
+ㄱㄱㄹ,49,fix: 교육 폼 초기값 설정 및 리셋 로직 개선,0,0,unknown
+ㄱㄱㄹ,48,feat: 이력서 폼에서 useTypedField 훅 통합,3,1,unknown
+ㄱㄱㄹ,47,fix: getSelectedItemText 함수에서 중분류 처리 로직 제거,0,0,unknown
+ㄱㄱㄹ,46,Fix/qa,0,0,unknown
+ㄱㄱㄹ,45,fix: 패키지 버전 업데이트,0,0,unknown
+ㄱㄱㄹ,44,feat: 이력서 폼에서 선택 항목 처리 로직 개선,0,0,unknown
+ㄱㄱㄹ,43,feat: 기본정보 카드 표시 조건 변경,0,1,unknown
+ㄱㄱㄹ,42,fix: 이력서 카드에서 오류 메시지 포맷 수정,0,1,unknown
+ㄱㄱㄹ,41,feat: @jds/jams2에서 @jds/display-kit으로 전환,1,0,unknown
+ㄱㄱㄹ,40,refactor: 이력서 폼에서 개발 모드 패널 제거,0,0,unknown
+ㄱㄱㄹ,39,refactor: 개발 환경에서의 console.log 제거,0,0,unknown
+ㄱㄱㄹ,38,feat: 이력서 데이터 추출 및 매핑 로직 개선,0,0,unknown
+ㄱㄱㄹ,37,feat: 이력서 생성 완료 후 부모 페이지 복귀 기능 추가,0,0,unknown
+ㄱㄱㄹ,36,feat: 이력서 데이터 매핑 및 분석 요청 개선,0,0,unknown
+ㄱㄱㄹ,35,feat: 이력서 폼 SSE 데이터 처리 및 개선,0,0,unknown
+ㄱㄱㄹ,34,feat: @jds/jams2 및 @hookform/resolvers 의존성 업데이트,0,0,unknown
+ㄱㄱㄹ,33,feat: 이력서 API 및 인증 관련 환경 변수 추가,0,0,unknown
+ㄱㄱㄹ,32,feat: validation 시스템 추가,0,0,unknown
+ㄱㄱㄹ,31,chore: 패키지 버전 업데이트 및 PostCSS 설정 추가,1,0,unknown
+ㄱㄱㄹ,30,feat: implement upload cancellation with AbortSignal (US4 partial),0,0,unknown
+ㄱㄱㄹ,29,refactor: consolidate duplicate BottomSheets and simplify props (US1),0,0,unknown
+ㄱㄱㄹ,28,feat: ResponsiveLayout 컴포넌트 하단 패딩 동적 조정 기능 추가,0,0,unknown
+ㄱㄱㄹ,27,feat: package.json 및 pnpm-lock.yaml 수정,0,0,unknown
+ㄱㄱㄹ,26,feat: Dockerfile 및 next.config.ts 수정,0,0,unknown
+ㄱㄱㄹ,25,feat: Dockerfile에서 서버 실행 파일 변경,0,0,unknown
+ㄱㄱㄹ,24,feat: prestart 환경 변수 경로 수정,0,0,unknown
+ㄱㄱㄹ,23,feat: Dockerfile 및 환경 변수 경로 수정,0,0,unknown
+ㄱㄱㄹ,22,feat: Next.js 런타임 환경 변수 생성 스크립트 변경,0,0,unknown
+ㄱㄱㄹ,21,feat: Dockerfile 및 ResumeForm 수정,1,0,unknown
+ㄱㄱㄹ,20,feat: 개발 모드 체크 로직 수정,0,0,unknown
+ㄱㄱㄹ,19,feat: 이력서 API의 BASE_URL 하드코딩 변경,0,0,unknown
+ㄱㄱㄹ,18,feat: 이력서 업로드 및 상태 조회 기능 추가,0,0,unknown
+ㄱㄱㄹ,17,007 resume form pages,0,0,unknown
+ㄱㄱㄹ,16,fix: Dockerfile 환경 변수 설정 방식 통일,0,0,unknown
+ㄱㄱㄹ,15,fix: Dockerfile에서 prestart 스크립트 실행 주석 제거,0,0,unknown
+ㄱㄱㄹ,14,feat: 이력서 업로드 및 폼 페이지 데이터 모델 및 계획 문서 추가,0,0,unknown
+ㄱㄱㄹ,13,feat: 반응형 레이아웃 및 파일 업로드 UI 개선,0,0,unknown
+ㄱㄱㄹ,12,feat: @jds/jams2 디자인 시스템을 적용한 이력서 업로드 페이지 UI 리팩토링,0,0,unknown
+ㄱㄱㄹ,11,feat: Migrate AreaFilter component from search-front to jk-resume-fe,0,0,unknown
+ㄱㄱㄹ,10,feat: 파일 업로드 최대 크기 및 지원 형식 변경,0,0,unknown
+ㄱㄱㄹ,9,feat: 파일 업로드 지원 형식 및 오류 메시지 수정,0,0,unknown
+ㄱㄱㄹ,8,refactor: UploadForm 컴포넌트의 FileInput 리팩토링,0,0,unknown
+ㄱㄱㄹ,7,refactor: FileInput 컴포넌트의 accept 기본값 수정,0,0,unknown
+ㄱㄱㄹ,6,refactor: FileInputProps 인터페이스 수정 및 파일 입력 컴포넌트 개선,0,0,unknown
+ㄱㄱㄹ,5,docs: Introduce SSE event type specification and quality checklist,0,0,unknown
+ㄱㄱㄹ,4,feat: Add SSEProgressEvent and SSEStatusEvent interfaces for enhanced event hand,0,0,unknown
+ㄱㄱㄹ,2,refactor: Update resume upload flow to use uploadId and improve SSE connection h,0,0,unknown
+ㄱㄱㄹ,1,docs: Add development guidelines  Vitest configuration  and various command...,0,0,unknown
+ㅇㄹㅇ,104,Feature/fix close,0,0,unknown
+ㅇㄹㅇ,103,Feature/fix close,0,0,unknown
+ㅇㄹㅇ,102,Feature/fix close,0,0,unknown
+ㅇㄹㅇ,101,fix: X 버튼 클릭 시 앱브릿지 추가,0,0,unknown
+ㅇㄹㅇ,100,Test 74682,0,0,unknown
+ㅇㄹㅇ,99,Test 74682,0,0,unknown
+ㅇㄹㅇ,98,fix: router back을 os별 고정 url 로 변경,0,0,unknown
+ㅇㄹㅇ,97,fix: 통합과정 -> 석박사 로 명칭 변경,0,1,unknown
+ㅇㄹㅇ,92,Feature/fix calendar,0,0,unknown
+ㅇㄹㅇ,88,Feature/fix calendar,0,0,unknown
+ㅇㄹㅇ,87,fix: display-kit 업데이트,0,0,unknown
+ㅇㄹㅇ,84,Feature/fix calendar,0,0,unknown
+ㅇㄹㅇ,83,fix: display-kit 업데이트,0,0,unknown
+ㅈㅎㅊ,114,feat: update-version-15.5.9,1,0,unknown
+ㅈㅎㅊ,66,Update app bridge,0,0,unknown
+ㅇㄷㅎ2,78,fix: Dockerfile 및 환경 변수 처리 개선,0,0,unknown

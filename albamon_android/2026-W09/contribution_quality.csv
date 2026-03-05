@@ -1,127 +1,127 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-박동수,129,Feature/reboot new home,0,0,unknown
-박동수,128,Release/5.4.3,0,0,unknown
-박동수,127,Feature/test 78403 ga,0,0,unknown
-박동수,126,[ALBAMON-26056] adpopcorn sdk 3.9.8,0,0,unknown
-박동수,125,[ALBAMON-25909] adpopcorn 3.9.7,0,0,unknown
-박동수,124,Feature/agp upgrade,0,0,unknown
-박동수,123,Release/5.4.2,0,0,unknown
-박동수,122,Feature/albamon 25909 adpopcorn,0,0,unknown
-박동수,121,[feat] 알바지도 속성필터 연동 toapp 수정,0,0,unknown
-박동수,120,Release/5.4.1,0,0,unknown
-박동수,119,Feature/albamon 25476 roboot after,0,0,unknown
-박동수,118,[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...,0,0,unknown
-박동수,117,[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...,0,0,unknown
-박동수,116,feat: Add Flutter user info channeling method,0,0,unknown
-박동수,114,Release/5.3.5,0,0,unknown
-박동수,113,[fix] 통합검색 > 검색화면 > 전체메뉴 진입 edge to edge 적용,0,0,unknown
-박동수,112,Feature/albamon 25128 ad phase2,0,0,unknown
-박동수,111,Feature/albamon 25021 community,0,0,unknown
-박동수,110,[fix] 취약점 수정,0,0,unknown
-박동수,109,[fix] 플러터 엔진 캐시 접근 예외 처리 추가,0,1,unknown
-박동수,108,Release/5.3.4,0,0,unknown
-박동수,107,[fix] 알바지도 웜스타트 오류 - 앱종료시 메모리 완전제거   uimode 변경시 activity 재생성 안하도록 막음,0,0,unknown
-박동수,105,Feature/edge to edge,0,0,unknown
-박동수,103,Feature/naver map delete,0,0,unknown
-박동수,102,Release/5.3.3,0,0,unknown
-박동수,101,Feature/albamon 25322 permission,0,0,unknown
-박동수,98,Feature/albamon 25120 model,0,0,unknown
-박동수,94,[fix] cast exception 크래시 방어코드 삽입,0,0,unknown
-박동수,93,feature : 외부지원 퍼널 > View-ViewModel 기본 구조 구축,0,0,unknown
-박동수,92,[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.,0,0,unknown
-박동수,91,[TEST-73083] 알바지도 adfit 광고 지면 변경,0,1,unknown
-박동수,90,[TEST-73241][TEST-73243] as-is main edge to edge ui 수정,0,1,unknown
-박동수,88,Flutter/test 73204 edgetoedge,0,1,unknown
-박동수,86,[TEST-72964] status bar 투명 적용,0,1,unknown
-박동수,83,Feature/albamon 25087 web local test,0,0,unknown
-박동수,82,Feature/test 72900 firebase config,0,1,unknown
-박동수,80,Release/5.2.23,0,0,unknown
-박동수,79,Feature/flutter firebase config,0,1,unknown
-박동수,78,Feature/albamon 25061 adpopcorn version up,0,0,unknown
-박동수,77,[ALBAMON-25012] 브레이즈 SDK version up,0,0,unknown
-박동수,76,Feature/albamon 24380 close adpopcorn,0,0,unknown
-박동수,73,Release/5.2.22,0,0,unknown
-박동수,72,[TEST-72661] 메인 추천영역 갱신,0,0,unknown
-박동수,71,Feature/test 72234 alarm msg,0,0,unknown
-박동수,68,Feature/flutter adfit,0,0,unknown
-박동수,66,[crash] 플러터 엔진 크래시 임시저장,0,0,unknown
-박동수,63,Feature/flutter environment,0,0,unknown
-박동수,62,Release/5.2.21,0,0,unknown
-박동수,61,Feature/fluuter poc flavor,0,0,unknown
-박동수,58,[TEST-43834] 알림 비허용 상태에서 맞춤알바 알림 토글 on으로 변경 > toapp 추가,0,0,unknown
-박동수,57,Feature/test 71894 google login,0,0,unknown
-박동수,56,[ALBAMON-24704]  알람설정 > 채팅알림 toast 문구 수정 및 커스텀 토스트 프레임 수정,0,0,unknown
-박동수,55,Feature/albamon 24606 moni3d,0,0,unknown
-박동수,54,[ALBAMON-24602] ISMS-P > 채팅 진입시 동의 여부 팝업 관련 제거,0,0,unknown
-박동수,52,[feat] cookie url 테섭 하드코딩 수정,0,1,unknown
-박동수,51,Release/5.2.20,0,0,unknown
-박동수,50,Feature/albamon 24606 moni3d,0,0,unknown
-박동수,49,Feature/albamon 24450 ga search,0,0,unknown
-박동수,48,Feature/albamon 24668 summer event,0,0,unknown
-박동수,47,Feature/albamon 24589 target sdk35,0,0,unknown
-박동수,46,Release/5.2.19,0,0,unknown
-박동수,45,Feature/albamon 24589 target sdk35,0,0,unknown
-박동수,43,Feature/albamon 24131 braze push,0,0,unknown
-박동수,42,Feature/albamon 24510 pass,0,0,unknown
-박동수,41,Feature/albamon 24382 summer event,0,0,unknown
-박동수,40,Release/5.2.18,0,0,unknown
-박동수,39,Feature/albamon 24316 location,0,0,unknown
-박동수,38,Release/5.2.17,0,0,unknown
-박동수,37,Feature/albamon 24338 naver map,0,0,unknown
-박동수,36,Release/5.2.16,0,0,unknown
-박동수,35,Feature/albamon 23320 translate,0,0,unknown
-박동수,34,Release/5.2.15,0,0,unknown
-박동수,33,[ALBAMON-24105] 프랜차이즈 로그인 채팅 접속 불가 처리,0,0,unknown
-박동수,32,[ALBAMON-22249] 알바몬제트 - 맵 진입 버튼 삭제,0,0,unknown
-박동수,31,Release/5.2.14,0,0,unknown
-박동수,30,[ALBAMON-23948] 구글 로그인 실패 오류   [ALBAMON-23951] 구글 로그인 실패시 메세지 처리,0,0,unknown
-박동수,29,[TEST-69510] 소셜로그인시 랜딩 오류 수정,0,0,unknown
-박동수,28,[ALBAMON-23981] 로그인 - 회원가입 tvc 이미지 교체,0,0,unknown
-박동수,27,Release/5.2.13,0,0,unknown
-박동수,26,[ALBAMON-23814] 스플래시 디폴트 로고 변경,0,0,unknown
-박동수,25,Feature/test 69333 ad reward,0,0,unknown
-박동수,24,Feature/albamon 23240 crash,0,0,unknown
-박동수,23,Release/5.2.12,0,0,unknown
-박동수,22,Feature/albamon 23240 reward ad,0,0,unknown
-박동수,21,Release/5.2.11,0,0,unknown
-박동수,20,"[ALBAMON-23002] 전체메뉴 > 스크랩알바  최근본알바 진입시 상단 타이틀 ""관심공고"" 로 변경",0,0,unknown
-박동수,19,Release/5.2.10,0,0,unknown
-박동수,18,[TEST-57908] 내 주변 인재 > 리스트 뷰 > 지도버튼 동작 오류 수정,0,0,unknown
-박동수,17,[APP] 웹 파일 업로드 방식 수정,0,0,unknown
-박동수,16,Feature/albamon 22772 google login,0,0,unknown
-박동수,15,Release/5.2.9,0,0,unknown
-박동수,14,Feature/albamon 23093 logo,0,0,unknown
-박동수,13,Release/5.2.8,0,0,unknown
-박동수,12,[TEST-67875] 로그인 > tvc 이미지 교체,0,0,unknown
-박동수,11,Feature/albamon 23078 search ui,0,0,unknown
-박동수,10,Release/5.2.7,0,0,unknown
-박동수,9,[TEST-67014] 알바몬제트 스크랩 동기화 수정,0,0,unknown
-박동수,8,Feature/albamon 22990 logo,0,0,unknown
-박동수,7,Release/5.2.6,0,0,unknown
-박동수,6,[TEST-67382] 프랜차이즈 로그인 > 알바토크 글쓰기 시도 > 로그아웃 처리,0,0,unknown
-박동수,5,Feature/albamon 21817 onboarding,0,0,unknown
-박동수,4,Feature/albamon 20757 albamap,0,0,unknown
-박동수,3,Release/5.2.5,0,0,unknown
-박동수,2,Feature/albamon 22659 scrap,0,0,unknown
-박동수,1,[ALBAMON-22605] 프랜차이즈 회원 > 채팅 버튼 선택 시 알럿 문구 수정,0,0,unknown
-김승하,106,[fix] 폴더블 폰 여러번 접었다 폈다 하면 죽는 현상 수정.,0,0,unknown
-김승하,104,[Feat] fix black screen,0,1,unknown
-김승하,100,[fix] 5.3.2(275) 지도 모듈만 수정,0,0,unknown
-김승하,99,[feat] 알바지도 배포 dev -> master,0,0,unknown
-김승하,97,[fix] 웹에서 카카오로 로그인시 플러터 canPop로직 작동 안하는 현상 수정.,0,1,unknown
-김승하,96,gohome 다시수정..,0,1,unknown
-김승하,95,[feat] 웜스타트 수정,0,0,unknown
-김승하,89,[feat] 웜스타트 오류 수정.+ 토스트 스타일통일.,0,1,unknown
-김승하,87,[fix] GA-햄버거 분기 로직 추가.,0,0,unknown
-김승하,84,[fix] 토스트 채널링 추가,0,0,unknown
-김승하,81,[fix] 로그아웃시 지도 추천지역값 초기화,0,0,unknown
-김승하,75,[feat] GA수정,0,0,unknown
-김승하,74,[feat] 공고 query스트링 추가,0,1,unknown
-김승하,69,[Feat]flutter ga+apps+braze 추가,0,1,unknown
-김승하,65,[feat] 위치 권한 로직수정.,0,2,unknown
-김승하,59,[feat] islogin 채널링 추가.,0,0,unknown
-김승하,53,[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.,0,0,unknown
-이해주,70,[양파유닛] 외부 지원 퍼널 구축,3,0,unknown
-최재웅,85,Fix:[TEST-73132] sendGoGibReadMapEvent 채널링메서드 추가,0,1,unknown
-최재웅,67,Feat: sendGoMapToHotSpotEvent 메서드 추가 및 params 존재시 호출,1,0,unknown
-최재웅,64,Feature/flutter to app,0,1,unknown
+ㅂㄷㅅ,129,Feature/reboot new home,0,0,unknown
+ㅂㄷㅅ,128,Release/5.4.3,0,0,unknown
+ㅂㄷㅅ,127,Feature/test 78403 ga,0,0,unknown
+ㅂㄷㅅ,126,[ALBAMON-26056] adpopcorn sdk 3.9.8,0,0,unknown
+ㅂㄷㅅ,125,[ALBAMON-25909] adpopcorn 3.9.7,0,0,unknown
+ㅂㄷㅅ,124,Feature/agp upgrade,0,0,unknown
+ㅂㄷㅅ,123,Release/5.4.2,0,0,unknown
+ㅂㄷㅅ,122,Feature/albamon 25909 adpopcorn,0,0,unknown
+ㅂㄷㅅ,121,[feat] 알바지도 속성필터 연동 toapp 수정,0,0,unknown
+ㅂㄷㅅ,120,Release/5.4.1,0,0,unknown
+ㅂㄷㅅ,119,Feature/albamon 25476 roboot after,0,0,unknown
+ㅂㄷㅅ,118,[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...,0,0,unknown
+ㅂㄷㅅ,117,[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...,0,0,unknown
+ㅂㄷㅅ,116,feat: Add Flutter user info channeling method,0,0,unknown
+ㅂㄷㅅ,114,Release/5.3.5,0,0,unknown
+ㅂㄷㅅ,113,[fix] 통합검색 > 검색화면 > 전체메뉴 진입 edge to edge 적용,0,0,unknown
+ㅂㄷㅅ,112,Feature/albamon 25128 ad phase2,0,0,unknown
+ㅂㄷㅅ,111,Feature/albamon 25021 community,0,0,unknown
+ㅂㄷㅅ,110,[fix] 취약점 수정,0,0,unknown
+ㅂㄷㅅ,109,[fix] 플러터 엔진 캐시 접근 예외 처리 추가,0,1,unknown
+ㅂㄷㅅ,108,Release/5.3.4,0,0,unknown
+ㅂㄷㅅ,107,[fix] 알바지도 웜스타트 오류 - 앱종료시 메모리 완전제거   uimode 변경시 activity 재생성 안하도록 막음,0,0,unknown
+ㅂㄷㅅ,105,Feature/edge to edge,0,0,unknown
+ㅂㄷㅅ,103,Feature/naver map delete,0,0,unknown
+ㅂㄷㅅ,102,Release/5.3.3,0,0,unknown
+ㅂㄷㅅ,101,Feature/albamon 25322 permission,0,0,unknown
+ㅂㄷㅅ,98,Feature/albamon 25120 model,0,0,unknown
+ㅂㄷㅅ,94,[fix] cast exception 크래시 방어코드 삽입,0,0,unknown
+ㅂㄷㅅ,93,feature : 외부지원 퍼널 > View-ViewModel 기본 구조 구축,0,0,unknown
+ㅂㄷㅅ,92,[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.,0,0,unknown
+ㅂㄷㅅ,91,[TEST-73083] 알바지도 adfit 광고 지면 변경,0,1,unknown
+ㅂㄷㅅ,90,[TEST-73241][TEST-73243] as-is main edge to edge ui 수정,0,1,unknown
+ㅂㄷㅅ,88,Flutter/test 73204 edgetoedge,0,1,unknown
+ㅂㄷㅅ,86,[TEST-72964] status bar 투명 적용,0,1,unknown
+ㅂㄷㅅ,83,Feature/albamon 25087 web local test,0,0,unknown
+ㅂㄷㅅ,82,Feature/test 72900 firebase config,0,1,unknown
+ㅂㄷㅅ,80,Release/5.2.23,0,0,unknown
+ㅂㄷㅅ,79,Feature/flutter firebase config,0,1,unknown
+ㅂㄷㅅ,78,Feature/albamon 25061 adpopcorn version up,0,0,unknown
+ㅂㄷㅅ,77,[ALBAMON-25012] 브레이즈 SDK version up,0,0,unknown
+ㅂㄷㅅ,76,Feature/albamon 24380 close adpopcorn,0,0,unknown
+ㅂㄷㅅ,73,Release/5.2.22,0,0,unknown
+ㅂㄷㅅ,72,[TEST-72661] 메인 추천영역 갱신,0,0,unknown
+ㅂㄷㅅ,71,Feature/test 72234 alarm msg,0,0,unknown
+ㅂㄷㅅ,68,Feature/flutter adfit,0,0,unknown
+ㅂㄷㅅ,66,[crash] 플러터 엔진 크래시 임시저장,0,0,unknown
+ㅂㄷㅅ,63,Feature/flutter environment,0,0,unknown
+ㅂㄷㅅ,62,Release/5.2.21,0,0,unknown
+ㅂㄷㅅ,61,Feature/fluuter poc flavor,0,0,unknown
+ㅂㄷㅅ,58,[TEST-43834] 알림 비허용 상태에서 맞춤알바 알림 토글 on으로 변경 > toapp 추가,0,0,unknown
+ㅂㄷㅅ,57,Feature/test 71894 google login,0,0,unknown
+ㅂㄷㅅ,56,[ALBAMON-24704]  알람설정 > 채팅알림 toast 문구 수정 및 커스텀 토스트 프레임 수정,0,0,unknown
+ㅂㄷㅅ,55,Feature/albamon 24606 moni3d,0,0,unknown
+ㅂㄷㅅ,54,[ALBAMON-24602] ISMS-P > 채팅 진입시 동의 여부 팝업 관련 제거,0,0,unknown
+ㅂㄷㅅ,52,[feat] cookie url 테섭 하드코딩 수정,0,1,unknown
+ㅂㄷㅅ,51,Release/5.2.20,0,0,unknown
+ㅂㄷㅅ,50,Feature/albamon 24606 moni3d,0,0,unknown
+ㅂㄷㅅ,49,Feature/albamon 24450 ga search,0,0,unknown
+ㅂㄷㅅ,48,Feature/albamon 24668 summer event,0,0,unknown
+ㅂㄷㅅ,47,Feature/albamon 24589 target sdk35,0,0,unknown
+ㅂㄷㅅ,46,Release/5.2.19,0,0,unknown
+ㅂㄷㅅ,45,Feature/albamon 24589 target sdk35,0,0,unknown
+ㅂㄷㅅ,43,Feature/albamon 24131 braze push,0,0,unknown
+ㅂㄷㅅ,42,Feature/albamon 24510 pass,0,0,unknown
+ㅂㄷㅅ,41,Feature/albamon 24382 summer event,0,0,unknown
+ㅂㄷㅅ,40,Release/5.2.18,0,0,unknown
+ㅂㄷㅅ,39,Feature/albamon 24316 location,0,0,unknown
+ㅂㄷㅅ,38,Release/5.2.17,0,0,unknown
+ㅂㄷㅅ,37,Feature/albamon 24338 naver map,0,0,unknown
+ㅂㄷㅅ,36,Release/5.2.16,0,0,unknown
+ㅂㄷㅅ,35,Feature/albamon 23320 translate,0,0,unknown
+ㅂㄷㅅ,34,Release/5.2.15,0,0,unknown
+ㅂㄷㅅ,33,[ALBAMON-24105] 프랜차이즈 로그인 채팅 접속 불가 처리,0,0,unknown
+ㅂㄷㅅ,32,[ALBAMON-22249] 알바몬제트 - 맵 진입 버튼 삭제,0,0,unknown
+ㅂㄷㅅ,31,Release/5.2.14,0,0,unknown
+ㅂㄷㅅ,30,[ALBAMON-23948] 구글 로그인 실패 오류   [ALBAMON-23951] 구글 로그인 실패시 메세지 처리,0,0,unknown
+ㅂㄷㅅ,29,[TEST-69510] 소셜로그인시 랜딩 오류 수정,0,0,unknown
+ㅂㄷㅅ,28,[ALBAMON-23981] 로그인 - 회원가입 tvc 이미지 교체,0,0,unknown
+ㅂㄷㅅ,27,Release/5.2.13,0,0,unknown
+ㅂㄷㅅ,26,[ALBAMON-23814] 스플래시 디폴트 로고 변경,0,0,unknown
+ㅂㄷㅅ,25,Feature/test 69333 ad reward,0,0,unknown
+ㅂㄷㅅ,24,Feature/albamon 23240 crash,0,0,unknown
+ㅂㄷㅅ,23,Release/5.2.12,0,0,unknown
+ㅂㄷㅅ,22,Feature/albamon 23240 reward ad,0,0,unknown
+ㅂㄷㅅ,21,Release/5.2.11,0,0,unknown
+ㅂㄷㅅ,20,"[ALBAMON-23002] 전체메뉴 > 스크랩알바  최근본알바 진입시 상단 타이틀 ""관심공고"" 로 변경",0,0,unknown
+ㅂㄷㅅ,19,Release/5.2.10,0,0,unknown
+ㅂㄷㅅ,18,[TEST-57908] 내 주변 인재 > 리스트 뷰 > 지도버튼 동작 오류 수정,0,0,unknown
+ㅂㄷㅅ,17,[APP] 웹 파일 업로드 방식 수정,0,0,unknown
+ㅂㄷㅅ,16,Feature/albamon 22772 google login,0,0,unknown
+ㅂㄷㅅ,15,Release/5.2.9,0,0,unknown
+ㅂㄷㅅ,14,Feature/albamon 23093 logo,0,0,unknown
+ㅂㄷㅅ,13,Release/5.2.8,0,0,unknown
+ㅂㄷㅅ,12,[TEST-67875] 로그인 > tvc 이미지 교체,0,0,unknown
+ㅂㄷㅅ,11,Feature/albamon 23078 search ui,0,0,unknown
+ㅂㄷㅅ,10,Release/5.2.7,0,0,unknown
+ㅂㄷㅅ,9,[TEST-67014] 알바몬제트 스크랩 동기화 수정,0,0,unknown
+ㅂㄷㅅ,8,Feature/albamon 22990 logo,0,0,unknown
+ㅂㄷㅅ,7,Release/5.2.6,0,0,unknown
+ㅂㄷㅅ,6,[TEST-67382] 프랜차이즈 로그인 > 알바토크 글쓰기 시도 > 로그아웃 처리,0,0,unknown
+ㅂㄷㅅ,5,Feature/albamon 21817 onboarding,0,0,unknown
+ㅂㄷㅅ,4,Feature/albamon 20757 albamap,0,0,unknown
+ㅂㄷㅅ,3,Release/5.2.5,0,0,unknown
+ㅂㄷㅅ,2,Feature/albamon 22659 scrap,0,0,unknown
+ㅂㄷㅅ,1,[ALBAMON-22605] 프랜차이즈 회원 > 채팅 버튼 선택 시 알럿 문구 수정,0,0,unknown
+ㄱㅅㅎ,106,[fix] 폴더블 폰 여러번 접었다 폈다 하면 죽는 현상 수정.,0,0,unknown
+ㄱㅅㅎ,104,[Feat] fix black screen,0,1,unknown
+ㄱㅅㅎ,100,[fix] 5.3.2(275) 지도 모듈만 수정,0,0,unknown
+ㄱㅅㅎ,99,[feat] 알바지도 배포 dev -> master,0,0,unknown
+ㄱㅅㅎ,97,[fix] 웹에서 카카오로 로그인시 플러터 canPop로직 작동 안하는 현상 수정.,0,1,unknown
+ㄱㅅㅎ,96,gohome 다시수정..,0,1,unknown
+ㄱㅅㅎ,95,[feat] 웜스타트 수정,0,0,unknown
+ㄱㅅㅎ,89,[feat] 웜스타트 오류 수정.+ 토스트 스타일통일.,0,1,unknown
+ㄱㅅㅎ,87,[fix] GA-햄버거 분기 로직 추가.,0,0,unknown
+ㄱㅅㅎ,84,[fix] 토스트 채널링 추가,0,0,unknown
+ㄱㅅㅎ,81,[fix] 로그아웃시 지도 추천지역값 초기화,0,0,unknown
+ㄱㅅㅎ,75,[feat] GA수정,0,0,unknown
+ㄱㅅㅎ,74,[feat] 공고 query스트링 추가,0,1,unknown
+ㄱㅅㅎ,69,[Feat]flutter ga+apps+braze 추가,0,1,unknown
+ㄱㅅㅎ,65,[feat] 위치 권한 로직수정.,0,2,unknown
+ㄱㅅㅎ,59,[feat] islogin 채널링 추가.,0,0,unknown
+ㄱㅅㅎ,53,[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.,0,0,unknown
+ㅇㅎㅈ,70,[양파유닛] 외부 지원 퍼널 구축,3,0,unknown
+ㅊㅈㅇ,85,Fix:[TEST-73132] sendGoGibReadMapEvent 채널링메서드 추가,0,1,unknown
+ㅊㅈㅇ,67,Feat: sendGoMapToHotSpotEvent 메서드 추가 및 params 존재시 호출,1,0,unknown
+ㅊㅈㅇ,64,Feature/flutter to app,0,1,unknown

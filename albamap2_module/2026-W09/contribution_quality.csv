@@ -1,125 +1,125 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-최재웅,121,fix: 공고레이아웃 수정,0,1,unknown
-최재웅,110,fix: 권한 수정,0,1,unknown
-최재웅,108,fix: f=>w cookie sync 제거,0,1,unknown
-최재웅,107,Hotfix/sentry version,0,1,unknown
-최재웅,106,Fix: ios 팝업떴는지 여부 파악용 상수 변경,0,1,unknown
-최재웅,104,Fix: 광고 10 30 50 ...인덱스에 추가,0,0,unknown
-최재웅,101,Dimmed 영역 상태바까지 확장  로딩 케이스 수정,0,0,unknown
-최재웅,100,2025/09/09 QA,0,0,unknown
-최재웅,99,2025/09/11 QA-jw,0,1,unknown
-최재웅,97,2025/09/08 QA 처리건,0,0,unknown
-최재웅,96,2025/09/05 QA 처리건,0,1,unknown
-최재웅,95,2025/09/03 QA 처리건,0,0,unknown
-최재웅,93,쿠키 오염으로 api에 잘못된 쿠키 발려있던 이슈 수정,0,2,unknown
-최재웅,92,[stg3] statusbar 화이트 배경색 제거,0,1,unknown
-최재웅,91,Qa/09-08-JW,0,1,unknown
-최재웅,89,[TEST-73132] [stg3] 근무지 지도 > 근처 알바정보 클릭하여 지도 노출 시 기존 리스트 노출 갱신 안됨,0,0,unknown
-최재웅,87,Qa/09 05 jw,0,1,unknown
-최재웅,85,QA-2025/09/04 12건,0,1,unknown
-최재웅,82,30. [TEST-72907] [stg3-m] 공고 핀 선택 시 노출되는 바텀시트 > 스크랩 버튼 탭 시 동작 없음,0,0,unknown
-최재웅,80,37. [TEST-72850] 지도 상세 필터 스크롤 시 그라데이션 적용,0,0,unknown
-최재웅,78,Fix: N개 공고 result.failure 구현 누락 수정,0,1,unknown
-최재웅,77,Fix: 처음 맵 초기화시 크로스헤어 on되지 않도록 수정,0,1,unknown
-최재웅,76,Fix/test 72919,0,0,unknown
-최재웅,75,Fix/test 72915,0,0,unknown
-최재웅,74,Fix/test 72885,0,1,unknown
-최재웅,73,Fix: 스팟명 수정 버튼문구 저장 -> 적용,0,1,unknown
-최재웅,70,Fix: 검색하는 모니 이미지 교체 및 사이즈 수정,0,0,unknown
-최재웅,69,Fix/test 72882,0,1,unknown
-최재웅,68,Fix/test 72881,0,1,unknown
-최재웅,66,Fix/test 72872,0,0,unknown
-최재웅,65,Feature/map interaction bug fix,0,0,unknown
-최재웅,64,Feature/loc my location sort,0,1,unknown
-최재웅,62,Feat: N개 공고 바텀시트내 정렬 제거,0,1,unknown
-최재웅,61,Feature/improve interaction,0,0,unknown
-최재웅,59,Feature/n adfit,0,0,unknown
-최재웅,58,Feat: 전체공고 단일 공고 정렬 타입 동기화,0,1,unknown
-최재웅,56,Feat: 공고 viewtype 분기 추가,0,1,unknown
-최재웅,54,Feature/new loader,0,1,unknown
-최재웅,53,Feature/deny bar,0,1,unknown
-최재웅,51,Feature/divide map,0,1,unknown
-최재웅,48,Feature/divide map,0,0,unknown
-최재웅,46,Feat: 리스트 내 공고뷰 로직 usecase로 이동,0,1,unknown
-최재웅,44,Feature/sort type,0,1,unknown
-최재웅,42,공고리스트 new api 적용,0,1,unknown
-최재웅,38,Feature/toapp move hotspot,0,0,unknown
-최재웅,36,Feature/scrap,2,1,unknown
-최재웅,29,Feature/map bottomsheet,0,1,unknown
-최재웅,25,Feat: 공고리스트 상태관리 방식 수정,0,0,unknown
-최재웅,24,Feature/bottomsheet direct search,0,1,unknown
-최재웅,22,Feature/filter bottonsheet job,0,0,unknown
-최재웅,19,Feature/search current loc,0,0,unknown
-최재웅,18,Fix/sliver list frame drop,0,0,unknown
-최재웅,17,Fix/ios sliverlist frame drop,0,0,unknown
-최재웅,16,Fix/naver map jank,0,0,unknown
-최재웅,15,Feature/optimize bottomsheet,0,0,unknown
-최재웅,14,공고 리스트  N개 공고리스트 추가,0,0,unknown
-최재웅,12,Feature/n recruit list opt,0,0,unknown
-최재웅,7,Feature/new ui,0,0,unknown
-최재웅,5,Feat: bottomsheet draggable -> modal로 변경,0,0,unknown
-최재웅,4,Feature/new ui,0,0,unknown
-최재웅,3,Feature/new ui,0,0,unknown
-최재웅,2,Feature/new ui,0,0,unknown
-최재웅,1,Feature/init structure,0,0,unknown
-김승하,128,[feat] os 11 12대응.,0,0,unknown
-김승하,125,[fix] 가로 세로 회전 맵 재생성 막기. [fix] 바텀시트 maxheight 수정.,0,1,unknown
-김승하,120,[fix] flutter 버전 낮추기.,1,0,unknown
-김승하,113,dev -> master,0,0,unknown
-김승하,112,[hot-fix] 알바지도 새로고침 + 안드로이드 즐겨찾기 마이그레이션 안되는 현상.,0,0,unknown
-김승하,111,[hot-fix] 알바 지도 모듈 (1.0.1) iOS: 7.3.1(7) AOS: 5.3.1(274),0,0,unknown
-김승하,109,[feat] GPS 꺼져있을때 로직 수정,0,1,unknown
-김승하,105,[feat] ] [ALBAMON-23319] 알바지도 UIUX 개선 - https://jira.jobkorea.co.kr/browse/ALBAM,0,1,unknown
-김승하,103,[feat] 테스트 코드 없애기 +.Pin  API 호출전에 웹뷰 쿠키 싱크 맞추기,0,1,unknown
-김승하,102,[stg3] 줌 레벨에 따라 핀의 공고 우선순위 달라짐 - [feat] https://jira.jobkorea.co.kr/browse/TEST-,0,1,unknown
-김승하,98,[fix] qa대응,0,1,unknown
-김승하,94,[fix] 검수,1,1,unknown
-김승하,90,[feat] qa검수 대응 9월8일,0,1,unknown
-김승하,88,[feat] 바텀시트 키보드올라올떄 지도 빌드 안되게 수정,0,1,unknown
-김승하,86,[fix] QA 검수,0,1,unknown
-김승하,84,[fix] 지도 검수,2,1,unknown
-김승하,83,[fix] 지도 검수 대응,0,1,unknown
-김승하,81,[fix] [stg3-m] 알바지도 > 공고 150개 이상 그룹 핀 노출 여부 - https://jira.jobkorea.co.kr/browse,0,1,unknown
-김승하,79,[fix] qa 9월2일자,0,1,unknown
-김승하,72,"[fix][mts3] 추천위치 바로가기 > ""우리집 근처"" 가 ""희망 근무지"" 문구로 노출됨",0,1,unknown
-김승하,71,[feat] 9/1 qa2차,0,1,unknown
-김승하,67,[Feat] 9/1 검수 대응,1,1,unknown
-김승하,63,[Feat] ga추가,0,0,unknown
-김승하,60,[Feat] 핫스팟 + 추천지역 클릭시 핫스팟 오버레이 추가 api적용   쿠키 에러 수정,0,1,unknown
-김승하,57,[feat] 네이밍 오타 수정. [feat] 앱스 이벤트 추가.[feat] 공고 query스트링 추가,0,1,unknown
-김승하,55,[Feat]라이브러리 버전 전체 고정,0,1,unknown
-김승하,52,[feat]핀 + 클러스터링 관련 수정,0,1,unknown
-김승하,50,[feat] 급여 API 수정 추천 선택시 안가지는 현상 위치 권한 동의 후에 캐시 동기화 현재 위치 아이콘 변경.,0,1,unknown
-김승하,49,[feat] ga + apps추가.,0,1,unknown
-김승하,47,[feat] 브레이즈 추가.,0,1,unknown
-김승하,45,dev -> master,0,0,unknown
-김승하,43,[feat] [디자인] 급여핀 시급별 색깔 추가 + 센트리 추가,0,1,unknown
-김승하,41,[feat] 클러스터링 조건 수정  임시로 n개공고 디자인수정.(추후 디자인 나오면 또 수정해야함),0,1,unknown
-김승하,40,[Feature] 클러스터링 알고리즘 변경   Pin API 추가  핀 디자인 변경,0,0,unknown
-김승하,37,[feat] 위치 권한 로직수정.,0,1,unknown
-김승하,35,[feat] 급여핀 이미지 변경,3,0,unknown
-김승하,31,[Feat] 핫픽스  추천지역 로직수정.,0,1,unknown
-김승하,30,[feat] 핫플 알바 API 추가 및 로직 수정.,0,1,unknown
-김승하,28,[feat] 폴더블폰 접었다 폈다 에러수정.,0,1,unknown
-김승하,27,[Feat]지역 검색 API적용,0,1,unknown
-김승하,26,[feat] 지역 검색 전체 삭제 디자인 추가,0,0,unknown
-김승하,23,- [Feat] 내스팟 작업 마무리,0,0,unknown
-김승하,21,[fix] 스팟 설정 임시 커밋.,0,0,unknown
-김승하,20,[Feat] 권한 관련 로직 추가,0,1,unknown
-김승하,13,[Feat] 지역 검색 + 뒤로가기 채널링 추가,0,0,unknown
-김승하,10,[Feat] 급여 제작 핀 + N개 공고핀,0,0,unknown
-김승하,9,[Feat] 스위치 추가 + 핫스팟 오버레이 +clustering 만지작 한거,0,1,unknown
-김승하,8,[Feat] 원거리 근거리,0,0,unknown
-김승하,6,[Feat] 핫스팟 기능 추가,0,0,unknown
-박동수,156,Release/260211,0,0,unknown
-박동수,155,android agp 호환성을 위한 라이브러리 업데이트,0,1,unknown
-박동수,154,속성필터-로컬화,0,0,unknown
-박동수,149,feat: Implement filter title management and API integration,0,1,unknown
-박동수,147,Implement DMP logging functionality in the Albamon map module,0,1,unknown
-박동수,140,feat: 공고 리스트 아이템 스크랩 버튼 터치 영역 확대,0,0,unknown
-박동수,133,Refactor drag end logic in bottom sheets to snap to the nearest position based..,0,0,unknown
-박동수,119,[ALBAMON-25384] 알바지도 리스트 등록일 추가,2,1,unknown
-박동수,39,Feature/adfit,0,0,unknown
-박동수,34,Feature/environment config,0,0,unknown
-박동수,32,Merge branch 'develop' into feature/build-variants,0,1,unknown
-임동현,11,Feat: 쿠키 동기화 작업  AlbamonMapContainer 위젯 생명주기와  네이티브웹뷰 호출 타이밍으로 싱크 맞춤,0,0,unknown
+ㅊㅈㅇ,121,fix: 공고레이아웃 수정,0,1,unknown
+ㅊㅈㅇ,110,fix: 권한 수정,0,1,unknown
+ㅊㅈㅇ,108,fix: f=>w cookie sync 제거,0,1,unknown
+ㅊㅈㅇ,107,Hotfix/sentry version,0,1,unknown
+ㅊㅈㅇ,106,Fix: ios 팝업떴는지 여부 파악용 상수 변경,0,1,unknown
+ㅊㅈㅇ,104,Fix: 광고 10 30 50 ...인덱스에 추가,0,0,unknown
+ㅊㅈㅇ,101,Dimmed 영역 상태바까지 확장  로딩 케이스 수정,0,0,unknown
+ㅊㅈㅇ,100,2025/09/09 QA,0,0,unknown
+ㅊㅈㅇ,99,2025/09/11 QA-jw,0,1,unknown
+ㅊㅈㅇ,97,2025/09/08 QA 처리건,0,0,unknown
+ㅊㅈㅇ,96,2025/09/05 QA 처리건,0,1,unknown
+ㅊㅈㅇ,95,2025/09/03 QA 처리건,0,0,unknown
+ㅊㅈㅇ,93,쿠키 오염으로 api에 잘못된 쿠키 발려있던 이슈 수정,0,2,unknown
+ㅊㅈㅇ,92,[stg3] statusbar 화이트 배경색 제거,0,1,unknown
+ㅊㅈㅇ,91,Qa/09-08-JW,0,1,unknown
+ㅊㅈㅇ,89,[TEST-73132] [stg3] 근무지 지도 > 근처 알바정보 클릭하여 지도 노출 시 기존 리스트 노출 갱신 안됨,0,0,unknown
+ㅊㅈㅇ,87,Qa/09 05 jw,0,1,unknown
+ㅊㅈㅇ,85,QA-2025/09/04 12건,0,1,unknown
+ㅊㅈㅇ,82,30. [TEST-72907] [stg3-m] 공고 핀 선택 시 노출되는 바텀시트 > 스크랩 버튼 탭 시 동작 없음,0,0,unknown
+ㅊㅈㅇ,80,37. [TEST-72850] 지도 상세 필터 스크롤 시 그라데이션 적용,0,0,unknown
+ㅊㅈㅇ,78,Fix: N개 공고 result.failure 구현 누락 수정,0,1,unknown
+ㅊㅈㅇ,77,Fix: 처음 맵 초기화시 크로스헤어 on되지 않도록 수정,0,1,unknown
+ㅊㅈㅇ,76,Fix/test 72919,0,0,unknown
+ㅊㅈㅇ,75,Fix/test 72915,0,0,unknown
+ㅊㅈㅇ,74,Fix/test 72885,0,1,unknown
+ㅊㅈㅇ,73,Fix: 스팟명 수정 버튼문구 저장 -> 적용,0,1,unknown
+ㅊㅈㅇ,70,Fix: 검색하는 모니 이미지 교체 및 사이즈 수정,0,0,unknown
+ㅊㅈㅇ,69,Fix/test 72882,0,1,unknown
+ㅊㅈㅇ,68,Fix/test 72881,0,1,unknown
+ㅊㅈㅇ,66,Fix/test 72872,0,0,unknown
+ㅊㅈㅇ,65,Feature/map interaction bug fix,0,0,unknown
+ㅊㅈㅇ,64,Feature/loc my location sort,0,1,unknown
+ㅊㅈㅇ,62,Feat: N개 공고 바텀시트내 정렬 제거,0,1,unknown
+ㅊㅈㅇ,61,Feature/improve interaction,0,0,unknown
+ㅊㅈㅇ,59,Feature/n adfit,0,0,unknown
+ㅊㅈㅇ,58,Feat: 전체공고 단일 공고 정렬 타입 동기화,0,1,unknown
+ㅊㅈㅇ,56,Feat: 공고 viewtype 분기 추가,0,1,unknown
+ㅊㅈㅇ,54,Feature/new loader,0,1,unknown
+ㅊㅈㅇ,53,Feature/deny bar,0,1,unknown
+ㅊㅈㅇ,51,Feature/divide map,0,1,unknown
+ㅊㅈㅇ,48,Feature/divide map,0,0,unknown
+ㅊㅈㅇ,46,Feat: 리스트 내 공고뷰 로직 usecase로 이동,0,1,unknown
+ㅊㅈㅇ,44,Feature/sort type,0,1,unknown
+ㅊㅈㅇ,42,공고리스트 new api 적용,0,1,unknown
+ㅊㅈㅇ,38,Feature/toapp move hotspot,0,0,unknown
+ㅊㅈㅇ,36,Feature/scrap,2,1,unknown
+ㅊㅈㅇ,29,Feature/map bottomsheet,0,1,unknown
+ㅊㅈㅇ,25,Feat: 공고리스트 상태관리 방식 수정,0,0,unknown
+ㅊㅈㅇ,24,Feature/bottomsheet direct search,0,1,unknown
+ㅊㅈㅇ,22,Feature/filter bottonsheet job,0,0,unknown
+ㅊㅈㅇ,19,Feature/search current loc,0,0,unknown
+ㅊㅈㅇ,18,Fix/sliver list frame drop,0,0,unknown
+ㅊㅈㅇ,17,Fix/ios sliverlist frame drop,0,0,unknown
+ㅊㅈㅇ,16,Fix/naver map jank,0,0,unknown
+ㅊㅈㅇ,15,Feature/optimize bottomsheet,0,0,unknown
+ㅊㅈㅇ,14,공고 리스트  N개 공고리스트 추가,0,0,unknown
+ㅊㅈㅇ,12,Feature/n recruit list opt,0,0,unknown
+ㅊㅈㅇ,7,Feature/new ui,0,0,unknown
+ㅊㅈㅇ,5,Feat: bottomsheet draggable -> modal로 변경,0,0,unknown
+ㅊㅈㅇ,4,Feature/new ui,0,0,unknown
+ㅊㅈㅇ,3,Feature/new ui,0,0,unknown
+ㅊㅈㅇ,2,Feature/new ui,0,0,unknown
+ㅊㅈㅇ,1,Feature/init structure,0,0,unknown
+ㄱㅅㅎ,128,[feat] os 11 12대응.,0,0,unknown
+ㄱㅅㅎ,125,[fix] 가로 세로 회전 맵 재생성 막기. [fix] 바텀시트 maxheight 수정.,0,1,unknown
+ㄱㅅㅎ,120,[fix] flutter 버전 낮추기.,1,0,unknown
+ㄱㅅㅎ,113,dev -> master,0,0,unknown
+ㄱㅅㅎ,112,[hot-fix] 알바지도 새로고침 + 안드로이드 즐겨찾기 마이그레이션 안되는 현상.,0,0,unknown
+ㄱㅅㅎ,111,[hot-fix] 알바 지도 모듈 (1.0.1) iOS: 7.3.1(7) AOS: 5.3.1(274),0,0,unknown
+ㄱㅅㅎ,109,[feat] GPS 꺼져있을때 로직 수정,0,1,unknown
+ㄱㅅㅎ,105,[feat] ] [ALBAMON-23319] 알바지도 UIUX 개선 - https://jira.jobkorea.co.kr/browse/ALBAM,0,1,unknown
+ㄱㅅㅎ,103,[feat] 테스트 코드 없애기 +.Pin  API 호출전에 웹뷰 쿠키 싱크 맞추기,0,1,unknown
+ㄱㅅㅎ,102,[stg3] 줌 레벨에 따라 핀의 공고 우선순위 달라짐 - [feat] https://jira.jobkorea.co.kr/browse/TEST-,0,1,unknown
+ㄱㅅㅎ,98,[fix] qa대응,0,1,unknown
+ㄱㅅㅎ,94,[fix] 검수,1,1,unknown
+ㄱㅅㅎ,90,[feat] qa검수 대응 9월8일,0,1,unknown
+ㄱㅅㅎ,88,[feat] 바텀시트 키보드올라올떄 지도 빌드 안되게 수정,0,1,unknown
+ㄱㅅㅎ,86,[fix] QA 검수,0,1,unknown
+ㄱㅅㅎ,84,[fix] 지도 검수,2,1,unknown
+ㄱㅅㅎ,83,[fix] 지도 검수 대응,0,1,unknown
+ㄱㅅㅎ,81,[fix] [stg3-m] 알바지도 > 공고 150개 이상 그룹 핀 노출 여부 - https://jira.jobkorea.co.kr/browse,0,1,unknown
+ㄱㅅㅎ,79,[fix] qa 9월2일자,0,1,unknown
+ㄱㅅㅎ,72,"[fix][mts3] 추천위치 바로가기 > ""우리집 근처"" 가 ""희망 근무지"" 문구로 노출됨",0,1,unknown
+ㄱㅅㅎ,71,[feat] 9/1 qa2차,0,1,unknown
+ㄱㅅㅎ,67,[Feat] 9/1 검수 대응,1,1,unknown
+ㄱㅅㅎ,63,[Feat] ga추가,0,0,unknown
+ㄱㅅㅎ,60,[Feat] 핫스팟 + 추천지역 클릭시 핫스팟 오버레이 추가 api적용   쿠키 에러 수정,0,1,unknown
+ㄱㅅㅎ,57,[feat] 네이밍 오타 수정. [feat] 앱스 이벤트 추가.[feat] 공고 query스트링 추가,0,1,unknown
+ㄱㅅㅎ,55,[Feat]라이브러리 버전 전체 고정,0,1,unknown
+ㄱㅅㅎ,52,[feat]핀 + 클러스터링 관련 수정,0,1,unknown
+ㄱㅅㅎ,50,[feat] 급여 API 수정 추천 선택시 안가지는 현상 위치 권한 동의 후에 캐시 동기화 현재 위치 아이콘 변경.,0,1,unknown
+ㄱㅅㅎ,49,[feat] ga + apps추가.,0,1,unknown
+ㄱㅅㅎ,47,[feat] 브레이즈 추가.,0,1,unknown
+ㄱㅅㅎ,45,dev -> master,0,0,unknown
+ㄱㅅㅎ,43,[feat] [디자인] 급여핀 시급별 색깔 추가 + 센트리 추가,0,1,unknown
+ㄱㅅㅎ,41,[feat] 클러스터링 조건 수정  임시로 n개공고 디자인수정.(추후 디자인 나오면 또 수정해야함),0,1,unknown
+ㄱㅅㅎ,40,[Feature] 클러스터링 알고리즘 변경   Pin API 추가  핀 디자인 변경,0,0,unknown
+ㄱㅅㅎ,37,[feat] 위치 권한 로직수정.,0,1,unknown
+ㄱㅅㅎ,35,[feat] 급여핀 이미지 변경,3,0,unknown
+ㄱㅅㅎ,31,[Feat] 핫픽스  추천지역 로직수정.,0,1,unknown
+ㄱㅅㅎ,30,[feat] 핫플 알바 API 추가 및 로직 수정.,0,1,unknown
+ㄱㅅㅎ,28,[feat] 폴더블폰 접었다 폈다 에러수정.,0,1,unknown
+ㄱㅅㅎ,27,[Feat]지역 검색 API적용,0,1,unknown
+ㄱㅅㅎ,26,[feat] 지역 검색 전체 삭제 디자인 추가,0,0,unknown
+ㄱㅅㅎ,23,- [Feat] 내스팟 작업 마무리,0,0,unknown
+ㄱㅅㅎ,21,[fix] 스팟 설정 임시 커밋.,0,0,unknown
+ㄱㅅㅎ,20,[Feat] 권한 관련 로직 추가,0,1,unknown
+ㄱㅅㅎ,13,[Feat] 지역 검색 + 뒤로가기 채널링 추가,0,0,unknown
+ㄱㅅㅎ,10,[Feat] 급여 제작 핀 + N개 공고핀,0,0,unknown
+ㄱㅅㅎ,9,[Feat] 스위치 추가 + 핫스팟 오버레이 +clustering 만지작 한거,0,1,unknown
+ㄱㅅㅎ,8,[Feat] 원거리 근거리,0,0,unknown
+ㄱㅅㅎ,6,[Feat] 핫스팟 기능 추가,0,0,unknown
+ㅂㄷㅅ,156,Release/260211,0,0,unknown
+ㅂㄷㅅ,155,android agp 호환성을 위한 라이브러리 업데이트,0,1,unknown
+ㅂㄷㅅ,154,속성필터-로컬화,0,0,unknown
+ㅂㄷㅅ,149,feat: Implement filter title management and API integration,0,1,unknown
+ㅂㄷㅅ,147,Implement DMP logging functionality in the Albamon map module,0,1,unknown
+ㅂㄷㅅ,140,feat: 공고 리스트 아이템 스크랩 버튼 터치 영역 확대,0,0,unknown
+ㅂㄷㅅ,133,Refactor drag end logic in bottom sheets to snap to the nearest position based..,0,0,unknown
+ㅂㄷㅅ,119,[ALBAMON-25384] 알바지도 리스트 등록일 추가,2,1,unknown
+ㅂㄷㅅ,39,Feature/adfit,0,0,unknown
+ㅂㄷㅅ,34,Feature/environment config,0,0,unknown
+ㅂㄷㅅ,32,Merge branch 'develop' into feature/build-variants,0,1,unknown
+ㅇㄷㅎ,11,Feat: 쿠키 동기화 작업  AlbamonMapContainer 위젯 생명주기와  네이티브웹뷰 호출 타이밍으로 싱크 맞춤,0,0,unknown

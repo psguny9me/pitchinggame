@@ -1,1097 +1,1097 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-신동현,1136,feat(home): 푸시 알림 설정 변경 시 Braze 이벤트 전송 추가,0,2,unknown
-신동현,1130,feat(notification_setting  settings): executeUseCase 패턴 적용 및 Braze 이벤트 연동,0,1,unknown
-신동현,1129,test: Filter  Search  Settings 등 위젯 테스트 대규모 개선,0,1,unknown
-신동현,1118,feat(FindJob): 필터 미설정 시 SDUI 섹션 및 구분선 숨김 처리,0,1,unknown
-신동현,1112,fix(FilterKeywordInput): 키보드 위 자동완성 영역 고려한 스크롤 위치 계산 개선,0,1,unknown
-신동현,1110,refactor(style): JkExtendedValue 중복 상수를 JkAppSize로 마이그레이션,0,2,unknown
-신동현,1107,AppBar 높이 56pt 통일 및 아이콘 버튼 패턴 적용,1,2,unknown
-신동현,1106,feat(TEST-77773): 슈퍼기업관 placeholder 중복 방지 기능 추가,0,1,unknown
-신동현,1104,fix: 스마트핏 섹션을 empty 판정 카운트에서 제외,1,1,unknown
-신동현,1098,refactor(ios): 앱 아이콘을 Xcode 15+ 단일 이미지 방식으로 현대화,0,1,unknown
-신동현,1082,refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경,0,1,unknown
-신동현,1079,refactor(find_job): DMP 로깅용 정렬값을 별도 필드로 분리,0,1,unknown
-신동현,1076,feat(find_job): DMP 로깅에 정렬 옵션(sort) 추가,0,1,unknown
-신동현,1071,fix(filter): 직무 필터 카운트 계산 시 상위/하위 코드 모두 포함,0,1,unknown
-신동현,1069,fix(find_job): 로딩 상태 해제 위치 수정 및 중복 호출 방지,0,1,unknown
-신동현,1062,feat(bottom_sheet): DetailItem 칩 레이블에 autoTextSize 옵션 적용,0,1,unknown
-신동현,1061,feat(analytics): 필터 초기화 버튼 GA 이벤트 트래킹 추가,0,1,unknown
-신동현,1050,fix: 채용공고 화면 Empty State 조기 표시 버그 수정,0,1,unknown
-신동현,1049,[Remove] Quick Actions (앱 바로가기) 기능 전체 제거,0,1,unknown
-신동현,1045,[GA] 공통 필터 이벤트 탭 라벨에 접두사 추가,0,1,unknown
-신동현,1034,featureCode,0,1,unknown
-신동현,1030,[GA] 필터 GA 이벤트 전송 로직 개선,0,1,unknown
-신동현,1026,체크 아이콘 컬러 변경,0,1,unknown
-신동현,1022,[TEST-77682] My필터 선택 시 공고 수 조회 및 UI 개선,0,1,unknown
-신동현,1019,executeUseCase 사용,0,1,unknown
-신동현,1016,fix(ui): 필터 버튼 그라데이션 stops 및 색상 간소화,0,1,unknown
-신동현,1015,체크 아이콘 컬러변경,0,1,unknown
-신동현,1002,fix(ui): AppBar 우측 버튼 크기 및 위치 정렬 개선,0,1,unknown
-신동현,1000,feat(GA): 통합필터 GA 이벤트 트래킹 상세화 개선,0,1,unknown
-신동현,999,feat(TEST-77603): UI 수정 요청 사항 적용,0,1,unknown
-신동현,998,test: AppAppBar.basic 마이그레이션을 위한 테스트 업데이트 (Red Phase),0,1,unknown
-신동현,997,feat(TEST-77604): 필터 버튼 그라데이션 효과 개선,0,1,unknown
-신동현,996,feat(TEST-77570): 키워드 필터 허용 문자에 중점(·) 추가,0,1,unknown
-신동현,986,feat: Inject FilterCodeListUseCase into FilterController,0,1,unknown
-신동현,980,test(filter): 경력 슬라이더 0년 시작 Extension 테스트 추가,0,1,unknown
-신동현,976,[refactor] Remove SavedCondition mock and migrate filter models to proper archit,0,1,unknown
-신동현,971,refactor(filter): 합격축하금 필터 GA 이벤트를 활성화 시에만 추적,0,1,unknown
-신동현,970,fix(find_job): 이메일 접수 방식 라벨을 온라인으로 변경,0,1,unknown
-신동현,967,refactor(filter): GA 라벨 통합 - CommonSavedFilterName으로 isPinned 기반 통합,0,1,unknown
-신동현,966,refactor(filter): MyFilterBar 오버레이 제거 및 레이아웃 간소화,0,1,unknown
-신동현,965,[refactor] Migrate to SearchResultSortType enum and remove mock dependencies,0,1,unknown
-신동현,963,fix: 최근 필터 리스트 스크롤 끝 도달 시 항목 dispose 방지,0,1,unknown
-신동현,961,feat(toast): AppToast에 bottomOffset 파라미터 추가,0,1,unknown
-신동현,953,fix(filter): 급여 필터 필드의 null 처리 개선,0,1,unknown
-신동현,952,fix(filter): 업종 서브코드 필터링 시 빈 코드리스트 예외 처리,0,1,unknown
-신동현,951,[refactor] Mock 검색 관련 코드 제거 및 테스트 의존성 업데이트,0,1,unknown
-신동현,949,[GA] 필터 GA 이벤트 filterName 수정 및 경력 이벤트 개별 발송 처리,0,1,unknown
-신동현,946,[GA] 필터 바텀시트 GA 이벤트에 진입 경로(entrySource) 타입 추가,0,1,unknown
-신동현,945,feat(TEST-77387): 스마트핏 공고 ID 분리 관리 및 새로고침 로직 개선,0,1,unknown
-신동현,933,fix(TEST-77393): CollapsedChipView 오른쪽 패딩 조정,0,1,unknown
-신동현,929,feat(TEST-77274): 필터 탭바 인디케이터 및 칩 UI 개선,0,1,unknown
-신동현,924,feat(TEST-77370): 공고찾기 정렬 드롭다운 UI 개선,0,1,unknown
-신동현,922,feat(TEST-76953): SmartFitSection 카드 개수별 렌더링 전략 구현,0,1,unknown
-신동현,920,[TEST-76851] Perf: RecentFilterCard에 AutomaticKeepAliveClientMixin 적용,0,1,unknown
-신동현,914,[fix] 급여 슬라이더 블리딩 방지 - active 트랙 높이 조정,0,1,unknown
-신동현,911,Fix: 접수 유형 텍스트 용어 통일 (이메일 지원 → 이메일 접수),0,1,unknown
-신동현,909,[Feature] Display '연봉 전체' for full salary range in recent filters,0,0,unknown
-신동현,905,refactor(test): JobCardInfoMock을 test/fixtures로 이관,0,1,unknown
-신동현,904,[style] 일자리찾기 정렬 드롭다운 너비 조정 (120px → 140px),0,1,unknown
-신동현,901,[TEST-77274] 필터 탭바 레이블 패딩 조정,0,1,unknown
-신동현,900,feat(TEST-77328): FINDJOB_LIST 전용 읽음 표시 처리 추가,0,1,unknown
-신동현,897,feat(TEST-77327): 추천 검색어 표시 조건에 최근 검색어 체크 추가,0,1,unknown
-신동현,895,[TEST-77274] 검색 진입 시 필터 툴팁 위치 조정 및 키워드 입력 자동 스크롤 기능 추가,0,0,unknown
-신동현,889,fix : 콘텐츠 화면 기본 타이틀 '취업전략' → '콘텐츠' 변경,0,1,unknown
-신동현,888,[TEST-77286] 검색 결과 건수 포맷팅 및 UI 갱신 버그 수정,0,1,unknown
-신동현,887,[TEST-77274] 필터 슬라이더 tick mark를 thumb 영역 밖에만 표시하도록 개선,0,1,unknown
-신동현,884,[TEST-76554] 연봉 필터 전체 선택 시 최소값을 슬라이더 최소값으로 설정,0,1,unknown
-신동현,883,[TEST-75952] SelectionBottomSheet UI 개선 및 TopShadowClipper 공통화,0,1,unknown
-신동현,879,[TEST-77271] 검색 홈 화면 진입 시 지역 필터 동기화 추가,0,1,unknown
-신동현,877,[TEST-76829] 핀 추가 실패 시 마이핀 공고 건수 조회 누락 수정,0,1,unknown
-신동현,876,[TEST-75965] 연봉 필터 슬라이더 thumb 외곽선 및 그림자 효과 추가,0,1,unknown
-신동현,875,[TEST-77246] 검색 결과 정렬 타입 JsonValue 값 API 스펙에 맞게 수정,0,1,unknown
-신동현,863,feat(GA): 필터 적용 시 통합검색결과보기_(필터명) GA 이벤트 구현,0,1,unknown
-신동현,861,[TEST-76710] 필터 탭바 레이아웃 개선 및 전체 필터 탭 제외,0,1,unknown
-신동현,856,[TEST-77012] 검색 결과 연관 키워드 섹션 하단 패딩 조정,0,1,unknown
-신동현,855,[TEST-76544] feat: 경력 년수 표시 기준 10년 이상으로 변경,0,1,unknown
-신동현,854,[TEST-77012] 검색 화면 자동완성 섹션 UI 개선,0,1,unknown
-신동현,842,refactor(TEST-77041): 필터 화면 채용공고 건수 최대값 제한 제거,0,1,unknown
-신동현,838,fix(TEST-75184): 핀 설정/해제 시 기존 필터의 jobCount 유실 문제 수정,0,1,unknown
-신동현,836,feat(GA): 주요 화면 GA 페이지뷰 추적 구현,0,1,unknown
-신동현,832,feat(GA): GA 페이지 트래킹 정의 추가,0,1,unknown
-신동현,830,feat(GA): 최근필터 적용 시 GA 이벤트 추적 추가,1,1,unknown
-신동현,826,feat: JOB찾기 영역 GA 이벤트 정의 추가,0,1,unknown
-신동현,825,fix: DI 설정 및 테스트 코드 문법 오류 수정,0,1,unknown
-신동현,824,feat(TEST-77132): searchResult 진입 시 필터 카운트에서 포함단어 제외,0,1,unknown
-신동현,823,test: 테스트 코드 대규모 리팩토링 및 안정화,0,1,unknown
-신동현,814,feat(filter): My필터 자동 선택 및 필터 비교 로직 개선 [TEST-76743],0,1,unknown
-신동현,813,feat(bottom-sheet): 바텀시트 푸터 상단 그림자 클리핑 적용,0,1,unknown
-신동현,812,refactor: 일자리 찾기 빈 상태 화면 스타일 개선,0,1,unknown
-신동현,811,[TEST-75965] feat: 필터 화면 슬라이더 UI/UX 개선,0,1,unknown
-신동현,810,[TEST-75973] feat: AppButton iconSize 파라미터 추가 및 복지 바텀시트 UI 개선,0,1,unknown
-신동현,806,[TEST-77026] 필터 칩 색상 스타일 변경,0,1,unknown
-신동현,805,[TEST-76680] feat: 정렬 드롭다운 스크롤 시 자동 닫힘 기능 구현,0,1,unknown
-신동현,803,fix(find_job): FilterBar 배지 clipping 문제 해결,0,1,unknown
-신동현,801,feat: 바텀시트에 useFullWidth 옵션 추가 (Z폴드 대응),0,1,unknown
-신동현,799,feat(TEST-76690): 복리후생 검색 결과 리스트 스크롤 동적 제어,0,1,unknown
-신동현,797,[TEST-76193] 필터 탭 keyword 섹션 제목 동적 변경,0,1,unknown
-신동현,796,feat(TEST-76789): CardJobBasic viewedLabel 컬러 조건부 적용,0,1,unknown
-신동현,788,[TEST-76700] 필터 바 하단 구분선 색상 변경,0,1,unknown
-신동현,787,feat(filter): SearchJobCountUseCase 조건부 분기 구현 [TEST-77041],0,1,unknown
-신동현,785,feat(TEST-76808): 핀 추가 실패 시 MY 필터 목록 갱신 기능 추가,0,1,unknown
-신동현,784,fix(TEST-76820): 페이지네이션 hasMore 계산 로직 버그 수정,0,1,unknown
-신동현,781,feat(TEST-76812): 키워드 필터 조건 체크 및 태그 표시 기능 개선,0,0,unknown
-신동현,779,feat(TEST-76829): 핀 설정 후 새 서버 필터 공고 건수 조회 기능 추가,0,1,unknown
-신동현,778,refactor(mock): 코드 스타일 및 lint 규칙 준수를 위한 정리,0,1,unknown
-신동현,777,[TEST-76838] 로그아웃 시 지원공고제외 필터 자동 제거 및 로그인 체크 추가,0,1,unknown
-신동현,776,[TEST-76857] 필터 화면 공고 건수 표시 최대값 제한 추가,0,1,unknown
-신동현,775,[TEST-76851] test: RecentFilterController 테스트 환경 구성,0,1,unknown
-신동현,774,refactor: presentation/mock 폴더의 더 이상 사용되지 않는 Mock 파일 삭제,0,1,unknown
-신동현,759,fix(filter): 복리후생 필터 빈 선택 상태에서 적용 버튼 활성화,0,1,unknown
-신동현,756,feat(filter): 연봉 슬라이더 조작 시 연봉 타입 자동 설정 기능 추가,0,1,unknown
-신동현,752,fix(filter): 경력 필터 최대값 범위 표시 형식 개선,0,1,unknown
-신동현,747,fix(filter): 경력 필터 동일 년수 표시 형식 개선,0,1,unknown
-신동현,744,refactor(salary): PayType별 급여 표시 포맷팅 개선,0,1,unknown
-신동현,738,fix: SmartFit 삽입 인덱스 계산 시 빈 데이터 검증 추가,0,1,unknown
-신동현,737,refactor: Mock 파일들을 test/fixtures로 이동,0,1,unknown
-신동현,734,refactor: SmartFit 채용공고 목록 개수 계산 로직 개선,0,1,unknown
-신동현,731,style: 정렬 드롭다운 메뉴 UI 개선,0,1,unknown
-신동현,727,refactor: 최근 필터 저장 로직 호출 위치 개선 (TEST-76534),0,1,unknown
-신동현,726,feat(filter): 로그인 필요 태그 선택 후 마이필터 목록 갱신,0,0,unknown
-신동현,714,refactor: UI 디자인 시스템 일관성 개선 및 Android 텍스트 입력 버그 수정,0,0,unknown
-신동현,706,feat(find_job): Empty State 표시 시 Footer/구분선/헤더 숨김 처리,0,0,unknown
-신동현,703,[TEST-76617] fix: 즉시 지원 버튼 로그인 화면 이동 시 결과 대기 추가,0,1,unknown
-신동현,702,[TEST-75908] FilterBar 설정 아이콘 색상 변경,0,1,unknown
-신동현,701,fix(ui): 필터 툴팁 위치 및 드롭다운 아이콘 수정,0,1,unknown
-신동현,698,feat(filter): My필터 선택 시 UI 상태 동기화 및 JkTextField textAlign 지원,0,1,unknown
-신동현,697,feat(filter): 복리후생 검색 결과 하단 탭 시 검색 초기화 기능 추가,0,1,unknown
-신동현,696,[TEST-76617] feat: 즉시지원 버튼 클릭 시 로그인 체크 추가,0,1,unknown
-신동현,694,feat(find_job): Empty State 표시 조건 로직 추가 및 테스트 구현,0,1,unknown
-신동현,690,refactor(filter): RecentFilter 네비게이션 로직을 Controller로 이동,0,1,unknown
-신동현,685,feat(filter): 모든 서버 필터 카운트 조회 및 헤더 현황 동적 표시,0,1,unknown
-신동현,684,feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가,0,1,unknown
-신동현,683,feat(TEST-76340): SmartFit 섹션 UI 개선 및 광고 표시 적용,0,1,unknown
-신동현,682,feat(find_job): SmartFitSection 카드에 isAdSection 파라미터 추가,0,1,unknown
-신동현,681,fix(find_job): 정렬 드롭다운 UI 개선,0,1,unknown
-신동현,678,feat(filter): 필터 이름 입력 시 특수문자 제한 기능 추가,0,1,unknown
-신동현,675,fix(recent_filter): 로그인 화면 이동 시 결과 대기 옵션 추가,0,1,unknown
-신동현,674,fix(my_filter): 칩 리스트 최소 너비 보장을 위한 ConstrainedBox 추가,0,1,unknown
-신동현,671,fix(TEST-76523): 2뎁스 바텀시트 좌우 항목 높이 48px로 통일,0,1,unknown
-신동현,670,fix(filter): 키워드 필터 UI 텍스트 '키워드'를 '단어'로 변경,0,1,unknown
-신동현,669,fix(filter): 필터 화면 툴팁 위치 offset 조정,0,1,unknown
-신동현,668,fix(recent-filter): 핀 고정/해제 실패 시 에러 토스트로 변경,0,1,unknown
-신동현,666,feat: SelectionBottomSheetView에 hideFooterWhenEmpty 옵션 추가,0,0,unknown
-신동현,665,refactor(find_job): 채용공고 지원 버튼 클릭 핸들러를 Controller로 이동 [TEST-76380],0,0,unknown
-신동현,664,fix(filter-bar): 사용자 스크롤 전까지 그라데이션 표시 유지,0,1,unknown
-신동현,662,fix(find_job): Footer 상단 간격 증가 [TEST-76066],0,1,unknown
-신동현,660,feat(filter): 연봉 필터 동일 값 선택 시 단일 표시 [TEST-76433],0,0,unknown
-신동현,658,feat(filter): 슬라이더 동일 값 표시 개선 [TEST-76418],0,1,unknown
-신동현,656,fix: SmartFitSection UI 스타일 및 Mock 파라미터 타입 수정,0,1,unknown
-신동현,645,feat(filter): 검색 화면에서 필터 진입 시 검색 컨텍스트 전달 기능 구현,2,1,unknown
-신동현,642,refactor(benefit): 복리후생 검색바를 공통 위젯으로 교체,0,1,unknown
-신동현,640,fix: 드롭다운 메뉴 offset 조정 및 mock 파일 업데이트,0,1,unknown
-신동현,639,feat(filter_bar): 스크롤 끝 감지 및 그라데이션 동적 표시 기능 추가 [TEST-75908],0,1,unknown
-신동현,635,feat(recent_filter): 핀 고정된 필터의 공고 카운트 조회 및 표시 기능 구현,0,1,unknown
-신동현,632,MY필터 바 기능 구현 및 최근 필터 UseCase 연동,0,1,unknown
-신동현,627,[TEST-75861] 구인공고 리스트 헤더 섹션 padding 조정,0,1,unknown
-신동현,626,feat(TEST-76105): 필터바 설정 버튼 카운트에서 칩 필터 제외,0,1,unknown
-신동현,625,feat(TEST-75985): ChipInput 읽기 전용 모드 추가,0,1,unknown
-신동현,624,fix(strings): 키워드 필터 툴팁 문구 명확성 개선,0,1,unknown
-신동현,623,fix(TEST-75930): 산업 필터 중분류별 선택 카운트가 표시되지 않는 버그 수정,0,1,unknown
-신동현,621,fix: 필터바 리스트 끝 패딩 값 조정 (64px → 54px),0,1,unknown
-신동현,612,feat(AppTabBar): labelPadding 파라미터 추가,0,1,unknown
-신동현,611,feat(TEST-76098): 선택 항목 칩 목록 가로 스크롤 UI로 변경,0,1,unknown
-신동현,610,fix(filter): 필터 UI 라벨명 및 헤더 구분선 수정,0,0,unknown
-신동현,609,fix(TEST-76144): 직무/산업 바텀시트 재진입 시 칩 스크롤 미동작 버그 수정,0,1,unknown
-신동현,602,fix: 급여 필터 입력 필드 단위 표시 텍스트 수정,0,1,unknown
-신동현,600,fix: 경력 슬라이더 전체 선택 텍스트를 '경력 전체'로 변경,0,1,unknown
-신동현,594,[fix] CardJobBasic 하단 패딩 조건부 적용,0,1,unknown
-신동현,593,[TEST-76066] 일자리찾기 화면 콘텐츠와 푸터 사이 간격 추가,0,0,unknown
-신동현,592,[TEST-76076] 메뉴에서 로그인 버튼 클릭 시 메뉴 닫기,0,0,unknown
-신동현,591,[TEST-76042] refactor: 권한 안내 화면 확인 버튼 색상 변경,0,0,unknown
-신동현,590,fix(TEST-75949): 필터 툴팁 위치 개선,0,0,unknown
-신동현,578,feat(TEST-75924): 필터 복원 시 직무/산업 항목에 부모 카테고리명 표시,0,0,unknown
-신동현,577,refactor(TEST-75912): 필터 컨트롤러 초기 선택 복원 로직 개선,0,1,unknown
-신동현,575,fix(menu): 빠른 화면 전환 시 크래시 방지를 위해 safeNotifyListener 적용,0,0,unknown
-신동현,574,feat(TEST-75957): 급여 슬라이더 단위 세분화 및 트랙 탭 기능 추가,0,1,unknown
-신동현,572,feat(TEST-75985): 키워드 입력 문자 제한 및 길이 제한 기능 구현,1,1,unknown
-신동현,571,feat(TEST-75987): 키워드 입력 최대 개수 검증 및 UX 개선,0,0,unknown
-신동현,570,[TEST-75908] FilterBarSettingsButton 선택 상태 시각적 피드백 개선,0,1,unknown
-신동현,565,feat(TEST-75972): BenefitSearchBar에 onTapOutside 콜백 추가,0,0,unknown
-신동현,564,feat(filter): 복리후생 검색 결과에서 최대 10개 초과 시 토스트 표시,0,1,unknown
-신동현,563,feat(TEST-75861): 채용공고 탭 콘텐츠 레이아웃 간격 개선,1,1,unknown
-신동현,562,fix(TEST-75966): 필터 화면 키보드 포커스 해제 개선,0,0,unknown
-신동현,561,feat(TEST-75905): 지역/직무/산업 선택 제한 해제,0,2,unknown
-신동현,560,feat(TEST-75968): 급여 필터 입력 필드 자릿수 제한 추가,0,0,unknown
-신동현,559,fix(TEST-75914): 등록일 필터 토글 해제 기능 추가,1,1,unknown
-신동현,558,fix(TEST-75933): CardJobBasic 카드 UI 개선,1,1,unknown
-신동현,549,fix(filter): 직무 선택 중분류 카운트 조회 시 mappingCode 폴백 추가,0,0,unknown
-신동현,547,feat(TEST-75927): 지역/산업 바텀시트 타이틀 변경,0,1,unknown
-신동현,546,TEST-75760 - feat(find-job): 스마트핏 노출 로직 개선 및 페이지 사이즈 고정,0,0,unknown
-신동현,542,[TEST-75852] feat: 채용공고 화면에 AppFooterWidget 추가,0,0,unknown
-신동현,541,TEST-75850 - feat(search): 필터 카운트를 개별 항목 수 기준으로 변경,0,0,unknown
-신동현,537,feature: 급여 필터 UX 개선 및 타입별 상태 보존,0,1,unknown
-신동현,535,style: FilterBar 컴포넌트 UI 스타일 개선,0,0,unknown
-신동현,530,feat(TEST-75845): FilterRequestBody 필터 카운트에 빠른 설정 및 등록일 추가,1,1,unknown
-신동현,528,refactor(filter): FilterBarType에서 employmentType(고용형태) 필터 제거,0,0,unknown
-신동현,527,fix: 필터 등록일(period) 복원 로직 추가,0,0,unknown
-신동현,525,refactor(filter-type-parser): API 키 기반 FilterType 매칭 로직으로 개선,0,0,unknown
-신동현,524,refactor: Hierarchical Selection 바텀시트 고정 높이 계산 제거 및 Expanded 기반 유연한 레이아웃으로 개선,0,0,unknown
-신동현,523,feat(TEST-75861): 채용공고 카드 버튼 스타일 및 목록 헤더 UI 개선,0,1,unknown
-신동현,519,feat(filter-bar): 서비스 탭 웹뷰 이동 기능 구현 및 네이밍 개선,0,0,unknown
-신동현,512,[TEST-75738] 앱바 알림 액션 헬퍼 추출 및 공통화,0,0,unknown
-신동현,510,[TEST-75739] 채용공고 화면 검색 버튼 동작 추가,0,1,unknown
-신동현,509,feat(find_job): 앱바 메뉴 버튼에 네비게이션 기능 추가,0,0,unknown
-신동현,503,refactor: 필터 하단바 초기화 버튼 제거 및 lazy loading 상수 추출,0,0,unknown
-신동현,498,refactor: CardJobBasic 탭 동작을 LinkUtil 서비스로 위임,0,0,unknown
-신동현,495,refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체,0,0,unknown
-신동현,491,style(filter): excludeApplied 필터 아이콘 변경,0,1,unknown
-신동현,478,feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현,0,1,unknown
-신동현,444,feat(FilterBarController): 검색 조건 저장/로드 기능 추가,7,0,unknown
-신동현,430,feat : FilterRouteParams DTO 도입 및 검색 화면 키워드 전달,11,1,unknown
-신동현,427,feat(AppTabBar): tabAlignment 파라미터 추가,3,0,unknown
-신동현,400,refactor: PushConsentDialog API 단순화 - onClosePressed에 doNotShowAgain 상태 전달,3,1,unknown
-신동현,345,feature : iOS Rich Push 알림 지원 및 Notification Service Extension 구현,0,1,unknown
-신동현,343,[feat] 필터 화면 공고 카운트 표시 기능 구현,6,1,unknown
-신동현,313,[refactor] 화면 방향 설정을 Mock에서 UseCase 패턴으로 리팩토링,7,0,unknown
-신동현,294,Feat: 검색 결과 화면 FilterBar 통합 및 스크롤 상태 관리 개선,3,1,unknown
-신동현,293,refactor : 설정 화면 하단 SafeArea 처리 개선,4,0,unknown
-신동현,278,feat(find_job): 채용공고 목록 정렬 드롭다운 기능 구현,2,1,unknown
-신동현,277,feat(filter): FilterBar에서 필터 화면 특정 섹션으로 자동 스크롤 기능 구현,6,1,unknown
-신동현,265,[refactor] FilterBar 컨트롤러 통합 - FindJob/SearchResult 공통화,13,0,unknown
-신동현,263,[test] Presentation Layer 단위 테스트 추가 - Filter  Location  Menu  PhotoEdit  Search ,3,1,unknown
-신동현,243,[feat] 채용공고 찾기 화면에 스마트핏 섹션 및 필터 시스템 개선,6,0,unknown
-신동현,242,feat(filter): 핀 필터와 로컬 필터 분리 구현,10,0,unknown
-신동현,208,refactor(notification_setting): Mock 의존성 제거 및 Domain 모델 직접 사용,2,1,unknown
-신동현,197,feat(find_job): 일자리찾기 탭 UI 컴포넌트 구현 및 리팩토링,12,1,unknown
-신동현,196,refactor(selection): View 초기화 중복 방지 로직 개선,0,1,unknown
-신동현,184,Add: 최근 필터 기능 구현,14,0,unknown
-신동현,175,refactor: Restructure filter models and update data types,10,0,unknown
-신동현,163,refactor: 사진 편집 바텀시트 반환값 기반 아키텍처로 개선,3,0,unknown
-신동현,155,refactor: 바텀시트 매니저의 콜백 패턴을 반환값 패턴으로 리팩토링,3,0,unknown
-신동현,154,refactor : 공통 앱바 컴포넌트로 통합,3,0,unknown
-신동현,133,feat: 필터 화면 핵심 기능 구현 (Presentation Layer),12,0,unknown
-신동현,132,feature: 직무 선택 바텀시트 구현,10,0,unknown
-신동현,103,feat: 알림 설정 개인정보 동의 및 실제 UseCase 연동 구현,8,0,unknown
-신동현,92,feat: 설정 화면 소셜 로그인 UI 개선 및 앱 업데이트 기능 추가,2,0,unknown
-신동현,65,[feat] iOS capabilities 설정 추가,0,1,unknown
-신동현,62,feat: Quick Actions 기능 구현 (홈 스크린 단축키),4,0,unknown
-신동현,61,feat: ASIS 알림설정 화면 이관 (Android → Flutter),13,0,unknown
-신동현,48,refactor: 설정 화면 문자열 상수화 및 오픈소스 라이선스 기능 구현,4,1,unknown
-신동현,38,refactor: ClassicNumeric 클래스를 static const 방식으로 단순화,0,1,unknown
-신동현,35,refactor: ClassicNumeric 싱글톤 패턴으로 변경 및 불필요한 상수 정리,0,1,unknown
-신동현,34,feat: 기존 iOS 설정 이관,0,1,unknown
-신동현,24,refactor : ASIS 상수 네이밍을 Classic으로 변경,2,1,unknown
-신동현,23,feat : ASIS 전환용 임시 상수 파일 추가,0,1,unknown
-이해주,1142,[FIX] iOS WebView 히스토리 백 처리 개선,0,0,unknown
-이해주,1141,[CHORE] Braze 로그인/로그아웃 이벤트 및 상태 속성 전송 기능 추가,0,1,unknown
-이해주,1139,[FEATURE] 로딩 상태 관리 최적화 및 코드 정리,0,1,unknown
-이해주,1137,[FIX] 네비게이션 라우터 extension pop 로직 개선,0,1,unknown
-이해주,1116,[FIX] Mjobkorea 쿠키 검증 및 보정 인터셉터 추가,2,0,unknown
-이해주,1068,[FEATURE] 웹뷰 인터렉션 개선,0,0,unknown
-이해주,1067,[FIX/TEST-77730] 쿠키 파싱 예외 처리 개선,0,1,unknown
-이해주,1056,[FIX] 각종 로직 개선,0,0,unknown
-이해주,1055,[FIX] QR 라우트 디폴트 설정 페이지 추가 및 PC 보기 로직 작동 로직 수정,0,0,unknown
-이해주,1052,[FIX] 불필요 warmup 로직 제거,0,1,unknown
-이해주,1042,[FIX/TEST-77479] Android에서 Apple 로그인 시 form 데이터 추출 실패 문제 수정,0,1,unknown
-이해주,1041,[FEATURE] 웹뷰 jank 이슈 수정,0,1,unknown
-이해주,1029,[FIX] : MjobkoreaCookie 이슈 수정,0,0,unknown
-이해주,995,fix(TEST-77467): 로그인 취소 시 WebView 닫기 로직 개선,0,0,unknown
-이해주,988,[FIX]content 탭에도 투앱 title 조작할 수 있도록 수정,0,0,unknown
-이해주,944,[FEATURE/FIX] Content Ready 감지 전략을 플랫폼별 최적화로 개선 및 웜업 로직 추가,0,0,unknown
-이해주,943,[REFACTOR] 로깅 시스템 정리 및 통일,0,0,unknown
-이해주,934,app-develop -> develop (01.13 21:18),0,0,unknown
-이해주,928,[FIX/TEST-77376] : QA 이슈 수정,0,0,unknown
-이해주,926,[FIX/TEST-77336] toapp close sub > uiType 명시 시 opener viewType 비교 로직 추가,0,0,unknown
-이해주,918,[FIX/TEST-77303] : AI Insight 섹션 gradient 효과를 위한 패딩 조정,1,1,unknown
-이해주,894,[FIX/TEST-77175  TEST-75020]  Review Home 자동 스크롤 방지 및 키워드 쿠키 동기화 개선,0,0,unknown
-이해주,893,[REFACTOR] : Isolate를 사용하여 DMP 로그 전송 성능 개선,0,1,unknown
-이해주,892,[FIX/TEST-77315] gomain home이 들어오면 탭스캐폴드 홈으로 랜딩하도록 수정,0,0,unknown
-이해주,885,[FIX} 로그아웃 이후 콘텐츠  my탭에서 바텀탭 클릭 시 상단으로 이동 안하는 이슈 수정,0,0,unknown
-이해주,882,[FIX/TEST-77245) pull-to-refresh 시 sectionListKey 증가 방지,0,0,unknown
-이해주,872,[FIX/TEST-76520] : 공고 없는 경우 인기공고 보러가기 선택 시 헤더 오류 수정,0,0,unknown
-이해주,868,[FIX] 검색 > pull to refresh 적용 건 롤백,0,0,unknown
-이해주,867,[FIX/TEST-77093] : subPopupUrl 처리 시 탭 URL 감지 로직  개선,0,1,unknown
-이해주,857,[FIX]: CardSwiper numberOfCardsDisplayed 동적 설정으로 assertion 오류 수정,0,1,unknown
-이해주,852,[FIX] 검색화면 > pull to refresh 인디케이터 상단 필터뷰에 가려지는 이슈 수정,1,1,unknown
-이해주,839,[FIX] 로그아웃 후 쿠키를 삭제하여 웹뷰가 로그인으로 리다이렉트 시키는 로직 수정,0,0,unknown
-이해주,827,[FEATURE]: Pull-to-Refresh 구현(홈  잡찾기  검색 **스크롤 구조** 변경),0,1,unknown
-이해주,821,[FIX/TEST-75020] Review 페이지 새로고침 시 키워드 유지되도록 쿠키 주입 추가,0,0,unknown
-이해주,820,[FEATURE / FIX] 웹뷰 로딩 로직 개선 및 QA 이슈 수정,0,0,unknown
-이해주,786,[FIX] : webview controller 직접 사용으로 변경,0,1,unknown
-이해주,773,[FIX] 주요 이슈 수정,0,0,unknown
-이해주,754,[FEATURE] AppDialog 디자인시스템,0,2,unknown
-이해주,749,feat(TEST-76464): 광고 배너 레이아웃 조정,0,1,unknown
-이해주,743,[FIX] : 웹뷰 기본 제목 설정 업데이트,0,1,unknown
-이해주,732,[FIX] QA 이슈 수정 및 메인 홈 로딩 개선,0,0,unknown
-이해주,715,[FEATURE] 공고상세에는 리뉴얼된 앱바를 노출 하도록 변경,0,1,unknown
-이해주,712,[FEATURE/TEST-76162]: 커스텀 스켈레톤 쉬머 위젯 추가,0,1,unknown
-이해주,695,[FEATURE] 메인홈 스크롤 포퍼먼스 개선,0,0,unknown
-이해주,667,[FEAT] 홈 헤더 스크롤 애니메이션 활성화 및 AI Insight Aurora 효과 추가,0,1,unknown
-이해주,654,[FIX/ TEST-75843] : Cold start 시 딥링크 중복 실행 방지,0,0,unknown
-이해주,653,[FIX]: QA 이슈 수정,0,0,unknown
-이해주,652,FIX(TEST-76269): TS_XML 파라미터 중복 추가 방지,0,0,unknown
-이해주,648,[FEATURE] 플랫폼 텍스트 크기 설정 무시하도록 변경,0,1,unknown
-이해주,622,[FEATURE]: AI Insight 섹션에 Aurora 효과 적용 (merge 이슈 수정),0,0,unknown
-이해주,614,[feat]: AI Insight 섹션에 Aurora 효과 적용,1,1,unknown
-이해주,613,[FIX-TEST-76162]  WebView 로드 전 스켈레톤 배경 추가,0,1,unknown
-이해주,601,[CHORE] 의존성 패키지 버전 업데이트 및 고정,0,1,unknown
-이해주,599,[FIX] SectionBuilder에서 mounted 체크 추가,0,1,unknown
-이해주,596,[FIX] IOS 네이버 로그인 패키지 고정 및 코드 안전성 개선,0,1,unknown
-이해주,595,[FIX] QA이슈 수정 및 코드 리팩토링,0,1,unknown
-이해주,543,[FIX]: 네이버 로그인 IPA 환경 이슈 수정,0,1,unknown
-이해주,521,[FIX] : 네이버 로그인 URL scheme 추가,0,1,unknown
-이해주,516,FIX(TEST-75716): TabController 로그인 체크 로직 개선,0,0,unknown
-이해주,505,[FIX] QA 이슈 수정건,0,0,unknown
-이해주,504,[FIX] 웹뷰 QA이슈 수정,0,0,unknown
-이해주,494,[FEATURE] 탭바 공통 인터렉션 및 리프레시 로직 적용,0,1,unknown
-이해주,481,[FIX]: 파일 다운로드 완료 알림 개선 및 폴링 메커니즘 추가,0,0,unknown
-이해주,477,[FIX / REFACTOR] : QA이슈 수정 및 코드 리팩토링,0,0,unknown
-이해주,463,[FEATURE] : 페이스북 로그인 노출조건 정책 적용 (원격 핸들링 기초 구조 설정),1,1,unknown
-이해주,457,[FIX] 쿠키 이슈 수정,0,1,unknown
-이해주,453,[FIX] QA 이슈 수정 (쿠키 개선),0,0,unknown
-이해주,452,[FIX] QA 이슈수정,0,0,unknown
-이해주,443,[REFACTOR] 쿠키 복구 로직 패턴변경,0,1,unknown
-이해주,422,[REFACTOR  FEATURE] JK Client 개선 1차,0,0,unknown
-이해주,421,FEATURE : 쿠키 복구 로직 안정성 개선,0,1,unknown
-이해주,412,[FEATURE] Loading Bar 스타일 적용 및 progress tracking 개선,0,1,unknown
-이해주,411,[REFACTOR] 쿠키 관리 시스템 리팩토링,0,1,unknown
-이해주,410,[FIX] QA 이슈 수정,0,1,unknown
-이해주,402,[FEATURE] 쿠키 정보 버튼을 FloatingDebugButton으로 이동,0,1,unknown
-이해주,398,[FIX] InAppWebView DatePicker를 위한 Material Components 의존성 추가,0,1,unknown
-이해주,397,[FEATURE] 패스워드 TextField 개선,0,1,unknown
-이해주,388,[FIX] QA 이슈 수정 (login handler navigation  쿠키 싱크 로직 개선),0,1,unknown
-이해주,384,[FEATUR] 앱 진입 > 권한 화면 노출 시점 변경,0,1,unknown
-이해주,378,[FIX] 쿠키 개선,0,1,unknown
-이해주,366,[FIX] 백버튼 핸들링 개선,0,0,unknown
-이해주,365,[FIX] 만료된 쿠키 필터링 로직 추가,0,0,unknown
-이해주,364,[FEATURE] 비밀번호 재시도 화면 UI 리팩토링 및 공통 컴포넌트 적용,1,1,unknown
-이해주,349,[FEATURE] 쿠키 관리 및 세션 안정성 개선 + 401 처리 개선,0,1,unknown
-이해주,348,[FEATURE] 전수 검사 QA 이슈 대응,0,0,unknown
-이해주,346,[FEATURE] 비밀번호 재입력이 필요한 case 화면 및 로직 추가,0,0,unknown
-이해주,333,[FIX] 기타 QA 개선건 작업,0,0,unknown
-이해주,332,[FEATURE] 로그인 로직 개선 및 QA 이슈수정,0,0,unknown
-이해주,331,[FIX] 로그인 개선,0,0,unknown
-이해주,330,[FIX]: shoudOverride 디바운스 로직 개선,0,0,unknown
-이해주,329,[FIX] 전수 검사 QA 이슈 대응,0,0,unknown
-이해주,328,[FIX] 전수검사 > QA 이슈 수정,0,0,unknown
-이해주,322,app develop -> develop,0,0,unknown
-이해주,321,[FIX] 전수 검사 QA이슈 대응,0,0,unknown
-이해주,319,[FIX] : iOS 앱 초기화 중 간헐적 멈춤 현상 수정,0,1,unknown
-이해주,305,[FEATURE] 서브도메인 서비스 호환 작업 (AI agent 페이지 붙이기 ),0,1,unknown
-이해주,288,[FEATURE] showDiaog closeDialog 앱브릿지 추가,0,1,unknown
-이해주,287,[FIX] : iOS 26커스텀 알럿 노출 로직 롤백,0,1,unknown
-이해주,284,[FIX] 웹뷰 네비게이션 로직 개선 및 QA 검수 대응,0,0,unknown
-이해주,283,[FIX] QA 검수 대응 (로그인  authhandler 리팩토링),0,0,unknown
-이해주,275,[FIX] 소셜 계정 연동 로그인 세션 유실 버그 수정,0,1,unknown
-이해주,273,[FIX] QA 이슈 수정 및 as-is mainsub 로직 적용,0,0,unknown
-이해주,272,[FIX] : 사전검수 QA 이슈 수정 6차,0,0,unknown
-이해주,268,[FEATURE] : webview >linearProgressindiactor 트랜지션 개선,0,1,unknown
-이해주,267,[FEATURE] 카카오톡 비즈   라인 공유하기 기능 추가,1,1,unknown
-이해주,262,[FIX] 사전검수 대응 6차,0,0,unknown
-이해주,261,[FIX] 사전 검수 QA 대응 5차,0,0,unknown
-이해주,260,[FEATURE] 사전검수 QA 이슈 대응 3차,0,0,unknown
-이해주,253,[FIX] Android JWT Scope 이슈 수정,0,1,unknown
-이해주,248,[FEATURE] 네이티브 트랜지션을 유지하면서 웹뷰 인스턴스 재활용 로직(keepAlive) 제거,0,0,unknown
-이해주,247,[FIX] 사전 검수 QA 이슈 수정 3차,0,0,unknown
-이해주,246,[FEATURE] 사전검수 QA 이슈 수정 2차,0,0,unknown
-이해주,244,[FIX] 로그인 쿠키 이슈 수정 및 qa이슈 수정,0,1,unknown
-이해주,239,[FIX] : 로그인 회원가입 qa 이슈 수정,0,1,unknown
-이해주,228,[FEATURE] : 웹뷰 안전성 개선,0,0,unknown
-이해주,226,[FEATURE] debug banner 추가,0,0,unknown
-이해주,225,[FIX] 로그인/회원가입 각종 오류 수정,0,0,unknown
-이해주,224,[REFACTOR] AppUserSession 리팩토링 댜응,0,0,unknown
-이해주,223,[FEATURE] 소셜 계정 연동화면 추가,0,0,unknown
-이해주,222,app-dev - > dev,0,0,unknown
-이해주,221,[REFACTOR] UserService → AppUserSession 통합 세션 관리 시스템 마이그레이션,0,0,unknown
-이해주,216,[FEATURE] AppStart API 성공 시 UserService 메모리 동기화 누락 문제 해결,0,0,unknown
-이해주,215,[FEATURE] 웹뷰 앱브릿지 기능 추가 및 개선,0,0,unknown
-이해주,206,[FEATURE] photo deeplink 결과 값에 따라 웹뷰를 리프레시하는 로직 추가,1,0,unknown
-이해주,205,[FEATURE] 웹뷰 기능개선,1,1,unknown
-이해주,204,[FEATURE] 로그인 기능 개선 및 추가,0,1,unknown
-이해주,195,[FEATURE] GNB 아이콘 변경 및 취업 인사이트 웹뷰 연동,0,1,unknown
-이해주,193,[FEATURE] AppCookie 로그인 쿠키를 헤더 형식 반환하는 메소드 추가,1,2,unknown
-이해주,190,[FIX] User Session 동기화 개선,4,1,unknown
-이해주,189,[FIX] 웹뷰 네비게이션 개선,0,1,unknown
-이해주,188,[FEATURE] 소셜 로그인 연동 및 중복 계정 처리 기능 개선,2,0,unknown
-이해주,185,[FEATURE] BaseController onInit에 BuildContext 전달 기능 추가,0,1,unknown
-이해주,183,[FEATURE] 검색 필터 저장 toapp 기능 추가 및 검색화면  url 호출 useCase 개발,5,1,unknown
-이해주,174,[FEATURE] 쿠키 관리 아키텍처 통합 및 재구조화 (자동로그인 이슈 해결),2,0,unknown
-이해주,158,[FEATURE] WebView 네비게이션 안정성 개선,0,1,unknown
-이해주,157,[FIX] iOS > 앱 재시작 시 쿠키 유실 문제,0,1,unknown
-이해주,156,[FEATURE / REFACTOR] 로그인  회원가입 화면 UI 리뉴얼 작업 및 리팩토링,0,1,unknown
-이해주,151,[REFACTOR] 로그인 쿠키 useCase 모듈 개선,0,1,unknown
-이해주,146,[FIX] 계정 전환 시 이전 계정 쿠키 잔존 버그 수정,0,1,unknown
-이해주,145,[FIX] photo deeplinkHandler 앱브릿지 수정,1,1,unknown
-이해주,144,[FEATURE] 로그인화면 UI 적용 1차,0,1,unknown
-이해주,143,[FEATURE] : 간편 로그인(빠른 로그인) 기능 1차 구현,0,0,unknown
-이해주,142,[ENHACNCE] 안드로이드 PredictiveBackPageTransitionsBuilder 네비게이션 트랜지션 적용,0,1,unknown
-이해주,141,[FIX] BaseScreen > PopScope 이벤트가 트리거 안되는 이슈,1,1,unknown
-이해주,138,[FIX] QR popUntilOrPush 네비게이션 메소드 이슈 수정,0,1,unknown
-이해주,136,[FEATURE / REFACTOR] 웹뷰 개선,1,0,unknown
-이해주,135,[FEATURE] 디자인 시스템 TextField 구현,2,1,unknown
-이해주,129,[FEATURE] 로그인 Oauth 응답 필드 스토리지 저장 로직 추가,0,1,unknown
-이해주,125,[FEATURE] 웹뷰 로딩 인터렉션 개선,0,0,unknown
-이해주,124,[FEATURE] JK 개편 탭 구조 적용,0,1,unknown
-이해주,123,[FEATURE] 로그인 / 회원가입 1차 구현,2,0,unknown
-이해주,118,[FEATURE] bottomSheet 유틸리티 클래스 safeArea 패딩 값 속성 추가,1,1,unknown
-이해주,107,[FIX] 웹뷰 MissingPluginException 이슈 수정,1,1,unknown
-이해주,106,[FIX] 쿠키 관리 시스템 개선,2,1,unknown
-이해주,100,[FEATURE] 로그인 as-is UI화면 구현 (새로운 디자인 적용 전),0,0,unknown
-이해주,87,[FIX] iOS에서 SPA 동적 렌더링이 간헐적으로 실패하는 문제 수정,0,0,unknown
-이해주,79,[FEATURE] 소셜 회원가입 완료 기능 1차 마이그레이션,0,0,unknown
-이해주,78,[REFACTOR] base 웹뷰 모듈 리팩토링,0,1,unknown
-이해주,59,[REFACTOR] WebView Handlers 패턴 매칭 리팩토링,0,1,unknown
-이해주,50,[ENHANCE] 플랫폼별 웹뷰 최적화 마무리 작업,0,0,unknown
-이해주,40,[MERGE] app-develop -> develop,0,0,unknown
-이해주,32,[UPDATE] app-develop -> develop,0,0,unknown
-이해주,29,[FEATURE] UserService(세션) 모듈 추가 로그인 쿠키 및 세션 로직 개선,9,0,unknown
-이해주,27,[FEATURE] BottomSheet 유틸리티 클래스 추가,0,1,unknown
-이해주,21,[FIX] 플랫폼별 loadUrl 트랜지션 최적화 작업 및 webview instance 재활용 로직 개선,0,0,unknown
-이해주,20,[ENHANCE] 안드로이드 웹뷰 포퍼먼스 개선을 위한 Impeller 렌더링 엔진 비활성화,0,0,unknown
-이해주,19,[REFACTOR] 싱글레포 멀티앱 → 싱글앱 리팩토링 (알바몬 걷어내기),1,0,unknown
-이해주,18,[FEATURE] 싱글 웹뷰 인스턴스 라우팅 시스템 구현,2,0,unknown
-이해주,17,[FIX] firebase 패캐지 의존성 충돌 수정,0,1,unknown
-이해주,16,[FEATURE] 웹뷰 로직 개선 및 ID/PW 로그인 1차 마이그레이션,0,0,unknown
-이해주,14,[REFACTOR] : Navigation Handler Enum 제거 리팩토링,0,1,unknown
-이해주,13,[FIX] : 네비게이션 UIController 앱브릿지 개선 및 기타 수정건,0,0,unknown
-이해주,11,[REFACTOR] 웹뷰 라우팅 구조 개선 (argument 전달 방식),2,1,unknown
-이해주,10,[FEATURE] : 웹뷰 네비게이션 1차 연동 및 구조 개선,0,0,unknown
-이해주,9,[REFACTOR] Getx 패키지 걷어내기 작업 (StateManagement  Navigation),1,1,unknown
-이해주,8,[FEATURE] NavigationHandler  FullWebview  BaseWebview 구조 개선 작업,0,0,unknown
-이해주,7,[FEATURE] AOS 커스텀 네비게이션 트랜지션 적용,0,0,unknown
-이해주,6,[FEATURE] 웹뷰 모듈 (BaseWebView) 구조 개선,0,0,unknown
-이해주,5,[FEATURE] VersionService 모듈 구현,0,0,unknown
-이해주,4,[FEATURE] JK 웹뷰모듈 마이그레이션 1차 작업,1,1,unknown
-이해주,3,[FEATURE] JK/AM 바텀 레이아웃 추가,0,1,unknown
-이해주,2,[FEATURE] 초기 프로젝트 구조 설계 및 작성,0,0,unknown
-김승하,1140,fix: Braze 이벤트/속성 전송 로직 개선 및 익명 사용자 데이터 병합 대응,0,0,unknown
-김승하,1134,app dev -> dev,0,1,unknown
-김승하,1132,feat: AppsFlyer/Braze 연동 개선 및 WebView Referer 헤더 지원,0,1,unknown
-김승하,1126,app dev- > dev,0,0,unknown
-김승하,1120,app dev -> dev,0,0,unknown
-김승하,1117,refactor: UserIdentity.tsNo를 nullable-safe 패턴으로 변경,0,1,unknown
-김승하,1114,refactor: Sentry prod 환경 제한 및 광고 배너 개선,0,1,unknown
-김승하,1102,app dev- > dev,0,0,unknown
-김승하,1100,dev -> main,0,0,unknown
-김승하,1097,app dev -> dev,0,0,unknown
-김승하,1096,fix: 검색 결과 DMP 로그에 budgetId 파라미터 추가,0,1,unknown
-김승하,1093,fix: 검색 결과 DMP 노출 로그 누락 수정,0,1,unknown
-김승하,1089,페이지 인덱스추가,0,1,unknown
-김승하,1088,app dev -> dev,0,1,unknown
-김승하,1081,app dev -> dev,0,0,unknown
-김승하,1080,feat: Android App Links 우회하여 기업회원 로그인/회원가입 외부 브라우저 열기,0,0,unknown
-김승하,1072,app dev -> dev,0,0,unknown
-김승하,1065,app dev -> dev,0,0,unknown
-김승하,1059,feat: 최근 검색어 마이그레이션 기능 추가,0,0,unknown
-김승하,1058,app dev -> dev,0,1,unknown
-김승하,1054,fix: headhunting 경로 uitype=15(본창)로 변경,0,1,unknown
-김승하,1053,app dev-> dev,0,0,unknown
-김승하,1039,app dev- > dev,0,0,unknown
-김승하,1035,feat: Braze/AppsFlyer 이벤트 추적 개선 및 Push 알림 설정 연동,0,1,unknown
-김승하,1033,app dev-> dev,0,1,unknown
-김승하,1018,[Fix] 앱스 플라이어이 키값 변경.,0,0,unknown
-김승하,1017,[Fix] 앱스 플라이어이 키값 변경.,0,0,unknown
-김승하,1010,app dev -> dev,0,0,unknown
-김승하,1008,fix: Braze QA 기능 추가 및 기타등등,0,0,unknown
-김승하,1004,app dev -> dev,0,1,unknown
-김승하,991,app dev -> dev,0,0,unknown
-김승하,987,fix: 개인정보 동의 Braze 이벤트 추가 및 광고 관련 버그 수정,0,0,unknown
-김승하,975,app dev -> dev,0,0,unknown
-김승하,973,refactor: 스플래시 광고 타임아웃 및 로그인 Braze 연동 개선,0,1,unknown
-김승하,972,app dev -> dev,0,1,unknown
-김승하,960,app dev -> dev,0,0,unknown
-김승하,955,feat: Footer 데이터를 Firebase Remote Config로 동적 관리,0,1,unknown
-김승하,948,feat: Debug Banner에 DMP 탭 추가하여 공고 클릭 시 SC Code 확인 가능,0,1,unknown
-김승하,939,refactor: GA4 dimension 주입 로직 개선 및 점검 날짜 포맷 수정,0,0,unknown
-김승하,937,app dev -> dev,0,0,unknown
-김승하,935,feat: Braze QA gaCustom 서버 연동 및 디버그 코드 정리,0,2,unknown
-김승하,932,app dev-> dev,0,0,unknown
-김승하,931,feat: Braze QA 커스텀 이벤트 추가 및 타임스탬프 포맷 개선,0,1,unknown
-김승하,916,app dev -> dev,0,1,unknown
-김승하,913,feat: 디버그 패널에 런타임 환경 변경 기능 추가,0,0,unknown
-김승하,899,app dev -> dev,0,0,unknown
-김승하,898,fix: appVersionInfo null 처리 개선 - 기본값 제거 및 안전한 플로우 보장,0,0,unknown
-김승하,896,app dev -> dev,0,0,unknown
-김승하,881,feat: DMP3 - 서버 색상 지원 및 브레이즈 검수 리팩토링,0,1,unknown
-김승하,874,app dev -> dev,0,1,unknown
-김승하,871,appdev-  > dev,0,0,unknown
-김승하,866,feat: 푸시 동의 7일 재노출 로직 및 검색 결과 DMP 연동 개선,0,1,unknown
-김승하,860,app dev -> dev,0,0,unknown
-김승하,859,feat: DMP GA 및 Braze 이벤트 연동 개선,0,1,unknown
-김승하,844,app dev -> dev,0,1,unknown
-김승하,835,feat: DMP 스크랩 로그를 Controller 레이어로 이동하여 지면 정보 포함,0,1,unknown
-김승하,829,app dev -> dev,0,0,unknown
-김승하,819,feat: DMP 트래킹 시스템 통합 및 섹션별 공고 카드 DMP 로그 적용,0,1,unknown
-김승하,808,chore: Android 스플래시 리소스 및 마이그레이션 검증 문서 추가,0,1,unknown
-김승하,807,feat: Braze 이벤트/속성 Native 1:1 매핑 구현,0,1,unknown
-김승하,804,feat: GaTracker에 커스텀 디멘션 지원 기능 추가,0,1,unknown
-김승하,791,feat: 공고 카드 이미지 placeholder 개선 및 QA 피드백 반영,0,1,unknown
-김승하,790,app dev -> dev,0,0,unknown
-김승하,767,app dev -> dev,0,1,unknown
-김승하,762,app dev -> dev,0,1,unknown
-김승하,755,fix: 홈 헤더 아이콘 색상 및 SVG 품질 개선 (디자인 QA),0,1,unknown
-김승하,753,app dev -> dev,0,1,unknown
-김승하,748,feat: 푸시 동의 '다시 보지 않기' 기능 및 스낵 알림 로직 개선,0,1,unknown
-김승하,735,app dev -> dev,0,0,unknown
-김승하,729,refactor: 앱 초기화 API 응답 구조 개선 및 DTO 정리,0,0,unknown
-김승하,713,app dev -> dev,0,1,unknown
-김승하,711,feat: 잡찾기/검색결과 화면에 Scroll-to-Top 버튼 추가 및 광고 관련 기능 개선,1,1,unknown
-김승하,699,app dev -> dev,0,0,unknown
-김승하,686,feat: AppButtonTop 공통 위젯 추가 및 하드코딩 스타일 디자인 시스템 적용,0,1,unknown
-김승하,679,app dev -> dev,0,0,unknown
-김승하,677,fix: QA 피드백 반영 - 스플래시 로고  UI 색상 수정,0,1,unknown
-김승하,659,refactor: 스낵 알림 중복 표시 기준을 notificationType으로 변경 및 광고 배너 border 제거,0,1,unknown
-김승하,655,app dev -> dev,0,0,unknown
-김승하,647,feat: AppsFlyer 이벤트 트래킹 확장 및 광고 배너 개선,0,0,unknown
-김승하,637,App develop -> dev,0,0,unknown
-김승하,631,appdev-> dev,0,0,unknown
-김승하,629,feat: 선호공고 영역 UI 디자인 개선 및 홈 화면 API 실패 처리 추가,0,1,unknown
-김승하,618,fix: AI Insight 툴팁 위치 및 PM 팝업 일정 노출 오류 수정,0,1,unknown
-김승하,607,app dev -> dev,0,0,unknown
-김승하,603,feat: 예방 점검 공지 팝업 구현 및 Clean Architecture UseCase 적용,0,1,unknown
-김승하,597,app dev- > dev,0,1,unknown
-김승하,589,app dev -> dev,0,0,unknown
-김승하,588,appdev -> dev,0,0,unknown
-김승하,585,feat: 예방정비(메인터넌스) 정보 조회 기능 추가,0,0,unknown
-김승하,582,fix: AI Insight 섹션 디자인 검수 반영 및 버튼 컴포넌트 피그마 스펙 매칭,0,1,unknown
-김승하,581,app dev -> dev,0,0,unknown
-김승하,580,refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리,0,0,unknown
-김승하,573,app dev -> dev,0,0,unknown
-김승하,557,appdev -> dev,0,0,unknown
-김승하,556,fix: AI Insight 섹션 디자인 QA 수정,0,1,unknown
-김승하,552,fix: 홈 화면 UI/UX 개선 및 폴드 접힘 시 말줄임 버그 수정,0,1,unknown
-김승하,538,app dev -> dev,0,1,unknown
-김승하,522,refactor: 홈 화면 스낵바/배너 컴포넌트 분리 및 피그마 디자인 QA 반영,0,1,unknown
-김승하,517,appdev -> dev,0,0,unknown
-김승하,506,appdev->dev,0,0,unknown
-김승하,496,fix: iOS 인앱결제 취소/에러 처리 개선,0,1,unknown
-김승하,489,refactor: curation_job_section 위젯을 개별 파일로 분리,0,1,unknown
-김승하,480,feat: 이미지 empty placeholder 통합 및 잡카드 이미지 처리 개선,0,1,unknown
-김승하,470,refactor: 홈 스낵 알림 로직을 seen 기반으로 개선,0,1,unknown
-김승하,468,feat: CurationJobSection에 비로그인 시 로그인 유도 배너 추가,0,0,unknown
-김승하,466,feat: ContentCard 콘텐츠 타입별 배경 스타일 구현,0,1,unknown
-김승하,465,fix: 홈 화면 안정성 개선 및 UI 버그 수정,0,1,unknown
-김승하,462,fix: 큐레이션 공고 이모지 및 AppImage 에러 처리 개선,0,1,unknown
-김승하,456,app dev -> dev,0,1,unknown
-김승하,455,feat(ai-insight): AI Insight 섹션 디자인 시스템 적용 및 피그마 시안 일치,0,1,unknown
-김승하,449,feat: 콘텐츠 이미지 URL 빌더 추가 및 홈 섹션 개선,0,1,unknown
-김승하,447,feat: 큐레이션 잡 카드 반응형 및 캐러셀 자동 스크롤 추가,0,1,unknown
-김승하,446,feat: 홈 화면 UI 개선 및 광고/툴팁 안정성 강화,0,1,unknown
-김승하,438,fix: 큐레이션 공고 이모지 및 잡찾기 탭명 오류 수정,0,1,unknown
-김승하,437,feat(AppTabBar): tabAlignment 파라미터 추가,0,0,unknown
-김승하,432,refactor: 온보딩 직무선택 섹션 로딩/에러/빈데이터 시 숨김 처리,1,1,unknown
-김승하,426,feat: 광고 및 플로팅 알림 예외처리 개선,0,1,unknown
-김승하,423,[feat] 잡온보딩 예외처리 + 타임아웃 시간 12->3 max큐 3->5,0,0,unknown
-김승하,418,feat: 홈 화면 알림 탭 이동 및 CardSwiper 스크롤 개선,0,1,unknown
-김승하,415,feat: 앱 초기화 실패/점검/업데이트 팝업 처리 로직 추가,0,1,unknown
-김승하,414,fix: iOS 최초 실행 시 _widgetController LateInitializationError 방어 로직 추가,1,0,unknown
-김승하,413,feat: 개인화 스낵 알림 기능 개선 및 숨기기 로직 추가,1,1,unknown
-김승하,396,app dev -> dev,0,0,unknown
-김승하,394,feat: 온보딩 잡 선택 섹션 UI 개선 및 스와이프 기능 추가,0,1,unknown
-김승하,386,appdev -> dev,0,0,unknown
-김승하,383,feat: GetFilterTypeFilterDisplayUseCase v1.3.0 - title 필드 추가,0,1,unknown
-김승하,382,appdev -> dev,0,0,unknown
-김승하,380,feat: FilterType UseCase에 iconPath  requiresLogin 추가 및 테스트 업데이트,0,1,unknown
-김승하,379,feat: 필터 화면 최초 진입 여부 확인 UseCase 추가,0,1,unknown
-김승하,374,feat: 급여형태(PayType) 필터 UseCase 추가,1,0,unknown
-김승하,372,feat: 고용형태(EmploymentType)  빠른설정(FilterType) 필터 UseCase 추가,0,1,unknown
-김승하,371,feat: 디버그 배너 UI 개선 및 GA4 핸들러 Android 호환성 강화,0,1,unknown
-김승하,362,[fix] 인앱결제 수정 및 추가 개발,0,0,unknown
-김승하,361,[fix] Release 빌드 네이버 로그인 실패 및 상단바 UI 수정,1,1,unknown
-김승하,356,fix: iOS 푸시 알림 토큰 전송 방식 수정 (APNS 토큰 사용),0,1,unknown
-김승하,354,refactor: 광고 WebView 위젯 분리 (고정 높이 vs 동적 높이),0,1,unknown
-김승하,353,feat: 파워링크 광고 클릭 시 외부 브라우저로 열기 및 동적 높이 지원,0,1,unknown
-김승하,352,app dev -> dev,0,1,unknown
-김승하,351,feat: 파워링크 광고 클릭 시 외부 브라우저로 열기,0,1,unknown
-김승하,342,fix: QnA 댓글 이미지 업로드 및 지도보기 버그 수정,0,1,unknown
-김승하,341,appdev-> dev,0,1,unknown
-김승하,336,[chore] 개발 환경 배너 모드 개선,0,0,unknown
-김승하,327,[feat]안드로이드 백그라운드 딥링크 이슈 수정  네이버 맵 화면 기능 개발,1,0,unknown
-김승하,317,fix: iOS Braze 푸시 알림 설정 수정 - push.automation 기반으로 전환,0,0,unknown
-김승하,307,app dev -> dev,0,0,unknown
-김승하,306,[Feat]ai agent sample,1,1,unknown
-김승하,300,[hot-fix] braze_key값 정상화,1,1,unknown
-김승하,297,app dev -> dev,0,1,unknown
-김승하,296,feat: Android 폴드/태블릿 화면 방향 설정 기능 및 기업회원 앱 업데이트 로그인 유지 버그 수정,0,1,unknown
-김승하,292,fix: 기업/서치펌 회원 마이그레이션 스킵 및 안내 다이얼로그 추가,0,1,unknown
-김승하,289,feat: Braze/AppsFlyer 초기화 통합 및 ATT 타이밍 최적화,0,1,unknown
-김승하,282,feat: 카카오 로그인 및 AppsFlyer 딥링크 설정 개선,0,1,unknown
-김승하,276,fix: 스플래시 광고 로그 전송 API 누락 필드 및 설정값 수정,0,1,unknown
-김승하,274,appdev -> dev,0,0,unknown
-김승하,269,feat: 광고 시스템 개선 및 스플래시 로그 API 구현,0,1,unknown
-김승하,258,Feature/power link2,1,0,unknown
-김승하,250,app dev -> dev,0,1,unknown
-김승하,241,feat: 기업회원 자동 로그인 차단을 위한 마이그레이션 로직 개선,0,1,unknown
-김승하,236,feat: 파워링크 광고 기능 추가,0,0,unknown
-김승하,220,feat: AdFit ID 등록 이슈 수정 및 WebView 설정 개선,2,0,unknown
-김승하,219,app dev -> dev,0,1,unknown
-김승하,218,[feat] 탈옥/루팅 체크 및 iOS 인앱 결제 기능 추가,0,1,unknown
-김승하,213,appdev -> dev,0,0,unknown
-김승하,209,feat: AdFit 광고 InAppWebView 포크로 적용,0,1,unknown
-김승하,200,[fix] 이것저것 수정,0,0,unknown
-김승하,191,feat: 안드로이드 뒤로가기 처리 및 홈스크린 메뉴 적용,5,0,unknown
-김승하,179,feat: 광고 배너 Native WebView 구현,0,1,unknown
-김승하,168,feat: 광고 배너 테스트 구현 및 자동 로그인 구조 개선,0,1,unknown
-김승하,149,appdev -> dev 땡겨오기,0,1,unknown
-김승하,148,feat: 앱 자동 로그인 및 스토리지 마이그레이션 구현,0,1,unknown
-김승하,126,[feat] 검색 자동완성 기능 usecase,1,1,unknown
-김승하,121,[feat] 메뉴 API usecase 수정 및 구조 개선,0,0,unknown
-김승하,119,feat: Main 화면 푸시 동의 UseCase 및 화면 구현,0,1,unknown
-김승하,112,app dev -> dev,0,1,unknown
-김승하,109,feat: 데이터 절약 모드 및 프로필 편집 기능 추가,1,0,unknown
-김승하,102,refactor: 메인 Bottom Sheet 데이터 구조 변경 및 문서 업데이트,0,1,unknown
-김승하,99,feat: 메인 Bottom Sheet 기능을 Clean Architecture로 구현,0,0,unknown
-김승하,95,feat: iOS Native 키체인 TS_NO 마이그레이션 구현,0,1,unknown
-김승하,91,refactor: 앱 초기화 아키텍처를 Clean Architecture로 전면 리팩토링,0,1,unknown
-김승하,88,[feat] FCM 토큰 API 호출 기능 추가,2,0,unknown
-김승하,83,app dev -> dev,0,1,unknown
-김승하,82,[feat] AI 에이전트 프로젝트 가이드 및 Claude 팀 설정 추가,0,1,unknown
-김승하,80,app dev -> dev,0,0,unknown
-김승하,77,[Feat] 앱스타트 2차작업.,0,1,unknown
-김승하,74,[feat] appstart작업 1차,3,1,unknown
-김승하,60,[feat] ATT 추가 + 파베 init 위치 수정,0,1,unknown
-김승하,58,[feat]  tsno 스토리지로 변경 + init flow 순서변경.,0,1,unknown
-김승하,57,appdev -> dev,0,1,unknown
-김승하,56,[feat] Flavor 런타임 선택,0,0,unknown
-김승하,51,app dev -> dev,0,0,unknown
-김승하,44,[Feat] firebase settings,0,0,unknown
-김승하,41,[Feat] 내부 스토리지데이터 마이그레이션  2차,2,1,unknown
-김승하,15,[Feat] init flow,1,0,unknown
-임희강,1138,검색 화면 키보드 및 자동완성 UX 개선,0,1,unknown
-임희강,1127,iOS. 에서 swipe back 이 안되서 수정,0,1,unknown
-임희강,1124,검색 홈 및 검색 결과 화면의 자동완성 UX 개선,0,1,unknown
-임희강,1122,홈 광고 key 'spaceHome' 으로 수정,1,1,unknown
-임희강,1115,캐싱 로직 변경. 캐싱을 컨트롤러에서 수행하고 사용하는 곳으로 전달.,0,1,unknown
-임희강,1113,검색 결과에서 마지막으로 저장한 키워드 따로 저장해서 필요 한 영역에 사용하게 수정 (필터 조회 및 새로 고침 시에),0,1,unknown
-임희강,1105,기다릴 필요 없는 공고들은 따로 비동기 로드 후 갱신하도록 수정,0,1,unknown
-임희강,1101,유저 이름을 가져오는 API 를 이용하여 검색 홈에서 설정,0,1,unknown
-임희강,1095,_currentPage 를 직접 ++ 하지 않고 +1  해서 다음 페이지를 호출 후 데이터가 있을 경우 _currentPage 설정하게 수정 (,0,1,unknown
-임희강,1092,모음이 있는 경우 -> 모음만 있는경우 정규식으로 변경,0,1,unknown
-임희강,1091,검색 시 포매터 삭제 (입력은 되도록) 이후 검색 모음 들어 있을 경우 empty 화면 노출,0,1,unknown
-임희강,1085,검색 결과에 usecase에 enum 자체를 넘기게 수정,0,1,unknown
-임희강,1078,검색 결과 에서 페이징 feature code 안 넣고 있어 수정  DMP 수정,0,1,unknown
-임희강,1075,DMP에 Sort 추가  검색어 입력 시 Formatter 설정,0,1,unknown
-임희강,1066,featurecode 없이검색 시에도 featureCode 업데이트,0,1,unknown
-임희강,1057,필터 영역을 헤더 영역에 위치 시켜 당겨서 새로고침에 문제 없게 수정,0,1,unknown
-임희강,1051,canPop 을. iOS android 분기 처리,0,1,unknown
-임희강,1046,검색결과에서 이동시  wait 가 무지. 걸려있어 수정. 검색 홈  검색 결과 swipe back 수정,0,1,unknown
-임희강,1040,하이테크 노출되는 문구 수정,0,1,unknown
-임희강,1036,검색 결과. GA 수정,0,1,unknown
-임희강,1031,자동완성 검색시에 feature 코드 있으면 request 에 추가 후 검색,0,1,unknown
-임희강,1028,구독상태가 빠져있어서 갱신 안되는 문제 수정,0,1,unknown
-임희강,1027,광고 UI 갱신 수정  하이테크 이동 수정,0,1,unknown
-임희강,1025,필요 없는 스크랩 상태 업데이트가 들어가 있어 삭제,0,1,unknown
-임희강,1024,검색 결과 화면 수정 원복 (잘못 수정된 부분이 들어가 버려 원복 하였습니다.),0,0,unknown
-임희강,1014,CPC  CPT 상품 추가 호출 수정,0,1,unknown
-임희강,1009,타이틀 노출 로직 수정  노출되는 문구 수정,0,0,unknown
-임희강,989,GA 이벤트 수정,0,2,unknown
-임희강,981,검색 결과 화면에서 기업 외에 배너가 있어 해당 배너일 경우 노출 및 이동 수정,0,1,unknown
-임희강,978,prd 서버 기업명과 상이하게 노출되는 문제 수정  복리 후생 노출 수정,0,1,unknown
-임희강,969,읽음 처리 영역에 isViewed 처리 추가,0,1,unknown
-임희강,968,상세 호출 시 sccode 추가. 및 logpath=1 추가,0,0,unknown
-임희강,958,검색 결과 카드에서 태그 영역에 원픽이면 좌측에 이미지 추가,0,1,unknown
-임희강,957,https://jira.jobkorea.co.kr/browse/TEST-77477 몇 분  몇 시간 전 등록일 경우 'n분 전 등록'/'n시간 ,0,1,unknown
-임희강,956,검색 결과 GA 수정 (https://jira.jobkorea.co.kr/browse/TEST-77438),0,1,unknown
-임희강,950,잘못된 온보딩 문구 수정,0,1,unknown
-임희강,940,검색영역 스크랩 Mock 사용하는 부분이 남아있어 삭제,0,1,unknown
-임희강,930,기존 경력 이상 로직 삭제,0,1,unknown
-임희강,925,색 결과 화면에서 원픽  스토리 공고 좌우 페이저로 사용하던 부분 단순 리스트로 변경 수정.,0,1,unknown
-임희강,923,원픽 공고 영역 수정 (바뀐 API 에 맞게 수정),0,1,unknown
-임희강,917,필요 없이 있는 usecase삭제 (읽음 처리 관련),0,1,unknown
-임희강,915,온보딩 가이드 라인 팝업 문구 수정,0,1,unknown
-임희강,912,태그 텍스트 변경 수정,0,2,unknown
-임희강,910,검색 결과 카드에서 x년↑ 안붙어 있으면 붙이게 수정,0,1,unknown
-임희강,906,검색 카드 관련 수정,0,1,unknown
-임희강,902,디자인 이슈들 수정.,0,1,unknown
-임희강,851,이번주 공채 소식 안나오는 문제 수정,0,1,unknown
-임희강,846,처음 가이드 팝업 로티 변경,0,1,unknown
-임희강,845,검색결과에서 등록  마감 수정,0,2,unknown
-임희강,841,정렬 할 때에 result 초기화 이후 _fetchSearchResult 자체를 기다리게 수정,0,1,unknown
-임희강,834,필터 영역 상단에 잘리지 않도록 수정,0,1,unknown
-임희강,818,합격 축하금 계산식 추가,0,1,unknown
-임희강,816,검색 결과 화면에서 top 100 호출 수정,0,1,unknown
-임희강,802,읽음 처리 서비스 사용하도록 수정,0,1,unknown
-임희강,800,인기 top 100 선택 시 이동하게 수정,0,0,unknown
-임희강,798,검색 결과 마감 표시 수정  검색 결과 필터 아래쪽에 1줄 추가,0,0,unknown
-임희강,794,공고 우측 앱 이미지 호출 전 사전 로딩 수행해서 이미지 에러 노출 되는지 확인후 노출 하게 수정,0,1,unknown
-임희강,793,스토리 공고 수정,1,1,unknown
-임희강,782,앱 버튼이 와측 아이콘 우측 아이콘 선택이 잘 안되는 이슈 있어 선택 영역을 나누도록 수정 하였습니다.,0,1,unknown
-임희강,780,release 모드에서 갱신 되지 않는 문제 수정,0,1,unknown
-임희강,771,선택 영역 수정. 꽉차게  검색 결과에서 자동완성 수정하다가 딤이 없어져서 수정,0,1,unknown
-임희강,770,검색 결과 컨트롤러에서 executeUsecase사용하지 않는 부분 수정,0,1,unknown
-임희강,768,검색 결과 이미지 로고 만들어서 넣게 수정,0,1,unknown
-임희강,764,알바몬 iOS 이동 안하는 문제 수정,0,1,unknown
-임희강,763,UI 이슈 수정  AppImage사용하게 수정,0,1,unknown
-임희강,760,자동완성 리스트 노출 시 스크롤 가능하게 수정 (https://jira.jobkorea.co.kr/browse/TEST-76872),0,1,unknown
-임희강,758,하이테크 노출 및 알바몬 넛지 노출 조건 및 순서 수정,0,1,unknown
-임희강,750,알바몬 넛지 기능 수정 (High 이슈),0,1,unknown
-임희강,745,QA 이슈 수정 : 디자인 수정 및 이동 기업 이동 수정,0,1,unknown
-임희강,739,홈 화면에서 사용하는 검색 창 변경 및 에러 수정,1,1,unknown
-임희강,736,https://jira.jobkorea.co.kr/browse/TEST-76809 수정,0,1,unknown
-임희강,721,TEST_76706 : 마지막 스크롤 시 스크롤 버벅임 현상 발생됨 수정,0,2,unknown
-임희강,720,https://jira.jobkorea.co.kr/browse/TEST-76620,0,1,unknown
-임희강,719,https://jira.jobkorea.co.kr/browse/TEST-76491 UI 이슈 수정,0,1,unknown
-임희강,718,검색 결과 스크롤 시 로고 영역이 로딩 완료 되기 전까지 노출되지 않게 수정,0,2,unknown
-임희강,717,딤처리 해제만 되고 키패드 ON 상태 유지됨,0,2,unknown
-임희강,704,검색 홈 지역 필터 연동 및 최근 필터 저장 구현,0,2,unknown
-임희강,700,검색결과 화면 당겨서 새로고침 추가.,1,0,unknown
-임희강,692,검색 QA 대응 수정,0,1,unknown
-임희강,651,검색 QA 이슈 수정,1,1,unknown
-임희강,636,그라디에이션 애니메이션을 우선 공통 검색 헤더에서 삭제,0,1,unknown
-임희강,608,스마트픽 영역 개선 및 스크랩 버튼 통합,0,1,unknown
-임희강,583,로티 애니메이션에 겹쳐서 페이드인 페이드 아웃 애니메이션 적용하게 해달라는 요청이 있어 (자연스럽게 보이기 위해) 해당 요건 추가하였습니다.,2,1,unknown
-임희강,569,검색 결과 화면 수정,2,0,unknown
-임희강,551,온보딩 팝업 수정 ( 로티 애니메이션으로 수정 ),0,0,unknown
-임희강,515,검색 결과 화면에서 필터 리프레시 되도록 수정,1,1,unknown
-임희강,475,검색바 컴포넌트 리팩토링,1,2,unknown
-임희강,439,검색 결과 아이템 경로 변경 -> component/job_card,2,0,unknown
-임희강,395,DialogManager 공통 설정 중앙화 및 AppButton 패딩 기능 추가,4,0,unknown
-임희강,389,홈 온보딩 팝업 다이얼로그 구현,12,1,unknown
-임희강,358,검색 결과 화면 노출 로직 기획에 맞게 수정 및 테스트를 위한 설정 수정,6,1,unknown
-임희강,315,검색 결과 없음 UI/UX 개선 및 인기 공고 표시 기능 추가,5,0,unknown
-임희강,298,검색 결과 화면에 스마트핏 섹션 추가 등,9,1,unknown
-임희강,285,검색 홈 추천 검색어 노출 수정 및 동의 팝업 노출 로직 수정,10,1,unknown
-임희강,264,검색 화면에 파워링크 광고 배너 추가,9,1,unknown
-임희강,254,검색 결과 화면 리팩토링 및 공용 컴포넌트 통합,15,1,unknown
-임희강,235,로딩 다이얼로그 구현 및 HTML 다이얼로그 테스트 인프라 추가,7,1,unknown
-임희강,202,검색 결과 화면 추가 및 구조 개선,24,1,unknown
-임희강,180,검색 홈 영역을 mock에서 실제 API로 변경,6,1,unknown
-임희강,167,ASIS 검색 화면 구현,4,0,unknown
-임희강,147,홈 스크린 진입 시 푸시 동의 팝업 노출 수정,3,0,unknown
-임희강,139,자동완성 검색어  자동완성 검색 회사 실제 Domain 에서 호출하게 수정.,3,0,unknown
-임희강,110,## 검색 화면 신규 구현: 주석 간결화  상수 추출  의존성 주입 패턴 적용,16,1,unknown
-임희강,98,공통 사용 위한 ClassicAppbar 추가,1,1,unknown
-임희강,71,마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정,34,0,unknown
-임희강,53,Feature/app develop/popup retry,10,0,unknown
-최재웅,1131,Fix/small error,0,1,unknown
-최재웅,1119,fix : sentry scrollable error 수정,0,1,unknown
-최재웅,1109,fix : dmp value  gender => M F null  UUID 제거,0,1,unknown
-최재웅,1099,fix : 인기 공고 impression 누락,0,1,unknown
-최재웅,1090,AppUserSession MemberInfo 동기화 기능 추가,0,1,unknown
-최재웅,1087,DMP 검색 조건 로그 기능 추가,0,1,unknown
-최재웅,1086,App develop,0,1,unknown
-최재웅,1083,refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경,0,1,unknown
-최재웅,1073,fix : dmp 수정중,0,1,unknown
-최재웅,1023,TEST-77630 수정,0,0,unknown
-최재웅,1021,feature : featureType 추가,1,1,unknown
-최재웅,1013,스마트핏 직무 요청 body 수정,0,1,unknown
-최재웅,1007,슈퍼 채용관 랜덤 노출 로직 추가,0,0,unknown
-최재웅,1003,CodeHub Race Condition 개선,0,1,unknown
-최재웅,1001,TEST-77400 회색화면 수정,0,1,unknown
-최재웅,990,fix : 큐레이션 라벨 들썩들썩 수정,0,1,unknown
-최재웅,984,Catalog 동기화 아키텍처 개선 및 Asset Fallback 적용,0,1,unknown
-최재웅,977,fix : 지역 2depth에 일본 중국 미국 홍콩 제거,0,1,unknown
-최재웅,974,코드 허브 개선,0,1,unknown
-최재웅,954,fix : 통검-스마트픽 + includeData 추가,0,0,unknown
-최재웅,938,검색 결과 DMP 로그 속성 추가,0,1,unknown
-최재웅,921,Dynamic URL 수정 건 및 scCode 로직 개선,0,1,unknown
-최재웅,891,fix : 전시 version <-> section 간극 극복 로직 추가,0,1,unknown
-최재웅,886,CPC/CPT 상품 트래킹 시스템 구현,0,1,unknown
-최재웅,864,fix : TEST-76479 수정,0,1,unknown
-최재웅,853,DMP Data Tracking 필드 수정,0,1,unknown
-최재웅,849,feature : change start post dto,0,1,unknown
-최재웅,848,fix : 산업 군 중복 수정,0,1,unknown
-최재웅,843,잡찾기 지면 spacing 적용,0,1,unknown
-최재웅,840,feature : applicationRegAt 추가,0,1,unknown
-최재웅,837,dmp space 적용,0,1,unknown
-최재웅,831,fix: placeHolder actionUrl 변환,0,1,unknown
-최재웅,822,해외 지역 데이터 조회 기능 개선,0,0,unknown
-최재웅,817,Tracking 필드 추가,0,1,unknown
-최재웅,815,합격축하금 DTO 추가,0,0,unknown
-최재웅,792,Feature/ga action,0,1,unknown
-최재웅,783,Sync Outlink UseCase 추가 및 필터 초기화 로직 수정,0,1,unknown
-최재웅,766,JobResDto 및 경력 라벨 표시 로직 개선,0,1,unknown
-최재웅,751,필터 중복 제거 및 Placeholder 라벨 수정,0,1,unknown
-최재웅,742,GA4 공고 Custom Dimensions 추가,1,1,unknown
-최재웅,733,잡찾기/검색 버그 수정 모음,0,1,unknown
-최재웅,728,refactor : page to limit,0,0,unknown
-최재웅,725,최근 필터 저장 로직 개선,0,1,unknown
-최재웅,724,잡찾기  검색 페이징 인덱스 수정,0,1,unknown
-최재웅,716,FilterRequestBody 리팩토링 및 ListType Enum 추가,0,1,unknown
-최재웅,707,JobViewType 도입 및 카드 위젯 아키텍처 개선,0,1,unknown
-최재웅,693,fix: 직무 필터 중복 제거,0,0,unknown
-최재웅,691,모든 SDUI Section Empty 여부 확인,0,1,unknown
-최재웅,689,feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가,0,0,unknown
-최재웅,687,일자리 찾기 QA 수정,0,1,unknown
-최재웅,680,카탈로그 동기화 CDN → BFF API 마이그레이션,0,1,unknown
-최재웅,676,Viewed Jobs 저장 기능 추가,0,1,unknown
-최재웅,672,BaseAsyncSection buildHeader 분리 및 동적 헤더 타이틀 적용,0,1,unknown
-최재웅,663,JobDisplayHelper lookup 통합 리팩토링,0,1,unknown
-최재웅,649,fix/count-use-case → develop,0,1,unknown
-최재웅,646,ListCardLogoSmallSection 리네이밍 및 버그 수정,0,1,unknown
-최재웅,644,fix: build_error,0,0,unknown
-최재웅,641,필터별 공고수 UseCase 추가,0,1,unknown
-최재웅,638,fix : revert 된 파일 복귀,0,1,unknown
-최재웅,633,Placeholder 카드 기능 구현,0,1,unknown
-최재웅,630,UseCase - selectedDisplayName 로직 개선 및 OnBoarding 지역 추가,0,1,unknown
-최재웅,628,직무 필터 - 3depth '전체' 항목 추가,0,1,unknown
-최재웅,616,서버 필터 언핀 시 로컬 저장 기능 추가,0,1,unknown
-최재웅,615,exception  error 위젯 제거 하도록 수정,0,1,unknown
-최재웅,606,Fix/qa 26 01 02,0,1,unknown
-최재웅,598,RecentFilter UseCase,0,0,unknown
-최재웅,586,refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리,0,1,unknown
-최재웅,554,CompanyType Enum 통합 및 UseCase 단순화,0,0,unknown
-최재웅,548,통합 검색 스마트핏 UseCase 추가 및 선호공고 미노출 대응(content),0,1,unknown
-최재웅,544,feature : pageSize 수정 및 파라미터 4칸으로 변경,0,0,unknown
-최재웅,534,cookieNo생성 UseCase 추가,0,1,unknown
-최재웅,533,QA 및 AD 라벨 처리 개선,0,1,unknown
-최재웅,526,fix: mockData누락 수정,0,0,unknown
-최재웅,518,fix:mock 데이터 수정,0,0,unknown
-최재웅,514,feature : payType nullable,0,0,unknown
-최재웅,513,fix : 검색 도메인 변경 적용  logo_card error 수정,0,0,unknown
-최재웅,508,통합 검색 UseCase 구현,0,1,unknown
-최재웅,502,합격축하금 필터 토글 기능 추가,0,1,unknown
-최재웅,501,공고 검색 건수 조회 API 추가,0,1,unknown
-최재웅,500,Find Job New - SDUI 기반 섹션 시스템 확장,0,1,unknown
-최재웅,499,refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체,0,0,unknown
-최재웅,497,Find Job New - SDUI 기반 섹션 시스템 확장,0,1,unknown
-최재웅,492,style(filter): excludeApplied 필터 아이콘 변경,0,1,unknown
-최재웅,490,fix : 개인화 알림 parser수정,0,1,unknown
-최재웅,487,FilterItemMapper → GetFindJobFilterBarDisplayUseCase 마이그레이션,0,1,unknown
-최재웅,486,미등록 RenderType 경고 위젯 추가 + API Enums 갱신,0,1,unknown
-최재웅,485,fix : build_error 수정,0,0,unknown
-최재웅,484,SectionBuilderWidget HomeSduiController 의존성 제거,0,1,unknown
-최재웅,483,feature : job찾기 segment분리,0,0,unknown
-최재웅,482,feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현,0,1,unknown
-최재웅,479,공고 검색 API 및 스마트핏 검색 기능 추가,0,1,unknown
-최재웅,476,공고 검색 API 및 필터 모델 개선,0,0,unknown
-최재웅,473,필터 아키텍처 리팩토링,0,1,unknown
-최재웅,464,SDUI Interface 개선 및 검색조건 아키텍처,0,1,unknown
-최재웅,458,SDUI Interface 개선 및 공고찾기 화면 SDUI 적용,1,1,unknown
-최재웅,445,큐레이션 공고 API 응답 구조 수정 및 TypeError 예외 처리 개선,0,0,unknown
-최재웅,442,큐레이션 잡 섹션 광고  더보기 추가  섹션당 패딩 수정,0,1,unknown
-최재웅,436,CurationJobSection type 필드 추가 및 헤더 표시,0,1,unknown
-최재웅,435,UrgentNoticeSection (긴급 공지 섹션) 신규 구현,0,1,unknown
-최재웅,433,CDN Catalog DTO 필드 추가 및 섹션 배경색 적용,0,1,unknown
-최재웅,431,AI Insight 섹션 리팩토링 및 데이터 구조 변경,0,1,unknown
-최재웅,429,Feature/job search usecase,0,1,unknown
-최재웅,420,섹션 시스템 개선 - 헤더 숨김  에러 UI 상세화  API 스킵 기능,0,1,unknown
-최재웅,417,섹션 헤더 Emoji 지원 및 Curation Job 빈 데이터 처리 개선,0,1,unknown
-최재웅,409,온보딩 저장 기능 유연화,0,1,unknown
-최재웅,408,Exception 처리 개선 및 SDUI 파싱 에러 Sentry 통합,0,1,unknown
-최재웅,407,AdBanner 섹션 마이그레이션,0,1,unknown
-최재웅,405,feat: Screen 카탈로그 실제 CDN 연동,0,1,unknown
-최재웅,404,홈 섹션 최소 버전 필터링 구현,0,1,unknown
-최재웅,403,feat: 온보딩 진행 단계 조회 UseCase 구현,0,1,unknown
-최재웅,399,feature/onboardingAndJobCardDefault 변경 명세서,0,1,unknown
-최재웅,392,Feature/onboarding and job card default,0,1,unknown
-최재웅,387,[Feature] 선호공고 선택 샘플 구현,0,0,unknown
-최재웅,385,[Feature] 온보딩 공고 선택 섹션 구현,0,1,unknown
-최재웅,375,[Feature] CurationJobSection 키워드 칩 인터랙션 구현,0,1,unknown
-최재웅,373,[Feature] Job Scrap UseCase 및 필터 기능 추가,0,1,unknown
-최재웅,367,[Feature] 홈 화면 섹션 개선,0,1,unknown
-최재웅,363,[Feature] Segment UseCase 구현 및 HomeController 연동,2,1,unknown
-최재웅,357,[fix]  .jobko.io domain 쿠키 발리지 않는 이슈,0,1,unknown
-최재웅,350,[Refactor] 미사용 DTO 및 Domain Model 정리,0,1,unknown
-최재웅,339,[Feature] 온보딩 지역 필터 UseCase 구현,0,1,unknown
-최재웅,338,[Feature] 홈 콘텐츠 섹션 구현,0,1,unknown
-최재웅,335,Swagger DTO 자동 생성 시스템,0,1,unknown
-최재웅,334,feature: BFF Display Main DTO 자동 생성 스크립트 및 DTO 추가,0,1,unknown
-최재웅,326,지역 필터 UseCase 구현,0,1,unknown
-최재웅,325,Filter UseCase 자동화 시스템 도입,0,1,unknown
-최재웅,324,feature: API spec enum 자동 생성 (64개 신규  4개 업데이트),0,1,unknown
-최재웅,323,enums 자동 생성용 claude slash command 추가,0,1,unknown
-최재웅,318,Fix/member system no type,0,1,unknown
-최재웅,304,CodeHub DisplayModel UseCase 추상화 및 필터 UseCase 구현,0,1,unknown
-최재웅,301,메인 홈 SDUI 아키텍처 전면 개편 - Server-Driven UI 기반 섹션 렌더링,0,1,unknown
-최재웅,286,fix : usecase 내 누락된 result 추가,0,1,unknown
-최재웅,251,마케팅 푸시 동의 여부 알림 수정,0,1,unknown
-최재웅,245,fix : 간편 로그인 삭제 문구 수정 및 임시 UI적용,0,1,unknown
-최재웅,234,fix : keyChain 저장 로직 제거,0,1,unknown
-최재웅,233,fix : init_api 405 error 수정,0,1,unknown
-최재웅,231,fix : 설정 - 자동로그인 여부 비활성화시 로그아웃되지 않도록 수정,1,1,unknown
-최재웅,230,feature : flavor 선택 다이얼로그 slot 임시 disabled 처리,0,1,unknown
-최재웅,217,fix : 설정 - 자동로그인 여부 shared memory에 동기화 하여 관리하도록 수정,0,1,unknown
-최재웅,211,iOS : ts_no 생성시 keychain 저장  디버그 flavor 다이얼로그 내 keychain 삭제 버튼 추가,0,1,unknown
-최재웅,210,flavor subDomain 설정 일부 url에만 적용되던 이슈 수정,0,1,unknown
-최재웅,201,InitTask 유틸리티 추가,0,1,unknown
-최재웅,181,앱 초기화 프로세스 개선 1차,0,1,unknown
-최재웅,173,최근 검색어 CRUD 기능 구현,0,0,unknown
-최재웅,171,메뉴 데이터 캐싱 로직 적용,0,1,unknown
-최재웅,170,Feature/search usecase task1,1,1,unknown
-최재웅,166,fix : ts_no lazy initialize 수정,0,1,unknown
-최재웅,165,fix : interceptor 나중에 init제거,0,0,unknown
-최재웅,161,공통 exception 1차,0,1,unknown
-최재웅,159,chore : freezed & annotation version up,1,1,unknown
-최재웅,128,feature : code-hub prod stg 추가,0,1,unknown
-최재웅,127,fix : CDN version check 직렬로 이동,0,0,unknown
-최재웅,122,code_hub DB적재 시스템 & 지역 검색 필터 usecase,0,0,unknown
-최재웅,96,BFF - API 연동 기본 셋팅,0,1,unknown
-최재웅,93,fix : query -> field로 변경,0,1,unknown
-최재웅,84,Feature/app setting list,0,1,unknown
-최재웅,76,init_api호출 로직 추가 및 자동로그인 usecase 추가,0,1,unknown
-최재웅,68,앱 설정 - 기본 get usecase 구현 및 적용  tobe-자동로그인 상태 변경,2,1,unknown
-최재웅,64,chore : init 시나리오 확인 쉽도록 logger 추가,0,1,unknown
-최재웅,63,Feature/app core setting,0,1,unknown
-최재웅,42,Feature/sdui test,0,1,unknown
-최재웅,39,Feature/sdui test update,0,0,unknown
-최재웅,12,data <-> domain 계층,1,0,unknown
-임동현,1133,Fix: 유니버셜링크 외부인입케이스 헤더정리 https://jira.jobkorea.co.kr/browse/TEST-77778,0,1,unknown
-임동현,1125,Fix: AI인사이트 문구 150자 +더보기 로직에서  높이기반(5줄) 더보기 로직으로 변경 https://jira.jobkorea.co.kr/,0,0,unknown
-임동현,1121,Fix: 앱 백키로 끈다음에 딥링크 받으면 앱 두개되는현상 수정(안드) https://jira.jobkorea.co.kr/browse/TEST-,0,1,unknown
-임동현,1094,Feat: 유니버셜/앱링크 엣지케이스 시스템 제작 https://jira.jobkorea.co.kr/browse/TEST-77778?filter,0,1,unknown
-임동현,1084,Fix: 이미지 캐시추가 + 테마관 반잘라 편집하는 이미지 캐시사이즈 명시,0,1,unknown
-임동현,1077,Update HttpOverrides comment to clarify its purpose for non-API network calls...,0,1,unknown
-임동현,1070,Fix: 콜드스타트 앱링크 미동작 수정 https://jira.jobkorea.co.kr/browse/TEST-77503,0,0,unknown
-임동현,1064,Fix: 스플래시 800ms 안에 재빌드콜 오면 무시,0,1,unknown
-임동현,1060,fix: 검색 totop버튼 바텀패딩 추가 https://jira.jobkorea.co.kr/browse/TEST-76862,0,1,unknown
-임동현,1048,Fix/donny3,0,0,unknown
-임동현,1044,feat: 컨텐츠 플레이스홀더 정규식 좀더추가,0,0,unknown
-임동현,1043,Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정 https://jira.jobkorea.co.,0,1,unknown
-임동현,1037,Fix/donny3,0,1,unknown
-임동현,1020,Fix: 안드로이드 빠르게 백키 두번 누르면 두번째 이후 액션 먹히는 문제 수정 https://jira.jobkorea.co.kr/browse/,0,1,unknown
-임동현,1012,Fix: 홈화면 온보딩 2단계 완료후 심하게 덜그럭거리는 현상 수정. https://jira.jobkorea.co.kr/browse/TEST-7,0,1,unknown
-임동현,1006,Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정...,0,1,unknown
-임동현,992,Fix: 섹션 더보기페이지 타이틀 다른거 수정 https://jira.jobkorea.co.kr/browse/TEST-77567,0,1,unknown
-임동현,982,Fix: vip 상품cardjobThumbnailHorizontal 더보기페이지에서 같은 이미지 쓰도록 수정...,0,1,unknown
-임동현,979,ㅋㅋㅋ,0,1,unknown
-임동현,964,Fix: 홈 온보딩 2단계 이후 자동새로고침 제거 https://jira.jobkorea.co.kr/browse/TEST-77066,0,1,unknown
-임동현,942,Fix/donny,0,0,unknown
-임동현,936,Fix/donny,0,1,unknown
-임동현,919,Fix: 잡코로고 플레이스홀더 공고카드에서 한번 쭉 잡았음https://jira.jobkorea.co.kr/browse/TEST-75855,0,1,unknown
-임동현,908,Misc: 칼라값 피그마 토큰기반(JAMS2.0피그마기준) 업데이트 260113,0,1,unknown
-임동현,878,Fix/donny,0,1,unknown
-임동현,869,Fix: 특정 폰에서 2열캐로셀페이저 1열만 나오는것 수정 https://jira.jobkorea.co.kr/browse/TEST-77178,0,0,unknown
-임동현,865,Fix: 온보딩 상태 안고쳐짐 (첫접속시 안뜸  x눌렀는데 안닫힘) 수정 https://jira.jobkorea.co.kr/browse/TEST,0,1,unknown
-임동현,858,Fix/donny,0,1,unknown
-임동현,850,Feat: 클래리티 화면명(웹뷰는 url)매칭,0,1,unknown
-임동현,809,Fix: CarouselCardLogoSmallPaginationSection 1페이지 구성일때 카드너비 꽉차게 조절  페이지카운터 폰트...,0,1,unknown
-임동현,789,디자인QA,0,1,unknown
-임동현,769,Fix: findjob 디자인현행화(간격맞춤  사이즈다른 캐로셀 처리)https://jira.jobkorea.co.kr/browse/TEST-7,0,0,unknown
-임동현,765,Fix: JOB찾기 A타입 아이템 충분하지않은(2개이하)인경우 좌우로 꽉차서 노출되도록 수정 https://jira.jobkorea.co.kr/,0,1,unknown
-임동현,757,Fix: 온보딩 링크유틸로 오는경우 처리 잘 안됨문제 수정https://jira.jobkorea.co.kr/browse/TEST-76841,0,1,unknown
-임동현,741,Fix: 이력서 등록된 회원이면서 온보딩 2단계만 진행한경우  무한으로 2단계 명륜진사갈비 즐기는 현상 수정...,0,1,unknown
-임동현,723,Fix: 오버레이웹뷰 켜져있을때 탭이동 명령어 왔을때 제대로 동작 안하는 이슈 수정 패밀리앱 깔려있음 이동처리 (없으면 스토어),0,0,unknown
-임동현,710,Fix: 온보딩 7일 미노출 https://jira.jobkorea.co.kr/browse/TEST-76450,0,1,unknown
-임동현,709,Develop appdev sync,0,1,unknown
-임동현,705,Fix: 온보딩 이력서등록플래그(지역/직무 있음 플래그) 보고 1단계 스킵가능하게 변경 https://jira.jobkorea.co.kr/bro,0,1,unknown
-임동현,688,Fix: 잡카드에서 쓰는 추천/핵심채용관(CarouselCardLogoSmallPaginationSection) 2단뷰 좌우로 넓게표시...,0,1,unknown
-임동현,650,Fix/donny qa2,0,1,unknown
-임동현,643,홈화면 프리미어섹션 AD딱지 디자인변경  aiinsight 타이틀폰트 변경,0,1,unknown
-임동현,620,Feat: 홈섹션 상세보기페이지에서  홈 아이템 순서 유지하기위해 캐시기능 추가(상세페이지에서만 씀)...,1,1,unknown
-임동현,619,Feat: 홈 섹션간 마진 설정로직 추가,0,1,unknown
-임동현,617,Fix: 로그아웃시 홈에 있는 웹뷰들 새주소로 로드 안되는현상 수정,0,1,unknown
-임동현,605,Fix: 프리미어(cardjobimagebanner) 로고 안나오게 조치  디자인 현행화,0,1,unknown
-임동현,604,Feat: screen으로 탭안에 있는 페이지 가려고할때 앱스킴 추가,0,1,unknown
-임동현,587,Fix/home qa,0,0,unknown
-임동현,568,fix: 온보딩 1단계 진행중 2단계처럼 취급되는현상 수정,0,1,unknown
-임동현,555,Fix/home,0,1,unknown
-임동현,539,Resolve merge conflict,0,0,unknown
-임동현,536,home QA 처리,2,1,unknown
-임동현,511,Feat: 웹뷰섹션 높이상한선 정함. 좌우로는 무한 늘어나지만  높이는 피그마 설계기준까지만.,0,1,unknown
-임동현,493,Fix/home,0,1,unknown
-임동현,488,Fix/home,0,1,unknown
-임동현,474,Fix: jsbridge 로 오는경우  콘텐츠 탭으로(메인화면 계열임) 이동하는 url일경우  정확하게 타겟페이지로 이동 안되는 문제 수정...,0,1,unknown
-임동현,472,Feat: toapp 스키마 jobkorea 스키마로 전환하건 아니건 모두 호한 가능하도록 수정,0,1,unknown
-임동현,471,Fix/home,0,1,unknown
-임동현,469,Refactor: Update imports and modify onboarding section loading to be unawaited..,0,0,unknown
-임동현,467,CPC  공고 QA  온보딩 앱완료 (웹작업은 남음),0,1,unknown
-임동현,461,Fix: 홈푸터 접힘상태 관리로직 개선  안드폰 안꺼지게(디버그환경) 환경설정,0,1,unknown
-임동현,460,Misc: UA 맨끝에 Flutter/(버전) 추가,0,1,unknown
-임동현,454,Fix/home,0,1,unknown
-임동현,448,Fix 스크랩 수정  CardJobThumnailHorizontal디자인수정,0,1,unknown
-임동현,441,Fix/home qa,1,1,unknown
-임동현,440,feat: 홈 공지사항 1개 롤링으로 변경,0,1,unknown
-임동현,434,Feat: 스크랩 로티 작업완료,0,1,unknown
-임동현,428,Misc: 아이콘(기본 이모지 sns) 다운스크립트와 실제 아이콘 업데이트,0,1,unknown
-임동현,425,Feat/scrap sync,0,1,unknown
-임동현,424,Feat: toapp sendFirebaseEventLog 추가 (액션은 기존 firebaseevent 동일),0,0,unknown
-임동현,419,Feat: 홈섹션 이동하는거 일괄추가  이미지위젯 기본이미지  에러이미지 추가,0,1,unknown
-임동현,416,Refactor: Update dependency imports and remove unused code,0,1,unknown
-임동현,406,Appdev > Develop,0,1,unknown
-임동현,381,Fix: 웹섹션 PR리뷰 반영  중복기능 제거,0,1,unknown
-임동현,377,Feat: 웹섹션 Raw json 떨구는 기능 추가,1,1,unknown
-임동현,376,웹뷰섹션,0,0,unknown
-임동현,370,Feat/websection,1,1,unknown
-임동현,369,Misc: ha 명령어 질문프리셋 추가,0,1,unknown
-임동현,360,검색 딥링크 추가,0,0,unknown
-임동현,359,Feat: 앱리뷰 기능 추가,0,1,unknown
-임동현,355,Feat: screen 계열 딥링크 액션 추가,0,1,unknown
-임동현,344,QA 2건 수정 (딥링크/웹뷰),0,1,unknown
-임동현,340,Misc: Dart AST tool 추가  ha명령어에 주입함,0,1,unknown
-임동현,337,Refactor : 앱스킴서비스->링크유틸 이름변경,0,2,unknown
-임동현,314,Fix/donny qa,0,1,unknown
-임동현,310,Env: 안드로이드 빠진 메니페스트 추가,0,0,unknown
-임동현,309,Fix/deeplink splash,0,1,unknown
-임동현,302,Fix/deeplink splash,0,1,unknown
-임동현,299,Feat: DMP 지원용 usecase 추가,0,1,unknown
-임동현,290,웹-> 앱 이동시 액션처리,0,1,unknown
-임동현,280,Feat: 슬라이더  구분선(세퍼레이터) 추가,0,1,unknown
-임동현,279,Fix: ios avoidbottominset 제외  화면키우는 코드 추가  (키보드 올릴때 영역 이상하게 줄어드는 버그수정...,0,1,unknown
-임동현,271,Feat: 앱버튼 마이크로인터렉션 추가 / 32사이즈 폰트크기 변경,0,1,unknown
-임동현,270,Fix: iOS 웹뷰 텍스트필드 포커스 이동시 웹뷰영역 기괴하게 줄어드는 현상 수정 (플러터 버그...,0,2,unknown
-임동현,259,Fix/donny qa,0,1,unknown
-임동현,255,Fix/donny qa,0,1,unknown
-임동현,252,Feat/appbar,0,1,unknown
-임동현,240,Fix: gomain toapp 시 탭에 해당하는 url이 아닐경우  gosub처럼 새창뜨게 수정....,0,1,unknown
-임동현,238,feat: DMP,0,1,unknown
-임동현,237,Doc: 지라용 유저 롤 기록,0,1,unknown
-임동현,232,Feat/appscheme,0,1,unknown
-임동현,229,misc: ha 명령어 하드코딩path 제거,0,0,unknown
-임동현,214,feat: 유니버셜링크 처리  gemini 시스템프롬프트 활용 커맨드 추가,0,1,unknown
-임동현,199,Feat: 팝업웹뷰 추가  reload toapp/딥링크 동작하도록 추가,0,1,unknown
-임동현,198,Feat: 유니버셜/앱링크 처리,0,1,unknown
-임동현,194,Fix: File_handler에 들어있는 photo 명령어 제거  attachphoto 로 통합.,0,1,unknown
-임동현,187,refactor: Update navigation handler and app scheme parser for improved deep link,0,1,unknown
-임동현,182,fix: AppText style 변경 시 UI 미반영 버그 수정,0,1,unknown
-임동현,172,feat: 앱스킴(투앱) 1차완,1,1,unknown
-임동현,169,feat: Fastlane 세팅완료 Add Firebase configuration and Fastlane setup for Android an,0,1,unknown
-임동현,140,Feat: 섹션웹뷰 추가,3,1,unknown
-임동현,137,Misc: 클로드스킬 업데이트,0,1,unknown
-임동현,131,Feat: 공통위젯,1,1,unknown
-임동현,130,Feat: 홈스크린 재빌드시 컨트롤러 재사용하도록 옵션추가,1,1,unknown
-임동현,120,feat: AppScheme Service for toapp  deeplink unified system,0,1,unknown
-임동현,116,feat: Implement Braze integration for event tracking and push notifications,0,1,unknown
-임동현,115,feat: Integrate AppsFlyer SDK,0,0,unknown
-임동현,114,Fix: Enhance dependency injection for deeplink services,0,0,unknown
-임동현,113,Chore:Remove pubspec.lock  Podfile.lock file,0,1,unknown
-임동현,105,딥링크,6,1,unknown
-임동현,104,refactor: 마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정,0,0,unknown
-임동현,97,Feat: FCM,4,0,unknown
-임동현,94,Feat: 파이어베이스 푸시,0,0,unknown
-임동현,81,Refactor: WebView Appscheme,1,1,unknown
-임동현,75,Feat: share 계열 toapp 포팅,4,1,unknown
-임동현,73,appdev 빌드오류 수정,0,0,unknown
-임동현,72,Fix: fullwebview switch~case 누락수정,0,0,unknown
-임동현,70,Chore/gitignore 수정,0,1,unknown
-임동현,69,Feat: AppToast 제작,2,1,unknown
-임동현,67,웹뷰와 네이티브 간 통신을 위한 앱스킴(App Scheme) 인터페이스 구현,2,1,unknown
-임동현,55,홈 화면 섹션 위젯 구조 개선 및 추천 콘텐츠 섹션 추가,5,2,unknown
-임동현,52,Feat/clarity,0,0,unknown
-임동현,49,Misc/claudeskill commonwidget,1,1,unknown
-임동현,47,Refactor : text 위젯 모두 apptext로 전환,1,1,unknown
-임동현,46,Misc : 피그마에서 icon 임포트 / 앱 내 마이그레이션,0,1,unknown
-임동현,43,Feat: 디자인시스템 Label 추가,0,1,unknown
-임동현,36,Feat: 디자인시스템 공통 버튼 컴포넌트 구현,2,1,unknown
-임동현,30,Feat: 공통이미지위젯 작성  AppImage  cachednetworkImage -> extendedImage,1,0,unknown
-임동현,28,Feat: 디자인시스템 사이즈 반영(figma 상 float),1,0,unknown
-임동현,25,Feat/dsg,1,0,unknown
-변지운,1135,온보딩 지역 >. 중국국가 하위리스트를 nation + city 로 융합하는 구조로 변경,0,1,unknown
-변지운,1111,[TEST-77814] 특정 지역에서 '전지역' 중복이슈 수정,0,1,unknown
-변지운,1108,푸시메세지 긴 케이스에서 짤리는 현상 수정,0,1,unknown
-변지운,1063,검색결과 dimension74 오류 값 수정,0,1,unknown
-변지운,1047,검색결과 페이지 트래킹 dimension 적용 + unawaited,0,1,unknown
-변지운,1038,[GA] 검색결과 페이지 재검색 시  태깅 + featureCode 추가,0,1,unknown
-변지운,1032,[TEST-77428] 검색결과 직접태깅 수정,0,1,unknown
-변지운,1011,Feature/jobfind tag,0,1,unknown
-변지운,993,[TEST-77550] 통합필터 GA 페이지트래킹 URL 변경,0,1,unknown
-변지운,985,Feature/test 77398,0,1,unknown
-변지운,983,[TEST-77428] 검색결과화면 GA 자동완성 클릭 이벤트 처리,0,1,unknown
-변지운,962,[GA] 검색필터바 태깅 작업,0,1,unknown
-변지운,959,Feature/ga tag qa,0,1,unknown
-변지운,947,dimension 67 68 69 제거,0,1,unknown
-변지운,941,[TEST-77428] 검색 홈 GA 이슈 건 처리,0,1,unknown
-변지운,927,GA 리스트 sc 코드  페이지 태깅,0,1,unknown
-변지운,907,[TEST-76288] 검색홈에서 지역 필터 '전체' 카운팅안됨,0,2,unknown
-변지운,903,오타 수정,0,1,unknown
-변지운,890,디멘션 이슈 작업 및 보완,0,1,unknown
-변지운,870,GA Home 작업,0,1,unknown
-변지운,862,[TEST-77135] 온보딩 직무 4개 초과 시  얼럿 제거 + 텍스트컬러 수정,0,1,unknown
-변지운,847,[TEST-77102] 하단 여백 추가,0,1,unknown
-변지운,795,[GA] 검색결과 > 채용공고 태깅 샘플 추가,0,1,unknown
-변지운,761,[TEST-76764] 필터 데이터 비교 기준 로직 수정,0,1,unknown
-변지운,740,GAFilter 네이밍 충돌하여 네이밍 변경,0,1,unknown
-변지운,722,GA 검색홈화면 작업,2,1,unknown
-변지운,673,Feature/ga,0,1,unknown
-변지운,661,GA 상수화 작업 변경,0,1,unknown
-변지운,657,[TEST-76313] 검색홈화면 지역필터 선택 후 displayName 수정,0,1,unknown
-변지운,634,Feature/ga presentation,1,1,unknown
-변지운,567,메뉴 앵커 기준 변경 ( 카테고리 1뎁스 기준이 아닌 2뎁스로 변경됨 ),0,1,unknown
-변지운,566,Feature/onboardin location grid,0,0,unknown
-변지운,553,[TEST_75760] 온보딩 텍스트 짤리는 이슈 수정,0,1,unknown
-변지운,550,[TEST-75786] 온보딩 > 지역 중분류 바텀시트에서 전체 클릭 시 선택했던 항목들 해제 처리 안됨,0,1,unknown
-변지운,540,[TEST-75803] 직무 선택 4개 제한 넘버링 표기,1,0,unknown
-변지운,532,Feature/onboarding qa byun,0,0,unknown
-변지운,529,[TEST-75804] 온보딩 바텀 시트 내 버튼 디자인 상이 ( 온보딩 액션버튼 하단 쉐도우 제거 ),0,1,unknown
-변지운,507,(프리젠테이션 레이어 사용)GA4 트래커 추가,0,1,unknown
-변지운,459,[TEST-75515] 온보딩 바텀시트 디자인 상이,5,0,unknown
-변지운,401,[지역필터] Mock 데이터를 usecase 로 교체,0,1,unknown
-변지운,391,Feature/onboarding byun,30,1,unknown
-변지운,347,요청자 : 이시연 / 메뉴 브랜드스토리 배너 제거,0,0,unknown
-변지운,312,[QA] 메뉴  프로필편집 디자인 수정,4,0,unknown
-변지운,308,[TEST-75091] 프로필 편집화면 문구 크기 오류 건 수정,0,1,unknown
-변지운,295,Feature/menu issue,10,0,unknown
-변지운,291,fix: Add const constructors to filter button part files,7,0,unknown
-변지운,249,[TEST-74818] 버튼 UI 이슈 처리,1,1,unknown
-변지운,212,filter 위젯  분리,12,1,unknown
-변지운,207,Feature/profile image,2,1,unknown
-변지운,186,지역온보딩 DSG 적용 및 디자인 수정 + 미사용코드 제거,6,1,unknown
-변지운,178,Menu DSG 적용,6,0,unknown
-변지운,162,[지역필터] Figma DSG 적용 + 지역 Usecase 적용 + 테스트코드 수정,5,1,unknown
-변지운,160,메뉴 화면 작업 ( Usecase 연동 및 목데이터 제거 ) + 테스트코드 수정,2,0,unknown
-변지운,153,Feature/photoedit,11,0,unknown
-변지운,117,IDE에서 에러로 표기되어서 수정 ( 빌드에는 영향 없음 ),0,1,unknown
-변지운,111,[빌드에러] 지역필터 관련 작업에서 잘못된 ASSET 참조,0,1,unknown
-변지운,86,메뉴화면 UI개발,21,0,unknown
-변지운,85,지역 필터 UI 작업완료,21,0,unknown
-변지운,54,Feature/location ui,15,1,unknown
-변지운,26,Feature/photo edit,22,0,unknown
-조인영,579,feat(menu): 메뉴 Anchor 자동 스크롤 및 선택 동기화 개선,1,1,unknown
-조인영,576,[TEST-75092] [mts/iOS] 프로필 사진 편집 화면 > 파일크기 안내문구 AS-IS와 다름,0,1,unknown
-조인영,311,메인 팝업 변경된 디자인 적용,24,0,unknown
-조인영,266,[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름,1,0,unknown
-조인영,256,[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름,4,1,unknown
-조인영,134,검색 > 저장한 조건 Bottom Sheet 구현,17,0,unknown
-조인영,45,앱 접근 권한 허용 안내 화면 구현,21,1,unknown
+ㅅㄷㅎ,1136,feat(home): 푸시 알림 설정 변경 시 Braze 이벤트 전송 추가,0,2,unknown
+ㅅㄷㅎ,1130,feat(notification_setting  settings): executeUseCase 패턴 적용 및 Braze 이벤트 연동,0,1,unknown
+ㅅㄷㅎ,1129,test: Filter  Search  Settings 등 위젯 테스트 대규모 개선,0,1,unknown
+ㅅㄷㅎ,1118,feat(FindJob): 필터 미설정 시 SDUI 섹션 및 구분선 숨김 처리,0,1,unknown
+ㅅㄷㅎ,1112,fix(FilterKeywordInput): 키보드 위 자동완성 영역 고려한 스크롤 위치 계산 개선,0,1,unknown
+ㅅㄷㅎ,1110,refactor(style): JkExtendedValue 중복 상수를 JkAppSize로 마이그레이션,0,2,unknown
+ㅅㄷㅎ,1107,AppBar 높이 56pt 통일 및 아이콘 버튼 패턴 적용,1,2,unknown
+ㅅㄷㅎ,1106,feat(TEST-77773): 슈퍼기업관 placeholder 중복 방지 기능 추가,0,1,unknown
+ㅅㄷㅎ,1104,fix: 스마트핏 섹션을 empty 판정 카운트에서 제외,1,1,unknown
+ㅅㄷㅎ,1098,refactor(ios): 앱 아이콘을 Xcode 15+ 단일 이미지 방식으로 현대화,0,1,unknown
+ㅅㄷㅎ,1082,refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경,0,1,unknown
+ㅅㄷㅎ,1079,refactor(find_job): DMP 로깅용 정렬값을 별도 필드로 분리,0,1,unknown
+ㅅㄷㅎ,1076,feat(find_job): DMP 로깅에 정렬 옵션(sort) 추가,0,1,unknown
+ㅅㄷㅎ,1071,fix(filter): 직무 필터 카운트 계산 시 상위/하위 코드 모두 포함,0,1,unknown
+ㅅㄷㅎ,1069,fix(find_job): 로딩 상태 해제 위치 수정 및 중복 호출 방지,0,1,unknown
+ㅅㄷㅎ,1062,feat(bottom_sheet): DetailItem 칩 레이블에 autoTextSize 옵션 적용,0,1,unknown
+ㅅㄷㅎ,1061,feat(analytics): 필터 초기화 버튼 GA 이벤트 트래킹 추가,0,1,unknown
+ㅅㄷㅎ,1050,fix: 채용공고 화면 Empty State 조기 표시 버그 수정,0,1,unknown
+ㅅㄷㅎ,1049,[Remove] Quick Actions (앱 바로가기) 기능 전체 제거,0,1,unknown
+ㅅㄷㅎ,1045,[GA] 공통 필터 이벤트 탭 라벨에 접두사 추가,0,1,unknown
+ㅅㄷㅎ,1034,featureCode,0,1,unknown
+ㅅㄷㅎ,1030,[GA] 필터 GA 이벤트 전송 로직 개선,0,1,unknown
+ㅅㄷㅎ,1026,체크 아이콘 컬러 변경,0,1,unknown
+ㅅㄷㅎ,1022,[TEST-77682] My필터 선택 시 공고 수 조회 및 UI 개선,0,1,unknown
+ㅅㄷㅎ,1019,executeUseCase 사용,0,1,unknown
+ㅅㄷㅎ,1016,fix(ui): 필터 버튼 그라데이션 stops 및 색상 간소화,0,1,unknown
+ㅅㄷㅎ,1015,체크 아이콘 컬러변경,0,1,unknown
+ㅅㄷㅎ,1002,fix(ui): AppBar 우측 버튼 크기 및 위치 정렬 개선,0,1,unknown
+ㅅㄷㅎ,1000,feat(GA): 통합필터 GA 이벤트 트래킹 상세화 개선,0,1,unknown
+ㅅㄷㅎ,999,feat(TEST-77603): UI 수정 요청 사항 적용,0,1,unknown
+ㅅㄷㅎ,998,test: AppAppBar.basic 마이그레이션을 위한 테스트 업데이트 (Red Phase),0,1,unknown
+ㅅㄷㅎ,997,feat(TEST-77604): 필터 버튼 그라데이션 효과 개선,0,1,unknown
+ㅅㄷㅎ,996,feat(TEST-77570): 키워드 필터 허용 문자에 중점(·) 추가,0,1,unknown
+ㅅㄷㅎ,986,feat: Inject FilterCodeListUseCase into FilterController,0,1,unknown
+ㅅㄷㅎ,980,test(filter): 경력 슬라이더 0년 시작 Extension 테스트 추가,0,1,unknown
+ㅅㄷㅎ,976,[refactor] Remove SavedCondition mock and migrate filter models to proper archit,0,1,unknown
+ㅅㄷㅎ,971,refactor(filter): 합격축하금 필터 GA 이벤트를 활성화 시에만 추적,0,1,unknown
+ㅅㄷㅎ,970,fix(find_job): 이메일 접수 방식 라벨을 온라인으로 변경,0,1,unknown
+ㅅㄷㅎ,967,refactor(filter): GA 라벨 통합 - CommonSavedFilterName으로 isPinned 기반 통합,0,1,unknown
+ㅅㄷㅎ,966,refactor(filter): MyFilterBar 오버레이 제거 및 레이아웃 간소화,0,1,unknown
+ㅅㄷㅎ,965,[refactor] Migrate to SearchResultSortType enum and remove mock dependencies,0,1,unknown
+ㅅㄷㅎ,963,fix: 최근 필터 리스트 스크롤 끝 도달 시 항목 dispose 방지,0,1,unknown
+ㅅㄷㅎ,961,feat(toast): AppToast에 bottomOffset 파라미터 추가,0,1,unknown
+ㅅㄷㅎ,953,fix(filter): 급여 필터 필드의 null 처리 개선,0,1,unknown
+ㅅㄷㅎ,952,fix(filter): 업종 서브코드 필터링 시 빈 코드리스트 예외 처리,0,1,unknown
+ㅅㄷㅎ,951,[refactor] Mock 검색 관련 코드 제거 및 테스트 의존성 업데이트,0,1,unknown
+ㅅㄷㅎ,949,[GA] 필터 GA 이벤트 filterName 수정 및 경력 이벤트 개별 발송 처리,0,1,unknown
+ㅅㄷㅎ,946,[GA] 필터 바텀시트 GA 이벤트에 진입 경로(entrySource) 타입 추가,0,1,unknown
+ㅅㄷㅎ,945,feat(TEST-77387): 스마트핏 공고 ID 분리 관리 및 새로고침 로직 개선,0,1,unknown
+ㅅㄷㅎ,933,fix(TEST-77393): CollapsedChipView 오른쪽 패딩 조정,0,1,unknown
+ㅅㄷㅎ,929,feat(TEST-77274): 필터 탭바 인디케이터 및 칩 UI 개선,0,1,unknown
+ㅅㄷㅎ,924,feat(TEST-77370): 공고찾기 정렬 드롭다운 UI 개선,0,1,unknown
+ㅅㄷㅎ,922,feat(TEST-76953): SmartFitSection 카드 개수별 렌더링 전략 구현,0,1,unknown
+ㅅㄷㅎ,920,[TEST-76851] Perf: RecentFilterCard에 AutomaticKeepAliveClientMixin 적용,0,1,unknown
+ㅅㄷㅎ,914,[fix] 급여 슬라이더 블리딩 방지 - active 트랙 높이 조정,0,1,unknown
+ㅅㄷㅎ,911,Fix: 접수 유형 텍스트 용어 통일 (이메일 지원 → 이메일 접수),0,1,unknown
+ㅅㄷㅎ,909,[Feature] Display '연봉 전체' for full salary range in recent filters,0,0,unknown
+ㅅㄷㅎ,905,refactor(test): JobCardInfoMock을 test/fixtures로 이관,0,1,unknown
+ㅅㄷㅎ,904,[style] 일자리찾기 정렬 드롭다운 너비 조정 (120px → 140px),0,1,unknown
+ㅅㄷㅎ,901,[TEST-77274] 필터 탭바 레이블 패딩 조정,0,1,unknown
+ㅅㄷㅎ,900,feat(TEST-77328): FINDJOB_LIST 전용 읽음 표시 처리 추가,0,1,unknown
+ㅅㄷㅎ,897,feat(TEST-77327): 추천 검색어 표시 조건에 최근 검색어 체크 추가,0,1,unknown
+ㅅㄷㅎ,895,[TEST-77274] 검색 진입 시 필터 툴팁 위치 조정 및 키워드 입력 자동 스크롤 기능 추가,0,0,unknown
+ㅅㄷㅎ,889,fix : 콘텐츠 화면 기본 타이틀 '취업전략' → '콘텐츠' 변경,0,1,unknown
+ㅅㄷㅎ,888,[TEST-77286] 검색 결과 건수 포맷팅 및 UI 갱신 버그 수정,0,1,unknown
+ㅅㄷㅎ,887,[TEST-77274] 필터 슬라이더 tick mark를 thumb 영역 밖에만 표시하도록 개선,0,1,unknown
+ㅅㄷㅎ,884,[TEST-76554] 연봉 필터 전체 선택 시 최소값을 슬라이더 최소값으로 설정,0,1,unknown
+ㅅㄷㅎ,883,[TEST-75952] SelectionBottomSheet UI 개선 및 TopShadowClipper 공통화,0,1,unknown
+ㅅㄷㅎ,879,[TEST-77271] 검색 홈 화면 진입 시 지역 필터 동기화 추가,0,1,unknown
+ㅅㄷㅎ,877,[TEST-76829] 핀 추가 실패 시 마이핀 공고 건수 조회 누락 수정,0,1,unknown
+ㅅㄷㅎ,876,[TEST-75965] 연봉 필터 슬라이더 thumb 외곽선 및 그림자 효과 추가,0,1,unknown
+ㅅㄷㅎ,875,[TEST-77246] 검색 결과 정렬 타입 JsonValue 값 API 스펙에 맞게 수정,0,1,unknown
+ㅅㄷㅎ,863,feat(GA): 필터 적용 시 통합검색결과보기_(필터명) GA 이벤트 구현,0,1,unknown
+ㅅㄷㅎ,861,[TEST-76710] 필터 탭바 레이아웃 개선 및 전체 필터 탭 제외,0,1,unknown
+ㅅㄷㅎ,856,[TEST-77012] 검색 결과 연관 키워드 섹션 하단 패딩 조정,0,1,unknown
+ㅅㄷㅎ,855,[TEST-76544] feat: 경력 년수 표시 기준 10년 이상으로 변경,0,1,unknown
+ㅅㄷㅎ,854,[TEST-77012] 검색 화면 자동완성 섹션 UI 개선,0,1,unknown
+ㅅㄷㅎ,842,refactor(TEST-77041): 필터 화면 채용공고 건수 최대값 제한 제거,0,1,unknown
+ㅅㄷㅎ,838,fix(TEST-75184): 핀 설정/해제 시 기존 필터의 jobCount 유실 문제 수정,0,1,unknown
+ㅅㄷㅎ,836,feat(GA): 주요 화면 GA 페이지뷰 추적 구현,0,1,unknown
+ㅅㄷㅎ,832,feat(GA): GA 페이지 트래킹 정의 추가,0,1,unknown
+ㅅㄷㅎ,830,feat(GA): 최근필터 적용 시 GA 이벤트 추적 추가,1,1,unknown
+ㅅㄷㅎ,826,feat: JOB찾기 영역 GA 이벤트 정의 추가,0,1,unknown
+ㅅㄷㅎ,825,fix: DI 설정 및 테스트 코드 문법 오류 수정,0,1,unknown
+ㅅㄷㅎ,824,feat(TEST-77132): searchResult 진입 시 필터 카운트에서 포함단어 제외,0,1,unknown
+ㅅㄷㅎ,823,test: 테스트 코드 대규모 리팩토링 및 안정화,0,1,unknown
+ㅅㄷㅎ,814,feat(filter): My필터 자동 선택 및 필터 비교 로직 개선 [TEST-76743],0,1,unknown
+ㅅㄷㅎ,813,feat(bottom-sheet): 바텀시트 푸터 상단 그림자 클리핑 적용,0,1,unknown
+ㅅㄷㅎ,812,refactor: 일자리 찾기 빈 상태 화면 스타일 개선,0,1,unknown
+ㅅㄷㅎ,811,[TEST-75965] feat: 필터 화면 슬라이더 UI/UX 개선,0,1,unknown
+ㅅㄷㅎ,810,[TEST-75973] feat: AppButton iconSize 파라미터 추가 및 복지 바텀시트 UI 개선,0,1,unknown
+ㅅㄷㅎ,806,[TEST-77026] 필터 칩 색상 스타일 변경,0,1,unknown
+ㅅㄷㅎ,805,[TEST-76680] feat: 정렬 드롭다운 스크롤 시 자동 닫힘 기능 구현,0,1,unknown
+ㅅㄷㅎ,803,fix(find_job): FilterBar 배지 clipping 문제 해결,0,1,unknown
+ㅅㄷㅎ,801,feat: 바텀시트에 useFullWidth 옵션 추가 (Z폴드 대응),0,1,unknown
+ㅅㄷㅎ,799,feat(TEST-76690): 복리후생 검색 결과 리스트 스크롤 동적 제어,0,1,unknown
+ㅅㄷㅎ,797,[TEST-76193] 필터 탭 keyword 섹션 제목 동적 변경,0,1,unknown
+ㅅㄷㅎ,796,feat(TEST-76789): CardJobBasic viewedLabel 컬러 조건부 적용,0,1,unknown
+ㅅㄷㅎ,788,[TEST-76700] 필터 바 하단 구분선 색상 변경,0,1,unknown
+ㅅㄷㅎ,787,feat(filter): SearchJobCountUseCase 조건부 분기 구현 [TEST-77041],0,1,unknown
+ㅅㄷㅎ,785,feat(TEST-76808): 핀 추가 실패 시 MY 필터 목록 갱신 기능 추가,0,1,unknown
+ㅅㄷㅎ,784,fix(TEST-76820): 페이지네이션 hasMore 계산 로직 버그 수정,0,1,unknown
+ㅅㄷㅎ,781,feat(TEST-76812): 키워드 필터 조건 체크 및 태그 표시 기능 개선,0,0,unknown
+ㅅㄷㅎ,779,feat(TEST-76829): 핀 설정 후 새 서버 필터 공고 건수 조회 기능 추가,0,1,unknown
+ㅅㄷㅎ,778,refactor(mock): 코드 스타일 및 lint 규칙 준수를 위한 정리,0,1,unknown
+ㅅㄷㅎ,777,[TEST-76838] 로그아웃 시 지원공고제외 필터 자동 제거 및 로그인 체크 추가,0,1,unknown
+ㅅㄷㅎ,776,[TEST-76857] 필터 화면 공고 건수 표시 최대값 제한 추가,0,1,unknown
+ㅅㄷㅎ,775,[TEST-76851] test: RecentFilterController 테스트 환경 구성,0,1,unknown
+ㅅㄷㅎ,774,refactor: presentation/mock 폴더의 더 이상 사용되지 않는 Mock 파일 삭제,0,1,unknown
+ㅅㄷㅎ,759,fix(filter): 복리후생 필터 빈 선택 상태에서 적용 버튼 활성화,0,1,unknown
+ㅅㄷㅎ,756,feat(filter): 연봉 슬라이더 조작 시 연봉 타입 자동 설정 기능 추가,0,1,unknown
+ㅅㄷㅎ,752,fix(filter): 경력 필터 최대값 범위 표시 형식 개선,0,1,unknown
+ㅅㄷㅎ,747,fix(filter): 경력 필터 동일 년수 표시 형식 개선,0,1,unknown
+ㅅㄷㅎ,744,refactor(salary): PayType별 급여 표시 포맷팅 개선,0,1,unknown
+ㅅㄷㅎ,738,fix: SmartFit 삽입 인덱스 계산 시 빈 데이터 검증 추가,0,1,unknown
+ㅅㄷㅎ,737,refactor: Mock 파일들을 test/fixtures로 이동,0,1,unknown
+ㅅㄷㅎ,734,refactor: SmartFit 채용공고 목록 개수 계산 로직 개선,0,1,unknown
+ㅅㄷㅎ,731,style: 정렬 드롭다운 메뉴 UI 개선,0,1,unknown
+ㅅㄷㅎ,727,refactor: 최근 필터 저장 로직 호출 위치 개선 (TEST-76534),0,1,unknown
+ㅅㄷㅎ,726,feat(filter): 로그인 필요 태그 선택 후 마이필터 목록 갱신,0,0,unknown
+ㅅㄷㅎ,714,refactor: UI 디자인 시스템 일관성 개선 및 Android 텍스트 입력 버그 수정,0,0,unknown
+ㅅㄷㅎ,706,feat(find_job): Empty State 표시 시 Footer/구분선/헤더 숨김 처리,0,0,unknown
+ㅅㄷㅎ,703,[TEST-76617] fix: 즉시 지원 버튼 로그인 화면 이동 시 결과 대기 추가,0,1,unknown
+ㅅㄷㅎ,702,[TEST-75908] FilterBar 설정 아이콘 색상 변경,0,1,unknown
+ㅅㄷㅎ,701,fix(ui): 필터 툴팁 위치 및 드롭다운 아이콘 수정,0,1,unknown
+ㅅㄷㅎ,698,feat(filter): My필터 선택 시 UI 상태 동기화 및 JkTextField textAlign 지원,0,1,unknown
+ㅅㄷㅎ,697,feat(filter): 복리후생 검색 결과 하단 탭 시 검색 초기화 기능 추가,0,1,unknown
+ㅅㄷㅎ,696,[TEST-76617] feat: 즉시지원 버튼 클릭 시 로그인 체크 추가,0,1,unknown
+ㅅㄷㅎ,694,feat(find_job): Empty State 표시 조건 로직 추가 및 테스트 구현,0,1,unknown
+ㅅㄷㅎ,690,refactor(filter): RecentFilter 네비게이션 로직을 Controller로 이동,0,1,unknown
+ㅅㄷㅎ,685,feat(filter): 모든 서버 필터 카운트 조회 및 헤더 현황 동적 표시,0,1,unknown
+ㅅㄷㅎ,684,feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가,0,1,unknown
+ㅅㄷㅎ,683,feat(TEST-76340): SmartFit 섹션 UI 개선 및 광고 표시 적용,0,1,unknown
+ㅅㄷㅎ,682,feat(find_job): SmartFitSection 카드에 isAdSection 파라미터 추가,0,1,unknown
+ㅅㄷㅎ,681,fix(find_job): 정렬 드롭다운 UI 개선,0,1,unknown
+ㅅㄷㅎ,678,feat(filter): 필터 이름 입력 시 특수문자 제한 기능 추가,0,1,unknown
+ㅅㄷㅎ,675,fix(recent_filter): 로그인 화면 이동 시 결과 대기 옵션 추가,0,1,unknown
+ㅅㄷㅎ,674,fix(my_filter): 칩 리스트 최소 너비 보장을 위한 ConstrainedBox 추가,0,1,unknown
+ㅅㄷㅎ,671,fix(TEST-76523): 2뎁스 바텀시트 좌우 항목 높이 48px로 통일,0,1,unknown
+ㅅㄷㅎ,670,fix(filter): 키워드 필터 UI 텍스트 '키워드'를 '단어'로 변경,0,1,unknown
+ㅅㄷㅎ,669,fix(filter): 필터 화면 툴팁 위치 offset 조정,0,1,unknown
+ㅅㄷㅎ,668,fix(recent-filter): 핀 고정/해제 실패 시 에러 토스트로 변경,0,1,unknown
+ㅅㄷㅎ,666,feat: SelectionBottomSheetView에 hideFooterWhenEmpty 옵션 추가,0,0,unknown
+ㅅㄷㅎ,665,refactor(find_job): 채용공고 지원 버튼 클릭 핸들러를 Controller로 이동 [TEST-76380],0,0,unknown
+ㅅㄷㅎ,664,fix(filter-bar): 사용자 스크롤 전까지 그라데이션 표시 유지,0,1,unknown
+ㅅㄷㅎ,662,fix(find_job): Footer 상단 간격 증가 [TEST-76066],0,1,unknown
+ㅅㄷㅎ,660,feat(filter): 연봉 필터 동일 값 선택 시 단일 표시 [TEST-76433],0,0,unknown
+ㅅㄷㅎ,658,feat(filter): 슬라이더 동일 값 표시 개선 [TEST-76418],0,1,unknown
+ㅅㄷㅎ,656,fix: SmartFitSection UI 스타일 및 Mock 파라미터 타입 수정,0,1,unknown
+ㅅㄷㅎ,645,feat(filter): 검색 화면에서 필터 진입 시 검색 컨텍스트 전달 기능 구현,2,1,unknown
+ㅅㄷㅎ,642,refactor(benefit): 복리후생 검색바를 공통 위젯으로 교체,0,1,unknown
+ㅅㄷㅎ,640,fix: 드롭다운 메뉴 offset 조정 및 mock 파일 업데이트,0,1,unknown
+ㅅㄷㅎ,639,feat(filter_bar): 스크롤 끝 감지 및 그라데이션 동적 표시 기능 추가 [TEST-75908],0,1,unknown
+ㅅㄷㅎ,635,feat(recent_filter): 핀 고정된 필터의 공고 카운트 조회 및 표시 기능 구현,0,1,unknown
+ㅅㄷㅎ,632,MY필터 바 기능 구현 및 최근 필터 UseCase 연동,0,1,unknown
+ㅅㄷㅎ,627,[TEST-75861] 구인공고 리스트 헤더 섹션 padding 조정,0,1,unknown
+ㅅㄷㅎ,626,feat(TEST-76105): 필터바 설정 버튼 카운트에서 칩 필터 제외,0,1,unknown
+ㅅㄷㅎ,625,feat(TEST-75985): ChipInput 읽기 전용 모드 추가,0,1,unknown
+ㅅㄷㅎ,624,fix(strings): 키워드 필터 툴팁 문구 명확성 개선,0,1,unknown
+ㅅㄷㅎ,623,fix(TEST-75930): 산업 필터 중분류별 선택 카운트가 표시되지 않는 버그 수정,0,1,unknown
+ㅅㄷㅎ,621,fix: 필터바 리스트 끝 패딩 값 조정 (64px → 54px),0,1,unknown
+ㅅㄷㅎ,612,feat(AppTabBar): labelPadding 파라미터 추가,0,1,unknown
+ㅅㄷㅎ,611,feat(TEST-76098): 선택 항목 칩 목록 가로 스크롤 UI로 변경,0,1,unknown
+ㅅㄷㅎ,610,fix(filter): 필터 UI 라벨명 및 헤더 구분선 수정,0,0,unknown
+ㅅㄷㅎ,609,fix(TEST-76144): 직무/산업 바텀시트 재진입 시 칩 스크롤 미동작 버그 수정,0,1,unknown
+ㅅㄷㅎ,602,fix: 급여 필터 입력 필드 단위 표시 텍스트 수정,0,1,unknown
+ㅅㄷㅎ,600,fix: 경력 슬라이더 전체 선택 텍스트를 '경력 전체'로 변경,0,1,unknown
+ㅅㄷㅎ,594,[fix] CardJobBasic 하단 패딩 조건부 적용,0,1,unknown
+ㅅㄷㅎ,593,[TEST-76066] 일자리찾기 화면 콘텐츠와 푸터 사이 간격 추가,0,0,unknown
+ㅅㄷㅎ,592,[TEST-76076] 메뉴에서 로그인 버튼 클릭 시 메뉴 닫기,0,0,unknown
+ㅅㄷㅎ,591,[TEST-76042] refactor: 권한 안내 화면 확인 버튼 색상 변경,0,0,unknown
+ㅅㄷㅎ,590,fix(TEST-75949): 필터 툴팁 위치 개선,0,0,unknown
+ㅅㄷㅎ,578,feat(TEST-75924): 필터 복원 시 직무/산업 항목에 부모 카테고리명 표시,0,0,unknown
+ㅅㄷㅎ,577,refactor(TEST-75912): 필터 컨트롤러 초기 선택 복원 로직 개선,0,1,unknown
+ㅅㄷㅎ,575,fix(menu): 빠른 화면 전환 시 크래시 방지를 위해 safeNotifyListener 적용,0,0,unknown
+ㅅㄷㅎ,574,feat(TEST-75957): 급여 슬라이더 단위 세분화 및 트랙 탭 기능 추가,0,1,unknown
+ㅅㄷㅎ,572,feat(TEST-75985): 키워드 입력 문자 제한 및 길이 제한 기능 구현,1,1,unknown
+ㅅㄷㅎ,571,feat(TEST-75987): 키워드 입력 최대 개수 검증 및 UX 개선,0,0,unknown
+ㅅㄷㅎ,570,[TEST-75908] FilterBarSettingsButton 선택 상태 시각적 피드백 개선,0,1,unknown
+ㅅㄷㅎ,565,feat(TEST-75972): BenefitSearchBar에 onTapOutside 콜백 추가,0,0,unknown
+ㅅㄷㅎ,564,feat(filter): 복리후생 검색 결과에서 최대 10개 초과 시 토스트 표시,0,1,unknown
+ㅅㄷㅎ,563,feat(TEST-75861): 채용공고 탭 콘텐츠 레이아웃 간격 개선,1,1,unknown
+ㅅㄷㅎ,562,fix(TEST-75966): 필터 화면 키보드 포커스 해제 개선,0,0,unknown
+ㅅㄷㅎ,561,feat(TEST-75905): 지역/직무/산업 선택 제한 해제,0,2,unknown
+ㅅㄷㅎ,560,feat(TEST-75968): 급여 필터 입력 필드 자릿수 제한 추가,0,0,unknown
+ㅅㄷㅎ,559,fix(TEST-75914): 등록일 필터 토글 해제 기능 추가,1,1,unknown
+ㅅㄷㅎ,558,fix(TEST-75933): CardJobBasic 카드 UI 개선,1,1,unknown
+ㅅㄷㅎ,549,fix(filter): 직무 선택 중분류 카운트 조회 시 mappingCode 폴백 추가,0,0,unknown
+ㅅㄷㅎ,547,feat(TEST-75927): 지역/산업 바텀시트 타이틀 변경,0,1,unknown
+ㅅㄷㅎ,546,TEST-75760 - feat(find-job): 스마트핏 노출 로직 개선 및 페이지 사이즈 고정,0,0,unknown
+ㅅㄷㅎ,542,[TEST-75852] feat: 채용공고 화면에 AppFooterWidget 추가,0,0,unknown
+ㅅㄷㅎ,541,TEST-75850 - feat(search): 필터 카운트를 개별 항목 수 기준으로 변경,0,0,unknown
+ㅅㄷㅎ,537,feature: 급여 필터 UX 개선 및 타입별 상태 보존,0,1,unknown
+ㅅㄷㅎ,535,style: FilterBar 컴포넌트 UI 스타일 개선,0,0,unknown
+ㅅㄷㅎ,530,feat(TEST-75845): FilterRequestBody 필터 카운트에 빠른 설정 및 등록일 추가,1,1,unknown
+ㅅㄷㅎ,528,refactor(filter): FilterBarType에서 employmentType(고용형태) 필터 제거,0,0,unknown
+ㅅㄷㅎ,527,fix: 필터 등록일(period) 복원 로직 추가,0,0,unknown
+ㅅㄷㅎ,525,refactor(filter-type-parser): API 키 기반 FilterType 매칭 로직으로 개선,0,0,unknown
+ㅅㄷㅎ,524,refactor: Hierarchical Selection 바텀시트 고정 높이 계산 제거 및 Expanded 기반 유연한 레이아웃으로 개선,0,0,unknown
+ㅅㄷㅎ,523,feat(TEST-75861): 채용공고 카드 버튼 스타일 및 목록 헤더 UI 개선,0,1,unknown
+ㅅㄷㅎ,519,feat(filter-bar): 서비스 탭 웹뷰 이동 기능 구현 및 네이밍 개선,0,0,unknown
+ㅅㄷㅎ,512,[TEST-75738] 앱바 알림 액션 헬퍼 추출 및 공통화,0,0,unknown
+ㅅㄷㅎ,510,[TEST-75739] 채용공고 화면 검색 버튼 동작 추가,0,1,unknown
+ㅅㄷㅎ,509,feat(find_job): 앱바 메뉴 버튼에 네비게이션 기능 추가,0,0,unknown
+ㅅㄷㅎ,503,refactor: 필터 하단바 초기화 버튼 제거 및 lazy loading 상수 추출,0,0,unknown
+ㅅㄷㅎ,498,refactor: CardJobBasic 탭 동작을 LinkUtil 서비스로 위임,0,0,unknown
+ㅅㄷㅎ,495,refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체,0,0,unknown
+ㅅㄷㅎ,491,style(filter): excludeApplied 필터 아이콘 변경,0,1,unknown
+ㅅㄷㅎ,478,feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현,0,1,unknown
+ㅅㄷㅎ,444,feat(FilterBarController): 검색 조건 저장/로드 기능 추가,7,0,unknown
+ㅅㄷㅎ,430,feat : FilterRouteParams DTO 도입 및 검색 화면 키워드 전달,11,1,unknown
+ㅅㄷㅎ,427,feat(AppTabBar): tabAlignment 파라미터 추가,3,0,unknown
+ㅅㄷㅎ,400,refactor: PushConsentDialog API 단순화 - onClosePressed에 doNotShowAgain 상태 전달,3,1,unknown
+ㅅㄷㅎ,345,feature : iOS Rich Push 알림 지원 및 Notification Service Extension 구현,0,1,unknown
+ㅅㄷㅎ,343,[feat] 필터 화면 공고 카운트 표시 기능 구현,6,1,unknown
+ㅅㄷㅎ,313,[refactor] 화면 방향 설정을 Mock에서 UseCase 패턴으로 리팩토링,7,0,unknown
+ㅅㄷㅎ,294,Feat: 검색 결과 화면 FilterBar 통합 및 스크롤 상태 관리 개선,3,1,unknown
+ㅅㄷㅎ,293,refactor : 설정 화면 하단 SafeArea 처리 개선,4,0,unknown
+ㅅㄷㅎ,278,feat(find_job): 채용공고 목록 정렬 드롭다운 기능 구현,2,1,unknown
+ㅅㄷㅎ,277,feat(filter): FilterBar에서 필터 화면 특정 섹션으로 자동 스크롤 기능 구현,6,1,unknown
+ㅅㄷㅎ,265,[refactor] FilterBar 컨트롤러 통합 - FindJob/SearchResult 공통화,13,0,unknown
+ㅅㄷㅎ,263,[test] Presentation Layer 단위 테스트 추가 - Filter  Location  Menu  PhotoEdit  Search ,3,1,unknown
+ㅅㄷㅎ,243,[feat] 채용공고 찾기 화면에 스마트핏 섹션 및 필터 시스템 개선,6,0,unknown
+ㅅㄷㅎ,242,feat(filter): 핀 필터와 로컬 필터 분리 구현,10,0,unknown
+ㅅㄷㅎ,208,refactor(notification_setting): Mock 의존성 제거 및 Domain 모델 직접 사용,2,1,unknown
+ㅅㄷㅎ,197,feat(find_job): 일자리찾기 탭 UI 컴포넌트 구현 및 리팩토링,12,1,unknown
+ㅅㄷㅎ,196,refactor(selection): View 초기화 중복 방지 로직 개선,0,1,unknown
+ㅅㄷㅎ,184,Add: 최근 필터 기능 구현,14,0,unknown
+ㅅㄷㅎ,175,refactor: Restructure filter models and update data types,10,0,unknown
+ㅅㄷㅎ,163,refactor: 사진 편집 바텀시트 반환값 기반 아키텍처로 개선,3,0,unknown
+ㅅㄷㅎ,155,refactor: 바텀시트 매니저의 콜백 패턴을 반환값 패턴으로 리팩토링,3,0,unknown
+ㅅㄷㅎ,154,refactor : 공통 앱바 컴포넌트로 통합,3,0,unknown
+ㅅㄷㅎ,133,feat: 필터 화면 핵심 기능 구현 (Presentation Layer),12,0,unknown
+ㅅㄷㅎ,132,feature: 직무 선택 바텀시트 구현,10,0,unknown
+ㅅㄷㅎ,103,feat: 알림 설정 개인정보 동의 및 실제 UseCase 연동 구현,8,0,unknown
+ㅅㄷㅎ,92,feat: 설정 화면 소셜 로그인 UI 개선 및 앱 업데이트 기능 추가,2,0,unknown
+ㅅㄷㅎ,65,[feat] iOS capabilities 설정 추가,0,1,unknown
+ㅅㄷㅎ,62,feat: Quick Actions 기능 구현 (홈 스크린 단축키),4,0,unknown
+ㅅㄷㅎ,61,feat: ASIS 알림설정 화면 이관 (Android → Flutter),13,0,unknown
+ㅅㄷㅎ,48,refactor: 설정 화면 문자열 상수화 및 오픈소스 라이선스 기능 구현,4,1,unknown
+ㅅㄷㅎ,38,refactor: ClassicNumeric 클래스를 static const 방식으로 단순화,0,1,unknown
+ㅅㄷㅎ,35,refactor: ClassicNumeric 싱글톤 패턴으로 변경 및 불필요한 상수 정리,0,1,unknown
+ㅅㄷㅎ,34,feat: 기존 iOS 설정 이관,0,1,unknown
+ㅅㄷㅎ,24,refactor : ASIS 상수 네이밍을 Classic으로 변경,2,1,unknown
+ㅅㄷㅎ,23,feat : ASIS 전환용 임시 상수 파일 추가,0,1,unknown
+ㅇㅎㅈ,1142,[FIX] iOS WebView 히스토리 백 처리 개선,0,0,unknown
+ㅇㅎㅈ,1141,[CHORE] Braze 로그인/로그아웃 이벤트 및 상태 속성 전송 기능 추가,0,1,unknown
+ㅇㅎㅈ,1139,[FEATURE] 로딩 상태 관리 최적화 및 코드 정리,0,1,unknown
+ㅇㅎㅈ,1137,[FIX] 네비게이션 라우터 extension pop 로직 개선,0,1,unknown
+ㅇㅎㅈ,1116,[FIX] Mjobkorea 쿠키 검증 및 보정 인터셉터 추가,2,0,unknown
+ㅇㅎㅈ,1068,[FEATURE] 웹뷰 인터렉션 개선,0,0,unknown
+ㅇㅎㅈ,1067,[FIX/TEST-77730] 쿠키 파싱 예외 처리 개선,0,1,unknown
+ㅇㅎㅈ,1056,[FIX] 각종 로직 개선,0,0,unknown
+ㅇㅎㅈ,1055,[FIX] QR 라우트 디폴트 설정 페이지 추가 및 PC 보기 로직 작동 로직 수정,0,0,unknown
+ㅇㅎㅈ,1052,[FIX] 불필요 warmup 로직 제거,0,1,unknown
+ㅇㅎㅈ,1042,[FIX/TEST-77479] Android에서 Apple 로그인 시 form 데이터 추출 실패 문제 수정,0,1,unknown
+ㅇㅎㅈ,1041,[FEATURE] 웹뷰 jank 이슈 수정,0,1,unknown
+ㅇㅎㅈ,1029,[FIX] : MjobkoreaCookie 이슈 수정,0,0,unknown
+ㅇㅎㅈ,995,fix(TEST-77467): 로그인 취소 시 WebView 닫기 로직 개선,0,0,unknown
+ㅇㅎㅈ,988,[FIX]content 탭에도 투앱 title 조작할 수 있도록 수정,0,0,unknown
+ㅇㅎㅈ,944,[FEATURE/FIX] Content Ready 감지 전략을 플랫폼별 최적화로 개선 및 웜업 로직 추가,0,0,unknown
+ㅇㅎㅈ,943,[REFACTOR] 로깅 시스템 정리 및 통일,0,0,unknown
+ㅇㅎㅈ,934,app-develop -> develop (01.13 21:18),0,0,unknown
+ㅇㅎㅈ,928,[FIX/TEST-77376] : QA 이슈 수정,0,0,unknown
+ㅇㅎㅈ,926,[FIX/TEST-77336] toapp close sub > uiType 명시 시 opener viewType 비교 로직 추가,0,0,unknown
+ㅇㅎㅈ,918,[FIX/TEST-77303] : AI Insight 섹션 gradient 효과를 위한 패딩 조정,1,1,unknown
+ㅇㅎㅈ,894,[FIX/TEST-77175  TEST-75020]  Review Home 자동 스크롤 방지 및 키워드 쿠키 동기화 개선,0,0,unknown
+ㅇㅎㅈ,893,[REFACTOR] : Isolate를 사용하여 DMP 로그 전송 성능 개선,0,1,unknown
+ㅇㅎㅈ,892,[FIX/TEST-77315] gomain home이 들어오면 탭스캐폴드 홈으로 랜딩하도록 수정,0,0,unknown
+ㅇㅎㅈ,885,[FIX} 로그아웃 이후 콘텐츠  my탭에서 바텀탭 클릭 시 상단으로 이동 안하는 이슈 수정,0,0,unknown
+ㅇㅎㅈ,882,[FIX/TEST-77245) pull-to-refresh 시 sectionListKey 증가 방지,0,0,unknown
+ㅇㅎㅈ,872,[FIX/TEST-76520] : 공고 없는 경우 인기공고 보러가기 선택 시 헤더 오류 수정,0,0,unknown
+ㅇㅎㅈ,868,[FIX] 검색 > pull to refresh 적용 건 롤백,0,0,unknown
+ㅇㅎㅈ,867,[FIX/TEST-77093] : subPopupUrl 처리 시 탭 URL 감지 로직  개선,0,1,unknown
+ㅇㅎㅈ,857,[FIX]: CardSwiper numberOfCardsDisplayed 동적 설정으로 assertion 오류 수정,0,1,unknown
+ㅇㅎㅈ,852,[FIX] 검색화면 > pull to refresh 인디케이터 상단 필터뷰에 가려지는 이슈 수정,1,1,unknown
+ㅇㅎㅈ,839,[FIX] 로그아웃 후 쿠키를 삭제하여 웹뷰가 로그인으로 리다이렉트 시키는 로직 수정,0,0,unknown
+ㅇㅎㅈ,827,[FEATURE]: Pull-to-Refresh 구현(홈  잡찾기  검색 **스크롤 구조** 변경),0,1,unknown
+ㅇㅎㅈ,821,[FIX/TEST-75020] Review 페이지 새로고침 시 키워드 유지되도록 쿠키 주입 추가,0,0,unknown
+ㅇㅎㅈ,820,[FEATURE / FIX] 웹뷰 로딩 로직 개선 및 QA 이슈 수정,0,0,unknown
+ㅇㅎㅈ,786,[FIX] : webview controller 직접 사용으로 변경,0,1,unknown
+ㅇㅎㅈ,773,[FIX] 주요 이슈 수정,0,0,unknown
+ㅇㅎㅈ,754,[FEATURE] AppDialog 디자인시스템,0,2,unknown
+ㅇㅎㅈ,749,feat(TEST-76464): 광고 배너 레이아웃 조정,0,1,unknown
+ㅇㅎㅈ,743,[FIX] : 웹뷰 기본 제목 설정 업데이트,0,1,unknown
+ㅇㅎㅈ,732,[FIX] QA 이슈 수정 및 메인 홈 로딩 개선,0,0,unknown
+ㅇㅎㅈ,715,[FEATURE] 공고상세에는 리뉴얼된 앱바를 노출 하도록 변경,0,1,unknown
+ㅇㅎㅈ,712,[FEATURE/TEST-76162]: 커스텀 스켈레톤 쉬머 위젯 추가,0,1,unknown
+ㅇㅎㅈ,695,[FEATURE] 메인홈 스크롤 포퍼먼스 개선,0,0,unknown
+ㅇㅎㅈ,667,[FEAT] 홈 헤더 스크롤 애니메이션 활성화 및 AI Insight Aurora 효과 추가,0,1,unknown
+ㅇㅎㅈ,654,[FIX/ TEST-75843] : Cold start 시 딥링크 중복 실행 방지,0,0,unknown
+ㅇㅎㅈ,653,[FIX]: QA 이슈 수정,0,0,unknown
+ㅇㅎㅈ,652,FIX(TEST-76269): TS_XML 파라미터 중복 추가 방지,0,0,unknown
+ㅇㅎㅈ,648,[FEATURE] 플랫폼 텍스트 크기 설정 무시하도록 변경,0,1,unknown
+ㅇㅎㅈ,622,[FEATURE]: AI Insight 섹션에 Aurora 효과 적용 (merge 이슈 수정),0,0,unknown
+ㅇㅎㅈ,614,[feat]: AI Insight 섹션에 Aurora 효과 적용,1,1,unknown
+ㅇㅎㅈ,613,[FIX-TEST-76162]  WebView 로드 전 스켈레톤 배경 추가,0,1,unknown
+ㅇㅎㅈ,601,[CHORE] 의존성 패키지 버전 업데이트 및 고정,0,1,unknown
+ㅇㅎㅈ,599,[FIX] SectionBuilder에서 mounted 체크 추가,0,1,unknown
+ㅇㅎㅈ,596,[FIX] IOS 네이버 로그인 패키지 고정 및 코드 안전성 개선,0,1,unknown
+ㅇㅎㅈ,595,[FIX] QA이슈 수정 및 코드 리팩토링,0,1,unknown
+ㅇㅎㅈ,543,[FIX]: 네이버 로그인 IPA 환경 이슈 수정,0,1,unknown
+ㅇㅎㅈ,521,[FIX] : 네이버 로그인 URL scheme 추가,0,1,unknown
+ㅇㅎㅈ,516,FIX(TEST-75716): TabController 로그인 체크 로직 개선,0,0,unknown
+ㅇㅎㅈ,505,[FIX] QA 이슈 수정건,0,0,unknown
+ㅇㅎㅈ,504,[FIX] 웹뷰 QA이슈 수정,0,0,unknown
+ㅇㅎㅈ,494,[FEATURE] 탭바 공통 인터렉션 및 리프레시 로직 적용,0,1,unknown
+ㅇㅎㅈ,481,[FIX]: 파일 다운로드 완료 알림 개선 및 폴링 메커니즘 추가,0,0,unknown
+ㅇㅎㅈ,477,[FIX / REFACTOR] : QA이슈 수정 및 코드 리팩토링,0,0,unknown
+ㅇㅎㅈ,463,[FEATURE] : 페이스북 로그인 노출조건 정책 적용 (원격 핸들링 기초 구조 설정),1,1,unknown
+ㅇㅎㅈ,457,[FIX] 쿠키 이슈 수정,0,1,unknown
+ㅇㅎㅈ,453,[FIX] QA 이슈 수정 (쿠키 개선),0,0,unknown
+ㅇㅎㅈ,452,[FIX] QA 이슈수정,0,0,unknown
+ㅇㅎㅈ,443,[REFACTOR] 쿠키 복구 로직 패턴변경,0,1,unknown
+ㅇㅎㅈ,422,[REFACTOR  FEATURE] JK Client 개선 1차,0,0,unknown
+ㅇㅎㅈ,421,FEATURE : 쿠키 복구 로직 안정성 개선,0,1,unknown
+ㅇㅎㅈ,412,[FEATURE] Loading Bar 스타일 적용 및 progress tracking 개선,0,1,unknown
+ㅇㅎㅈ,411,[REFACTOR] 쿠키 관리 시스템 리팩토링,0,1,unknown
+ㅇㅎㅈ,410,[FIX] QA 이슈 수정,0,1,unknown
+ㅇㅎㅈ,402,[FEATURE] 쿠키 정보 버튼을 FloatingDebugButton으로 이동,0,1,unknown
+ㅇㅎㅈ,398,[FIX] InAppWebView DatePicker를 위한 Material Components 의존성 추가,0,1,unknown
+ㅇㅎㅈ,397,[FEATURE] 패스워드 TextField 개선,0,1,unknown
+ㅇㅎㅈ,388,[FIX] QA 이슈 수정 (login handler navigation  쿠키 싱크 로직 개선),0,1,unknown
+ㅇㅎㅈ,384,[FEATUR] 앱 진입 > 권한 화면 노출 시점 변경,0,1,unknown
+ㅇㅎㅈ,378,[FIX] 쿠키 개선,0,1,unknown
+ㅇㅎㅈ,366,[FIX] 백버튼 핸들링 개선,0,0,unknown
+ㅇㅎㅈ,365,[FIX] 만료된 쿠키 필터링 로직 추가,0,0,unknown
+ㅇㅎㅈ,364,[FEATURE] 비밀번호 재시도 화면 UI 리팩토링 및 공통 컴포넌트 적용,1,1,unknown
+ㅇㅎㅈ,349,[FEATURE] 쿠키 관리 및 세션 안정성 개선 + 401 처리 개선,0,1,unknown
+ㅇㅎㅈ,348,[FEATURE] 전수 검사 QA 이슈 대응,0,0,unknown
+ㅇㅎㅈ,346,[FEATURE] 비밀번호 재입력이 필요한 case 화면 및 로직 추가,0,0,unknown
+ㅇㅎㅈ,333,[FIX] 기타 QA 개선건 작업,0,0,unknown
+ㅇㅎㅈ,332,[FEATURE] 로그인 로직 개선 및 QA 이슈수정,0,0,unknown
+ㅇㅎㅈ,331,[FIX] 로그인 개선,0,0,unknown
+ㅇㅎㅈ,330,[FIX]: shoudOverride 디바운스 로직 개선,0,0,unknown
+ㅇㅎㅈ,329,[FIX] 전수 검사 QA 이슈 대응,0,0,unknown
+ㅇㅎㅈ,328,[FIX] 전수검사 > QA 이슈 수정,0,0,unknown
+ㅇㅎㅈ,322,app develop -> develop,0,0,unknown
+ㅇㅎㅈ,321,[FIX] 전수 검사 QA이슈 대응,0,0,unknown
+ㅇㅎㅈ,319,[FIX] : iOS 앱 초기화 중 간헐적 멈춤 현상 수정,0,1,unknown
+ㅇㅎㅈ,305,[FEATURE] 서브도메인 서비스 호환 작업 (AI agent 페이지 붙이기 ),0,1,unknown
+ㅇㅎㅈ,288,[FEATURE] showDiaog closeDialog 앱브릿지 추가,0,1,unknown
+ㅇㅎㅈ,287,[FIX] : iOS 26커스텀 알럿 노출 로직 롤백,0,1,unknown
+ㅇㅎㅈ,284,[FIX] 웹뷰 네비게이션 로직 개선 및 QA 검수 대응,0,0,unknown
+ㅇㅎㅈ,283,[FIX] QA 검수 대응 (로그인  authhandler 리팩토링),0,0,unknown
+ㅇㅎㅈ,275,[FIX] 소셜 계정 연동 로그인 세션 유실 버그 수정,0,1,unknown
+ㅇㅎㅈ,273,[FIX] QA 이슈 수정 및 as-is mainsub 로직 적용,0,0,unknown
+ㅇㅎㅈ,272,[FIX] : 사전검수 QA 이슈 수정 6차,0,0,unknown
+ㅇㅎㅈ,268,[FEATURE] : webview >linearProgressindiactor 트랜지션 개선,0,1,unknown
+ㅇㅎㅈ,267,[FEATURE] 카카오톡 비즈   라인 공유하기 기능 추가,1,1,unknown
+ㅇㅎㅈ,262,[FIX] 사전검수 대응 6차,0,0,unknown
+ㅇㅎㅈ,261,[FIX] 사전 검수 QA 대응 5차,0,0,unknown
+ㅇㅎㅈ,260,[FEATURE] 사전검수 QA 이슈 대응 3차,0,0,unknown
+ㅇㅎㅈ,253,[FIX] Android JWT Scope 이슈 수정,0,1,unknown
+ㅇㅎㅈ,248,[FEATURE] 네이티브 트랜지션을 유지하면서 웹뷰 인스턴스 재활용 로직(keepAlive) 제거,0,0,unknown
+ㅇㅎㅈ,247,[FIX] 사전 검수 QA 이슈 수정 3차,0,0,unknown
+ㅇㅎㅈ,246,[FEATURE] 사전검수 QA 이슈 수정 2차,0,0,unknown
+ㅇㅎㅈ,244,[FIX] 로그인 쿠키 이슈 수정 및 qa이슈 수정,0,1,unknown
+ㅇㅎㅈ,239,[FIX] : 로그인 회원가입 qa 이슈 수정,0,1,unknown
+ㅇㅎㅈ,228,[FEATURE] : 웹뷰 안전성 개선,0,0,unknown
+ㅇㅎㅈ,226,[FEATURE] debug banner 추가,0,0,unknown
+ㅇㅎㅈ,225,[FIX] 로그인/회원가입 각종 오류 수정,0,0,unknown
+ㅇㅎㅈ,224,[REFACTOR] AppUserSession 리팩토링 댜응,0,0,unknown
+ㅇㅎㅈ,223,[FEATURE] 소셜 계정 연동화면 추가,0,0,unknown
+ㅇㅎㅈ,222,app-dev - > dev,0,0,unknown
+ㅇㅎㅈ,221,[REFACTOR] UserService → AppUserSession 통합 세션 관리 시스템 마이그레이션,0,0,unknown
+ㅇㅎㅈ,216,[FEATURE] AppStart API 성공 시 UserService 메모리 동기화 누락 문제 해결,0,0,unknown
+ㅇㅎㅈ,215,[FEATURE] 웹뷰 앱브릿지 기능 추가 및 개선,0,0,unknown
+ㅇㅎㅈ,206,[FEATURE] photo deeplink 결과 값에 따라 웹뷰를 리프레시하는 로직 추가,1,0,unknown
+ㅇㅎㅈ,205,[FEATURE] 웹뷰 기능개선,1,1,unknown
+ㅇㅎㅈ,204,[FEATURE] 로그인 기능 개선 및 추가,0,1,unknown
+ㅇㅎㅈ,195,[FEATURE] GNB 아이콘 변경 및 취업 인사이트 웹뷰 연동,0,1,unknown
+ㅇㅎㅈ,193,[FEATURE] AppCookie 로그인 쿠키를 헤더 형식 반환하는 메소드 추가,1,2,unknown
+ㅇㅎㅈ,190,[FIX] User Session 동기화 개선,4,1,unknown
+ㅇㅎㅈ,189,[FIX] 웹뷰 네비게이션 개선,0,1,unknown
+ㅇㅎㅈ,188,[FEATURE] 소셜 로그인 연동 및 중복 계정 처리 기능 개선,2,0,unknown
+ㅇㅎㅈ,185,[FEATURE] BaseController onInit에 BuildContext 전달 기능 추가,0,1,unknown
+ㅇㅎㅈ,183,[FEATURE] 검색 필터 저장 toapp 기능 추가 및 검색화면  url 호출 useCase 개발,5,1,unknown
+ㅇㅎㅈ,174,[FEATURE] 쿠키 관리 아키텍처 통합 및 재구조화 (자동로그인 이슈 해결),2,0,unknown
+ㅇㅎㅈ,158,[FEATURE] WebView 네비게이션 안정성 개선,0,1,unknown
+ㅇㅎㅈ,157,[FIX] iOS > 앱 재시작 시 쿠키 유실 문제,0,1,unknown
+ㅇㅎㅈ,156,[FEATURE / REFACTOR] 로그인  회원가입 화면 UI 리뉴얼 작업 및 리팩토링,0,1,unknown
+ㅇㅎㅈ,151,[REFACTOR] 로그인 쿠키 useCase 모듈 개선,0,1,unknown
+ㅇㅎㅈ,146,[FIX] 계정 전환 시 이전 계정 쿠키 잔존 버그 수정,0,1,unknown
+ㅇㅎㅈ,145,[FIX] photo deeplinkHandler 앱브릿지 수정,1,1,unknown
+ㅇㅎㅈ,144,[FEATURE] 로그인화면 UI 적용 1차,0,1,unknown
+ㅇㅎㅈ,143,[FEATURE] : 간편 로그인(빠른 로그인) 기능 1차 구현,0,0,unknown
+ㅇㅎㅈ,142,[ENHACNCE] 안드로이드 PredictiveBackPageTransitionsBuilder 네비게이션 트랜지션 적용,0,1,unknown
+ㅇㅎㅈ,141,[FIX] BaseScreen > PopScope 이벤트가 트리거 안되는 이슈,1,1,unknown
+ㅇㅎㅈ,138,[FIX] QR popUntilOrPush 네비게이션 메소드 이슈 수정,0,1,unknown
+ㅇㅎㅈ,136,[FEATURE / REFACTOR] 웹뷰 개선,1,0,unknown
+ㅇㅎㅈ,135,[FEATURE] 디자인 시스템 TextField 구현,2,1,unknown
+ㅇㅎㅈ,129,[FEATURE] 로그인 Oauth 응답 필드 스토리지 저장 로직 추가,0,1,unknown
+ㅇㅎㅈ,125,[FEATURE] 웹뷰 로딩 인터렉션 개선,0,0,unknown
+ㅇㅎㅈ,124,[FEATURE] JK 개편 탭 구조 적용,0,1,unknown
+ㅇㅎㅈ,123,[FEATURE] 로그인 / 회원가입 1차 구현,2,0,unknown
+ㅇㅎㅈ,118,[FEATURE] bottomSheet 유틸리티 클래스 safeArea 패딩 값 속성 추가,1,1,unknown
+ㅇㅎㅈ,107,[FIX] 웹뷰 MissingPluginException 이슈 수정,1,1,unknown
+ㅇㅎㅈ,106,[FIX] 쿠키 관리 시스템 개선,2,1,unknown
+ㅇㅎㅈ,100,[FEATURE] 로그인 as-is UI화면 구현 (새로운 디자인 적용 전),0,0,unknown
+ㅇㅎㅈ,87,[FIX] iOS에서 SPA 동적 렌더링이 간헐적으로 실패하는 문제 수정,0,0,unknown
+ㅇㅎㅈ,79,[FEATURE] 소셜 회원가입 완료 기능 1차 마이그레이션,0,0,unknown
+ㅇㅎㅈ,78,[REFACTOR] base 웹뷰 모듈 리팩토링,0,1,unknown
+ㅇㅎㅈ,59,[REFACTOR] WebView Handlers 패턴 매칭 리팩토링,0,1,unknown
+ㅇㅎㅈ,50,[ENHANCE] 플랫폼별 웹뷰 최적화 마무리 작업,0,0,unknown
+ㅇㅎㅈ,40,[MERGE] app-develop -> develop,0,0,unknown
+ㅇㅎㅈ,32,[UPDATE] app-develop -> develop,0,0,unknown
+ㅇㅎㅈ,29,[FEATURE] UserService(세션) 모듈 추가 로그인 쿠키 및 세션 로직 개선,9,0,unknown
+ㅇㅎㅈ,27,[FEATURE] BottomSheet 유틸리티 클래스 추가,0,1,unknown
+ㅇㅎㅈ,21,[FIX] 플랫폼별 loadUrl 트랜지션 최적화 작업 및 webview instance 재활용 로직 개선,0,0,unknown
+ㅇㅎㅈ,20,[ENHANCE] 안드로이드 웹뷰 포퍼먼스 개선을 위한 Impeller 렌더링 엔진 비활성화,0,0,unknown
+ㅇㅎㅈ,19,[REFACTOR] 싱글레포 멀티앱 → 싱글앱 리팩토링 (알바몬 걷어내기),1,0,unknown
+ㅇㅎㅈ,18,[FEATURE] 싱글 웹뷰 인스턴스 라우팅 시스템 구현,2,0,unknown
+ㅇㅎㅈ,17,[FIX] firebase 패캐지 의존성 충돌 수정,0,1,unknown
+ㅇㅎㅈ,16,[FEATURE] 웹뷰 로직 개선 및 ID/PW 로그인 1차 마이그레이션,0,0,unknown
+ㅇㅎㅈ,14,[REFACTOR] : Navigation Handler Enum 제거 리팩토링,0,1,unknown
+ㅇㅎㅈ,13,[FIX] : 네비게이션 UIController 앱브릿지 개선 및 기타 수정건,0,0,unknown
+ㅇㅎㅈ,11,[REFACTOR] 웹뷰 라우팅 구조 개선 (argument 전달 방식),2,1,unknown
+ㅇㅎㅈ,10,[FEATURE] : 웹뷰 네비게이션 1차 연동 및 구조 개선,0,0,unknown
+ㅇㅎㅈ,9,[REFACTOR] Getx 패키지 걷어내기 작업 (StateManagement  Navigation),1,1,unknown
+ㅇㅎㅈ,8,[FEATURE] NavigationHandler  FullWebview  BaseWebview 구조 개선 작업,0,0,unknown
+ㅇㅎㅈ,7,[FEATURE] AOS 커스텀 네비게이션 트랜지션 적용,0,0,unknown
+ㅇㅎㅈ,6,[FEATURE] 웹뷰 모듈 (BaseWebView) 구조 개선,0,0,unknown
+ㅇㅎㅈ,5,[FEATURE] VersionService 모듈 구현,0,0,unknown
+ㅇㅎㅈ,4,[FEATURE] JK 웹뷰모듈 마이그레이션 1차 작업,1,1,unknown
+ㅇㅎㅈ,3,[FEATURE] JK/AM 바텀 레이아웃 추가,0,1,unknown
+ㅇㅎㅈ,2,[FEATURE] 초기 프로젝트 구조 설계 및 작성,0,0,unknown
+ㄱㅅㅎ,1140,fix: Braze 이벤트/속성 전송 로직 개선 및 익명 사용자 데이터 병합 대응,0,0,unknown
+ㄱㅅㅎ,1134,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,1132,feat: AppsFlyer/Braze 연동 개선 및 WebView Referer 헤더 지원,0,1,unknown
+ㄱㅅㅎ,1126,app dev- > dev,0,0,unknown
+ㄱㅅㅎ,1120,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1117,refactor: UserIdentity.tsNo를 nullable-safe 패턴으로 변경,0,1,unknown
+ㄱㅅㅎ,1114,refactor: Sentry prod 환경 제한 및 광고 배너 개선,0,1,unknown
+ㄱㅅㅎ,1102,app dev- > dev,0,0,unknown
+ㄱㅅㅎ,1100,dev -> main,0,0,unknown
+ㄱㅅㅎ,1097,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1096,fix: 검색 결과 DMP 로그에 budgetId 파라미터 추가,0,1,unknown
+ㄱㅅㅎ,1093,fix: 검색 결과 DMP 노출 로그 누락 수정,0,1,unknown
+ㄱㅅㅎ,1089,페이지 인덱스추가,0,1,unknown
+ㄱㅅㅎ,1088,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,1081,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1080,feat: Android App Links 우회하여 기업회원 로그인/회원가입 외부 브라우저 열기,0,0,unknown
+ㄱㅅㅎ,1072,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1065,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1059,feat: 최근 검색어 마이그레이션 기능 추가,0,0,unknown
+ㄱㅅㅎ,1058,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,1054,fix: headhunting 경로 uitype=15(본창)로 변경,0,1,unknown
+ㄱㅅㅎ,1053,app dev-> dev,0,0,unknown
+ㄱㅅㅎ,1039,app dev- > dev,0,0,unknown
+ㄱㅅㅎ,1035,feat: Braze/AppsFlyer 이벤트 추적 개선 및 Push 알림 설정 연동,0,1,unknown
+ㄱㅅㅎ,1033,app dev-> dev,0,1,unknown
+ㄱㅅㅎ,1018,[Fix] 앱스 플라이어이 키값 변경.,0,0,unknown
+ㄱㅅㅎ,1017,[Fix] 앱스 플라이어이 키값 변경.,0,0,unknown
+ㄱㅅㅎ,1010,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,1008,fix: Braze QA 기능 추가 및 기타등등,0,0,unknown
+ㄱㅅㅎ,1004,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,991,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,987,fix: 개인정보 동의 Braze 이벤트 추가 및 광고 관련 버그 수정,0,0,unknown
+ㄱㅅㅎ,975,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,973,refactor: 스플래시 광고 타임아웃 및 로그인 Braze 연동 개선,0,1,unknown
+ㄱㅅㅎ,972,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,960,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,955,feat: Footer 데이터를 Firebase Remote Config로 동적 관리,0,1,unknown
+ㄱㅅㅎ,948,feat: Debug Banner에 DMP 탭 추가하여 공고 클릭 시 SC Code 확인 가능,0,1,unknown
+ㄱㅅㅎ,939,refactor: GA4 dimension 주입 로직 개선 및 점검 날짜 포맷 수정,0,0,unknown
+ㄱㅅㅎ,937,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,935,feat: Braze QA gaCustom 서버 연동 및 디버그 코드 정리,0,2,unknown
+ㄱㅅㅎ,932,app dev-> dev,0,0,unknown
+ㄱㅅㅎ,931,feat: Braze QA 커스텀 이벤트 추가 및 타임스탬프 포맷 개선,0,1,unknown
+ㄱㅅㅎ,916,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,913,feat: 디버그 패널에 런타임 환경 변경 기능 추가,0,0,unknown
+ㄱㅅㅎ,899,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,898,fix: appVersionInfo null 처리 개선 - 기본값 제거 및 안전한 플로우 보장,0,0,unknown
+ㄱㅅㅎ,896,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,881,feat: DMP3 - 서버 색상 지원 및 브레이즈 검수 리팩토링,0,1,unknown
+ㄱㅅㅎ,874,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,871,appdev-  > dev,0,0,unknown
+ㄱㅅㅎ,866,feat: 푸시 동의 7일 재노출 로직 및 검색 결과 DMP 연동 개선,0,1,unknown
+ㄱㅅㅎ,860,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,859,feat: DMP GA 및 Braze 이벤트 연동 개선,0,1,unknown
+ㄱㅅㅎ,844,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,835,feat: DMP 스크랩 로그를 Controller 레이어로 이동하여 지면 정보 포함,0,1,unknown
+ㄱㅅㅎ,829,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,819,feat: DMP 트래킹 시스템 통합 및 섹션별 공고 카드 DMP 로그 적용,0,1,unknown
+ㄱㅅㅎ,808,chore: Android 스플래시 리소스 및 마이그레이션 검증 문서 추가,0,1,unknown
+ㄱㅅㅎ,807,feat: Braze 이벤트/속성 Native 1:1 매핑 구현,0,1,unknown
+ㄱㅅㅎ,804,feat: GaTracker에 커스텀 디멘션 지원 기능 추가,0,1,unknown
+ㄱㅅㅎ,791,feat: 공고 카드 이미지 placeholder 개선 및 QA 피드백 반영,0,1,unknown
+ㄱㅅㅎ,790,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,767,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,762,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,755,fix: 홈 헤더 아이콘 색상 및 SVG 품질 개선 (디자인 QA),0,1,unknown
+ㄱㅅㅎ,753,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,748,feat: 푸시 동의 '다시 보지 않기' 기능 및 스낵 알림 로직 개선,0,1,unknown
+ㄱㅅㅎ,735,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,729,refactor: 앱 초기화 API 응답 구조 개선 및 DTO 정리,0,0,unknown
+ㄱㅅㅎ,713,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,711,feat: 잡찾기/검색결과 화면에 Scroll-to-Top 버튼 추가 및 광고 관련 기능 개선,1,1,unknown
+ㄱㅅㅎ,699,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,686,feat: AppButtonTop 공통 위젯 추가 및 하드코딩 스타일 디자인 시스템 적용,0,1,unknown
+ㄱㅅㅎ,679,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,677,fix: QA 피드백 반영 - 스플래시 로고  UI 색상 수정,0,1,unknown
+ㄱㅅㅎ,659,refactor: 스낵 알림 중복 표시 기준을 notificationType으로 변경 및 광고 배너 border 제거,0,1,unknown
+ㄱㅅㅎ,655,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,647,feat: AppsFlyer 이벤트 트래킹 확장 및 광고 배너 개선,0,0,unknown
+ㄱㅅㅎ,637,App develop -> dev,0,0,unknown
+ㄱㅅㅎ,631,appdev-> dev,0,0,unknown
+ㄱㅅㅎ,629,feat: 선호공고 영역 UI 디자인 개선 및 홈 화면 API 실패 처리 추가,0,1,unknown
+ㄱㅅㅎ,618,fix: AI Insight 툴팁 위치 및 PM 팝업 일정 노출 오류 수정,0,1,unknown
+ㄱㅅㅎ,607,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,603,feat: 예방 점검 공지 팝업 구현 및 Clean Architecture UseCase 적용,0,1,unknown
+ㄱㅅㅎ,597,app dev- > dev,0,1,unknown
+ㄱㅅㅎ,589,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,588,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,585,feat: 예방정비(메인터넌스) 정보 조회 기능 추가,0,0,unknown
+ㄱㅅㅎ,582,fix: AI Insight 섹션 디자인 검수 반영 및 버튼 컴포넌트 피그마 스펙 매칭,0,1,unknown
+ㄱㅅㅎ,581,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,580,refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리,0,0,unknown
+ㄱㅅㅎ,573,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,557,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,556,fix: AI Insight 섹션 디자인 QA 수정,0,1,unknown
+ㄱㅅㅎ,552,fix: 홈 화면 UI/UX 개선 및 폴드 접힘 시 말줄임 버그 수정,0,1,unknown
+ㄱㅅㅎ,538,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,522,refactor: 홈 화면 스낵바/배너 컴포넌트 분리 및 피그마 디자인 QA 반영,0,1,unknown
+ㄱㅅㅎ,517,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,506,appdev->dev,0,0,unknown
+ㄱㅅㅎ,496,fix: iOS 인앱결제 취소/에러 처리 개선,0,1,unknown
+ㄱㅅㅎ,489,refactor: curation_job_section 위젯을 개별 파일로 분리,0,1,unknown
+ㄱㅅㅎ,480,feat: 이미지 empty placeholder 통합 및 잡카드 이미지 처리 개선,0,1,unknown
+ㄱㅅㅎ,470,refactor: 홈 스낵 알림 로직을 seen 기반으로 개선,0,1,unknown
+ㄱㅅㅎ,468,feat: CurationJobSection에 비로그인 시 로그인 유도 배너 추가,0,0,unknown
+ㄱㅅㅎ,466,feat: ContentCard 콘텐츠 타입별 배경 스타일 구현,0,1,unknown
+ㄱㅅㅎ,465,fix: 홈 화면 안정성 개선 및 UI 버그 수정,0,1,unknown
+ㄱㅅㅎ,462,fix: 큐레이션 공고 이모지 및 AppImage 에러 처리 개선,0,1,unknown
+ㄱㅅㅎ,456,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,455,feat(ai-insight): AI Insight 섹션 디자인 시스템 적용 및 피그마 시안 일치,0,1,unknown
+ㄱㅅㅎ,449,feat: 콘텐츠 이미지 URL 빌더 추가 및 홈 섹션 개선,0,1,unknown
+ㄱㅅㅎ,447,feat: 큐레이션 잡 카드 반응형 및 캐러셀 자동 스크롤 추가,0,1,unknown
+ㄱㅅㅎ,446,feat: 홈 화면 UI 개선 및 광고/툴팁 안정성 강화,0,1,unknown
+ㄱㅅㅎ,438,fix: 큐레이션 공고 이모지 및 잡찾기 탭명 오류 수정,0,1,unknown
+ㄱㅅㅎ,437,feat(AppTabBar): tabAlignment 파라미터 추가,0,0,unknown
+ㄱㅅㅎ,432,refactor: 온보딩 직무선택 섹션 로딩/에러/빈데이터 시 숨김 처리,1,1,unknown
+ㄱㅅㅎ,426,feat: 광고 및 플로팅 알림 예외처리 개선,0,1,unknown
+ㄱㅅㅎ,423,[feat] 잡온보딩 예외처리 + 타임아웃 시간 12->3 max큐 3->5,0,0,unknown
+ㄱㅅㅎ,418,feat: 홈 화면 알림 탭 이동 및 CardSwiper 스크롤 개선,0,1,unknown
+ㄱㅅㅎ,415,feat: 앱 초기화 실패/점검/업데이트 팝업 처리 로직 추가,0,1,unknown
+ㄱㅅㅎ,414,fix: iOS 최초 실행 시 _widgetController LateInitializationError 방어 로직 추가,1,0,unknown
+ㄱㅅㅎ,413,feat: 개인화 스낵 알림 기능 개선 및 숨기기 로직 추가,1,1,unknown
+ㄱㅅㅎ,396,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,394,feat: 온보딩 잡 선택 섹션 UI 개선 및 스와이프 기능 추가,0,1,unknown
+ㄱㅅㅎ,386,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,383,feat: GetFilterTypeFilterDisplayUseCase v1.3.0 - title 필드 추가,0,1,unknown
+ㄱㅅㅎ,382,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,380,feat: FilterType UseCase에 iconPath  requiresLogin 추가 및 테스트 업데이트,0,1,unknown
+ㄱㅅㅎ,379,feat: 필터 화면 최초 진입 여부 확인 UseCase 추가,0,1,unknown
+ㄱㅅㅎ,374,feat: 급여형태(PayType) 필터 UseCase 추가,1,0,unknown
+ㄱㅅㅎ,372,feat: 고용형태(EmploymentType)  빠른설정(FilterType) 필터 UseCase 추가,0,1,unknown
+ㄱㅅㅎ,371,feat: 디버그 배너 UI 개선 및 GA4 핸들러 Android 호환성 강화,0,1,unknown
+ㄱㅅㅎ,362,[fix] 인앱결제 수정 및 추가 개발,0,0,unknown
+ㄱㅅㅎ,361,[fix] Release 빌드 네이버 로그인 실패 및 상단바 UI 수정,1,1,unknown
+ㄱㅅㅎ,356,fix: iOS 푸시 알림 토큰 전송 방식 수정 (APNS 토큰 사용),0,1,unknown
+ㄱㅅㅎ,354,refactor: 광고 WebView 위젯 분리 (고정 높이 vs 동적 높이),0,1,unknown
+ㄱㅅㅎ,353,feat: 파워링크 광고 클릭 시 외부 브라우저로 열기 및 동적 높이 지원,0,1,unknown
+ㄱㅅㅎ,352,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,351,feat: 파워링크 광고 클릭 시 외부 브라우저로 열기,0,1,unknown
+ㄱㅅㅎ,342,fix: QnA 댓글 이미지 업로드 및 지도보기 버그 수정,0,1,unknown
+ㄱㅅㅎ,341,appdev-> dev,0,1,unknown
+ㄱㅅㅎ,336,[chore] 개발 환경 배너 모드 개선,0,0,unknown
+ㄱㅅㅎ,327,[feat]안드로이드 백그라운드 딥링크 이슈 수정  네이버 맵 화면 기능 개발,1,0,unknown
+ㄱㅅㅎ,317,fix: iOS Braze 푸시 알림 설정 수정 - push.automation 기반으로 전환,0,0,unknown
+ㄱㅅㅎ,307,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,306,[Feat]ai agent sample,1,1,unknown
+ㄱㅅㅎ,300,[hot-fix] braze_key값 정상화,1,1,unknown
+ㄱㅅㅎ,297,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,296,feat: Android 폴드/태블릿 화면 방향 설정 기능 및 기업회원 앱 업데이트 로그인 유지 버그 수정,0,1,unknown
+ㄱㅅㅎ,292,fix: 기업/서치펌 회원 마이그레이션 스킵 및 안내 다이얼로그 추가,0,1,unknown
+ㄱㅅㅎ,289,feat: Braze/AppsFlyer 초기화 통합 및 ATT 타이밍 최적화,0,1,unknown
+ㄱㅅㅎ,282,feat: 카카오 로그인 및 AppsFlyer 딥링크 설정 개선,0,1,unknown
+ㄱㅅㅎ,276,fix: 스플래시 광고 로그 전송 API 누락 필드 및 설정값 수정,0,1,unknown
+ㄱㅅㅎ,274,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,269,feat: 광고 시스템 개선 및 스플래시 로그 API 구현,0,1,unknown
+ㄱㅅㅎ,258,Feature/power link2,1,0,unknown
+ㄱㅅㅎ,250,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,241,feat: 기업회원 자동 로그인 차단을 위한 마이그레이션 로직 개선,0,1,unknown
+ㄱㅅㅎ,236,feat: 파워링크 광고 기능 추가,0,0,unknown
+ㄱㅅㅎ,220,feat: AdFit ID 등록 이슈 수정 및 WebView 설정 개선,2,0,unknown
+ㄱㅅㅎ,219,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,218,[feat] 탈옥/루팅 체크 및 iOS 인앱 결제 기능 추가,0,1,unknown
+ㄱㅅㅎ,213,appdev -> dev,0,0,unknown
+ㄱㅅㅎ,209,feat: AdFit 광고 InAppWebView 포크로 적용,0,1,unknown
+ㄱㅅㅎ,200,[fix] 이것저것 수정,0,0,unknown
+ㄱㅅㅎ,191,feat: 안드로이드 뒤로가기 처리 및 홈스크린 메뉴 적용,5,0,unknown
+ㄱㅅㅎ,179,feat: 광고 배너 Native WebView 구현,0,1,unknown
+ㄱㅅㅎ,168,feat: 광고 배너 테스트 구현 및 자동 로그인 구조 개선,0,1,unknown
+ㄱㅅㅎ,149,appdev -> dev 땡겨오기,0,1,unknown
+ㄱㅅㅎ,148,feat: 앱 자동 로그인 및 스토리지 마이그레이션 구현,0,1,unknown
+ㄱㅅㅎ,126,[feat] 검색 자동완성 기능 usecase,1,1,unknown
+ㄱㅅㅎ,121,[feat] 메뉴 API usecase 수정 및 구조 개선,0,0,unknown
+ㄱㅅㅎ,119,feat: Main 화면 푸시 동의 UseCase 및 화면 구현,0,1,unknown
+ㄱㅅㅎ,112,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,109,feat: 데이터 절약 모드 및 프로필 편집 기능 추가,1,0,unknown
+ㄱㅅㅎ,102,refactor: 메인 Bottom Sheet 데이터 구조 변경 및 문서 업데이트,0,1,unknown
+ㄱㅅㅎ,99,feat: 메인 Bottom Sheet 기능을 Clean Architecture로 구현,0,0,unknown
+ㄱㅅㅎ,95,feat: iOS Native 키체인 TS_NO 마이그레이션 구현,0,1,unknown
+ㄱㅅㅎ,91,refactor: 앱 초기화 아키텍처를 Clean Architecture로 전면 리팩토링,0,1,unknown
+ㄱㅅㅎ,88,[feat] FCM 토큰 API 호출 기능 추가,2,0,unknown
+ㄱㅅㅎ,83,app dev -> dev,0,1,unknown
+ㄱㅅㅎ,82,[feat] AI 에이전트 프로젝트 가이드 및 Claude 팀 설정 추가,0,1,unknown
+ㄱㅅㅎ,80,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,77,[Feat] 앱스타트 2차작업.,0,1,unknown
+ㄱㅅㅎ,74,[feat] appstart작업 1차,3,1,unknown
+ㄱㅅㅎ,60,[feat] ATT 추가 + 파베 init 위치 수정,0,1,unknown
+ㄱㅅㅎ,58,[feat]  tsno 스토리지로 변경 + init flow 순서변경.,0,1,unknown
+ㄱㅅㅎ,57,appdev -> dev,0,1,unknown
+ㄱㅅㅎ,56,[feat] Flavor 런타임 선택,0,0,unknown
+ㄱㅅㅎ,51,app dev -> dev,0,0,unknown
+ㄱㅅㅎ,44,[Feat] firebase settings,0,0,unknown
+ㄱㅅㅎ,41,[Feat] 내부 스토리지데이터 마이그레이션  2차,2,1,unknown
+ㄱㅅㅎ,15,[Feat] init flow,1,0,unknown
+ㅇㅎㄱ,1138,검색 화면 키보드 및 자동완성 UX 개선,0,1,unknown
+ㅇㅎㄱ,1127,iOS. 에서 swipe back 이 안되서 수정,0,1,unknown
+ㅇㅎㄱ,1124,검색 홈 및 검색 결과 화면의 자동완성 UX 개선,0,1,unknown
+ㅇㅎㄱ,1122,홈 광고 key 'spaceHome' 으로 수정,1,1,unknown
+ㅇㅎㄱ,1115,캐싱 로직 변경. 캐싱을 컨트롤러에서 수행하고 사용하는 곳으로 전달.,0,1,unknown
+ㅇㅎㄱ,1113,검색 결과에서 마지막으로 저장한 키워드 따로 저장해서 필요 한 영역에 사용하게 수정 (필터 조회 및 새로 고침 시에),0,1,unknown
+ㅇㅎㄱ,1105,기다릴 필요 없는 공고들은 따로 비동기 로드 후 갱신하도록 수정,0,1,unknown
+ㅇㅎㄱ,1101,유저 이름을 가져오는 API 를 이용하여 검색 홈에서 설정,0,1,unknown
+ㅇㅎㄱ,1095,_currentPage 를 직접 ++ 하지 않고 +1  해서 다음 페이지를 호출 후 데이터가 있을 경우 _currentPage 설정하게 수정 (,0,1,unknown
+ㅇㅎㄱ,1092,모음이 있는 경우 -> 모음만 있는경우 정규식으로 변경,0,1,unknown
+ㅇㅎㄱ,1091,검색 시 포매터 삭제 (입력은 되도록) 이후 검색 모음 들어 있을 경우 empty 화면 노출,0,1,unknown
+ㅇㅎㄱ,1085,검색 결과에 usecase에 enum 자체를 넘기게 수정,0,1,unknown
+ㅇㅎㄱ,1078,검색 결과 에서 페이징 feature code 안 넣고 있어 수정  DMP 수정,0,1,unknown
+ㅇㅎㄱ,1075,DMP에 Sort 추가  검색어 입력 시 Formatter 설정,0,1,unknown
+ㅇㅎㄱ,1066,featurecode 없이검색 시에도 featureCode 업데이트,0,1,unknown
+ㅇㅎㄱ,1057,필터 영역을 헤더 영역에 위치 시켜 당겨서 새로고침에 문제 없게 수정,0,1,unknown
+ㅇㅎㄱ,1051,canPop 을. iOS android 분기 처리,0,1,unknown
+ㅇㅎㄱ,1046,검색결과에서 이동시  wait 가 무지. 걸려있어 수정. 검색 홈  검색 결과 swipe back 수정,0,1,unknown
+ㅇㅎㄱ,1040,하이테크 노출되는 문구 수정,0,1,unknown
+ㅇㅎㄱ,1036,검색 결과. GA 수정,0,1,unknown
+ㅇㅎㄱ,1031,자동완성 검색시에 feature 코드 있으면 request 에 추가 후 검색,0,1,unknown
+ㅇㅎㄱ,1028,구독상태가 빠져있어서 갱신 안되는 문제 수정,0,1,unknown
+ㅇㅎㄱ,1027,광고 UI 갱신 수정  하이테크 이동 수정,0,1,unknown
+ㅇㅎㄱ,1025,필요 없는 스크랩 상태 업데이트가 들어가 있어 삭제,0,1,unknown
+ㅇㅎㄱ,1024,검색 결과 화면 수정 원복 (잘못 수정된 부분이 들어가 버려 원복 하였습니다.),0,0,unknown
+ㅇㅎㄱ,1014,CPC  CPT 상품 추가 호출 수정,0,1,unknown
+ㅇㅎㄱ,1009,타이틀 노출 로직 수정  노출되는 문구 수정,0,0,unknown
+ㅇㅎㄱ,989,GA 이벤트 수정,0,2,unknown
+ㅇㅎㄱ,981,검색 결과 화면에서 기업 외에 배너가 있어 해당 배너일 경우 노출 및 이동 수정,0,1,unknown
+ㅇㅎㄱ,978,prd 서버 기업명과 상이하게 노출되는 문제 수정  복리 후생 노출 수정,0,1,unknown
+ㅇㅎㄱ,969,읽음 처리 영역에 isViewed 처리 추가,0,1,unknown
+ㅇㅎㄱ,968,상세 호출 시 sccode 추가. 및 logpath=1 추가,0,0,unknown
+ㅇㅎㄱ,958,검색 결과 카드에서 태그 영역에 원픽이면 좌측에 이미지 추가,0,1,unknown
+ㅇㅎㄱ,957,https://jira.jobkorea.co.kr/browse/TEST-77477 몇 분  몇 시간 전 등록일 경우 'n분 전 등록'/'n시간 ,0,1,unknown
+ㅇㅎㄱ,956,검색 결과 GA 수정 (https://jira.jobkorea.co.kr/browse/TEST-77438),0,1,unknown
+ㅇㅎㄱ,950,잘못된 온보딩 문구 수정,0,1,unknown
+ㅇㅎㄱ,940,검색영역 스크랩 Mock 사용하는 부분이 남아있어 삭제,0,1,unknown
+ㅇㅎㄱ,930,기존 경력 이상 로직 삭제,0,1,unknown
+ㅇㅎㄱ,925,색 결과 화면에서 원픽  스토리 공고 좌우 페이저로 사용하던 부분 단순 리스트로 변경 수정.,0,1,unknown
+ㅇㅎㄱ,923,원픽 공고 영역 수정 (바뀐 API 에 맞게 수정),0,1,unknown
+ㅇㅎㄱ,917,필요 없이 있는 usecase삭제 (읽음 처리 관련),0,1,unknown
+ㅇㅎㄱ,915,온보딩 가이드 라인 팝업 문구 수정,0,1,unknown
+ㅇㅎㄱ,912,태그 텍스트 변경 수정,0,2,unknown
+ㅇㅎㄱ,910,검색 결과 카드에서 x년↑ 안붙어 있으면 붙이게 수정,0,1,unknown
+ㅇㅎㄱ,906,검색 카드 관련 수정,0,1,unknown
+ㅇㅎㄱ,902,디자인 이슈들 수정.,0,1,unknown
+ㅇㅎㄱ,851,이번주 공채 소식 안나오는 문제 수정,0,1,unknown
+ㅇㅎㄱ,846,처음 가이드 팝업 로티 변경,0,1,unknown
+ㅇㅎㄱ,845,검색결과에서 등록  마감 수정,0,2,unknown
+ㅇㅎㄱ,841,정렬 할 때에 result 초기화 이후 _fetchSearchResult 자체를 기다리게 수정,0,1,unknown
+ㅇㅎㄱ,834,필터 영역 상단에 잘리지 않도록 수정,0,1,unknown
+ㅇㅎㄱ,818,합격 축하금 계산식 추가,0,1,unknown
+ㅇㅎㄱ,816,검색 결과 화면에서 top 100 호출 수정,0,1,unknown
+ㅇㅎㄱ,802,읽음 처리 서비스 사용하도록 수정,0,1,unknown
+ㅇㅎㄱ,800,인기 top 100 선택 시 이동하게 수정,0,0,unknown
+ㅇㅎㄱ,798,검색 결과 마감 표시 수정  검색 결과 필터 아래쪽에 1줄 추가,0,0,unknown
+ㅇㅎㄱ,794,공고 우측 앱 이미지 호출 전 사전 로딩 수행해서 이미지 에러 노출 되는지 확인후 노출 하게 수정,0,1,unknown
+ㅇㅎㄱ,793,스토리 공고 수정,1,1,unknown
+ㅇㅎㄱ,782,앱 버튼이 와측 아이콘 우측 아이콘 선택이 잘 안되는 이슈 있어 선택 영역을 나누도록 수정 하였습니다.,0,1,unknown
+ㅇㅎㄱ,780,release 모드에서 갱신 되지 않는 문제 수정,0,1,unknown
+ㅇㅎㄱ,771,선택 영역 수정. 꽉차게  검색 결과에서 자동완성 수정하다가 딤이 없어져서 수정,0,1,unknown
+ㅇㅎㄱ,770,검색 결과 컨트롤러에서 executeUsecase사용하지 않는 부분 수정,0,1,unknown
+ㅇㅎㄱ,768,검색 결과 이미지 로고 만들어서 넣게 수정,0,1,unknown
+ㅇㅎㄱ,764,알바몬 iOS 이동 안하는 문제 수정,0,1,unknown
+ㅇㅎㄱ,763,UI 이슈 수정  AppImage사용하게 수정,0,1,unknown
+ㅇㅎㄱ,760,자동완성 리스트 노출 시 스크롤 가능하게 수정 (https://jira.jobkorea.co.kr/browse/TEST-76872),0,1,unknown
+ㅇㅎㄱ,758,하이테크 노출 및 알바몬 넛지 노출 조건 및 순서 수정,0,1,unknown
+ㅇㅎㄱ,750,알바몬 넛지 기능 수정 (High 이슈),0,1,unknown
+ㅇㅎㄱ,745,QA 이슈 수정 : 디자인 수정 및 이동 기업 이동 수정,0,1,unknown
+ㅇㅎㄱ,739,홈 화면에서 사용하는 검색 창 변경 및 에러 수정,1,1,unknown
+ㅇㅎㄱ,736,https://jira.jobkorea.co.kr/browse/TEST-76809 수정,0,1,unknown
+ㅇㅎㄱ,721,TEST_76706 : 마지막 스크롤 시 스크롤 버벅임 현상 발생됨 수정,0,2,unknown
+ㅇㅎㄱ,720,https://jira.jobkorea.co.kr/browse/TEST-76620,0,1,unknown
+ㅇㅎㄱ,719,https://jira.jobkorea.co.kr/browse/TEST-76491 UI 이슈 수정,0,1,unknown
+ㅇㅎㄱ,718,검색 결과 스크롤 시 로고 영역이 로딩 완료 되기 전까지 노출되지 않게 수정,0,2,unknown
+ㅇㅎㄱ,717,딤처리 해제만 되고 키패드 ON 상태 유지됨,0,2,unknown
+ㅇㅎㄱ,704,검색 홈 지역 필터 연동 및 최근 필터 저장 구현,0,2,unknown
+ㅇㅎㄱ,700,검색결과 화면 당겨서 새로고침 추가.,1,0,unknown
+ㅇㅎㄱ,692,검색 QA 대응 수정,0,1,unknown
+ㅇㅎㄱ,651,검색 QA 이슈 수정,1,1,unknown
+ㅇㅎㄱ,636,그라디에이션 애니메이션을 우선 공통 검색 헤더에서 삭제,0,1,unknown
+ㅇㅎㄱ,608,스마트픽 영역 개선 및 스크랩 버튼 통합,0,1,unknown
+ㅇㅎㄱ,583,로티 애니메이션에 겹쳐서 페이드인 페이드 아웃 애니메이션 적용하게 해달라는 요청이 있어 (자연스럽게 보이기 위해) 해당 요건 추가하였습니다.,2,1,unknown
+ㅇㅎㄱ,569,검색 결과 화면 수정,2,0,unknown
+ㅇㅎㄱ,551,온보딩 팝업 수정 ( 로티 애니메이션으로 수정 ),0,0,unknown
+ㅇㅎㄱ,515,검색 결과 화면에서 필터 리프레시 되도록 수정,1,1,unknown
+ㅇㅎㄱ,475,검색바 컴포넌트 리팩토링,1,2,unknown
+ㅇㅎㄱ,439,검색 결과 아이템 경로 변경 -> component/job_card,2,0,unknown
+ㅇㅎㄱ,395,DialogManager 공통 설정 중앙화 및 AppButton 패딩 기능 추가,4,0,unknown
+ㅇㅎㄱ,389,홈 온보딩 팝업 다이얼로그 구현,12,1,unknown
+ㅇㅎㄱ,358,검색 결과 화면 노출 로직 기획에 맞게 수정 및 테스트를 위한 설정 수정,6,1,unknown
+ㅇㅎㄱ,315,검색 결과 없음 UI/UX 개선 및 인기 공고 표시 기능 추가,5,0,unknown
+ㅇㅎㄱ,298,검색 결과 화면에 스마트핏 섹션 추가 등,9,1,unknown
+ㅇㅎㄱ,285,검색 홈 추천 검색어 노출 수정 및 동의 팝업 노출 로직 수정,10,1,unknown
+ㅇㅎㄱ,264,검색 화면에 파워링크 광고 배너 추가,9,1,unknown
+ㅇㅎㄱ,254,검색 결과 화면 리팩토링 및 공용 컴포넌트 통합,15,1,unknown
+ㅇㅎㄱ,235,로딩 다이얼로그 구현 및 HTML 다이얼로그 테스트 인프라 추가,7,1,unknown
+ㅇㅎㄱ,202,검색 결과 화면 추가 및 구조 개선,24,1,unknown
+ㅇㅎㄱ,180,검색 홈 영역을 mock에서 실제 API로 변경,6,1,unknown
+ㅇㅎㄱ,167,ASIS 검색 화면 구현,4,0,unknown
+ㅇㅎㄱ,147,홈 스크린 진입 시 푸시 동의 팝업 노출 수정,3,0,unknown
+ㅇㅎㄱ,139,자동완성 검색어  자동완성 검색 회사 실제 Domain 에서 호출하게 수정.,3,0,unknown
+ㅇㅎㄱ,110,## 검색 화면 신규 구현: 주석 간결화  상수 추출  의존성 주입 패턴 적용,16,1,unknown
+ㅇㅎㄱ,98,공통 사용 위한 ClassicAppbar 추가,1,1,unknown
+ㅇㅎㄱ,71,마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정,34,0,unknown
+ㅇㅎㄱ,53,Feature/app develop/popup retry,10,0,unknown
+ㅊㅈㅇ,1131,Fix/small error,0,1,unknown
+ㅊㅈㅇ,1119,fix : sentry scrollable error 수정,0,1,unknown
+ㅊㅈㅇ,1109,fix : dmp value  gender => M F null  UUID 제거,0,1,unknown
+ㅊㅈㅇ,1099,fix : 인기 공고 impression 누락,0,1,unknown
+ㅊㅈㅇ,1090,AppUserSession MemberInfo 동기화 기능 추가,0,1,unknown
+ㅊㅈㅇ,1087,DMP 검색 조건 로그 기능 추가,0,1,unknown
+ㅊㅈㅇ,1086,App develop,0,1,unknown
+ㅊㅈㅇ,1083,refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경,0,1,unknown
+ㅊㅈㅇ,1073,fix : dmp 수정중,0,1,unknown
+ㅊㅈㅇ,1023,TEST-77630 수정,0,0,unknown
+ㅊㅈㅇ,1021,feature : featureType 추가,1,1,unknown
+ㅊㅈㅇ,1013,스마트핏 직무 요청 body 수정,0,1,unknown
+ㅊㅈㅇ,1007,슈퍼 채용관 랜덤 노출 로직 추가,0,0,unknown
+ㅊㅈㅇ,1003,CodeHub Race Condition 개선,0,1,unknown
+ㅊㅈㅇ,1001,TEST-77400 회색화면 수정,0,1,unknown
+ㅊㅈㅇ,990,fix : 큐레이션 라벨 들썩들썩 수정,0,1,unknown
+ㅊㅈㅇ,984,Catalog 동기화 아키텍처 개선 및 Asset Fallback 적용,0,1,unknown
+ㅊㅈㅇ,977,fix : 지역 2depth에 일본 중국 미국 홍콩 제거,0,1,unknown
+ㅊㅈㅇ,974,코드 허브 개선,0,1,unknown
+ㅊㅈㅇ,954,fix : 통검-스마트픽 + includeData 추가,0,0,unknown
+ㅊㅈㅇ,938,검색 결과 DMP 로그 속성 추가,0,1,unknown
+ㅊㅈㅇ,921,Dynamic URL 수정 건 및 scCode 로직 개선,0,1,unknown
+ㅊㅈㅇ,891,fix : 전시 version <-> section 간극 극복 로직 추가,0,1,unknown
+ㅊㅈㅇ,886,CPC/CPT 상품 트래킹 시스템 구현,0,1,unknown
+ㅊㅈㅇ,864,fix : TEST-76479 수정,0,1,unknown
+ㅊㅈㅇ,853,DMP Data Tracking 필드 수정,0,1,unknown
+ㅊㅈㅇ,849,feature : change start post dto,0,1,unknown
+ㅊㅈㅇ,848,fix : 산업 군 중복 수정,0,1,unknown
+ㅊㅈㅇ,843,잡찾기 지면 spacing 적용,0,1,unknown
+ㅊㅈㅇ,840,feature : applicationRegAt 추가,0,1,unknown
+ㅊㅈㅇ,837,dmp space 적용,0,1,unknown
+ㅊㅈㅇ,831,fix: placeHolder actionUrl 변환,0,1,unknown
+ㅊㅈㅇ,822,해외 지역 데이터 조회 기능 개선,0,0,unknown
+ㅊㅈㅇ,817,Tracking 필드 추가,0,1,unknown
+ㅊㅈㅇ,815,합격축하금 DTO 추가,0,0,unknown
+ㅊㅈㅇ,792,Feature/ga action,0,1,unknown
+ㅊㅈㅇ,783,Sync Outlink UseCase 추가 및 필터 초기화 로직 수정,0,1,unknown
+ㅊㅈㅇ,766,JobResDto 및 경력 라벨 표시 로직 개선,0,1,unknown
+ㅊㅈㅇ,751,필터 중복 제거 및 Placeholder 라벨 수정,0,1,unknown
+ㅊㅈㅇ,742,GA4 공고 Custom Dimensions 추가,1,1,unknown
+ㅊㅈㅇ,733,잡찾기/검색 버그 수정 모음,0,1,unknown
+ㅊㅈㅇ,728,refactor : page to limit,0,0,unknown
+ㅊㅈㅇ,725,최근 필터 저장 로직 개선,0,1,unknown
+ㅊㅈㅇ,724,잡찾기  검색 페이징 인덱스 수정,0,1,unknown
+ㅊㅈㅇ,716,FilterRequestBody 리팩토링 및 ListType Enum 추가,0,1,unknown
+ㅊㅈㅇ,707,JobViewType 도입 및 카드 위젯 아키텍처 개선,0,1,unknown
+ㅊㅈㅇ,693,fix: 직무 필터 중복 제거,0,0,unknown
+ㅊㅈㅇ,691,모든 SDUI Section Empty 여부 확인,0,1,unknown
+ㅊㅈㅇ,689,feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가,0,0,unknown
+ㅊㅈㅇ,687,일자리 찾기 QA 수정,0,1,unknown
+ㅊㅈㅇ,680,카탈로그 동기화 CDN → BFF API 마이그레이션,0,1,unknown
+ㅊㅈㅇ,676,Viewed Jobs 저장 기능 추가,0,1,unknown
+ㅊㅈㅇ,672,BaseAsyncSection buildHeader 분리 및 동적 헤더 타이틀 적용,0,1,unknown
+ㅊㅈㅇ,663,JobDisplayHelper lookup 통합 리팩토링,0,1,unknown
+ㅊㅈㅇ,649,fix/count-use-case → develop,0,1,unknown
+ㅊㅈㅇ,646,ListCardLogoSmallSection 리네이밍 및 버그 수정,0,1,unknown
+ㅊㅈㅇ,644,fix: build_error,0,0,unknown
+ㅊㅈㅇ,641,필터별 공고수 UseCase 추가,0,1,unknown
+ㅊㅈㅇ,638,fix : revert 된 파일 복귀,0,1,unknown
+ㅊㅈㅇ,633,Placeholder 카드 기능 구현,0,1,unknown
+ㅊㅈㅇ,630,UseCase - selectedDisplayName 로직 개선 및 OnBoarding 지역 추가,0,1,unknown
+ㅊㅈㅇ,628,직무 필터 - 3depth '전체' 항목 추가,0,1,unknown
+ㅊㅈㅇ,616,서버 필터 언핀 시 로컬 저장 기능 추가,0,1,unknown
+ㅊㅈㅇ,615,exception  error 위젯 제거 하도록 수정,0,1,unknown
+ㅊㅈㅇ,606,Fix/qa 26 01 02,0,1,unknown
+ㅊㅈㅇ,598,RecentFilter UseCase,0,0,unknown
+ㅊㅈㅇ,586,refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리,0,1,unknown
+ㅊㅈㅇ,554,CompanyType Enum 통합 및 UseCase 단순화,0,0,unknown
+ㅊㅈㅇ,548,통합 검색 스마트핏 UseCase 추가 및 선호공고 미노출 대응(content),0,1,unknown
+ㅊㅈㅇ,544,feature : pageSize 수정 및 파라미터 4칸으로 변경,0,0,unknown
+ㅊㅈㅇ,534,cookieNo생성 UseCase 추가,0,1,unknown
+ㅊㅈㅇ,533,QA 및 AD 라벨 처리 개선,0,1,unknown
+ㅊㅈㅇ,526,fix: mockData누락 수정,0,0,unknown
+ㅊㅈㅇ,518,fix:mock 데이터 수정,0,0,unknown
+ㅊㅈㅇ,514,feature : payType nullable,0,0,unknown
+ㅊㅈㅇ,513,fix : 검색 도메인 변경 적용  logo_card error 수정,0,0,unknown
+ㅊㅈㅇ,508,통합 검색 UseCase 구현,0,1,unknown
+ㅊㅈㅇ,502,합격축하금 필터 토글 기능 추가,0,1,unknown
+ㅊㅈㅇ,501,공고 검색 건수 조회 API 추가,0,1,unknown
+ㅊㅈㅇ,500,Find Job New - SDUI 기반 섹션 시스템 확장,0,1,unknown
+ㅊㅈㅇ,499,refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체,0,0,unknown
+ㅊㅈㅇ,497,Find Job New - SDUI 기반 섹션 시스템 확장,0,1,unknown
+ㅊㅈㅇ,492,style(filter): excludeApplied 필터 아이콘 변경,0,1,unknown
+ㅊㅈㅇ,490,fix : 개인화 알림 parser수정,0,1,unknown
+ㅊㅈㅇ,487,FilterItemMapper → GetFindJobFilterBarDisplayUseCase 마이그레이션,0,1,unknown
+ㅊㅈㅇ,486,미등록 RenderType 경고 위젯 추가 + API Enums 갱신,0,1,unknown
+ㅊㅈㅇ,485,fix : build_error 수정,0,0,unknown
+ㅊㅈㅇ,484,SectionBuilderWidget HomeSduiController 의존성 제거,0,1,unknown
+ㅊㅈㅇ,483,feature : job찾기 segment분리,0,0,unknown
+ㅊㅈㅇ,482,feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현,0,1,unknown
+ㅊㅈㅇ,479,공고 검색 API 및 스마트핏 검색 기능 추가,0,1,unknown
+ㅊㅈㅇ,476,공고 검색 API 및 필터 모델 개선,0,0,unknown
+ㅊㅈㅇ,473,필터 아키텍처 리팩토링,0,1,unknown
+ㅊㅈㅇ,464,SDUI Interface 개선 및 검색조건 아키텍처,0,1,unknown
+ㅊㅈㅇ,458,SDUI Interface 개선 및 공고찾기 화면 SDUI 적용,1,1,unknown
+ㅊㅈㅇ,445,큐레이션 공고 API 응답 구조 수정 및 TypeError 예외 처리 개선,0,0,unknown
+ㅊㅈㅇ,442,큐레이션 잡 섹션 광고  더보기 추가  섹션당 패딩 수정,0,1,unknown
+ㅊㅈㅇ,436,CurationJobSection type 필드 추가 및 헤더 표시,0,1,unknown
+ㅊㅈㅇ,435,UrgentNoticeSection (긴급 공지 섹션) 신규 구현,0,1,unknown
+ㅊㅈㅇ,433,CDN Catalog DTO 필드 추가 및 섹션 배경색 적용,0,1,unknown
+ㅊㅈㅇ,431,AI Insight 섹션 리팩토링 및 데이터 구조 변경,0,1,unknown
+ㅊㅈㅇ,429,Feature/job search usecase,0,1,unknown
+ㅊㅈㅇ,420,섹션 시스템 개선 - 헤더 숨김  에러 UI 상세화  API 스킵 기능,0,1,unknown
+ㅊㅈㅇ,417,섹션 헤더 Emoji 지원 및 Curation Job 빈 데이터 처리 개선,0,1,unknown
+ㅊㅈㅇ,409,온보딩 저장 기능 유연화,0,1,unknown
+ㅊㅈㅇ,408,Exception 처리 개선 및 SDUI 파싱 에러 Sentry 통합,0,1,unknown
+ㅊㅈㅇ,407,AdBanner 섹션 마이그레이션,0,1,unknown
+ㅊㅈㅇ,405,feat: Screen 카탈로그 실제 CDN 연동,0,1,unknown
+ㅊㅈㅇ,404,홈 섹션 최소 버전 필터링 구현,0,1,unknown
+ㅊㅈㅇ,403,feat: 온보딩 진행 단계 조회 UseCase 구현,0,1,unknown
+ㅊㅈㅇ,399,feature/onboardingAndJobCardDefault 변경 명세서,0,1,unknown
+ㅊㅈㅇ,392,Feature/onboarding and job card default,0,1,unknown
+ㅊㅈㅇ,387,[Feature] 선호공고 선택 샘플 구현,0,0,unknown
+ㅊㅈㅇ,385,[Feature] 온보딩 공고 선택 섹션 구현,0,1,unknown
+ㅊㅈㅇ,375,[Feature] CurationJobSection 키워드 칩 인터랙션 구현,0,1,unknown
+ㅊㅈㅇ,373,[Feature] Job Scrap UseCase 및 필터 기능 추가,0,1,unknown
+ㅊㅈㅇ,367,[Feature] 홈 화면 섹션 개선,0,1,unknown
+ㅊㅈㅇ,363,[Feature] Segment UseCase 구현 및 HomeController 연동,2,1,unknown
+ㅊㅈㅇ,357,[fix]  .jobko.io domain 쿠키 발리지 않는 이슈,0,1,unknown
+ㅊㅈㅇ,350,[Refactor] 미사용 DTO 및 Domain Model 정리,0,1,unknown
+ㅊㅈㅇ,339,[Feature] 온보딩 지역 필터 UseCase 구현,0,1,unknown
+ㅊㅈㅇ,338,[Feature] 홈 콘텐츠 섹션 구현,0,1,unknown
+ㅊㅈㅇ,335,Swagger DTO 자동 생성 시스템,0,1,unknown
+ㅊㅈㅇ,334,feature: BFF Display Main DTO 자동 생성 스크립트 및 DTO 추가,0,1,unknown
+ㅊㅈㅇ,326,지역 필터 UseCase 구현,0,1,unknown
+ㅊㅈㅇ,325,Filter UseCase 자동화 시스템 도입,0,1,unknown
+ㅊㅈㅇ,324,feature: API spec enum 자동 생성 (64개 신규  4개 업데이트),0,1,unknown
+ㅊㅈㅇ,323,enums 자동 생성용 claude slash command 추가,0,1,unknown
+ㅊㅈㅇ,318,Fix/member system no type,0,1,unknown
+ㅊㅈㅇ,304,CodeHub DisplayModel UseCase 추상화 및 필터 UseCase 구현,0,1,unknown
+ㅊㅈㅇ,301,메인 홈 SDUI 아키텍처 전면 개편 - Server-Driven UI 기반 섹션 렌더링,0,1,unknown
+ㅊㅈㅇ,286,fix : usecase 내 누락된 result 추가,0,1,unknown
+ㅊㅈㅇ,251,마케팅 푸시 동의 여부 알림 수정,0,1,unknown
+ㅊㅈㅇ,245,fix : 간편 로그인 삭제 문구 수정 및 임시 UI적용,0,1,unknown
+ㅊㅈㅇ,234,fix : keyChain 저장 로직 제거,0,1,unknown
+ㅊㅈㅇ,233,fix : init_api 405 error 수정,0,1,unknown
+ㅊㅈㅇ,231,fix : 설정 - 자동로그인 여부 비활성화시 로그아웃되지 않도록 수정,1,1,unknown
+ㅊㅈㅇ,230,feature : flavor 선택 다이얼로그 slot 임시 disabled 처리,0,1,unknown
+ㅊㅈㅇ,217,fix : 설정 - 자동로그인 여부 shared memory에 동기화 하여 관리하도록 수정,0,1,unknown
+ㅊㅈㅇ,211,iOS : ts_no 생성시 keychain 저장  디버그 flavor 다이얼로그 내 keychain 삭제 버튼 추가,0,1,unknown
+ㅊㅈㅇ,210,flavor subDomain 설정 일부 url에만 적용되던 이슈 수정,0,1,unknown
+ㅊㅈㅇ,201,InitTask 유틸리티 추가,0,1,unknown
+ㅊㅈㅇ,181,앱 초기화 프로세스 개선 1차,0,1,unknown
+ㅊㅈㅇ,173,최근 검색어 CRUD 기능 구현,0,0,unknown
+ㅊㅈㅇ,171,메뉴 데이터 캐싱 로직 적용,0,1,unknown
+ㅊㅈㅇ,170,Feature/search usecase task1,1,1,unknown
+ㅊㅈㅇ,166,fix : ts_no lazy initialize 수정,0,1,unknown
+ㅊㅈㅇ,165,fix : interceptor 나중에 init제거,0,0,unknown
+ㅊㅈㅇ,161,공통 exception 1차,0,1,unknown
+ㅊㅈㅇ,159,chore : freezed & annotation version up,1,1,unknown
+ㅊㅈㅇ,128,feature : code-hub prod stg 추가,0,1,unknown
+ㅊㅈㅇ,127,fix : CDN version check 직렬로 이동,0,0,unknown
+ㅊㅈㅇ,122,code_hub DB적재 시스템 & 지역 검색 필터 usecase,0,0,unknown
+ㅊㅈㅇ,96,BFF - API 연동 기본 셋팅,0,1,unknown
+ㅊㅈㅇ,93,fix : query -> field로 변경,0,1,unknown
+ㅊㅈㅇ,84,Feature/app setting list,0,1,unknown
+ㅊㅈㅇ,76,init_api호출 로직 추가 및 자동로그인 usecase 추가,0,1,unknown
+ㅊㅈㅇ,68,앱 설정 - 기본 get usecase 구현 및 적용  tobe-자동로그인 상태 변경,2,1,unknown
+ㅊㅈㅇ,64,chore : init 시나리오 확인 쉽도록 logger 추가,0,1,unknown
+ㅊㅈㅇ,63,Feature/app core setting,0,1,unknown
+ㅊㅈㅇ,42,Feature/sdui test,0,1,unknown
+ㅊㅈㅇ,39,Feature/sdui test update,0,0,unknown
+ㅊㅈㅇ,12,data <-> domain 계층,1,0,unknown
+ㅇㄷㅎ,1133,Fix: 유니버셜링크 외부인입케이스 헤더정리 https://jira.jobkorea.co.kr/browse/TEST-77778,0,1,unknown
+ㅇㄷㅎ,1125,Fix: AI인사이트 문구 150자 +더보기 로직에서  높이기반(5줄) 더보기 로직으로 변경 https://jira.jobkorea.co.kr/,0,0,unknown
+ㅇㄷㅎ,1121,Fix: 앱 백키로 끈다음에 딥링크 받으면 앱 두개되는현상 수정(안드) https://jira.jobkorea.co.kr/browse/TEST-,0,1,unknown
+ㅇㄷㅎ,1094,Feat: 유니버셜/앱링크 엣지케이스 시스템 제작 https://jira.jobkorea.co.kr/browse/TEST-77778?filter,0,1,unknown
+ㅇㄷㅎ,1084,Fix: 이미지 캐시추가 + 테마관 반잘라 편집하는 이미지 캐시사이즈 명시,0,1,unknown
+ㅇㄷㅎ,1077,Update HttpOverrides comment to clarify its purpose for non-API network calls...,0,1,unknown
+ㅇㄷㅎ,1070,Fix: 콜드스타트 앱링크 미동작 수정 https://jira.jobkorea.co.kr/browse/TEST-77503,0,0,unknown
+ㅇㄷㅎ,1064,Fix: 스플래시 800ms 안에 재빌드콜 오면 무시,0,1,unknown
+ㅇㄷㅎ,1060,fix: 검색 totop버튼 바텀패딩 추가 https://jira.jobkorea.co.kr/browse/TEST-76862,0,1,unknown
+ㅇㄷㅎ,1048,Fix/donny3,0,0,unknown
+ㅇㄷㅎ,1044,feat: 컨텐츠 플레이스홀더 정규식 좀더추가,0,0,unknown
+ㅇㄷㅎ,1043,Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정 https://jira.jobkorea.co.,0,1,unknown
+ㅇㄷㅎ,1037,Fix/donny3,0,1,unknown
+ㅇㄷㅎ,1020,Fix: 안드로이드 빠르게 백키 두번 누르면 두번째 이후 액션 먹히는 문제 수정 https://jira.jobkorea.co.kr/browse/,0,1,unknown
+ㅇㄷㅎ,1012,Fix: 홈화면 온보딩 2단계 완료후 심하게 덜그럭거리는 현상 수정. https://jira.jobkorea.co.kr/browse/TEST-7,0,1,unknown
+ㅇㄷㅎ,1006,Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정...,0,1,unknown
+ㅇㄷㅎ,992,Fix: 섹션 더보기페이지 타이틀 다른거 수정 https://jira.jobkorea.co.kr/browse/TEST-77567,0,1,unknown
+ㅇㄷㅎ,982,Fix: vip 상품cardjobThumbnailHorizontal 더보기페이지에서 같은 이미지 쓰도록 수정...,0,1,unknown
+ㅇㄷㅎ,979,ㅋㅋㅋ,0,1,unknown
+ㅇㄷㅎ,964,Fix: 홈 온보딩 2단계 이후 자동새로고침 제거 https://jira.jobkorea.co.kr/browse/TEST-77066,0,1,unknown
+ㅇㄷㅎ,942,Fix/donny,0,0,unknown
+ㅇㄷㅎ,936,Fix/donny,0,1,unknown
+ㅇㄷㅎ,919,Fix: 잡코로고 플레이스홀더 공고카드에서 한번 쭉 잡았음https://jira.jobkorea.co.kr/browse/TEST-75855,0,1,unknown
+ㅇㄷㅎ,908,Misc: 칼라값 피그마 토큰기반(JAMS2.0피그마기준) 업데이트 260113,0,1,unknown
+ㅇㄷㅎ,878,Fix/donny,0,1,unknown
+ㅇㄷㅎ,869,Fix: 특정 폰에서 2열캐로셀페이저 1열만 나오는것 수정 https://jira.jobkorea.co.kr/browse/TEST-77178,0,0,unknown
+ㅇㄷㅎ,865,Fix: 온보딩 상태 안고쳐짐 (첫접속시 안뜸  x눌렀는데 안닫힘) 수정 https://jira.jobkorea.co.kr/browse/TEST,0,1,unknown
+ㅇㄷㅎ,858,Fix/donny,0,1,unknown
+ㅇㄷㅎ,850,Feat: 클래리티 화면명(웹뷰는 url)매칭,0,1,unknown
+ㅇㄷㅎ,809,Fix: CarouselCardLogoSmallPaginationSection 1페이지 구성일때 카드너비 꽉차게 조절  페이지카운터 폰트...,0,1,unknown
+ㅇㄷㅎ,789,디자인QA,0,1,unknown
+ㅇㄷㅎ,769,Fix: findjob 디자인현행화(간격맞춤  사이즈다른 캐로셀 처리)https://jira.jobkorea.co.kr/browse/TEST-7,0,0,unknown
+ㅇㄷㅎ,765,Fix: JOB찾기 A타입 아이템 충분하지않은(2개이하)인경우 좌우로 꽉차서 노출되도록 수정 https://jira.jobkorea.co.kr/,0,1,unknown
+ㅇㄷㅎ,757,Fix: 온보딩 링크유틸로 오는경우 처리 잘 안됨문제 수정https://jira.jobkorea.co.kr/browse/TEST-76841,0,1,unknown
+ㅇㄷㅎ,741,Fix: 이력서 등록된 회원이면서 온보딩 2단계만 진행한경우  무한으로 2단계 명륜진사갈비 즐기는 현상 수정...,0,1,unknown
+ㅇㄷㅎ,723,Fix: 오버레이웹뷰 켜져있을때 탭이동 명령어 왔을때 제대로 동작 안하는 이슈 수정 패밀리앱 깔려있음 이동처리 (없으면 스토어),0,0,unknown
+ㅇㄷㅎ,710,Fix: 온보딩 7일 미노출 https://jira.jobkorea.co.kr/browse/TEST-76450,0,1,unknown
+ㅇㄷㅎ,709,Develop appdev sync,0,1,unknown
+ㅇㄷㅎ,705,Fix: 온보딩 이력서등록플래그(지역/직무 있음 플래그) 보고 1단계 스킵가능하게 변경 https://jira.jobkorea.co.kr/bro,0,1,unknown
+ㅇㄷㅎ,688,Fix: 잡카드에서 쓰는 추천/핵심채용관(CarouselCardLogoSmallPaginationSection) 2단뷰 좌우로 넓게표시...,0,1,unknown
+ㅇㄷㅎ,650,Fix/donny qa2,0,1,unknown
+ㅇㄷㅎ,643,홈화면 프리미어섹션 AD딱지 디자인변경  aiinsight 타이틀폰트 변경,0,1,unknown
+ㅇㄷㅎ,620,Feat: 홈섹션 상세보기페이지에서  홈 아이템 순서 유지하기위해 캐시기능 추가(상세페이지에서만 씀)...,1,1,unknown
+ㅇㄷㅎ,619,Feat: 홈 섹션간 마진 설정로직 추가,0,1,unknown
+ㅇㄷㅎ,617,Fix: 로그아웃시 홈에 있는 웹뷰들 새주소로 로드 안되는현상 수정,0,1,unknown
+ㅇㄷㅎ,605,Fix: 프리미어(cardjobimagebanner) 로고 안나오게 조치  디자인 현행화,0,1,unknown
+ㅇㄷㅎ,604,Feat: screen으로 탭안에 있는 페이지 가려고할때 앱스킴 추가,0,1,unknown
+ㅇㄷㅎ,587,Fix/home qa,0,0,unknown
+ㅇㄷㅎ,568,fix: 온보딩 1단계 진행중 2단계처럼 취급되는현상 수정,0,1,unknown
+ㅇㄷㅎ,555,Fix/home,0,1,unknown
+ㅇㄷㅎ,539,Resolve merge conflict,0,0,unknown
+ㅇㄷㅎ,536,home QA 처리,2,1,unknown
+ㅇㄷㅎ,511,Feat: 웹뷰섹션 높이상한선 정함. 좌우로는 무한 늘어나지만  높이는 피그마 설계기준까지만.,0,1,unknown
+ㅇㄷㅎ,493,Fix/home,0,1,unknown
+ㅇㄷㅎ,488,Fix/home,0,1,unknown
+ㅇㄷㅎ,474,Fix: jsbridge 로 오는경우  콘텐츠 탭으로(메인화면 계열임) 이동하는 url일경우  정확하게 타겟페이지로 이동 안되는 문제 수정...,0,1,unknown
+ㅇㄷㅎ,472,Feat: toapp 스키마 jobkorea 스키마로 전환하건 아니건 모두 호한 가능하도록 수정,0,1,unknown
+ㅇㄷㅎ,471,Fix/home,0,1,unknown
+ㅇㄷㅎ,469,Refactor: Update imports and modify onboarding section loading to be unawaited..,0,0,unknown
+ㅇㄷㅎ,467,CPC  공고 QA  온보딩 앱완료 (웹작업은 남음),0,1,unknown
+ㅇㄷㅎ,461,Fix: 홈푸터 접힘상태 관리로직 개선  안드폰 안꺼지게(디버그환경) 환경설정,0,1,unknown
+ㅇㄷㅎ,460,Misc: UA 맨끝에 Flutter/(버전) 추가,0,1,unknown
+ㅇㄷㅎ,454,Fix/home,0,1,unknown
+ㅇㄷㅎ,448,Fix 스크랩 수정  CardJobThumnailHorizontal디자인수정,0,1,unknown
+ㅇㄷㅎ,441,Fix/home qa,1,1,unknown
+ㅇㄷㅎ,440,feat: 홈 공지사항 1개 롤링으로 변경,0,1,unknown
+ㅇㄷㅎ,434,Feat: 스크랩 로티 작업완료,0,1,unknown
+ㅇㄷㅎ,428,Misc: 아이콘(기본 이모지 sns) 다운스크립트와 실제 아이콘 업데이트,0,1,unknown
+ㅇㄷㅎ,425,Feat/scrap sync,0,1,unknown
+ㅇㄷㅎ,424,Feat: toapp sendFirebaseEventLog 추가 (액션은 기존 firebaseevent 동일),0,0,unknown
+ㅇㄷㅎ,419,Feat: 홈섹션 이동하는거 일괄추가  이미지위젯 기본이미지  에러이미지 추가,0,1,unknown
+ㅇㄷㅎ,416,Refactor: Update dependency imports and remove unused code,0,1,unknown
+ㅇㄷㅎ,406,Appdev > Develop,0,1,unknown
+ㅇㄷㅎ,381,Fix: 웹섹션 PR리뷰 반영  중복기능 제거,0,1,unknown
+ㅇㄷㅎ,377,Feat: 웹섹션 Raw json 떨구는 기능 추가,1,1,unknown
+ㅇㄷㅎ,376,웹뷰섹션,0,0,unknown
+ㅇㄷㅎ,370,Feat/websection,1,1,unknown
+ㅇㄷㅎ,369,Misc: ha 명령어 질문프리셋 추가,0,1,unknown
+ㅇㄷㅎ,360,검색 딥링크 추가,0,0,unknown
+ㅇㄷㅎ,359,Feat: 앱리뷰 기능 추가,0,1,unknown
+ㅇㄷㅎ,355,Feat: screen 계열 딥링크 액션 추가,0,1,unknown
+ㅇㄷㅎ,344,QA 2건 수정 (딥링크/웹뷰),0,1,unknown
+ㅇㄷㅎ,340,Misc: Dart AST tool 추가  ha명령어에 주입함,0,1,unknown
+ㅇㄷㅎ,337,Refactor : 앱스킴서비스->링크유틸 이름변경,0,2,unknown
+ㅇㄷㅎ,314,Fix/donny qa,0,1,unknown
+ㅇㄷㅎ,310,Env: 안드로이드 빠진 메니페스트 추가,0,0,unknown
+ㅇㄷㅎ,309,Fix/deeplink splash,0,1,unknown
+ㅇㄷㅎ,302,Fix/deeplink splash,0,1,unknown
+ㅇㄷㅎ,299,Feat: DMP 지원용 usecase 추가,0,1,unknown
+ㅇㄷㅎ,290,웹-> 앱 이동시 액션처리,0,1,unknown
+ㅇㄷㅎ,280,Feat: 슬라이더  구분선(세퍼레이터) 추가,0,1,unknown
+ㅇㄷㅎ,279,Fix: ios avoidbottominset 제외  화면키우는 코드 추가  (키보드 올릴때 영역 이상하게 줄어드는 버그수정...,0,1,unknown
+ㅇㄷㅎ,271,Feat: 앱버튼 마이크로인터렉션 추가 / 32사이즈 폰트크기 변경,0,1,unknown
+ㅇㄷㅎ,270,Fix: iOS 웹뷰 텍스트필드 포커스 이동시 웹뷰영역 기괴하게 줄어드는 현상 수정 (플러터 버그...,0,2,unknown
+ㅇㄷㅎ,259,Fix/donny qa,0,1,unknown
+ㅇㄷㅎ,255,Fix/donny qa,0,1,unknown
+ㅇㄷㅎ,252,Feat/appbar,0,1,unknown
+ㅇㄷㅎ,240,Fix: gomain toapp 시 탭에 해당하는 url이 아닐경우  gosub처럼 새창뜨게 수정....,0,1,unknown
+ㅇㄷㅎ,238,feat: DMP,0,1,unknown
+ㅇㄷㅎ,237,Doc: 지라용 유저 롤 기록,0,1,unknown
+ㅇㄷㅎ,232,Feat/appscheme,0,1,unknown
+ㅇㄷㅎ,229,misc: ha 명령어 하드코딩path 제거,0,0,unknown
+ㅇㄷㅎ,214,feat: 유니버셜링크 처리  gemini 시스템프롬프트 활용 커맨드 추가,0,1,unknown
+ㅇㄷㅎ,199,Feat: 팝업웹뷰 추가  reload toapp/딥링크 동작하도록 추가,0,1,unknown
+ㅇㄷㅎ,198,Feat: 유니버셜/앱링크 처리,0,1,unknown
+ㅇㄷㅎ,194,Fix: File_handler에 들어있는 photo 명령어 제거  attachphoto 로 통합.,0,1,unknown
+ㅇㄷㅎ,187,refactor: Update navigation handler and app scheme parser for improved deep link,0,1,unknown
+ㅇㄷㅎ,182,fix: AppText style 변경 시 UI 미반영 버그 수정,0,1,unknown
+ㅇㄷㅎ,172,feat: 앱스킴(투앱) 1차완,1,1,unknown
+ㅇㄷㅎ,169,feat: Fastlane 세팅완료 Add Firebase configuration and Fastlane setup for Android an,0,1,unknown
+ㅇㄷㅎ,140,Feat: 섹션웹뷰 추가,3,1,unknown
+ㅇㄷㅎ,137,Misc: 클로드스킬 업데이트,0,1,unknown
+ㅇㄷㅎ,131,Feat: 공통위젯,1,1,unknown
+ㅇㄷㅎ,130,Feat: 홈스크린 재빌드시 컨트롤러 재사용하도록 옵션추가,1,1,unknown
+ㅇㄷㅎ,120,feat: AppScheme Service for toapp  deeplink unified system,0,1,unknown
+ㅇㄷㅎ,116,feat: Implement Braze integration for event tracking and push notifications,0,1,unknown
+ㅇㄷㅎ,115,feat: Integrate AppsFlyer SDK,0,0,unknown
+ㅇㄷㅎ,114,Fix: Enhance dependency injection for deeplink services,0,0,unknown
+ㅇㄷㅎ,113,Chore:Remove pubspec.lock  Podfile.lock file,0,1,unknown
+ㅇㄷㅎ,105,딥링크,6,1,unknown
+ㅇㄷㅎ,104,refactor: 마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정,0,0,unknown
+ㅇㄷㅎ,97,Feat: FCM,4,0,unknown
+ㅇㄷㅎ,94,Feat: 파이어베이스 푸시,0,0,unknown
+ㅇㄷㅎ,81,Refactor: WebView Appscheme,1,1,unknown
+ㅇㄷㅎ,75,Feat: share 계열 toapp 포팅,4,1,unknown
+ㅇㄷㅎ,73,appdev 빌드오류 수정,0,0,unknown
+ㅇㄷㅎ,72,Fix: fullwebview switch~case 누락수정,0,0,unknown
+ㅇㄷㅎ,70,Chore/gitignore 수정,0,1,unknown
+ㅇㄷㅎ,69,Feat: AppToast 제작,2,1,unknown
+ㅇㄷㅎ,67,웹뷰와 네이티브 간 통신을 위한 앱스킴(App Scheme) 인터페이스 구현,2,1,unknown
+ㅇㄷㅎ,55,홈 화면 섹션 위젯 구조 개선 및 추천 콘텐츠 섹션 추가,5,2,unknown
+ㅇㄷㅎ,52,Feat/clarity,0,0,unknown
+ㅇㄷㅎ,49,Misc/claudeskill commonwidget,1,1,unknown
+ㅇㄷㅎ,47,Refactor : text 위젯 모두 apptext로 전환,1,1,unknown
+ㅇㄷㅎ,46,Misc : 피그마에서 icon 임포트 / 앱 내 마이그레이션,0,1,unknown
+ㅇㄷㅎ,43,Feat: 디자인시스템 Label 추가,0,1,unknown
+ㅇㄷㅎ,36,Feat: 디자인시스템 공통 버튼 컴포넌트 구현,2,1,unknown
+ㅇㄷㅎ,30,Feat: 공통이미지위젯 작성  AppImage  cachednetworkImage -> extendedImage,1,0,unknown
+ㅇㄷㅎ,28,Feat: 디자인시스템 사이즈 반영(figma 상 float),1,0,unknown
+ㅇㄷㅎ,25,Feat/dsg,1,0,unknown
+ㅂㅈㅇ,1135,온보딩 지역 >. 중국국가 하위리스트를 nation + city 로 융합하는 구조로 변경,0,1,unknown
+ㅂㅈㅇ,1111,[TEST-77814] 특정 지역에서 '전지역' 중복이슈 수정,0,1,unknown
+ㅂㅈㅇ,1108,푸시메세지 긴 케이스에서 짤리는 현상 수정,0,1,unknown
+ㅂㅈㅇ,1063,검색결과 dimension74 오류 값 수정,0,1,unknown
+ㅂㅈㅇ,1047,검색결과 페이지 트래킹 dimension 적용 + unawaited,0,1,unknown
+ㅂㅈㅇ,1038,[GA] 검색결과 페이지 재검색 시  태깅 + featureCode 추가,0,1,unknown
+ㅂㅈㅇ,1032,[TEST-77428] 검색결과 직접태깅 수정,0,1,unknown
+ㅂㅈㅇ,1011,Feature/jobfind tag,0,1,unknown
+ㅂㅈㅇ,993,[TEST-77550] 통합필터 GA 페이지트래킹 URL 변경,0,1,unknown
+ㅂㅈㅇ,985,Feature/test 77398,0,1,unknown
+ㅂㅈㅇ,983,[TEST-77428] 검색결과화면 GA 자동완성 클릭 이벤트 처리,0,1,unknown
+ㅂㅈㅇ,962,[GA] 검색필터바 태깅 작업,0,1,unknown
+ㅂㅈㅇ,959,Feature/ga tag qa,0,1,unknown
+ㅂㅈㅇ,947,dimension 67 68 69 제거,0,1,unknown
+ㅂㅈㅇ,941,[TEST-77428] 검색 홈 GA 이슈 건 처리,0,1,unknown
+ㅂㅈㅇ,927,GA 리스트 sc 코드  페이지 태깅,0,1,unknown
+ㅂㅈㅇ,907,[TEST-76288] 검색홈에서 지역 필터 '전체' 카운팅안됨,0,2,unknown
+ㅂㅈㅇ,903,오타 수정,0,1,unknown
+ㅂㅈㅇ,890,디멘션 이슈 작업 및 보완,0,1,unknown
+ㅂㅈㅇ,870,GA Home 작업,0,1,unknown
+ㅂㅈㅇ,862,[TEST-77135] 온보딩 직무 4개 초과 시  얼럿 제거 + 텍스트컬러 수정,0,1,unknown
+ㅂㅈㅇ,847,[TEST-77102] 하단 여백 추가,0,1,unknown
+ㅂㅈㅇ,795,[GA] 검색결과 > 채용공고 태깅 샘플 추가,0,1,unknown
+ㅂㅈㅇ,761,[TEST-76764] 필터 데이터 비교 기준 로직 수정,0,1,unknown
+ㅂㅈㅇ,740,GAFilter 네이밍 충돌하여 네이밍 변경,0,1,unknown
+ㅂㅈㅇ,722,GA 검색홈화면 작업,2,1,unknown
+ㅂㅈㅇ,673,Feature/ga,0,1,unknown
+ㅂㅈㅇ,661,GA 상수화 작업 변경,0,1,unknown
+ㅂㅈㅇ,657,[TEST-76313] 검색홈화면 지역필터 선택 후 displayName 수정,0,1,unknown
+ㅂㅈㅇ,634,Feature/ga presentation,1,1,unknown
+ㅂㅈㅇ,567,메뉴 앵커 기준 변경 ( 카테고리 1뎁스 기준이 아닌 2뎁스로 변경됨 ),0,1,unknown
+ㅂㅈㅇ,566,Feature/onboardin location grid,0,0,unknown
+ㅂㅈㅇ,553,[TEST_75760] 온보딩 텍스트 짤리는 이슈 수정,0,1,unknown
+ㅂㅈㅇ,550,[TEST-75786] 온보딩 > 지역 중분류 바텀시트에서 전체 클릭 시 선택했던 항목들 해제 처리 안됨,0,1,unknown
+ㅂㅈㅇ,540,[TEST-75803] 직무 선택 4개 제한 넘버링 표기,1,0,unknown
+ㅂㅈㅇ,532,Feature/onboarding qa byun,0,0,unknown
+ㅂㅈㅇ,529,[TEST-75804] 온보딩 바텀 시트 내 버튼 디자인 상이 ( 온보딩 액션버튼 하단 쉐도우 제거 ),0,1,unknown
+ㅂㅈㅇ,507,(프리젠테이션 레이어 사용)GA4 트래커 추가,0,1,unknown
+ㅂㅈㅇ,459,[TEST-75515] 온보딩 바텀시트 디자인 상이,5,0,unknown
+ㅂㅈㅇ,401,[지역필터] Mock 데이터를 usecase 로 교체,0,1,unknown
+ㅂㅈㅇ,391,Feature/onboarding byun,30,1,unknown
+ㅂㅈㅇ,347,요청자 : 이시연 / 메뉴 브랜드스토리 배너 제거,0,0,unknown
+ㅂㅈㅇ,312,[QA] 메뉴  프로필편집 디자인 수정,4,0,unknown
+ㅂㅈㅇ,308,[TEST-75091] 프로필 편집화면 문구 크기 오류 건 수정,0,1,unknown
+ㅂㅈㅇ,295,Feature/menu issue,10,0,unknown
+ㅂㅈㅇ,291,fix: Add const constructors to filter button part files,7,0,unknown
+ㅂㅈㅇ,249,[TEST-74818] 버튼 UI 이슈 처리,1,1,unknown
+ㅂㅈㅇ,212,filter 위젯  분리,12,1,unknown
+ㅂㅈㅇ,207,Feature/profile image,2,1,unknown
+ㅂㅈㅇ,186,지역온보딩 DSG 적용 및 디자인 수정 + 미사용코드 제거,6,1,unknown
+ㅂㅈㅇ,178,Menu DSG 적용,6,0,unknown
+ㅂㅈㅇ,162,[지역필터] Figma DSG 적용 + 지역 Usecase 적용 + 테스트코드 수정,5,1,unknown
+ㅂㅈㅇ,160,메뉴 화면 작업 ( Usecase 연동 및 목데이터 제거 ) + 테스트코드 수정,2,0,unknown
+ㅂㅈㅇ,153,Feature/photoedit,11,0,unknown
+ㅂㅈㅇ,117,IDE에서 에러로 표기되어서 수정 ( 빌드에는 영향 없음 ),0,1,unknown
+ㅂㅈㅇ,111,[빌드에러] 지역필터 관련 작업에서 잘못된 ASSET 참조,0,1,unknown
+ㅂㅈㅇ,86,메뉴화면 UI개발,21,0,unknown
+ㅂㅈㅇ,85,지역 필터 UI 작업완료,21,0,unknown
+ㅂㅈㅇ,54,Feature/location ui,15,1,unknown
+ㅂㅈㅇ,26,Feature/photo edit,22,0,unknown
+ㅈㅇㅇ,579,feat(menu): 메뉴 Anchor 자동 스크롤 및 선택 동기화 개선,1,1,unknown
+ㅈㅇㅇ,576,[TEST-75092] [mts/iOS] 프로필 사진 편집 화면 > 파일크기 안내문구 AS-IS와 다름,0,1,unknown
+ㅈㅇㅇ,311,메인 팝업 변경된 디자인 적용,24,0,unknown
+ㅈㅇㅇ,266,[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름,1,0,unknown
+ㅈㅇㅇ,256,[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름,4,1,unknown
+ㅈㅇㅇ,134,검색 > 저장한 조건 Bottom Sheet 구현,17,0,unknown
+ㅈㅇㅇ,45,앱 접근 권한 허용 안내 화면 구현,21,1,unknown

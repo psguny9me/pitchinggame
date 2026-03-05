@@ -1,320 +1,320 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-김재균B,359,feat: dist 파일이 안생기는 이슈 해결,0,0,unknown
-김재균B,357,smartfit 섹션 생성,0,0,unknown
-김재균B,354,chore: update version,0,0,unknown
-김재균B,353,feat: section별 util 함수 감싸는 customProps 추가,0,0,unknown
-김재균B,352,chore: update version,0,0,unknown
-김재균B,351,feat: onboarding loading 기본 스타일 추가,0,0,unknown
-김재균B,350,Feature/jams2/delete util fn,0,0,unknown
-김재균B,349,chore: update version,0,0,unknown
-김재균B,348,fix onboarding logic,0,0,unknown
-김재균B,343,Feature/jams2/fix onboarding,0,0,unknown
-김재균B,341,chore: update version,0,0,unknown
-김재균B,340,fix: cardJobLogoBasic 타입 변경에 따른 빌드 에러 해결,0,0,unknown
-김재균B,338,tags helper 생성 및 적용,1,1,unknown
-김재균B,334,carousel-card-recommend 로직 수정,0,0,unknown
-김재균B,332,chore: update version,0,0,unknown
-김재균B,331,feat: 중복되는 export 삭제,0,0,unknown
-김재균B,330,image errorsrc 수정,0,0,unknown
-김재균B,320,card-super 컴포넌트 제작,0,0,unknown
-김재균B,318,feat: filter 빌드에 포함,0,0,unknown
-김재균B,317,chore: update version,0,0,unknown
-김재균B,316,style: pb 추가,0,0,unknown
-김재균B,315,style: box shadow 가려짐에 의한 gap -> padding 수정,0,0,unknown
-김재균B,313,tag enum  util 함수 추가 및 적용,0,1,unknown
-김재균B,312,Job Preference Onboarding 섹션 제작 및 stepper foundation 제작,0,1,unknown
-김재균B,303,job-preference 컴포넌트 제작,0,1,unknown
-김재균B,301,carousel card thumnail  logo-basic  image windowing 기능 추가 및 gnb  footer 컴포넌트 삭제처,1,1,unknown
-김재균B,300,image가 nullable할 경우 방어로직 추가,1,1,unknown
-김재균B,299,chore: update version,0,0,unknown
-김재균B,298,carousel-card-recommend 로깅 추가,0,0,unknown
-김재균B,290,chore: version update,0,0,unknown
-김재균B,289,fix: react hook 룰 위반 수정,0,0,unknown
-김재균B,288,chore: update version,0,0,unknown
-김재균B,287,onboarding fetch 로직 제작,0,1,unknown
-김재균B,283,recommend card type,0,0,unknown
-김재균B,281,chore: update version,0,0,unknown
-김재균B,279,chore: update version,0,0,unknown
-김재균B,278,recommend-card 타입 수정,0,0,unknown
-김재균B,276,chore: update version,0,0,unknown
-김재균B,275,fix: card type 수정,0,1,unknown
-김재균B,270,chore: update version,0,0,unknown
-김재균B,268,section별 fetch 함수 적용,0,1,unknown
-김재균B,266,chore: update version,0,0,unknown
-김재균B,264,chore: update version,0,0,unknown
-김재균B,263,변경된 fetch 방식에 맞는 example 코드 생성,0,1,unknown
-김재균B,255,onboarding에 첫번째 선택값을 받는 props 추가,0,0,unknown
-김재균B,251,feat: onboarding 섹션 로직 업데이트에 의한 배포,0,0,unknown
-김재균B,250,fix: build error,0,0,unknown
-김재균B,246,온보딩 로직 수정 및 온보딩 완료 UI 컴포넌트 제작,0,0,unknown
-김재균B,234,Onboarding Section 추가,0,1,unknown
-김재균B,227,card style 업데이트 배포,0,0,unknown
-김재균B,226,Fix Card Style,0,1,unknown
-김재균B,223,list card basic 컴포넌트 타입 업데이트 건 배포,0,0,unknown
-김재균B,222,update list card basic,0,0,unknown
-김재균B,220,type export건 배포,0,0,unknown
-김재균B,219,type export 추가,0,0,unknown
-김재균B,218,카드 컴포넌트 useSDUIConfigFetch 사용 제거,0,0,unknown
-김재균B,217,carousel card 컴포넌트의 useSDUIConfigFetch 제거,1,1,unknown
-김재균B,215,캐시에 의한 재배포,0,0,unknown
-김재균B,214,카드 컴포넌트 api 로직 제거,0,0,unknown
-김재균B,213,card-popularity api 로직 삭제,0,0,unknown
-김재균B,212,bulid error 수정,0,0,unknown
-김재균B,207,Grid 컴포넌트 적용,0,1,unknown
-김재균B,206,카드 컴포넌트 일부 코어 적용 배포,0,0,unknown
-김재균B,205,빌드 에러 수정,0,0,unknown
-김재균B,204,Carousel Card 부분 코어 적용,1,0,unknown
-김재균B,203,캐시에 의한 재배포,0,0,unknown
-김재균B,201,코어 연동 디버깅 콘솔 추가,0,0,unknown
-김재균B,200,디버깅 콘솔 추가,0,0,unknown
-김재균B,199,코어 연동 샘플 수정,0,0,unknown
-김재균B,198,코어 연동 샘플 수정,0,0,unknown
-김재균B,197,카드 코어 연동 샘플 추가 배포,0,0,unknown
-김재균B,196,카드 코어 연동 샘플,0,1,unknown
-김재균B,192,fetchFn apiUrl props 제거,0,0,unknown
-김재균B,191,fetchFn apiUrl Props 삭제,0,0,unknown
-김재균B,190,card fetchFn 사용 변경,0,0,unknown
-김재균B,189,card에 fetchFn만 사용하도록 변경,0,0,unknown
-김재균B,186,sdui config baseUrl props 추가,0,0,unknown
-김재균B,185,SDUI config baseurl props 추가,0,0,unknown
-김재균B,183,core 샘플 적용,0,0,unknown
-김재균B,182,Carousel Card Logo Basic SDUI 샘플 반영,0,0,unknown
-김재균B,181,List Card Interface 정의,4,1,unknown
-김재균B,175,카드 컴포넌트 타입 정의 건 배포,0,0,unknown
-김재균B,174,icon logo 빌드에 포함되지 않는 이슈 수정 및 빌드 에러 해결,0,1,unknown
-김재균B,169,Carousel Card Logo Basic 섹션 제작 및 interface 생성,0,1,unknown
-김재균B,167,Card Interface,7,1,unknown
-김재균B,165,index.ts export 업데이트,0,1,unknown
-김재균B,158,Carousel Image Banner 섹션 제작,3,0,unknown
-김재균B,150,Select Region Onboarding 컴포넌트 제작,5,1,unknown
-김재균B,147,Pc Main(검색) 컴포넌트 제작,1,1,unknown
-김재균B,146,List Card Basic Guest 섹션 제작,4,1,unknown
-김재균B,144,Balance Game Onboarding 컴포넌트 제작,0,1,unknown
-김재균B,143,Card Job Popularity 컴포넌트 개발 및 Carousel Card Popularity 섹션 제작,1,1,unknown
-김재균B,136,Carousel Card Recommend 섹션 제작,0,1,unknown
-김재균B,135,Footer 컴포넌트 제작,0,1,unknown
-김재균B,134,GNB 컴포넌트 제작,0,1,unknown
-김재균B,129,Ribbon Banner 컴포넌트 제작,1,1,unknown
-김재균B,128,Carousel Card Thumnail 섹션 제작,0,1,unknown
-김재균B,126,Carousel Card Image 섹션 제작,0,1,unknown
-김재균B,124,Carousel Card Basic 섹션 제작,0,1,unknown
-김재균B,123,Card BasicS 컴포넌트 제작,0,1,unknown
-김재균B,118,Ad Banner 컴포넌트 제작,0,1,unknown
-김재균B,114,Recommend Card 컴포넌트 제작,1,1,unknown
-김재균B,113,Image Banner 컴포넌트 제작,1,1,unknown
-김재균B,110,Theme Card 컴포넌트 제작,1,1,unknown
-김재균B,109,Card Thumnail 컴포넌트 제작,1,1,unknown
-김재균B,108,Card Image 컴포넌트 제작,1,1,unknown
-김재균B,102,App Bridge 패키지 제작,11,1,unknown
-이로움,342,Feature/jams2/company info,0,0,unknown
-이로움,314,Feature/jams2/sub content,0,0,unknown
-이로움,295,feat: jams minor 업데이트,0,0,unknown
-이로움,293,Feature/jams2/tags,0,0,unknown
-이로움,280,fix: build error,0,0,unknown
-이로움,277,fix: title fetch 미사용 변수 삭제,0,0,unknown
-이로움,267,Feature/jams2/company info,0,0,unknown
-이로움,258,Feature/jams2/company info,0,0,unknown
-이로움,257,fix: 복리후생 배경색 변경,0,0,unknown
-이로움,254,Feature/jams2/company info,0,0,unknown
-이로움,242,Feature/jams2/company info,0,0,unknown
-이로움,241,Feature/jams2/company info,0,0,unknown
-이로움,240,fix: export 추가,0,0,unknown
-이로움,239,fix: jams2 fetch 버전 업데이트,0,0,unknown
-이로움,238,Feature/jams2/company info,0,0,unknown
-이로움,232,fix: figma 변수 최신화,0,0,unknown
-이로움,216,Feature/jams2/title,0,0,unknown
-이로움,180,feat: 적합도 section 추가,0,0,unknown
-이로움,173,feat: 지원자 현황 추가,0,0,unknown
-이로움,172,fix: 인라인 스타일 제거,0,0,unknown
-이로움,170,feat: 매칭률 section 추가,0,0,unknown
-이로움,166,feat: export 누락 건 추가 배포,0,0,unknown
-이로움,163,feat: 바텀시트 추가,0,0,unknown
-이로움,159,fix: 타입 에러 수정,0,0,unknown
-이로움,155,Feature/jams2/company info,0,0,unknown
-이로움,153,Feature/jams2/onepick recommend,0,0,unknown
-이로움,148,feat: ai 추천공고 추가,0,0,unknown
-이로움,142,fix: 지원방법 중복코드 제거,0,0,unknown
-이로움,140,feat: 스마트핏 추가,0,0,unknown
-이로움,138,Feature/jams2/apply date,0,0,unknown
-이로움,131,Feature/jams2/job requirements,0,0,unknown
-이로움,127,Feature/jams2/job detail day count,0,0,unknown
-이로움,120,fix: jds 인증 정보 추가,0,0,unknown
-이로움,103,fix: attributes 타입 추가,0,0,unknown
-이로움,101,fix: 타입 에러 수정,0,0,unknown
-이로움,100,fix: 타입 수정,0,0,unknown
-이로움,64,Feature/code,5,0,unknown
-문승연,377,feat: 유틸리티 문서 추가,0,0,unknown
-문승연,376,feat: 유틸리티 문서 추가,0,0,unknown
-문승연,337,modify: 패키지 버전 0.5.24에서 0.5.26으로 업데이트 및 scroll-area.css 추가,0,0,unknown
-문승연,336,feat: 필터 영역에 ScrollArea 컴포넌트 추가,0,0,unknown
-문승연,311,modify: 패키지 버전 0.5.11로 업데이트,0,0,unknown
-문승연,309,modify: 아이콘 및 컴포넌트  props 업데이트,0,0,unknown
-문승연,296,modify: fetchs 패키지 버전 업데이트 및 불필요한 파일 제거,0,0,unknown
-문승연,272,modify: windowOpen 함수에 title 매개변수 추가 및 팝업 위치 계산 로직 개선,0,0,unknown
-문승연,271,modify: windowOpen 함수 추가 및 테스트 케이스 작성,0,0,unknown
-문승연,269,feat: base cta 컴포넌트 추가,0,0,unknown
-문승연,154,modify: 그리드 레이아웃 CSS 수정 / Grid 컴포넌트 추가,0,0,unknown
-문승연,141,feat: 새로운 테마 색상 및 CSS 변수 추가,0,1,unknown
-문승연,139,refactor: card-basic 컴포넌트 삭제 및 card-job-basic으로 변경,0,0,unknown
-문승연,122,modify: dropdown-product 컴포넌트 구성,0,0,unknown
-문승연,121,modify: pnpm-lock.yaml 및 use-infinity.ts 수정,0,0,unknown
-문승연,119,modify: jams2 패키지 버전 업데이트 및 postcss-breakpoints 로직 개선,0,0,unknown
-문승연,117,modify: 빌드 스크립트 수정 및 postcss-breakpoints 로직 개선,0,0,unknown
-문승연,112,modify: carousel 컴포넌트에 useEmblaCarousel 추가 및 타입 정의 수정,0,0,unknown
-문승연,98,modify: sample 컴포넌트추가,0,0,unknown
-문승연,93,modify: 버튼 및 태그 컴포넌트의 props 업데이트,0,0,unknown
-문승연,92,modify: 컴포넌트 props 및 설정 업데이트,0,0,unknown
-문승연,90,modify: 새로운 이모지 및 테마 색상 추가,0,0,unknown
-문승연,88,modify: 컴포넌트 props 업데이트,0,0,unknown
-문승연,87,modify: 아이콘 관련 파일 업데이트,0,0,unknown
-문승연,86,poc에 컴포넌트 적용,0,0,unknown
-문승연,83,feat: 버튼 검색 컴포넌트 추가,0,0,unknown
-문승연,81,modify: index.ts에 새로운 컴포넌트 추가,0,0,unknown
-문승연,80,modify: chip-filter-discovery 컴포넌트의 속성 업데이트 및 새로운 form 추가,0,0,unknown
-문승연,79,modify: 아이콘 웹폰트 및 CSS 업데이트,0,0,unknown
-문승연,78,modify: 버튼 페이지의 variant 속성 업데이트 및 필터 컴포넌트 속성 추가,0,0,unknown
-문승연,77,modify: 색상 및 반응형 토큰 업데이트,0,0,unknown
-문승연,76,modify: 버튼 및 텍스트 필드 컴포넌트의 상태 및 속성 업데이트,0,0,unknown
-문승연,75,modify: 버튼 및 아이콘 컴포넌트의 반응형 속성 추가,0,0,unknown
-문승연,74,modify: 색상 및 반응형 토큰 업데이트 & Tooltip 컴포넌트,0,0,unknown
-문승연,72,modify: 테마 색상 및 변수 추가와 수정,0,0,unknown
-문승연,70,modify: tailwind.config.ts 및 Box 컴포넌트 수정,0,0,unknown
-문승연,69,modify: @figma/export-tailwind-config 버전 0.0.9로 업데이트 및 테마 관련 색상 및 간격 수정,0,0,unknown
-문승연,68,feat: @jds/dsg 패키지 추가 및 구성 파일 생성,0,0,unknown
-문승연,67,feat: @jds/dsg 패키지 추가 및 구성 파일 생성,0,0,unknown
-문승연,49,modify: eslint-config-prettier 제거 및 버전 0.1.7로 업데이트,0,0,unknown
-문승연,47,modify: biome.json에서 noExplicitAny 설정 경고변경,0,0,unknown
-문승연,46,modify: biome.json에서 noExplicitAny 설정을 경고에서 오류로 변경,0,0,unknown
-문승연,45,modify: biome.json 설정 업데이트,0,0,unknown
-문승연,44,modify: biome.json 설정 업데이트,0,0,unknown
-문승연,37,Feature/carousel,0,0,unknown
-문승연,36,modify: @jds/carousel 패키지 추가,0,0,unknown
-문승연,31,modify: Pagination  SelectBoxText 컴포넌트 업데이트,0,0,unknown
-문승연,29,modify: @jds/header 및 @jds/theme 버전 업데이트,0,0,unknown
-문승연,17,modify: Box  Shadow  Typography 컴포넌트 접근성 가이드 삭제 및 예제 수정,0,0,unknown
-문승연,16,modify: Box 컴포넌트 borderSize 속성 추가 및 예제 수정,0,0,unknown
-문승연,11,modify: Box  Icon  Shadow  Typography 컴포넌트 문서 업데이트,0,0,unknown
-문승연,8,modify: header 및 theme 패키지 버전 업데이트,0,0,unknown
-문승연,7,modify: TypeScript 설정 업데이트 및 버전 0.1.7로 변경,0,0,unknown
-문승연,6,modify: TypeScript 설정 업데이트 및 버전 0.1.7로 변경,0,0,unknown
-문승연,5,modify: TypeScript 설정 및 패키지 업데이트,0,0,unknown
-문승연,4,test: gitlab-ci test,0,0,unknown
-이시은,285,modify: shortcut style 수정,0,1,unknown
-이시은,247,Feat/jams2/community,1,1,unknown
-이시은,245,chore: jams2 0.4.76 publish,0,0,unknown
-이시은,244,chore: shortcut section wide 추가,0,0,unknown
-이시은,243,Feat/jams2/component key,0,1,unknown
-이시은,236,chore: jams2 0.4.71 publish,0,0,unknown
-이시은,235,chore: export 파일 업데이트,0,0,unknown
-이시은,233,chore: jams2 0.4.70 publish,0,0,unknown
-이시은,231,Feat/jams2/title m,0,1,unknown
-이시은,230,feat: card 스타일 변경,0,1,unknown
-이시은,229,chore: jams2 publish 0.4.69,0,0,unknown
-이시은,228,Feat/jams2/remove api,0,1,unknown
-이시은,224,modify: shortcut card export 추가,0,0,unknown
-이시은,211,Feature/jams2/fix style,0,1,unknown
-이시은,209,Feat/jams2/apply core,0,1,unknown
-이시은,202,Feature/jams2/carousel grand,0,1,unknown
-이시은,193,Feature/jams2/quick menu,0,1,unknown
-이시은,188,Feature/jams2/ai job section api,0,1,unknown
-이시은,177,Feature/jams2/export,0,1,unknown
-이시은,176,modify: core response 타입에 맞게 컴포넌트 형식 변경,0,1,unknown
-이시은,164,feat: filter section추가,3,1,unknown
-이시은,161,Feature/jams2/am sections,3,1,unknown
-이시은,157,Feature/jams2/shortcut,0,1,unknown
-이시은,156,Feature/jams2/carousel focus section,0,1,unknown
-이시은,152,Feature/jams2/icons,0,1,unknown
-이시은,151,Feature/jams2/marquee brand section,1,1,unknown
-이시은,145,Feature/jams2/job card normal,1,1,unknown
-이시은,133,Feature/jams2/am special job card,2,1,unknown
-이시은,132,Feature/jams2/job card image,0,1,unknown
-이시은,107,Feature/button filter,2,1,unknown
-이시은,106,feat: emoji   icon 추가,1,1,unknown
-이시은,105,Feature/button,1,1,unknown
-이시은,99,Feature/button icon text,1,1,unknown
-이시은,96,Feature/button,3,1,unknown
-장호철,370,publish app-bridge,0,0,unknown
-장호철,369,updated app scheme and paths,0,0,unknown
-장호철,368,upgrading version,0,0,unknown
-장호철,367,Adding alert for debugging,0,0,unknown
-장호철,366,App-bridge-v2 배포,0,0,unknown
-장호철,364,change app scheme,0,1,unknown
-장호철,363,app-bridge-v2-publish 0.0.3,0,0,unknown
-장호철,362,App-Bridge v2 추가,2,2,unknown
-장호철,355,Scrapped button 되살리기 (+ 옵셔널 render 가능하게 변경),0,1,unknown
-장호철,347,publish 0.5.29/20251117,0,0,unknown
-장호철,346,에러 수정 (Renaming Icon  Hydration 순서 보장) + CSS 수정 (Button Scrap 삭제),1,1,unknown
-장호철,339,Replace imgs with cdn and import css into the content,1,1,unknown
-장호철,335,Feat: Export gradient and image files,1,1,unknown
-장호철,323,publish 0.5.20/20251114,0,0,unknown
-장호철,322,Emoji export 에러 수정  Job card blur 이미지 추가,0,1,unknown
-장호철,307,Reacat hooks 호출 순서 수정,0,0,unknown
-장호철,306,publish 0.5.3,0,0,unknown
-장호철,305,Added useclient,0,0,unknown
-장호철,304,Publish/0.5.2,0,0,unknown
-장호철,302,Display main section 수정  일부 컴포넌트 업데이트,0,1,unknown
-장호철,294,Fixed type error,0,1,unknown
-장호철,292,updated jams,0,0,unknown
-장호철,291,Fixed category list type error,0,1,unknown
-장호철,286,publish 0.4.96,0,0,unknown
-장호철,284,rename carousel recommendation,0,1,unknown
-장호철,282,publish 0.4.95,0,0,unknown
-장호철,274,Feat: Updated carousel recommendation section,3,1,unknown
-장호철,262,Chore: Updated version,0,1,unknown
-장호철,261,빠진 export 추가,0,0,unknown
-장호철,259,Job card 바깥에 gradient animation 추가,0,1,unknown
-장호철,256,chore: jams2 0.4.78 Publish,0,0,unknown
-장호철,253,Fixed notice component type errors,0,1,unknown
-장호철,237,Feat: CarouselRecommendationSection(Customized info  Notice  Service 포함) 구현,0,1,unknown
-장호철,208,Feat: JobCard  ChipInsightAI 추가,3,1,unknown
-김규리,375,feat: 앱 환경 판별 유틸리티 추가,0,1,unknown
-김규리,374,feat: sendFirebaseEventLog 기능 추가,0,1,unknown
-김규리,371,feat: AppBridge에 서브창 띄우기 및 풀팝업 닫기 기능 추가,0,1,unknown
-김규리,360,feat: CloseSubType 인터페이스 추가 및 AppBridge에 통합,1,1,unknown
-김규리,358,modify: 버전 0.1.73으로 업데이트 및 @jds/jams2 의존성 업데이트,0,0,unknown
-김규리,356,modify: jk-auth 버전 0.1.4로 업데이트,0,0,unknown
-김규리,345,chore: @jds/jams2 패키지를 0.5.28로 업데이트 및 의존성 변경,0,0,unknown
-김규리,344,modify: 컴포넌트의 border-radius 값을 10으로 변경,0,0,unknown
-김규리,329,chore: 버전 0.1.65로 업데이트 및 의존성 변경,0,0,unknown
-김규리,328,chore: 버전 0.1.64로 업데이트 및 의존성 변경,0,0,unknown
-김규리,327,chore: @jds/jams2 패키지를 0.5.21로 업데이트,0,0,unknown
-김규리,326,feat: DatePicker 컴포넌트 추가,0,0,unknown
-김규리,325,feat: 이모지(warning) 아이콘(change  upload) 추가,0,0,unknown
-김규리,324,feat: TabBoxLine 컴포넌트 추가,0,0,unknown
-김규리,273,modify: 0.1.1 버전으로 업데이트 및 Edge Runtime 호환성을 위한 패키지 엔트리 포인트 분리,0,1,unknown
-김규리,260,modify: 버전 0.1.38로 업데이트 및 @jds/jams2 의존성 버전 0.4.83으로 변경,0,0,unknown
-김규리,252,feat: jk-auth 패키지 0.1.0 릴리스,0,0,unknown
-김규리,248,Feature/bottom sheet,2,1,unknown
-김규리,225,feat: jk-auth 패키지 초기 릴리스,4,1,unknown
-이영철,249,modify: textfield focus 오류 수정,0,0,unknown
-이영철,187,modify: FloatingButton 컴포넌트에서 Typography mt 속성 제거,0,0,unknown
-이영철,62,modify: ChoiceChip 컴포넌트 수정 및 버전 업데이트,0,0,unknown
-이영철,54,feat: @fecipe/editor 패키지 추가,0,0,unknown
-이영철,50,modify: FloatingButton 컴포넌트에 아이콘 속성 추가,0,0,unknown
-이영철,35,modify: @jds/header 및 @jds/theme 버전 업데이트,0,0,unknown
-이영철,34,feat: FloatingButton 컴포넌트 추가 및 메뉴에 등록,0,0,unknown
-이영철,33,modify: ChoiceChip 컴포넌트 및 관련 스타일 추가,0,0,unknown
-이영철,23,modify: typography size 15 추가,0,0,unknown
-이영철,3,feat: tailwind style plugin,0,0,unknown
-이영철,2,modify: figma cli version up,0,1,unknown
-유선영,297,필터 컴포넌트 및 관련 서브 컴포넌트 추가,0,1,unknown
-유선영,168,feat: getSubtree 헬퍼 함수 추가,0,0,unknown
-유선영,162,foundation component add,0,0,unknown
-유선영,116,feat: inset 컴포넌트 및 음수 여백 CSS 생성,1,1,unknown
-유선영,43,modify: textField focus 오류 수정,0,1,unknown
-유선영,42,modify: textField input height 100%로 수정,0,0,unknown
-유선영,32,modify: @jds/theme의 BottomSheet 컴포넌트에 스크롤 여부를 지정하는 props를 추가,0,0,unknown
-유선영,30,modify: @jds/theme BottomSheet 컴포넌트에 description 조건 추가,0,0,unknown
-유선영,28,modify: TooltipSquare 컴포넌트에 delayDuration prop 추가,0,0,unknown
-유선영,24,modify: TooltipSquare 컴포넌트의 화살표 SVG 수정,0,0,unknown
-유선영,22,modify: Checkbox와 Pagination 컴포넌트 스타일 및 기능 개선,0,0,unknown
-유선영,20,modify: header와 theme 버전 업데이트 및 스타일 수정,0,0,unknown
-유선영,19,modify: header와 theme 버전 업데이트 및 Modal  Tag 컴포넌트 수정,0,0,unknown
-유선영,18,modify: header와 theme 버전 업데이트 및 Modal  Tag 컴포넌트 수정,0,0,unknown
-유선영,9,modify: Pagination  SelectBoxText  tabs 스타일 수정 및 docs  rules 수정,0,0,unknown
-오샘,333,chore: jam2.0 job-filter-section 수정,0,0,unknown
-오샘,321,feat: job-filter-section export,0,0,unknown
-오샘,319,feat: filter export,0,0,unknown
-오샘,310,feat: core type,0,1,unknown
-오샘,210,feat: core,0,0,unknown
-오샘,179,feat: core,0,0,unknown
+ㄱㅈㄱB,359,feat: dist 파일이 안생기는 이슈 해결,0,0,unknown
+ㄱㅈㄱB,357,smartfit 섹션 생성,0,0,unknown
+ㄱㅈㄱB,354,chore: update version,0,0,unknown
+ㄱㅈㄱB,353,feat: section별 util 함수 감싸는 customProps 추가,0,0,unknown
+ㄱㅈㄱB,352,chore: update version,0,0,unknown
+ㄱㅈㄱB,351,feat: onboarding loading 기본 스타일 추가,0,0,unknown
+ㄱㅈㄱB,350,Feature/jams2/delete util fn,0,0,unknown
+ㄱㅈㄱB,349,chore: update version,0,0,unknown
+ㄱㅈㄱB,348,fix onboarding logic,0,0,unknown
+ㄱㅈㄱB,343,Feature/jams2/fix onboarding,0,0,unknown
+ㄱㅈㄱB,341,chore: update version,0,0,unknown
+ㄱㅈㄱB,340,fix: cardJobLogoBasic 타입 변경에 따른 빌드 에러 해결,0,0,unknown
+ㄱㅈㄱB,338,tags helper 생성 및 적용,1,1,unknown
+ㄱㅈㄱB,334,carousel-card-recommend 로직 수정,0,0,unknown
+ㄱㅈㄱB,332,chore: update version,0,0,unknown
+ㄱㅈㄱB,331,feat: 중복되는 export 삭제,0,0,unknown
+ㄱㅈㄱB,330,image errorsrc 수정,0,0,unknown
+ㄱㅈㄱB,320,card-super 컴포넌트 제작,0,0,unknown
+ㄱㅈㄱB,318,feat: filter 빌드에 포함,0,0,unknown
+ㄱㅈㄱB,317,chore: update version,0,0,unknown
+ㄱㅈㄱB,316,style: pb 추가,0,0,unknown
+ㄱㅈㄱB,315,style: box shadow 가려짐에 의한 gap -> padding 수정,0,0,unknown
+ㄱㅈㄱB,313,tag enum  util 함수 추가 및 적용,0,1,unknown
+ㄱㅈㄱB,312,Job Preference Onboarding 섹션 제작 및 stepper foundation 제작,0,1,unknown
+ㄱㅈㄱB,303,job-preference 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,301,carousel card thumnail  logo-basic  image windowing 기능 추가 및 gnb  footer 컴포넌트 삭제처,1,1,unknown
+ㄱㅈㄱB,300,image가 nullable할 경우 방어로직 추가,1,1,unknown
+ㄱㅈㄱB,299,chore: update version,0,0,unknown
+ㄱㅈㄱB,298,carousel-card-recommend 로깅 추가,0,0,unknown
+ㄱㅈㄱB,290,chore: version update,0,0,unknown
+ㄱㅈㄱB,289,fix: react hook 룰 위반 수정,0,0,unknown
+ㄱㅈㄱB,288,chore: update version,0,0,unknown
+ㄱㅈㄱB,287,onboarding fetch 로직 제작,0,1,unknown
+ㄱㅈㄱB,283,recommend card type,0,0,unknown
+ㄱㅈㄱB,281,chore: update version,0,0,unknown
+ㄱㅈㄱB,279,chore: update version,0,0,unknown
+ㄱㅈㄱB,278,recommend-card 타입 수정,0,0,unknown
+ㄱㅈㄱB,276,chore: update version,0,0,unknown
+ㄱㅈㄱB,275,fix: card type 수정,0,1,unknown
+ㄱㅈㄱB,270,chore: update version,0,0,unknown
+ㄱㅈㄱB,268,section별 fetch 함수 적용,0,1,unknown
+ㄱㅈㄱB,266,chore: update version,0,0,unknown
+ㄱㅈㄱB,264,chore: update version,0,0,unknown
+ㄱㅈㄱB,263,변경된 fetch 방식에 맞는 example 코드 생성,0,1,unknown
+ㄱㅈㄱB,255,onboarding에 첫번째 선택값을 받는 props 추가,0,0,unknown
+ㄱㅈㄱB,251,feat: onboarding 섹션 로직 업데이트에 의한 배포,0,0,unknown
+ㄱㅈㄱB,250,fix: build error,0,0,unknown
+ㄱㅈㄱB,246,온보딩 로직 수정 및 온보딩 완료 UI 컴포넌트 제작,0,0,unknown
+ㄱㅈㄱB,234,Onboarding Section 추가,0,1,unknown
+ㄱㅈㄱB,227,card style 업데이트 배포,0,0,unknown
+ㄱㅈㄱB,226,Fix Card Style,0,1,unknown
+ㄱㅈㄱB,223,list card basic 컴포넌트 타입 업데이트 건 배포,0,0,unknown
+ㄱㅈㄱB,222,update list card basic,0,0,unknown
+ㄱㅈㄱB,220,type export건 배포,0,0,unknown
+ㄱㅈㄱB,219,type export 추가,0,0,unknown
+ㄱㅈㄱB,218,카드 컴포넌트 useSDUIConfigFetch 사용 제거,0,0,unknown
+ㄱㅈㄱB,217,carousel card 컴포넌트의 useSDUIConfigFetch 제거,1,1,unknown
+ㄱㅈㄱB,215,캐시에 의한 재배포,0,0,unknown
+ㄱㅈㄱB,214,카드 컴포넌트 api 로직 제거,0,0,unknown
+ㄱㅈㄱB,213,card-popularity api 로직 삭제,0,0,unknown
+ㄱㅈㄱB,212,bulid error 수정,0,0,unknown
+ㄱㅈㄱB,207,Grid 컴포넌트 적용,0,1,unknown
+ㄱㅈㄱB,206,카드 컴포넌트 일부 코어 적용 배포,0,0,unknown
+ㄱㅈㄱB,205,빌드 에러 수정,0,0,unknown
+ㄱㅈㄱB,204,Carousel Card 부분 코어 적용,1,0,unknown
+ㄱㅈㄱB,203,캐시에 의한 재배포,0,0,unknown
+ㄱㅈㄱB,201,코어 연동 디버깅 콘솔 추가,0,0,unknown
+ㄱㅈㄱB,200,디버깅 콘솔 추가,0,0,unknown
+ㄱㅈㄱB,199,코어 연동 샘플 수정,0,0,unknown
+ㄱㅈㄱB,198,코어 연동 샘플 수정,0,0,unknown
+ㄱㅈㄱB,197,카드 코어 연동 샘플 추가 배포,0,0,unknown
+ㄱㅈㄱB,196,카드 코어 연동 샘플,0,1,unknown
+ㄱㅈㄱB,192,fetchFn apiUrl props 제거,0,0,unknown
+ㄱㅈㄱB,191,fetchFn apiUrl Props 삭제,0,0,unknown
+ㄱㅈㄱB,190,card fetchFn 사용 변경,0,0,unknown
+ㄱㅈㄱB,189,card에 fetchFn만 사용하도록 변경,0,0,unknown
+ㄱㅈㄱB,186,sdui config baseUrl props 추가,0,0,unknown
+ㄱㅈㄱB,185,SDUI config baseurl props 추가,0,0,unknown
+ㄱㅈㄱB,183,core 샘플 적용,0,0,unknown
+ㄱㅈㄱB,182,Carousel Card Logo Basic SDUI 샘플 반영,0,0,unknown
+ㄱㅈㄱB,181,List Card Interface 정의,4,1,unknown
+ㄱㅈㄱB,175,카드 컴포넌트 타입 정의 건 배포,0,0,unknown
+ㄱㅈㄱB,174,icon logo 빌드에 포함되지 않는 이슈 수정 및 빌드 에러 해결,0,1,unknown
+ㄱㅈㄱB,169,Carousel Card Logo Basic 섹션 제작 및 interface 생성,0,1,unknown
+ㄱㅈㄱB,167,Card Interface,7,1,unknown
+ㄱㅈㄱB,165,index.ts export 업데이트,0,1,unknown
+ㄱㅈㄱB,158,Carousel Image Banner 섹션 제작,3,0,unknown
+ㄱㅈㄱB,150,Select Region Onboarding 컴포넌트 제작,5,1,unknown
+ㄱㅈㄱB,147,Pc Main(검색) 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,146,List Card Basic Guest 섹션 제작,4,1,unknown
+ㄱㅈㄱB,144,Balance Game Onboarding 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,143,Card Job Popularity 컴포넌트 개발 및 Carousel Card Popularity 섹션 제작,1,1,unknown
+ㄱㅈㄱB,136,Carousel Card Recommend 섹션 제작,0,1,unknown
+ㄱㅈㄱB,135,Footer 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,134,GNB 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,129,Ribbon Banner 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,128,Carousel Card Thumnail 섹션 제작,0,1,unknown
+ㄱㅈㄱB,126,Carousel Card Image 섹션 제작,0,1,unknown
+ㄱㅈㄱB,124,Carousel Card Basic 섹션 제작,0,1,unknown
+ㄱㅈㄱB,123,Card BasicS 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,118,Ad Banner 컴포넌트 제작,0,1,unknown
+ㄱㅈㄱB,114,Recommend Card 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,113,Image Banner 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,110,Theme Card 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,109,Card Thumnail 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,108,Card Image 컴포넌트 제작,1,1,unknown
+ㄱㅈㄱB,102,App Bridge 패키지 제작,11,1,unknown
+ㅇㄹㅇ,342,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,314,Feature/jams2/sub content,0,0,unknown
+ㅇㄹㅇ,295,feat: jams minor 업데이트,0,0,unknown
+ㅇㄹㅇ,293,Feature/jams2/tags,0,0,unknown
+ㅇㄹㅇ,280,fix: build error,0,0,unknown
+ㅇㄹㅇ,277,fix: title fetch 미사용 변수 삭제,0,0,unknown
+ㅇㄹㅇ,267,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,258,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,257,fix: 복리후생 배경색 변경,0,0,unknown
+ㅇㄹㅇ,254,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,242,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,241,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,240,fix: export 추가,0,0,unknown
+ㅇㄹㅇ,239,fix: jams2 fetch 버전 업데이트,0,0,unknown
+ㅇㄹㅇ,238,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,232,fix: figma 변수 최신화,0,0,unknown
+ㅇㄹㅇ,216,Feature/jams2/title,0,0,unknown
+ㅇㄹㅇ,180,feat: 적합도 section 추가,0,0,unknown
+ㅇㄹㅇ,173,feat: 지원자 현황 추가,0,0,unknown
+ㅇㄹㅇ,172,fix: 인라인 스타일 제거,0,0,unknown
+ㅇㄹㅇ,170,feat: 매칭률 section 추가,0,0,unknown
+ㅇㄹㅇ,166,feat: export 누락 건 추가 배포,0,0,unknown
+ㅇㄹㅇ,163,feat: 바텀시트 추가,0,0,unknown
+ㅇㄹㅇ,159,fix: 타입 에러 수정,0,0,unknown
+ㅇㄹㅇ,155,Feature/jams2/company info,0,0,unknown
+ㅇㄹㅇ,153,Feature/jams2/onepick recommend,0,0,unknown
+ㅇㄹㅇ,148,feat: ai 추천공고 추가,0,0,unknown
+ㅇㄹㅇ,142,fix: 지원방법 중복코드 제거,0,0,unknown
+ㅇㄹㅇ,140,feat: 스마트핏 추가,0,0,unknown
+ㅇㄹㅇ,138,Feature/jams2/apply date,0,0,unknown
+ㅇㄹㅇ,131,Feature/jams2/job requirements,0,0,unknown
+ㅇㄹㅇ,127,Feature/jams2/job detail day count,0,0,unknown
+ㅇㄹㅇ,120,fix: jds 인증 정보 추가,0,0,unknown
+ㅇㄹㅇ,103,fix: attributes 타입 추가,0,0,unknown
+ㅇㄹㅇ,101,fix: 타입 에러 수정,0,0,unknown
+ㅇㄹㅇ,100,fix: 타입 수정,0,0,unknown
+ㅇㄹㅇ,64,Feature/code,5,0,unknown
+ㅁㅅㅇ,377,feat: 유틸리티 문서 추가,0,0,unknown
+ㅁㅅㅇ,376,feat: 유틸리티 문서 추가,0,0,unknown
+ㅁㅅㅇ,337,modify: 패키지 버전 0.5.24에서 0.5.26으로 업데이트 및 scroll-area.css 추가,0,0,unknown
+ㅁㅅㅇ,336,feat: 필터 영역에 ScrollArea 컴포넌트 추가,0,0,unknown
+ㅁㅅㅇ,311,modify: 패키지 버전 0.5.11로 업데이트,0,0,unknown
+ㅁㅅㅇ,309,modify: 아이콘 및 컴포넌트  props 업데이트,0,0,unknown
+ㅁㅅㅇ,296,modify: fetchs 패키지 버전 업데이트 및 불필요한 파일 제거,0,0,unknown
+ㅁㅅㅇ,272,modify: windowOpen 함수에 title 매개변수 추가 및 팝업 위치 계산 로직 개선,0,0,unknown
+ㅁㅅㅇ,271,modify: windowOpen 함수 추가 및 테스트 케이스 작성,0,0,unknown
+ㅁㅅㅇ,269,feat: base cta 컴포넌트 추가,0,0,unknown
+ㅁㅅㅇ,154,modify: 그리드 레이아웃 CSS 수정 / Grid 컴포넌트 추가,0,0,unknown
+ㅁㅅㅇ,141,feat: 새로운 테마 색상 및 CSS 변수 추가,0,1,unknown
+ㅁㅅㅇ,139,refactor: card-basic 컴포넌트 삭제 및 card-job-basic으로 변경,0,0,unknown
+ㅁㅅㅇ,122,modify: dropdown-product 컴포넌트 구성,0,0,unknown
+ㅁㅅㅇ,121,modify: pnpm-lock.yaml 및 use-infinity.ts 수정,0,0,unknown
+ㅁㅅㅇ,119,modify: jams2 패키지 버전 업데이트 및 postcss-breakpoints 로직 개선,0,0,unknown
+ㅁㅅㅇ,117,modify: 빌드 스크립트 수정 및 postcss-breakpoints 로직 개선,0,0,unknown
+ㅁㅅㅇ,112,modify: carousel 컴포넌트에 useEmblaCarousel 추가 및 타입 정의 수정,0,0,unknown
+ㅁㅅㅇ,98,modify: sample 컴포넌트추가,0,0,unknown
+ㅁㅅㅇ,93,modify: 버튼 및 태그 컴포넌트의 props 업데이트,0,0,unknown
+ㅁㅅㅇ,92,modify: 컴포넌트 props 및 설정 업데이트,0,0,unknown
+ㅁㅅㅇ,90,modify: 새로운 이모지 및 테마 색상 추가,0,0,unknown
+ㅁㅅㅇ,88,modify: 컴포넌트 props 업데이트,0,0,unknown
+ㅁㅅㅇ,87,modify: 아이콘 관련 파일 업데이트,0,0,unknown
+ㅁㅅㅇ,86,poc에 컴포넌트 적용,0,0,unknown
+ㅁㅅㅇ,83,feat: 버튼 검색 컴포넌트 추가,0,0,unknown
+ㅁㅅㅇ,81,modify: index.ts에 새로운 컴포넌트 추가,0,0,unknown
+ㅁㅅㅇ,80,modify: chip-filter-discovery 컴포넌트의 속성 업데이트 및 새로운 form 추가,0,0,unknown
+ㅁㅅㅇ,79,modify: 아이콘 웹폰트 및 CSS 업데이트,0,0,unknown
+ㅁㅅㅇ,78,modify: 버튼 페이지의 variant 속성 업데이트 및 필터 컴포넌트 속성 추가,0,0,unknown
+ㅁㅅㅇ,77,modify: 색상 및 반응형 토큰 업데이트,0,0,unknown
+ㅁㅅㅇ,76,modify: 버튼 및 텍스트 필드 컴포넌트의 상태 및 속성 업데이트,0,0,unknown
+ㅁㅅㅇ,75,modify: 버튼 및 아이콘 컴포넌트의 반응형 속성 추가,0,0,unknown
+ㅁㅅㅇ,74,modify: 색상 및 반응형 토큰 업데이트 & Tooltip 컴포넌트,0,0,unknown
+ㅁㅅㅇ,72,modify: 테마 색상 및 변수 추가와 수정,0,0,unknown
+ㅁㅅㅇ,70,modify: tailwind.config.ts 및 Box 컴포넌트 수정,0,0,unknown
+ㅁㅅㅇ,69,modify: @figma/export-tailwind-config 버전 0.0.9로 업데이트 및 테마 관련 색상 및 간격 수정,0,0,unknown
+ㅁㅅㅇ,68,feat: @jds/dsg 패키지 추가 및 구성 파일 생성,0,0,unknown
+ㅁㅅㅇ,67,feat: @jds/dsg 패키지 추가 및 구성 파일 생성,0,0,unknown
+ㅁㅅㅇ,49,modify: eslint-config-prettier 제거 및 버전 0.1.7로 업데이트,0,0,unknown
+ㅁㅅㅇ,47,modify: biome.json에서 noExplicitAny 설정 경고변경,0,0,unknown
+ㅁㅅㅇ,46,modify: biome.json에서 noExplicitAny 설정을 경고에서 오류로 변경,0,0,unknown
+ㅁㅅㅇ,45,modify: biome.json 설정 업데이트,0,0,unknown
+ㅁㅅㅇ,44,modify: biome.json 설정 업데이트,0,0,unknown
+ㅁㅅㅇ,37,Feature/carousel,0,0,unknown
+ㅁㅅㅇ,36,modify: @jds/carousel 패키지 추가,0,0,unknown
+ㅁㅅㅇ,31,modify: Pagination  SelectBoxText 컴포넌트 업데이트,0,0,unknown
+ㅁㅅㅇ,29,modify: @jds/header 및 @jds/theme 버전 업데이트,0,0,unknown
+ㅁㅅㅇ,17,modify: Box  Shadow  Typography 컴포넌트 접근성 가이드 삭제 및 예제 수정,0,0,unknown
+ㅁㅅㅇ,16,modify: Box 컴포넌트 borderSize 속성 추가 및 예제 수정,0,0,unknown
+ㅁㅅㅇ,11,modify: Box  Icon  Shadow  Typography 컴포넌트 문서 업데이트,0,0,unknown
+ㅁㅅㅇ,8,modify: header 및 theme 패키지 버전 업데이트,0,0,unknown
+ㅁㅅㅇ,7,modify: TypeScript 설정 업데이트 및 버전 0.1.7로 변경,0,0,unknown
+ㅁㅅㅇ,6,modify: TypeScript 설정 업데이트 및 버전 0.1.7로 변경,0,0,unknown
+ㅁㅅㅇ,5,modify: TypeScript 설정 및 패키지 업데이트,0,0,unknown
+ㅁㅅㅇ,4,test: gitlab-ci test,0,0,unknown
+ㅇㅅㅇ3,285,modify: shortcut style 수정,0,1,unknown
+ㅇㅅㅇ3,247,Feat/jams2/community,1,1,unknown
+ㅇㅅㅇ3,245,chore: jams2 0.4.76 publish,0,0,unknown
+ㅇㅅㅇ3,244,chore: shortcut section wide 추가,0,0,unknown
+ㅇㅅㅇ3,243,Feat/jams2/component key,0,1,unknown
+ㅇㅅㅇ3,236,chore: jams2 0.4.71 publish,0,0,unknown
+ㅇㅅㅇ3,235,chore: export 파일 업데이트,0,0,unknown
+ㅇㅅㅇ3,233,chore: jams2 0.4.70 publish,0,0,unknown
+ㅇㅅㅇ3,231,Feat/jams2/title m,0,1,unknown
+ㅇㅅㅇ3,230,feat: card 스타일 변경,0,1,unknown
+ㅇㅅㅇ3,229,chore: jams2 publish 0.4.69,0,0,unknown
+ㅇㅅㅇ3,228,Feat/jams2/remove api,0,1,unknown
+ㅇㅅㅇ3,224,modify: shortcut card export 추가,0,0,unknown
+ㅇㅅㅇ3,211,Feature/jams2/fix style,0,1,unknown
+ㅇㅅㅇ3,209,Feat/jams2/apply core,0,1,unknown
+ㅇㅅㅇ3,202,Feature/jams2/carousel grand,0,1,unknown
+ㅇㅅㅇ3,193,Feature/jams2/quick menu,0,1,unknown
+ㅇㅅㅇ3,188,Feature/jams2/ai job section api,0,1,unknown
+ㅇㅅㅇ3,177,Feature/jams2/export,0,1,unknown
+ㅇㅅㅇ3,176,modify: core response 타입에 맞게 컴포넌트 형식 변경,0,1,unknown
+ㅇㅅㅇ3,164,feat: filter section추가,3,1,unknown
+ㅇㅅㅇ3,161,Feature/jams2/am sections,3,1,unknown
+ㅇㅅㅇ3,157,Feature/jams2/shortcut,0,1,unknown
+ㅇㅅㅇ3,156,Feature/jams2/carousel focus section,0,1,unknown
+ㅇㅅㅇ3,152,Feature/jams2/icons,0,1,unknown
+ㅇㅅㅇ3,151,Feature/jams2/marquee brand section,1,1,unknown
+ㅇㅅㅇ3,145,Feature/jams2/job card normal,1,1,unknown
+ㅇㅅㅇ3,133,Feature/jams2/am special job card,2,1,unknown
+ㅇㅅㅇ3,132,Feature/jams2/job card image,0,1,unknown
+ㅇㅅㅇ3,107,Feature/button filter,2,1,unknown
+ㅇㅅㅇ3,106,feat: emoji   icon 추가,1,1,unknown
+ㅇㅅㅇ3,105,Feature/button,1,1,unknown
+ㅇㅅㅇ3,99,Feature/button icon text,1,1,unknown
+ㅇㅅㅇ3,96,Feature/button,3,1,unknown
+ㅈㅎㅊ,370,publish app-bridge,0,0,unknown
+ㅈㅎㅊ,369,updated app scheme and paths,0,0,unknown
+ㅈㅎㅊ,368,upgrading version,0,0,unknown
+ㅈㅎㅊ,367,Adding alert for debugging,0,0,unknown
+ㅈㅎㅊ,366,App-bridge-v2 배포,0,0,unknown
+ㅈㅎㅊ,364,change app scheme,0,1,unknown
+ㅈㅎㅊ,363,app-bridge-v2-publish 0.0.3,0,0,unknown
+ㅈㅎㅊ,362,App-Bridge v2 추가,2,2,unknown
+ㅈㅎㅊ,355,Scrapped button 되살리기 (+ 옵셔널 render 가능하게 변경),0,1,unknown
+ㅈㅎㅊ,347,publish 0.5.29/20251117,0,0,unknown
+ㅈㅎㅊ,346,에러 수정 (Renaming Icon  Hydration 순서 보장) + CSS 수정 (Button Scrap 삭제),1,1,unknown
+ㅈㅎㅊ,339,Replace imgs with cdn and import css into the content,1,1,unknown
+ㅈㅎㅊ,335,Feat: Export gradient and image files,1,1,unknown
+ㅈㅎㅊ,323,publish 0.5.20/20251114,0,0,unknown
+ㅈㅎㅊ,322,Emoji export 에러 수정  Job card blur 이미지 추가,0,1,unknown
+ㅈㅎㅊ,307,Reacat hooks 호출 순서 수정,0,0,unknown
+ㅈㅎㅊ,306,publish 0.5.3,0,0,unknown
+ㅈㅎㅊ,305,Added useclient,0,0,unknown
+ㅈㅎㅊ,304,Publish/0.5.2,0,0,unknown
+ㅈㅎㅊ,302,Display main section 수정  일부 컴포넌트 업데이트,0,1,unknown
+ㅈㅎㅊ,294,Fixed type error,0,1,unknown
+ㅈㅎㅊ,292,updated jams,0,0,unknown
+ㅈㅎㅊ,291,Fixed category list type error,0,1,unknown
+ㅈㅎㅊ,286,publish 0.4.96,0,0,unknown
+ㅈㅎㅊ,284,rename carousel recommendation,0,1,unknown
+ㅈㅎㅊ,282,publish 0.4.95,0,0,unknown
+ㅈㅎㅊ,274,Feat: Updated carousel recommendation section,3,1,unknown
+ㅈㅎㅊ,262,Chore: Updated version,0,1,unknown
+ㅈㅎㅊ,261,빠진 export 추가,0,0,unknown
+ㅈㅎㅊ,259,Job card 바깥에 gradient animation 추가,0,1,unknown
+ㅈㅎㅊ,256,chore: jams2 0.4.78 Publish,0,0,unknown
+ㅈㅎㅊ,253,Fixed notice component type errors,0,1,unknown
+ㅈㅎㅊ,237,Feat: CarouselRecommendationSection(Customized info  Notice  Service 포함) 구현,0,1,unknown
+ㅈㅎㅊ,208,Feat: JobCard  ChipInsightAI 추가,3,1,unknown
+ㄱㄱㄹ,375,feat: 앱 환경 판별 유틸리티 추가,0,1,unknown
+ㄱㄱㄹ,374,feat: sendFirebaseEventLog 기능 추가,0,1,unknown
+ㄱㄱㄹ,371,feat: AppBridge에 서브창 띄우기 및 풀팝업 닫기 기능 추가,0,1,unknown
+ㄱㄱㄹ,360,feat: CloseSubType 인터페이스 추가 및 AppBridge에 통합,1,1,unknown
+ㄱㄱㄹ,358,modify: 버전 0.1.73으로 업데이트 및 @jds/jams2 의존성 업데이트,0,0,unknown
+ㄱㄱㄹ,356,modify: jk-auth 버전 0.1.4로 업데이트,0,0,unknown
+ㄱㄱㄹ,345,chore: @jds/jams2 패키지를 0.5.28로 업데이트 및 의존성 변경,0,0,unknown
+ㄱㄱㄹ,344,modify: 컴포넌트의 border-radius 값을 10으로 변경,0,0,unknown
+ㄱㄱㄹ,329,chore: 버전 0.1.65로 업데이트 및 의존성 변경,0,0,unknown
+ㄱㄱㄹ,328,chore: 버전 0.1.64로 업데이트 및 의존성 변경,0,0,unknown
+ㄱㄱㄹ,327,chore: @jds/jams2 패키지를 0.5.21로 업데이트,0,0,unknown
+ㄱㄱㄹ,326,feat: DatePicker 컴포넌트 추가,0,0,unknown
+ㄱㄱㄹ,325,feat: 이모지(warning) 아이콘(change  upload) 추가,0,0,unknown
+ㄱㄱㄹ,324,feat: TabBoxLine 컴포넌트 추가,0,0,unknown
+ㄱㄱㄹ,273,modify: 0.1.1 버전으로 업데이트 및 Edge Runtime 호환성을 위한 패키지 엔트리 포인트 분리,0,1,unknown
+ㄱㄱㄹ,260,modify: 버전 0.1.38로 업데이트 및 @jds/jams2 의존성 버전 0.4.83으로 변경,0,0,unknown
+ㄱㄱㄹ,252,feat: jk-auth 패키지 0.1.0 릴리스,0,0,unknown
+ㄱㄱㄹ,248,Feature/bottom sheet,2,1,unknown
+ㄱㄱㄹ,225,feat: jk-auth 패키지 초기 릴리스,4,1,unknown
+ㅇㅇㅊ,249,modify: textfield focus 오류 수정,0,0,unknown
+ㅇㅇㅊ,187,modify: FloatingButton 컴포넌트에서 Typography mt 속성 제거,0,0,unknown
+ㅇㅇㅊ,62,modify: ChoiceChip 컴포넌트 수정 및 버전 업데이트,0,0,unknown
+ㅇㅇㅊ,54,feat: @fecipe/editor 패키지 추가,0,0,unknown
+ㅇㅇㅊ,50,modify: FloatingButton 컴포넌트에 아이콘 속성 추가,0,0,unknown
+ㅇㅇㅊ,35,modify: @jds/header 및 @jds/theme 버전 업데이트,0,0,unknown
+ㅇㅇㅊ,34,feat: FloatingButton 컴포넌트 추가 및 메뉴에 등록,0,0,unknown
+ㅇㅇㅊ,33,modify: ChoiceChip 컴포넌트 및 관련 스타일 추가,0,0,unknown
+ㅇㅇㅊ,23,modify: typography size 15 추가,0,0,unknown
+ㅇㅇㅊ,3,feat: tailwind style plugin,0,0,unknown
+ㅇㅇㅊ,2,modify: figma cli version up,0,1,unknown
+ㅇㅅㅇ2,297,필터 컴포넌트 및 관련 서브 컴포넌트 추가,0,1,unknown
+ㅇㅅㅇ2,168,feat: getSubtree 헬퍼 함수 추가,0,0,unknown
+ㅇㅅㅇ2,162,foundation component add,0,0,unknown
+ㅇㅅㅇ2,116,feat: inset 컴포넌트 및 음수 여백 CSS 생성,1,1,unknown
+ㅇㅅㅇ2,43,modify: textField focus 오류 수정,0,1,unknown
+ㅇㅅㅇ2,42,modify: textField input height 100%로 수정,0,0,unknown
+ㅇㅅㅇ2,32,modify: @jds/theme의 BottomSheet 컴포넌트에 스크롤 여부를 지정하는 props를 추가,0,0,unknown
+ㅇㅅㅇ2,30,modify: @jds/theme BottomSheet 컴포넌트에 description 조건 추가,0,0,unknown
+ㅇㅅㅇ2,28,modify: TooltipSquare 컴포넌트에 delayDuration prop 추가,0,0,unknown
+ㅇㅅㅇ2,24,modify: TooltipSquare 컴포넌트의 화살표 SVG 수정,0,0,unknown
+ㅇㅅㅇ2,22,modify: Checkbox와 Pagination 컴포넌트 스타일 및 기능 개선,0,0,unknown
+ㅇㅅㅇ2,20,modify: header와 theme 버전 업데이트 및 스타일 수정,0,0,unknown
+ㅇㅅㅇ2,19,modify: header와 theme 버전 업데이트 및 Modal  Tag 컴포넌트 수정,0,0,unknown
+ㅇㅅㅇ2,18,modify: header와 theme 버전 업데이트 및 Modal  Tag 컴포넌트 수정,0,0,unknown
+ㅇㅅㅇ2,9,modify: Pagination  SelectBoxText  tabs 스타일 수정 및 docs  rules 수정,0,0,unknown
+ㅇㅅ,333,chore: jam2.0 job-filter-section 수정,0,0,unknown
+ㅇㅅ,321,feat: job-filter-section export,0,0,unknown
+ㅇㅅ,319,feat: filter export,0,0,unknown
+ㅇㅅ,310,feat: core type,0,1,unknown
+ㅇㅅ,210,feat: core,0,0,unknown
+ㅇㅅ,179,feat: core,0,0,unknown

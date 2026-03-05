@@ -1,172 +1,172 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-임희강,183,근무 위치 수정,0,1,unknown
-임희강,182,AI 추천 공고 상세 화면 개선 및 데이터 표시 로직 수정,0,1,unknown
-임희강,180,https://jira.jobkorea.co.kr/browse/TEST-73870,0,1,unknown
-임희강,179,QA 모집요강  기업정보 수정,0,1,unknown
-임희강,177,공고 상세,0,1,unknown
-임희강,176,공고 화면 탭 추가  원픽 기업정보 수정,0,1,unknown
-임희강,175,수정 커밋,0,0,unknown
-임희강,173,AI 추천 공고 상세 화면 개선 및 데이터 매핑 로직 보완,0,1,unknown
-임희강,172,onepick 기업 정보 추가 및 onepick 에서 공고 상세 노출 수정  모집 요강 수정,0,1,unknown
-임희강,170,Splash 에서 GlobalScope 로 enumInfo 정보를 가져온다고 해도 씹히는걸로 보이고 좋은 방법은 아닌것 같아 mainViewmo,0,1,unknown
-임희강,169,모집 요강 수정,0,1,unknown
-임희강,168,모집 요강 수정 중,0,1,unknown
-임희강,165,DMP 로그 동작 수정,0,1,unknown
-임희강,164,딥링크 검색 이동 수정,0,1,unknown
-임희강,163,검색 디자인 수정,0,1,unknown
-임희강,158,검색 디자인 이슈 수정,0,1,unknown
-임희강,156,바텀 시트 영역에 사이즈 및 영역 조정 되는 부분 수정,0,1,unknown
-임희강,154,기획 확인 하여 맞지 않는 부분 수정,0,1,unknown
-임희강,150,검색 영역 애니메이션 추가,0,1,unknown
-임희강,148,공고 상세에 영역 추가,1,1,unknown
-임희강,145,검색 애니메이션 및 기능 수정,0,1,unknown
-임희강,142,검색 개편 수정,0,1,unknown
-임희강,140,스켈레톤 이슈 수정,0,1,unknown
-임희강,139,스켈레톤 수정,0,1,unknown
-임희강,138,merge develop to search-develop,0,1,unknown
-임희강,136,firebase 에  state:0 에러 발생 막기 위한 동시성 방어 수정,0,1,unknown
-임희강,135,스켈레톤 수정,0,1,unknown
-임희강,132,검색 홈 영역 UI 수정,0,1,unknown
-임희강,129,스켈레톤 디자인 수정,0,1,unknown
-임희강,128,staging 환경에서 AI 추천 API 호출 되지 않도록 수정,0,1,unknown
-임희강,126,DMP 로그  호출 추가,0,1,unknown
-임희강,125,검색 수정 및 API 수정.,0,1,unknown
-임희강,123,검색 API 추가,0,1,unknown
-임희강,122,캐시 저장 시 로그인 확인 로직 수정,0,1,unknown
-임희강,121,검색 홈 틀 수정,0,1,unknown
-임희강,119,공통 적이고 반복적으로 사용되는 중복 코드 UseCase 제거 및 실제 호출 하는 Manager 추가 (AiRecoAuthManager),0,0,unknown
-임희강,118,API 호출 관련 ( RetrofitManager 수정 ),0,1,unknown
-임희강,117,API 호출 영역 수정,0,1,unknown
-임희강,115,QA 이슈 수정,0,1,unknown
-임희강,112,https://jira.jobkorea.co.kr/browse/TEST-72487 이슈 수정,0,1,unknown
-임희강,110,스켈레톤 수정  jira 이슈 수정,0,1,unknown
-임희강,107,메인 앵커 이동 수정,0,1,unknown
-임희강,106,AI 추천에서는 앱버전과 플랫폼을 실어서 보내주게끔 수정.,0,1,unknown
-임희강,105,다이얼로그 잘 못 수정 된 부분 수정,0,1,unknown
-임희강,104,간편지원 설정 등록 유도 팝업 수정,0,1,unknown
-임희강,101,ClckType 에 NetworkError 호출 시 토스트 메세지 노출 될 수 있도록 수정,0,1,unknown
-임희강,99,logActivity에 받는값 없는데 String 받고 있어서 강제 종료 발생 수정,0,1,unknown
-임희강,97,GA추가  지원하기 시 스크랩 리스트에Homepage 지원 하기가 있는지 여부 확인하여 GA 호출,0,1,unknown
-임희강,96,GA 이벤트 트래킹 수정 입니다.,0,1,unknown
-임희강,95,QA 이슈 수정,0,1,unknown
-임희강,93,팝업 노출 등 수정,0,1,unknown
-임희강,92,R tft/ai hklim fix issue,0,0,unknown
-임희강,91,QA 수정  상세 웹뷰 8.0 이하 버전에서 죽지 않도록 수정  GA 수정,0,1,unknown
-임희강,89,ThemeList 에서 LazyColumn 으로 바꾼 후 nextPage 호출 안되는 문제 수정,0,1,unknown
-임희강,87,QA 이슈 수정  낮은 버전 강제 종료 수정,0,0,unknown
-임희강,84,GA 호출 수정,1,1,unknown
-임희강,82,PAGE GA 추가,0,1,unknown
-임희강,80,상세 화면 페이저 좌우 이동 1.3 초 디바운스 주게 수정,0,1,unknown
-임희강,79,QA 이슈 수정,0,1,unknown
-임희강,78,R tft/ai hklim fix issue,0,1,unknown
-임희강,75,디자인 가이드 수정,0,1,unknown
-임희강,73,TEST-71692,0,1,unknown
-임희강,72,메인 리스트 앵커 이벤트 및 로직 수정 (테스트. 하여 확인),0,1,unknown
-임희강,71,QA 이슈 수정,0,1,unknown
-임희강,70,이슈 수정,0,1,unknown
-임희강,68,mainList 동작 수정 ( 스티키 앵크 추가 및 선택에 따라 동작 하도록 수정 ),0,1,unknown
-임희강,67,날짜 표시 수정 (D 및 시간 표시 로직 수정),0,1,unknown
-임희강,65,로딩 바 노출 ( 임시 노출 이라 추후 디자인 적용 하겠습니다. ),1,1,unknown
-임희강,63,Text 계산이 큰 화면에서는 많이 틀어져서 다시 계산하는 로직이 필요해 다른 계산 Text 추가,0,1,unknown
-임희강,62,QA 이슈 수정 중,0,1,unknown
-임희강,60,테마 리스트 수정,0,1,unknown
-임희강,59,메인 리스트 스크롤 애니메이션 수정 (expand 도우 scroll 들어와도 정상 동작 하도록 수정),0,1,unknown
-임희강,58,이슈 수정 -71481  71473,0,1,unknown
-임희강,57,상세 화면 갱신 문제 수정,1,1,unknown
-임희강,56,메인 리스트  테마리스트 갱신 로직 추가,0,1,unknown
-임희강,54,AnimatedItemList 만들어서 지원 시 애니메이션 적용,0,1,unknown
-임희강,52,앱 테마 변경으로 배경색 설정,0,1,unknown
-임희강,51,상세 화면 들어와서 네이티브 안나오는 문제 해결 위해 스크롤 트리거를 통해 진입 후 최초 1회 살짝 움직여 주는 로직 추가,1,1,unknown
-임희강,50,R tft/ai main list,0,1,unknown
-임희강,49,이슈 수정,0,0,unknown
-임희강,48,이슈 수정,0,0,unknown
-임희강,47,상세보기 및 밀어서 지원하기 버튼 수정,1,1,unknown
-임희강,46,지원하기 및 스크랩 갱신 문제 수정,0,1,unknown
-임희강,43,상세 화면에서 지원 시도시 이력서 여부 확인 후 바텀 시트 노출 수정,1,1,unknown
-임희강,42,푸터 추가  웹뷰 로딩 검토,0,1,unknown
-임희강,41,스켈레톤 추가,0,1,unknown
-임희강,39,캐싱 로직 추가 ( 로그인  로그아웃 캐시 따로 관리  만료 관리),0,1,unknown
-임희강,38,지원 API 수정 및 지원 로직 수정 (지원 후 동작 등),2,1,unknown
-임희강,37,지원하기 수정  스크랩 수정,1,1,unknown
-임희강,34,메인 리스트 동작 수정 (자동 열림),3,1,unknown
-임희강,32,TextStyle  스크랩  내부 구조  디자인 수정,5,1,unknown
-임희강,31,상세보기 수정  토스트 팝업 수정  지원하기 및 스크랩 버튼 수정,3,1,unknown
-임희강,29,상세 보기 디자인 및 기능 수정,2,1,unknown
-임희강,27,메인리스트  더보기 리스트 디자인 적용. API 적용,0,0,unknown
-임희강,25,resource 의 dimen 사용하게 수정  메인 리스트 수정중,7,1,unknown
-임희강,24,w600 설정이 잘못되어서 설졍 변경,2,1,unknown
-임희강,23,MainListScreen 에 메뉴 및 탭을 컴포즈로 add,4,1,unknown
-임희강,21,swipeable 동작 및 UI 수정 (메인 리스트 및 더보기 리스트 영역),2,1,unknown
-임희강,19,API 추가 ( 우선 LIST 부터 추가  온보딩 추가 예정),2,1,unknown
-임희강,17,공고 상세 수정  AiRecoAct 정리,0,1,unknown
-임희강,16,메인 리스트 및 더보기 리스트 수정 계속,0,1,unknown
-임희강,14,지원  스크랩 추가 및 수정,0,1,unknown
-임희강,11,스크랩 추가 및 메인 리스트 기능 추가,0,1,unknown
-임희강,10,이미지 변경,4,1,unknown
-임희강,9,토스트 팝업 및 커스텀 다이얼로그 추가,0,1,unknown
-임희강,8,밀어서 지원하기 버튼 추가,0,1,unknown
-임희강,6,공고 상세 화면 수정,1,0,unknown
-임희강,4,R tft/main list,1,1,unknown
-임희강,2,메인 list 추가 및 전체 UI 수정,0,0,unknown
-임희강,1,스켈레톤 적용 및 리스트 이동  mock data 로 임의의 UI로 노출하게 수정,3,0,unknown
-변지운,189,[GA] ai추천 > 입사지원 태깅 dimension 정보 누락 건 수정,1,1,unknown
-변지운,188,Feature/aireco detail issue,0,1,unknown
-변지운,187,[TEST-74264] 저장 조건 클릭 시 바텀시트 자동 닫힘 기능 추가,0,0,unknown
-변지운,184,[TEST-73926] 요청자 :  송경하 / 폴드 지도보기 이슈,0,1,unknown
-변지운,181,[TEST-73853] 직무 산업 탭 태그 2줄 초과  이하 감지,0,1,unknown
-변지운,178,Feature/jk 25457 apps flyer tag ai reco,0,1,unknown
-변지운,174,Feature/benefit location,0,1,unknown
-변지운,171,Feature/company info,0,1,unknown
-변지운,162,Feature/qa search,0,1,unknown
-변지운,159,Feature/qa search,0,1,unknown
-변지운,157,Feature/search filter,0,1,unknown
-변지운,155,Feature/search saved condition,0,1,unknown
-변지운,153,미사용코드 제거 및 자동완성어 FeatureCode 누락된 부분 수정 +  기타 건 처리,0,1,unknown
-변지운,149,저장조건팝업  지역팝업 기능 완료,0,1,unknown
-변지운,147,Feature/search saved condition,2,1,unknown
-변지운,144,변우석 제거,0,1,unknown
-변지운,143,Feature/search click keyword,0,1,unknown
-변지운,141,Feature/search saved condition,1,1,unknown
-변지운,137,Release/4.2.4,0,1,unknown
-변지운,134,Feature/search cookie,0,1,unknown
-변지운,131,Search bottomsheet ui,4,1,unknown
-변지운,127,Release/4.2.3,2,1,unknown
-변지운,124,검색 > 지역설정 팝업 틀,0,1,unknown
-변지운,120,Feature/byun,2,1,unknown
-변지운,116,Release/4.2.1,0,1,unknown
-변지운,114,[TEST-72332] 간편지원 설정 등록 유도 팝업 > 나중에 할래요 선택 > 로그아웃 후 로그인 시 팝업 노출 됨,0,1,unknown
-변지운,113,Feature/qa,0,1,unknown
-변지운,111,Feature/qa,1,1,unknown
-변지운,109,Feature/r qa,0,1,unknown
-변지운,108,Feature/r qa,0,1,unknown
-변지운,103,Feature/r hotfix,2,1,unknown
-변지운,100,AI추천 메인화면  리스트에 사용하는 배너의 홈페이지 지원 시  로그 처리,0,1,unknown
-변지운,98,선택한 아이템이 1개이고 홈페이지 지원인 경우 가상페이지 태깅 + 중복코드 제거 및,0,1,unknown
-변지운,94,Feature/byun test,0,1,unknown
-변지운,90,Feature/byun qa,0,1,unknown
-변지운,88,Feature/byunbyun,1,1,unknown
-변지운,86,Feature/byun issue,1,1,unknown
-변지운,83,Feature/qa byun,0,1,unknown
-변지운,81,Feature/log,0,0,unknown
-변지운,77,하단 탭 구성 변경 AI 추천 추가 및  커리어 탭 제거,0,0,unknown
-변지운,76,Feature/테스트,0,1,unknown
-변지운,69,Feature/is enable apply,0,1,unknown
-변지운,66,Feature/test qa,0,1,unknown
-변지운,64,Feature/byun qa,0,1,unknown
-변지운,61,Feature/byun qa,0,1,unknown
-변지운,55,Feature/main qa,0,1,unknown
-변지운,45,Feature/etc byun,3,1,unknown
-변지운,44,AI추천 기타 이슈 처리 및 기능개선,8,1,unknown
-변지운,40,Feature/etc,0,1,unknown
-변지운,36,AI추천 메인에 종속되어있는 마이페이지 및 메뉴화면 동작가능하도록 처리,0,1,unknown
-변지운,33,Feature/resume,9,1,unknown
-변지운,30,Feature/error handle,8,1,unknown
-변지운,26,Api+design,18,1,unknown
-변지운,22,공통으로 에러 처리가능한 핸들러 추가,6,1,unknown
-변지운,20,요청자 : 신동현 / ActivityViewModel 네이밍 변경 및 종속된 usecase 분리   온보딩 여부 플래그 값들은 외부에서 받아오도,7,1,unknown
-변지운,18,이력서 간편지원 와이어프레임 구현,11,0,unknown
-변지운,15,Feature/resume,5,1,unknown
-변지운,13,온보딩 디자인 작업 완료,4,1,unknown
-변지운,7,Feature/onboarding review,4,1,unknown
-변지운,5,Feature/onboarding result,7,1,unknown
-변지운,3,Ai Recommendation Onboarding Build Up,1,0,unknown
+ㅇㅎㄱ,183,근무 위치 수정,0,1,unknown
+ㅇㅎㄱ,182,AI 추천 공고 상세 화면 개선 및 데이터 표시 로직 수정,0,1,unknown
+ㅇㅎㄱ,180,https://jira.jobkorea.co.kr/browse/TEST-73870,0,1,unknown
+ㅇㅎㄱ,179,QA 모집요강  기업정보 수정,0,1,unknown
+ㅇㅎㄱ,177,공고 상세,0,1,unknown
+ㅇㅎㄱ,176,공고 화면 탭 추가  원픽 기업정보 수정,0,1,unknown
+ㅇㅎㄱ,175,수정 커밋,0,0,unknown
+ㅇㅎㄱ,173,AI 추천 공고 상세 화면 개선 및 데이터 매핑 로직 보완,0,1,unknown
+ㅇㅎㄱ,172,onepick 기업 정보 추가 및 onepick 에서 공고 상세 노출 수정  모집 요강 수정,0,1,unknown
+ㅇㅎㄱ,170,Splash 에서 GlobalScope 로 enumInfo 정보를 가져온다고 해도 씹히는걸로 보이고 좋은 방법은 아닌것 같아 mainViewmo,0,1,unknown
+ㅇㅎㄱ,169,모집 요강 수정,0,1,unknown
+ㅇㅎㄱ,168,모집 요강 수정 중,0,1,unknown
+ㅇㅎㄱ,165,DMP 로그 동작 수정,0,1,unknown
+ㅇㅎㄱ,164,딥링크 검색 이동 수정,0,1,unknown
+ㅇㅎㄱ,163,검색 디자인 수정,0,1,unknown
+ㅇㅎㄱ,158,검색 디자인 이슈 수정,0,1,unknown
+ㅇㅎㄱ,156,바텀 시트 영역에 사이즈 및 영역 조정 되는 부분 수정,0,1,unknown
+ㅇㅎㄱ,154,기획 확인 하여 맞지 않는 부분 수정,0,1,unknown
+ㅇㅎㄱ,150,검색 영역 애니메이션 추가,0,1,unknown
+ㅇㅎㄱ,148,공고 상세에 영역 추가,1,1,unknown
+ㅇㅎㄱ,145,검색 애니메이션 및 기능 수정,0,1,unknown
+ㅇㅎㄱ,142,검색 개편 수정,0,1,unknown
+ㅇㅎㄱ,140,스켈레톤 이슈 수정,0,1,unknown
+ㅇㅎㄱ,139,스켈레톤 수정,0,1,unknown
+ㅇㅎㄱ,138,merge develop to search-develop,0,1,unknown
+ㅇㅎㄱ,136,firebase 에  state:0 에러 발생 막기 위한 동시성 방어 수정,0,1,unknown
+ㅇㅎㄱ,135,스켈레톤 수정,0,1,unknown
+ㅇㅎㄱ,132,검색 홈 영역 UI 수정,0,1,unknown
+ㅇㅎㄱ,129,스켈레톤 디자인 수정,0,1,unknown
+ㅇㅎㄱ,128,staging 환경에서 AI 추천 API 호출 되지 않도록 수정,0,1,unknown
+ㅇㅎㄱ,126,DMP 로그  호출 추가,0,1,unknown
+ㅇㅎㄱ,125,검색 수정 및 API 수정.,0,1,unknown
+ㅇㅎㄱ,123,검색 API 추가,0,1,unknown
+ㅇㅎㄱ,122,캐시 저장 시 로그인 확인 로직 수정,0,1,unknown
+ㅇㅎㄱ,121,검색 홈 틀 수정,0,1,unknown
+ㅇㅎㄱ,119,공통 적이고 반복적으로 사용되는 중복 코드 UseCase 제거 및 실제 호출 하는 Manager 추가 (AiRecoAuthManager),0,0,unknown
+ㅇㅎㄱ,118,API 호출 관련 ( RetrofitManager 수정 ),0,1,unknown
+ㅇㅎㄱ,117,API 호출 영역 수정,0,1,unknown
+ㅇㅎㄱ,115,QA 이슈 수정,0,1,unknown
+ㅇㅎㄱ,112,https://jira.jobkorea.co.kr/browse/TEST-72487 이슈 수정,0,1,unknown
+ㅇㅎㄱ,110,스켈레톤 수정  jira 이슈 수정,0,1,unknown
+ㅇㅎㄱ,107,메인 앵커 이동 수정,0,1,unknown
+ㅇㅎㄱ,106,AI 추천에서는 앱버전과 플랫폼을 실어서 보내주게끔 수정.,0,1,unknown
+ㅇㅎㄱ,105,다이얼로그 잘 못 수정 된 부분 수정,0,1,unknown
+ㅇㅎㄱ,104,간편지원 설정 등록 유도 팝업 수정,0,1,unknown
+ㅇㅎㄱ,101,ClckType 에 NetworkError 호출 시 토스트 메세지 노출 될 수 있도록 수정,0,1,unknown
+ㅇㅎㄱ,99,logActivity에 받는값 없는데 String 받고 있어서 강제 종료 발생 수정,0,1,unknown
+ㅇㅎㄱ,97,GA추가  지원하기 시 스크랩 리스트에Homepage 지원 하기가 있는지 여부 확인하여 GA 호출,0,1,unknown
+ㅇㅎㄱ,96,GA 이벤트 트래킹 수정 입니다.,0,1,unknown
+ㅇㅎㄱ,95,QA 이슈 수정,0,1,unknown
+ㅇㅎㄱ,93,팝업 노출 등 수정,0,1,unknown
+ㅇㅎㄱ,92,R tft/ai hklim fix issue,0,0,unknown
+ㅇㅎㄱ,91,QA 수정  상세 웹뷰 8.0 이하 버전에서 죽지 않도록 수정  GA 수정,0,1,unknown
+ㅇㅎㄱ,89,ThemeList 에서 LazyColumn 으로 바꾼 후 nextPage 호출 안되는 문제 수정,0,1,unknown
+ㅇㅎㄱ,87,QA 이슈 수정  낮은 버전 강제 종료 수정,0,0,unknown
+ㅇㅎㄱ,84,GA 호출 수정,1,1,unknown
+ㅇㅎㄱ,82,PAGE GA 추가,0,1,unknown
+ㅇㅎㄱ,80,상세 화면 페이저 좌우 이동 1.3 초 디바운스 주게 수정,0,1,unknown
+ㅇㅎㄱ,79,QA 이슈 수정,0,1,unknown
+ㅇㅎㄱ,78,R tft/ai hklim fix issue,0,1,unknown
+ㅇㅎㄱ,75,디자인 가이드 수정,0,1,unknown
+ㅇㅎㄱ,73,TEST-71692,0,1,unknown
+ㅇㅎㄱ,72,메인 리스트 앵커 이벤트 및 로직 수정 (테스트. 하여 확인),0,1,unknown
+ㅇㅎㄱ,71,QA 이슈 수정,0,1,unknown
+ㅇㅎㄱ,70,이슈 수정,0,1,unknown
+ㅇㅎㄱ,68,mainList 동작 수정 ( 스티키 앵크 추가 및 선택에 따라 동작 하도록 수정 ),0,1,unknown
+ㅇㅎㄱ,67,날짜 표시 수정 (D 및 시간 표시 로직 수정),0,1,unknown
+ㅇㅎㄱ,65,로딩 바 노출 ( 임시 노출 이라 추후 디자인 적용 하겠습니다. ),1,1,unknown
+ㅇㅎㄱ,63,Text 계산이 큰 화면에서는 많이 틀어져서 다시 계산하는 로직이 필요해 다른 계산 Text 추가,0,1,unknown
+ㅇㅎㄱ,62,QA 이슈 수정 중,0,1,unknown
+ㅇㅎㄱ,60,테마 리스트 수정,0,1,unknown
+ㅇㅎㄱ,59,메인 리스트 스크롤 애니메이션 수정 (expand 도우 scroll 들어와도 정상 동작 하도록 수정),0,1,unknown
+ㅇㅎㄱ,58,이슈 수정 -71481  71473,0,1,unknown
+ㅇㅎㄱ,57,상세 화면 갱신 문제 수정,1,1,unknown
+ㅇㅎㄱ,56,메인 리스트  테마리스트 갱신 로직 추가,0,1,unknown
+ㅇㅎㄱ,54,AnimatedItemList 만들어서 지원 시 애니메이션 적용,0,1,unknown
+ㅇㅎㄱ,52,앱 테마 변경으로 배경색 설정,0,1,unknown
+ㅇㅎㄱ,51,상세 화면 들어와서 네이티브 안나오는 문제 해결 위해 스크롤 트리거를 통해 진입 후 최초 1회 살짝 움직여 주는 로직 추가,1,1,unknown
+ㅇㅎㄱ,50,R tft/ai main list,0,1,unknown
+ㅇㅎㄱ,49,이슈 수정,0,0,unknown
+ㅇㅎㄱ,48,이슈 수정,0,0,unknown
+ㅇㅎㄱ,47,상세보기 및 밀어서 지원하기 버튼 수정,1,1,unknown
+ㅇㅎㄱ,46,지원하기 및 스크랩 갱신 문제 수정,0,1,unknown
+ㅇㅎㄱ,43,상세 화면에서 지원 시도시 이력서 여부 확인 후 바텀 시트 노출 수정,1,1,unknown
+ㅇㅎㄱ,42,푸터 추가  웹뷰 로딩 검토,0,1,unknown
+ㅇㅎㄱ,41,스켈레톤 추가,0,1,unknown
+ㅇㅎㄱ,39,캐싱 로직 추가 ( 로그인  로그아웃 캐시 따로 관리  만료 관리),0,1,unknown
+ㅇㅎㄱ,38,지원 API 수정 및 지원 로직 수정 (지원 후 동작 등),2,1,unknown
+ㅇㅎㄱ,37,지원하기 수정  스크랩 수정,1,1,unknown
+ㅇㅎㄱ,34,메인 리스트 동작 수정 (자동 열림),3,1,unknown
+ㅇㅎㄱ,32,TextStyle  스크랩  내부 구조  디자인 수정,5,1,unknown
+ㅇㅎㄱ,31,상세보기 수정  토스트 팝업 수정  지원하기 및 스크랩 버튼 수정,3,1,unknown
+ㅇㅎㄱ,29,상세 보기 디자인 및 기능 수정,2,1,unknown
+ㅇㅎㄱ,27,메인리스트  더보기 리스트 디자인 적용. API 적용,0,0,unknown
+ㅇㅎㄱ,25,resource 의 dimen 사용하게 수정  메인 리스트 수정중,7,1,unknown
+ㅇㅎㄱ,24,w600 설정이 잘못되어서 설졍 변경,2,1,unknown
+ㅇㅎㄱ,23,MainListScreen 에 메뉴 및 탭을 컴포즈로 add,4,1,unknown
+ㅇㅎㄱ,21,swipeable 동작 및 UI 수정 (메인 리스트 및 더보기 리스트 영역),2,1,unknown
+ㅇㅎㄱ,19,API 추가 ( 우선 LIST 부터 추가  온보딩 추가 예정),2,1,unknown
+ㅇㅎㄱ,17,공고 상세 수정  AiRecoAct 정리,0,1,unknown
+ㅇㅎㄱ,16,메인 리스트 및 더보기 리스트 수정 계속,0,1,unknown
+ㅇㅎㄱ,14,지원  스크랩 추가 및 수정,0,1,unknown
+ㅇㅎㄱ,11,스크랩 추가 및 메인 리스트 기능 추가,0,1,unknown
+ㅇㅎㄱ,10,이미지 변경,4,1,unknown
+ㅇㅎㄱ,9,토스트 팝업 및 커스텀 다이얼로그 추가,0,1,unknown
+ㅇㅎㄱ,8,밀어서 지원하기 버튼 추가,0,1,unknown
+ㅇㅎㄱ,6,공고 상세 화면 수정,1,0,unknown
+ㅇㅎㄱ,4,R tft/main list,1,1,unknown
+ㅇㅎㄱ,2,메인 list 추가 및 전체 UI 수정,0,0,unknown
+ㅇㅎㄱ,1,스켈레톤 적용 및 리스트 이동  mock data 로 임의의 UI로 노출하게 수정,3,0,unknown
+ㅂㅈㅇ,189,[GA] ai추천 > 입사지원 태깅 dimension 정보 누락 건 수정,1,1,unknown
+ㅂㅈㅇ,188,Feature/aireco detail issue,0,1,unknown
+ㅂㅈㅇ,187,[TEST-74264] 저장 조건 클릭 시 바텀시트 자동 닫힘 기능 추가,0,0,unknown
+ㅂㅈㅇ,184,[TEST-73926] 요청자 :  송경하 / 폴드 지도보기 이슈,0,1,unknown
+ㅂㅈㅇ,181,[TEST-73853] 직무 산업 탭 태그 2줄 초과  이하 감지,0,1,unknown
+ㅂㅈㅇ,178,Feature/jk 25457 apps flyer tag ai reco,0,1,unknown
+ㅂㅈㅇ,174,Feature/benefit location,0,1,unknown
+ㅂㅈㅇ,171,Feature/company info,0,1,unknown
+ㅂㅈㅇ,162,Feature/qa search,0,1,unknown
+ㅂㅈㅇ,159,Feature/qa search,0,1,unknown
+ㅂㅈㅇ,157,Feature/search filter,0,1,unknown
+ㅂㅈㅇ,155,Feature/search saved condition,0,1,unknown
+ㅂㅈㅇ,153,미사용코드 제거 및 자동완성어 FeatureCode 누락된 부분 수정 +  기타 건 처리,0,1,unknown
+ㅂㅈㅇ,149,저장조건팝업  지역팝업 기능 완료,0,1,unknown
+ㅂㅈㅇ,147,Feature/search saved condition,2,1,unknown
+ㅂㅈㅇ,144,변우석 제거,0,1,unknown
+ㅂㅈㅇ,143,Feature/search click keyword,0,1,unknown
+ㅂㅈㅇ,141,Feature/search saved condition,1,1,unknown
+ㅂㅈㅇ,137,Release/4.2.4,0,1,unknown
+ㅂㅈㅇ,134,Feature/search cookie,0,1,unknown
+ㅂㅈㅇ,131,Search bottomsheet ui,4,1,unknown
+ㅂㅈㅇ,127,Release/4.2.3,2,1,unknown
+ㅂㅈㅇ,124,검색 > 지역설정 팝업 틀,0,1,unknown
+ㅂㅈㅇ,120,Feature/byun,2,1,unknown
+ㅂㅈㅇ,116,Release/4.2.1,0,1,unknown
+ㅂㅈㅇ,114,[TEST-72332] 간편지원 설정 등록 유도 팝업 > 나중에 할래요 선택 > 로그아웃 후 로그인 시 팝업 노출 됨,0,1,unknown
+ㅂㅈㅇ,113,Feature/qa,0,1,unknown
+ㅂㅈㅇ,111,Feature/qa,1,1,unknown
+ㅂㅈㅇ,109,Feature/r qa,0,1,unknown
+ㅂㅈㅇ,108,Feature/r qa,0,1,unknown
+ㅂㅈㅇ,103,Feature/r hotfix,2,1,unknown
+ㅂㅈㅇ,100,AI추천 메인화면  리스트에 사용하는 배너의 홈페이지 지원 시  로그 처리,0,1,unknown
+ㅂㅈㅇ,98,선택한 아이템이 1개이고 홈페이지 지원인 경우 가상페이지 태깅 + 중복코드 제거 및,0,1,unknown
+ㅂㅈㅇ,94,Feature/byun test,0,1,unknown
+ㅂㅈㅇ,90,Feature/byun qa,0,1,unknown
+ㅂㅈㅇ,88,Feature/byunbyun,1,1,unknown
+ㅂㅈㅇ,86,Feature/byun issue,1,1,unknown
+ㅂㅈㅇ,83,Feature/qa byun,0,1,unknown
+ㅂㅈㅇ,81,Feature/log,0,0,unknown
+ㅂㅈㅇ,77,하단 탭 구성 변경 AI 추천 추가 및  커리어 탭 제거,0,0,unknown
+ㅂㅈㅇ,76,Feature/테스트,0,1,unknown
+ㅂㅈㅇ,69,Feature/is enable apply,0,1,unknown
+ㅂㅈㅇ,66,Feature/test qa,0,1,unknown
+ㅂㅈㅇ,64,Feature/byun qa,0,1,unknown
+ㅂㅈㅇ,61,Feature/byun qa,0,1,unknown
+ㅂㅈㅇ,55,Feature/main qa,0,1,unknown
+ㅂㅈㅇ,45,Feature/etc byun,3,1,unknown
+ㅂㅈㅇ,44,AI추천 기타 이슈 처리 및 기능개선,8,1,unknown
+ㅂㅈㅇ,40,Feature/etc,0,1,unknown
+ㅂㅈㅇ,36,AI추천 메인에 종속되어있는 마이페이지 및 메뉴화면 동작가능하도록 처리,0,1,unknown
+ㅂㅈㅇ,33,Feature/resume,9,1,unknown
+ㅂㅈㅇ,30,Feature/error handle,8,1,unknown
+ㅂㅈㅇ,26,Api+design,18,1,unknown
+ㅂㅈㅇ,22,공통으로 에러 처리가능한 핸들러 추가,6,1,unknown
+ㅂㅈㅇ,20,요청자 : ㅅㄷㅎ / ActivityViewModel 네이밍 변경 및 종속된 usecase 분리   온보딩 여부 플래그 값들은 외부에서 받아오도,7,1,unknown
+ㅂㅈㅇ,18,이력서 간편지원 와이어프레임 구현,11,0,unknown
+ㅂㅈㅇ,15,Feature/resume,5,1,unknown
+ㅂㅈㅇ,13,온보딩 디자인 작업 완료,4,1,unknown
+ㅂㅈㅇ,7,Feature/onboarding review,4,1,unknown
+ㅂㅈㅇ,5,Feature/onboarding result,7,1,unknown
+ㅂㅈㅇ,3,Ai Recommendation Onboarding Build Up,1,0,unknown

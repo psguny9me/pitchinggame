@@ -1,14 +1,14 @@
 ﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
-배상훈,16,modify: vitest 설정 동기화,0,0,unknown
-배상훈,15,modify: DDP 경로 반영,0,0,unknown
-배상훈,14,modify: sonarQube 설정 수정,0,0,unknown
-배상훈,13,# feat: 메시지 채팅 UI 및 인증 시스템 구현,0,0,unknown
-배상훈,12,feat: 소나큐브 설치(샘플키 제거),0,0,unknown
-배상훈,11,Feature/common modules,0,0,unknown
-배상훈,10,modify: 비즈센터 설정 동기화,0,0,unknown
-배상훈,8,feat:  Health Check 엔드포인트 추가,0,0,unknown
-배상훈,7,modify: Docker 포드 설정 변경,0,0,unknown
-배상훈,6,modify: server.js 경로 수정,0,0,unknown
-배상훈,5,feat: 패키지 및 doc 추가,0,0,unknown
-배상훈,3,Feature/package setup,0,1,unknown
-김고영,1,Release,0,0,unknown
+ㅂㅅㅎ,16,modify: vitest 설정 동기화,0,0,unknown
+ㅂㅅㅎ,15,modify: DDP 경로 반영,0,0,unknown
+ㅂㅅㅎ,14,modify: sonarQube 설정 수정,0,0,unknown
+ㅂㅅㅎ,13,# feat: 메시지 채팅 UI 및 인증 시스템 구현,0,0,unknown
+ㅂㅅㅎ,12,feat: 소나큐브 설치(샘플키 제거),0,0,unknown
+ㅂㅅㅎ,11,Feature/common modules,0,0,unknown
+ㅂㅅㅎ,10,modify: 비즈센터 설정 동기화,0,0,unknown
+ㅂㅅㅎ,8,feat:  Health Check 엔드포인트 추가,0,0,unknown
+ㅂㅅㅎ,7,modify: Docker 포드 설정 변경,0,0,unknown
+ㅂㅅㅎ,6,modify: server.js 경로 수정,0,0,unknown
+ㅂㅅㅎ,5,feat: 패키지 및 doc 추가,0,0,unknown
+ㅂㅅㅎ,3,Feature/package setup,0,1,unknown
+ㄱㄱㅇ,1,Release,0,0,unknown
