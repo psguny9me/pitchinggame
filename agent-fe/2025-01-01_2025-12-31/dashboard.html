@@ -341,6 +341,7 @@
 <div class="table-card">
   <h3>MR 품질 상세</h3>
   <table id="qualityTable"></table>
+  <button id="qualityToggle" style="display:none;margin-top:12px;padding:8px 20px;background:var(--border);color:var(--text);border:none;border-radius:8px;cursor:pointer;font-size:13px;width:100%;transition:background 0.2s" onmouseover="this.style.background='var(--card-hover)'" onmouseout="this.style.background='var(--border)'"></button>
 </div>
 
 
@@ -761,24 +762,42 @@ new Chart(document.getElementById('receivedCommentsChart'), {
 
 // ── MR 품질 상세 테이블 ────────────────────────────────────────────────
 if (quality.length > 0) {
+  const QUALITY_LIMIT = 10;
   const ciBadge = (ci) => {
     if (ci === 'success') return '<span class="badge badge-low">성공</span>';
     if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
     return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
   };
+  const qRow = (q) => `<tr>
+    <td style="font-weight:600">${q.name}</td>
+    <td>#${q.iid}</td>
+    <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+    <td>${q.comments}</td>
+    <td>${q.approvers}</td>
+    <td>${ciBadge(q.ci)}</td>
+  </tr>`;
+  const top = quality.slice(0, QUALITY_LIMIT);
+  const rest = quality.slice(QUALITY_LIMIT);
   document.getElementById('qualityTable').innerHTML = `
     <thead><tr>
       <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
     </tr></thead>
-    <tbody>${quality.map(q => `<tr>
-      <td style="font-weight:600">${q.name}</td>
-      <td>#${q.iid}</td>
-      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
-      <td>${q.comments}</td>
-      <td>${q.approvers}</td>
-      <td>${ciBadge(q.ci)}</td>
-    </tr>`).join('')}</tbody>
+    <tbody>${top.map(qRow).join('')}</tbody>
+    ${rest.length > 0 ? `<tbody id="qualityMore" style="display:none">${rest.map(qRow).join('')}</tbody>` : ''}
   `;
+  if (rest.length > 0) {
+    const btn = document.getElementById('qualityToggle');
+    btn.style.display = 'block';
+    btn.textContent = '나머지 ' + rest.length + '건 더 보기 ▼';
+    btn.addEventListener('click', () => {
+      const more = document.getElementById('qualityMore');
+      const expanded = more.style.display !== 'none';
+      more.style.display = expanded ? 'none' : '';
+      btn.textContent = expanded
+        ? '나머지 ' + rest.length + '건 더 보기 ▼'
+        : '접기 ▲';
+    });
+  }
 }
 
 
