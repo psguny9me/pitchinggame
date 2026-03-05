@@ -1,0 +1,26 @@
+# 토큰이 포함된 프로젝트별 설정 파일
+configs/*.yaml
+configs/*.yml
+!configs/service_groups.yaml
+
+# 분석 결과 데이터 (gh-pages 브랜치에서 별도 관리)
+/output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

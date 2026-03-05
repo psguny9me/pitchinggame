@@ -1,0 +1,42 @@
+# 서비스 영역별 프로젝트 그룹 매핑
+# 개인 대시보드에서 서비스 레벨 기여도 분석에 사용됩니다.
+# project_id는 output/ 하위 디렉토리명과 일치해야 합니다.
+
+groups:
+  채용(Jobs):
+    - jk-jobs-fe-web
+    - jk-jobs-fe-mobile
+
+  검색(Search):
+    - search-front
+    - jk-search-fe-mobile
+
+  비즈센터(BizCenter):
+    - jk-bizcenter-fe-web
+    - jk-chat-bizcenter-fe
+
+  이력서(Resume):
+    - jk-resume-fe
+
+  광고(Display):
+    - jk-display-fe-web
+    - display-kit
+
+  디자인시스템(JAMS):
+    - jams
+    - figma-plugin-jams-to-react
+
+  인프라/도구(Infra):
+    - boilerplate-front
+    - agent-fe
+    - jk-ethics-fe-web
+
+  잡코리아앱(App-JK):
+    - jobkorea_ios
+    - jobkorea_android
+    - app_platform
+
+  알바몬앱(App-AB):
+    - albamon_ios
+    - albamon_android
+    - albamap2_module
