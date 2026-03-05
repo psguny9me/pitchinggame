@@ -1,0 +1,14 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+이영철,14,modify: Dockerfile에서 Node.js 버전을 22-alpine-arm64-20250513에서 22.17.1-alpine-arm64,0,0,unknown
+이영철,13,modify: package.json 및 pnpm-lock.yaml의 의존성 버전 업데이트  prestart 스크립트에서 오류 처리 방식 개선,0,0,unknown
+이영철,12,modify: package.json 및 pnpm-lock.yaml의 의존성 버전 업데이트 ...,0,0,unknown
+이영철,11,modify: server-env.ts에서 'node:path'를 'path'로 변경,0,0,unknown
+이영철,10,modify: Swagger 스키마 생성을 위한 설정 파일 추가 및 기존 스크립트 삭제  @jk-cli/swagger-generator 패키지 ,0,0,unknown
+이영철,9,modify: 새로운 Sentry 설정 파일 추가 및 기존 파일 정리  React Query 클라이언트 제공을 위한 새로운 컴포넌트 추가,0,0,unknown
+이영철,6,modify: BaseLink 컴포넌트의 props 타입을 NextLinkProps에서 ComponentProps로 변경,0,0,unknown
+이영철,5,modify: Sentry 프로젝트 이름을 'community-fe-web'에서 'sample'로 변경,0,0,unknown
+이영철,4,modify: package.json 및 pnpm-lock.yaml의 의존성 버전 업데이트 및 postbuild 스크립트에서 npm을 pnpm으,0,0,unknown
+김승미,8,modify: tsconfig.json의 views 경로 업데이트,0,0,unknown
+김승미,7,modify: 프로젝트 구조 cursor rules 반영,0,0,unknown
+김승미,3,modify: 잘못 연결된 링크,0,0,unknown
+김승미,2,modify: docker port 기본 포트로 변경,0,1,unknown

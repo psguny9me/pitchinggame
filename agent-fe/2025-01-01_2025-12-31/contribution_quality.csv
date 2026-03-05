@@ -1,0 +1,106 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+유선영,101,feat: 환경 변수 및 UI 컴포넌트 추가,0,0,unknown
+유선영,100,feat: 메인 페이지 스타일 수정,0,0,unknown
+유선영,99,feat: 페르소나 선택 로직 구현,0,0,unknown
+유선영,87,feat: 인증 및 세션 관리 기능 구현 및 widget 추가,0,0,unknown
+유선영,85,refactor: chat thread 콘텐츠 처리 로직 개선,2,1,unknown
+유선영,70,feat: 채팅 컴포넌트 및 위젯 구조 개선,0,0,unknown
+유선영,69,feat: ChatKit API 및 인증 관리 개선,0,0,unknown
+유선영,65,스타일 개선: 프롬프트 예시 카드 및 애니메이션 스타일 변경,0,0,unknown
+유선영,63,feat: 채팅 프롬프트 예시 및 애니메이션 스타일 추가,1,1,unknown
+유선영,61,feat: API 에러 타입 정의 및 경로 수정,0,0,unknown
+유선영,54,feat: Radix UI 컴포넌트 추가 및 애니메이션 개선,0,0,unknown
+유선영,42,feat: API 스키마 및 타입 정의 추가,1,1,unknown
+유선영,35,Feature/career chat,0,0,unknown
+유선영,30,fix: prestart 스크립트 이름 변경 (career-prestart  talent-prestart),0,0,unknown
+유선영,29,fix: career 빌드 스크립트의 경로 수정,0,0,unknown
+유선영,28,Feature/career component,0,0,unknown
+유선영,23,update: Tooltip 컴포넌트의  스타일 수정,0,1,unknown
+유선영,22,feat: Avatar 컴포넌트 개선 및 색상 변수 추가,2,0,unknown
+유선영,21,feat: 클라이언트 도구 및 프로젝트 규칙 문서 추가,4,0,unknown
+유선영,18,feat: Git 커밋 메시지 작성 규칙 문서 추가,0,1,unknown
+유선영,16,refactor: Update Button components to use 'design' prop instead of 'variant',0,0,unknown
+유선영,14,feat: skeleton 컴포넌트 추가,0,1,unknown
+유선영,13,feat: 타이포그래피 유틸리티 추가 및 CareerChatView UI 개선,0,1,unknown
+유선영,12,Feature/git ci,0,1,unknown
+유선영,11,feat: talent 앱을 위한 새로운 아이콘 추가 및 패키지 설정 업데이트,0,1,unknown
+유선영,9,refactor: Button 컴포넌트 design prop 도입 및 스타일 개선,2,0,unknown
+유선영,7,feat: Button 컴포넌트 디자인 시스템 적용 및 Tailwind 설정 개선,2,1,unknown
+유선영,3,chore: develop 브랜치를 release로 mr,0,0,unknown
+유선영,2,Develop,0,0,unknown
+유선영,1,feat: health check 추가,0,0,unknown
+최소희,108,feat: 모호한 용어 명확화 위젯 추가 및 기존 SelectBoxWidget 대체,1,1,unknown
+최소희,107,feat: 추천 연관 질문 위젯 및 관련 컴포넌트 추가,1,1,unknown
+최소희,106,feat: 요구사항 명확화 체크박스 위젯 추가,2,1,unknown
+최소희,105,refactor: 미사용 컴포넌트 제거 및 현 단계 불필요 기능 주석 처리,1,1,unknown
+최소희,104,fix: message turn grouping 및 펜딩 상태 제거,0,1,unknown
+최소희,96,fix: 스레드 최초 생성시  유저 메세지 2개 생성되는 버그 해결,4,1,unknown
+최소희,92,feat: TalentCustomPartsRenderer에 WorkflowWidget 추가,1,1,unknown
+최소희,91,feat: 메시지 오류 컴포넌트 및 Assistant Message Storybook 추가,0,0,unknown
+최소희,90,feat: Markdown 텍스트 컴포넌트에 SyntaxHighlighter 추가 및 타이포그래피 토큰 정의,0,0,unknown
+최소희,83,feat: select box widget 추가,1,1,unknown
+최소희,78,feat: 워크플로우 UI 및 기능 개발,1,1,unknown
+최소희,74,feat: HttpChatKitTransport 클래스에 관측 메타 정보 및 이벤트 로깅 추가,1,1,unknown
+최소희,68,feat: 온보딩 화면에서 채팅 상세로 전환,1,1,unknown
+최소희,55,feat: 마크다운 텍스트 컴포넌트 개선 및 불필요한 파일 제거,2,1,unknown
+최소희,50,update: talent api url dev 서버 연동,1,1,unknown
+최소희,48,fix: global css 설정 제거,0,1,unknown
+최소희,47,feat: GFM 확장 제거 및 마크다운 미리보기 페이지 정리,0,1,unknown
+최소희,46,feat: 마크다운 미리보기 페이지 개선 및 GFM 확장 추가,0,0,unknown
+최소희,43,feat: 디자인팀 마크다운 ui 공유용 페이지 개발,0,0,unknown
+최소희,41,feat: JAMS 2.0 디자인 시스템 기준으로 Tailwind 스타일 토큰 정리,1,1,unknown
+최소희,39,fix: ChatKitProvider props 타입 수정,0,1,unknown
+최소희,36,feat: Lnb Inset 영역 설계 및 path 별 페이지 생성,2,1,unknown
+최소희,34,fix: talent 채팅 런타임 경로 및 thread query 참조 오류 수정,0,1,unknown
+최소희,33,update: nextjs 보안 취약점으로 인한 버전 변경,0,1,unknown
+최소희,31,refactor: chatkit-adapter 패키지 및 talent 구조 개선,3,0,unknown
+최소희,27,chore: React 및 관련 패키지 버전 업데이트,0,1,unknown
+최소희,24,feat: 공용 라이브러리 설치 및 환경 구축,0,1,unknown
+최소희,20,update: button cancel 로직 적용,0,0,unknown
+최소희,15,update: ChatKit 런타임 아키텍처 상태 관리 개선 및 에러 핸들링 강화,0,0,unknown
+최소희,8,docs: 프로젝트 구조  컨벤션 및 이전 구조와의 변경점 문서화,0,1,unknown
+최소희,6,refactor: architecture & convetion,0,1,unknown
+박창협,109,인재 검색 필터 기능 및 코드 매핑 시스템 구현,3,1,unknown
+박창협,95,인재 검색 조건 요약 위젯 작업,2,0,unknown
+박창협,89,LNB 작업,1,1,unknown
+박창협,86,인재 검색 위젯 작업,0,1,unknown
+박창협,82,dev 환경 런타임 에러 수정,0,1,unknown
+박창협,81,인재 패널 데이터 연동 작업,1,0,unknown
+박창협,79,OverlayProvider 중첩 제거,0,0,unknown
+박창협,77,인재 검색 결과 퍼블 + 데이터 로직 작업,1,1,unknown
+박창협,66,husky 깃훅 설정,1,0,unknown
+박창협,64,온보딩 (채팅 진입점) 페이지 작업,1,1,unknown
+박창협,62,fix build error,0,1,unknown
+박창협,53,온보딩(채팅 진입점) 1차 퍼블,2,1,unknown
+박창협,44,인재 패널 임시 퍼플리싱,1,1,unknown
+박창협,38,service 레이어 구조 개선,4,1,unknown
+박창협,32,mr noti 적용,1,0,unknown
+임유리,103,feat: 인재상세 정보 refactor,2,1,unknown
+임유리,98,feat: update schema,0,0,unknown
+임유리,97,feat: 인재 상세 정보 API 스키마 변경 및 디자인 변경사항 반영,3,1,unknown
+임유리,94,feat: update api schema,0,0,unknown
+임유리,84,feat: Contact Status SelectBox feature 모듈로 분리,0,1,unknown
+임유리,80,feat: 인재 상세 정보(Talent Detail) 기능 구현 및 API 연동,1,1,unknown
+임유리,76,feat: update api schema,0,0,unknown
+임유리,75,feat: update api schema,0,1,unknown
+임유리,73,feat: overlay-kit 기반 오버레이 관리 및 AlertDialog 컴포넌트 추가,0,1,unknown
+임유리,67,feat: 인재 상세 정보 페이지 UI 개선 및 신규 공통 컴포넌트 추가,3,1,unknown
+임유리,58,feat: icon 추가,0,0,unknown
+임유리,57,Feature/talent detail,0,1,unknown
+임유리,40,feat: create talent detail components,0,1,unknown
+임유리,37,feat: story book 설정 및 shared/components/ui 컴포넌트 stories 파일 생성,1,1,unknown
+이동현,26,feat: career-agent standalone 빌드 설정 추가,0,0,unknown
+이동현,25,feat: career-agent 빌드 스크립트 추가,0,0,unknown
+이동현,17,modify: Update Dockerfile to copy built application to /app/dist and adjust entr,0,0,unknown
+이동현,10,feat: enhance Dockerfile to support dynamic build targets and improve build proc,0,0,unknown
+이동현,4,feat: add Docker support for local development with build and runtime...,0,0,unknown
+오은지,102,refactor: 프로젝트 관련 UI 및 기능 개선,3,1,unknown
+오은지,93,feat: 프로젝트 관련 UI 및 기능 개선,1,0,unknown
+오은지,72,feat: 프로젝트 메인  상세 리팩토링,1,0,unknown
+오은지,60,feat: 프로젝트 상세 페이지 추가,0,0,unknown
+오은지,59,feat: 아이콘 및 SVG 추가 및 수정,0,1,unknown
+오은지,56,feat: 프로젝트 리스트 및 범용 리스트 컴포넌트 추가,0,0,unknown
+오은지,52,feat: Figma 디자인 기반 컴포넌트 및 스타일 가이드 추가,5,1,unknown
+오은지,51,feat: Label 스토리 파일 수정,0,0,unknown
+오은지,49,feat: Figma 디자인 기반 컴포넌트 및 스타일 가이드 추가,0,0,unknown
+오은지,45,feat: 프로젝트 및 인재 관련 컴포넌트 추가 및 개선,0,0,unknown

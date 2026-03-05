@@ -1,0 +1,551 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+김승미,595,modify: 온보딩 페이지 CTA 영역 하단 고정 처리,1,0,unknown
+김승미,594,fix: 페이지 간 데이터 갱신 이슈 수정,1,0,unknown
+김승미,591,modify: eslint error,1,0,unknown
+김승미,587,온보딩 페이지 신규 버전 구현,3,0,unknown
+김승미,581,메일 초대 SSO 로그인 리다이렉트 수정,1,0,unknown
+김승미,575,브랜드명 변경: 비즈센터 → 하이어링센터,1,0,unknown
+김승미,573,워크스페이스 활동 내역 개인정보 전체 보기 기능 추가 및 렌더링 최적화,1,0,unknown
+김승미,570,modify: 워크스페이스 및 초대 flow layout,1,0,unknown
+김승미,566,fix: UNAUTHORIZED 에러 시 BE의 cookie 삭제 헤더 전파,1,0,unknown
+김승미,554,feat: 잡코리아 referrer 체크로 무한 리다이렉트 방지,1,0,unknown
+김승미,544,🔧 워크스페이스 인증 및 리다이렉트 로직 개선,1,0,unknown
+김승미,541,fix: Middleware 쿠키 전파 이슈 해결,1,0,unknown
+김승미,540,fix: SSO 인증 무한루프 및 2FA stateCode 처리 개선,3,0,unknown
+김승미,538,SSO 인증 시 from_bizcenter_login 파라미터 무한 루프 해결,1,0,unknown
+김승미,537,워크스페이스 인증 리다이렉트 URL 도메인 처리 개선,1,0,unknown
+김승미,536,Middleware-Server Component 인증 데이터 전달 오류 수정,1,0,unknown
+김승미,534,워크스페이스 활동 내역 리스트 수정 및 상세 기능 구현,1,0,unknown
+김승미,528,JK PM Config 패키지 적용 (v0.0.2 - Mock Data),1,1,unknown
+김승미,526,2단계 인증 stateCode 추가,1,0,unknown
+김승미,521,modify: two-factor 인증 link 수정,1,0,unknown
+김승미,517,비즈센터 이용 제한 기능 구현,1,0,unknown
+김승미,516,2단계 미인증 회원 인증 페이지 이동,1,0,unknown
+김승미,508,BZWTextField 컴포넌트 구현 및 워크스페이스 멤버 관리 개선,1,0,unknown
+김승미,507,"Revert ""Merge branch 'feature/auth-integration-supplement' into 'release_1223'""",1,0,unknown
+김승미,503,refactor: 로그인 리다이렉트 및 세션 만료 처리에 externalPaths와 openUrl 적용,1,1,unknown
+김승미,502,SSO 인증 로직 및 API 구조 개선,2,1,unknown
+김승미,496,modify: checkbox table style,1,1,unknown
+김승미,483,활동 이력 페이지 UI 개선 및 공통 컴포넌트 추가,1,1,unknown
+김승미,482,날짜 포맷 통일 및 인증 API 경로 변경,2,1,unknown
+김승미,481,워크스페이스 인증 쿠키 propagation 로직 개선,1,0,unknown
+김승미,476,Feature/auth flag,1,0,unknown
+김승미,473,release_1202 배포 - 지원자 관리  공고 관리  SSO 통합인증 기능 개선,2,0,unknown
+김승미,468,modify: react 버전 업그레이드로 인한 오류,1,0,unknown
+김승미,467,테스트 환경 URL 변경 (jts15 → jts13  schema URL 도메인 변경),1,0,unknown
+김승미,464,리액트  넥스트 취약점 버전 수정,1,0,unknown
+김승미,463,custom alert 노출하는 error code 추가,1,0,unknown
+김승미,459,fix: 워크스페이스 초대 수락 시 불량 기업/휴폐업 에러 처리 및 custom alert 추가,1,0,unknown
+김승미,426,SSO 통합인증 연동 및 점진적 마이그레이션 구현,2,0,unknown
+김승미,416,modify: 워크스페이스 약관 동의 시점 개선 및 개발 환경 최적화,2,1,unknown
+김승미,412,modify: Husky pre-push Hook E2E 테스트 비활성화 및 MR 가이드 개선,1,1,unknown
+김승미,411,fix: ESLint 에러 수정 - 빌드 실패 원인 해결,1,0,unknown
+김승미,405,refactor: 워크스페이스 생성 및 초대 수락 시 약관 동의 토스트 메시지 제거,0,0,unknown
+김승미,401,docs: MR 작성 가이드 및 GitLab MCP 자동화 설정 추가,1,1,unknown
+김승미,400,워크스페이스 초대 시 inviteeRoleType 제거 및 불필요한 권한 로직 정리,1,0,unknown
+김승미,398,roleType 제거 및 memberType 전환,2,1,unknown
+김승미,395,modify: 인증 api 환경변수,1,1,unknown
+김승미,394,Release 1125,1,1,unknown
+김승미,391,워크스페이스 생성 에러 처리 개선 및 문서화,1,0,unknown
+김승미,390,워크스페이스 권한 체크 로직 개선 및 초대 수락 시 인증 정보 갱신,1,0,unknown
+김승미,389,워크스페이스 역할 라벨 및 생성 완료 경로 수정,1,0,unknown
+김승미,386,"멤버 관리 > 초대 중 권한 ""멤버""로 고정",1,0,unknown
+김승미,385,applicants/ui/detail 경로를 Detail로 변경,1,0,unknown
+김승미,384,멤버 권한 관리 기능 제거 및 내계정관리 멤버 뱃지 노출,1,0,unknown
+김승미,382,워크스페이스 외부 접속 시 노출할 에러 페이지,2,1,unknown
+김승미,381,"워크스페이스 생성 및 초대 수락 시 ""광고성 정보 수신 동의"" 처리 개선",1,0,unknown
+김승미,378,modify: 오타 수정,1,0,unknown
+김승미,377,modify: 정렬 리스트 키 변경,1,0,unknown
+김승미,376,QA 1120 수정사항 반영,1,0,unknown
+김승미,374,워크스페이스 멤버 리스트에서 현재 사용자 최상위 정렬 기능 추가,1,0,unknown
+김승미,372,modify: eslint error,1,0,unknown
+김승미,371,TEST 74404 - 워크스페이스 초대 및 생성 시 약관 동의 로직 개선,1,0,unknown
+김승미,367,QA 이슈 수정 - 약관 관리 및 유사 워크스페이스 기능 개선,3,0,unknown
+김승미,365,QA 1118 이슈 수정 및 워크스페이스 멤버 관리 개선,1,0,unknown
+김승미,364,TEST-74404 개인정보수집 및 이용 동의에도 'DISAGREED' 값 반영,2,1,unknown
+김승미,363,워크스페이스 생성 및 세션 관리 개선,1,0,unknown
+김승미,361,워크스페이스 로고 업로드 기능 구현,5,1,unknown
+김승미,355,약관 동의 API 및 UI 개선,2,0,unknown
+김승미,351,SonarQube TODO 규칙 제외 및 멤버 초대 경로 수정,1,0,unknown
+김승미,347,Fix/qa 1112 워크스페이스 생성 폼 validation 개선,3,0,unknown
+김승미,340,Beta 도메인 제거 및 리다이렉션 로직 개선,2,0,unknown
+김승미,334,modify: fix eslint 및 type error,1,0,unknown
+김승미,329,QA 이슈 수정 (11/10),2,1,unknown
+김승미,327,약관 동의 관리 테이블 font size 조정,1,0,unknown
+김승미,326,워크스페이스 멤버 관리 UI 디자인 개선,1,0,unknown
+김승미,325,약관 동의 toast 메시지 UX 개선 및 공통화,2,0,unknown
+김승미,324,워크스페이스 역할 변경에 따른 마이그레이션 (workspaceRoleType → workspaceMemberType),1,0,unknown
+김승미,316,약관 동의 UI 개선 및 토스트 기능 강화,1,0,unknown
+김승미,310,워크스페이스 생성 및 관리  멤버 관리 디자인 수정 반영,1,0,unknown
+김승미,309,텍스트 수정 및 워크스페이스 초대 에러처리 수정,4,1,unknown
+김승미,308,워크스페이스 설정 URL 구조 개선,1,1,unknown
+김승미,305,워크스페이스 나가기 UI/UX 개선 및 BZWAlert 컴포넌트 확장,2,1,unknown
+김승미,304,워크스페이스 멤버 초대 및 이메일 검증 개선,1,0,unknown
+김승미,300,약관 동의 상태 기반 UI 개선 및 이메일 validation 강화,1,0,unknown
+김승미,299,워크스페이스 생성 후 상태 관리 동기화 개선,1,0,unknown
+김승미,297,워크스페이스 통합 기능 제거 및 플래그 관리 구조 개선,2,1,unknown
+김승미,273,이용약관 정보 호출 시점 변경,1,0,unknown
+김승미,270,워크스페이스 초대 수락 후 페이지 미전환 개선,1,0,unknown
+김승미,269,DEV 환경 로그인 리다이렉트 URL 내부 도메인 노출 문제 수정,2,0,unknown
+김승미,268,RoleLabel 컴포넌트 개선 및 ChipPrimary 통합,2,1,unknown
+김승미,267,워크스페이스 활동 내역 필터 개선 및 아키텍처 구조 개선,3,0,unknown
+김승미,265,BZWFilterBtn 컴포넌트 추가,1,0,unknown
+김승미,258,QA 이슈 수정 및 약관 컴포넌트 분리,1,0,unknown
+김승미,257,test:coverage:filter 스크립트 추가 및 커버리지 리포트 개선,4,1,unknown
+김승미,254,워크스페이스 초대 수락 프로세스 개선,1,0,unknown
+김승미,253,약관 동의 관리 실시간 API 호출 및 UI 개선,1,0,unknown
+김승미,251,modify: 페이지 타이틀 적용,1,0,unknown
+김승미,250,modify: TEST-73758 direct url 변경,1,0,unknown
+김승미,248,workspace API 500 에러 재시도 기능 구현 (DEV/LOC 환경),1,0,unknown
+김승미,247,워크스페이스 활동 내역 페이지 구현,11,0,unknown
+김승미,246,워크스페이스 내 계정 설정 구현 및 기타 관련 요소 수정 및 적용,3,0,unknown
+김승미,245,약관 동의 API 통합 및 약관 처리 로직 개선,3,0,unknown
+김승미,244,멤버가 아닌 사용자 페이지 진입 개선,3,0,unknown
+김승미,241,QA 이슈 수정 및 UI 개선,3,0,unknown
+김승미,229,쿠키 처리 로직 개선,2,0,unknown
+김승미,221,QA 이슈 해결 및 워크스페이스 인증 시스템 개선,1,0,unknown
+김승미,219,modify: 0926 QA 수정사항 처리,3,0,unknown
+김승미,218,Biz JAMS 아이콘 적용,2,1,unknown
+김승미,217,0925QA 수정: 워크스페이스 생성 및 에러 처리 개선,2,0,unknown
+김승미,216,UI 컴포넌트 네이밍 컨벤션 개선 (BZ -> BZW),2,0,unknown
+김승미,211,공통 에러 처리 개선 및 테스트 커버리지 향상,3,1,unknown
+김승미,208,middleware 경로처리 로직 개선,2,1,unknown
+김승미,206,workspaceId 다른 계정으로 접속 했을 때  로그아웃 처리,2,1,unknown
+김승미,204,워크스페이스 인증 API URL 변경 - CORS 에러 해결,3,1,unknown
+김승미,201,워크스페이스 로그인 리다이렉트 로직 개선 및 통합,8,1,unknown
+김승미,193,modify: smart-fit 광고 재신청 api v2로 변경,5,1,unknown
+김승미,190,워크스페이스 초대 상태별 카운트 API 연동 및 페이지네이션 개선,2,1,unknown
+김승미,188,워크스페이스 초대 수락 기능 구현 및 TermsAgreement 컴포넌트 아키텍처 개선,1,1,unknown
+김승미,184,워크스페이스 관리 페이지 내 통합 기능 구현,4,1,unknown
+김승미,180,BZModal 컴포넌트 타입 에러 수정,2,1,unknown
+김승미,164,워크스페이스 초대 생성 기능 변경사항 적용,1,1,unknown
+김승미,154,BZAlert 컴포넌트 개선,1,1,unknown
+김승미,144,워크스페이스 생성 및 초대 기능 구현,12,1,unknown
+김승미,141,워크스페이스 온보딩 페이지 변경 디자인 적용,1,1,unknown
+김승미,140,워크스페이스 인증 API 연동 및 미들웨어 리팩토링,1,1,unknown
+김승미,139,BizCenter 아이콘 시스템 생성,1,1,unknown
+김승미,136,feat: workspace 공용 에러 페이지,1,0,unknown
+김승미,135,Feature/create workspace,18,1,unknown
+문승연,586,Fix/utils,1,0,unknown
+문승연,585,modify: Update PM_CONFIG_API_URL in environment files for consistency across...,1,0,unknown
+문승연,583,feat: Create home page view components for bizcenter workspace,1,0,unknown
+문승연,579,modify: Refactor prestart script to simplify environment variable handling and..,1,0,unknown
+문승연,524,modify: enhance Button component guidelines for width handling in Figma designs,1,1,unknown
+문승연,522,modify: skill Remove obsolete Figma design skills and update design tokens CSS..,1,0,unknown
+문승연,130,modify: ASSET_PREFIX 관련 주석 처리 및 이미지 경로 설정 수정,1,0,unknown
+문승연,120,modify: eslint 및 tsconfig 설정 업데이트: '@typescript-eslint/no-explicit-any' 규칙 추가...,1,0,unknown
+문승연,118,Fix/remove any type,1,0,unknown
+문승연,108,Feature/sentry profile,1,0,unknown
+문승연,105,modify: 대시보드 리스트 훅에 대한 주석 추가 및 코드 정리,1,0,unknown
+문승연,99,modify: 스마트핏 상품 설명 문구 수정,1,0,unknown
+문승연,98,Feature/k6 test,1,0,unknown
+문승연,97,modify: husky/pre-push 스크립트에서 주석을 제거하고  e2e 테스트 파일 탐색 로직을 개선하여 import 체인을 추적하고..,1,0,unknown
+문승연,96,modify: code smell 제거,1,0,unknown
+문승연,95,modify: UI 컴포넌트 규칙 업데이트 - API 분석 추가 및 타입스크립트  eslint 에러 처리 규칙 명시,1,0,unknown
+문승연,91,modify: API 경로에 대한 접근 제한 로직 추가 및 허용된 Origin 목록 설정,1,0,unknown
+문승연,90,modify: husky/pre-push 스크립트에서 주석을 제거하고  e2e 테스트 파일 탐색 로직을 개선하여 import 체인을 추적하고..,2,0,unknown
+문승연,89,modify: playwright.config.ts에서 웹 서버 설정 추가 및 baseURL 설정  테스트 로직 개선,1,0,unknown
+문승연,85,modify: ProviderAuthGuard 컴포넌트에서 불필요한 줄을 추가하고  husky/pre-push 스크립트에서 e2e 테스트...,2,0,unknown
+문승연,83,modify: vitest.config.mjs 파일에서 테스트 포함 패턴을 확장하고  제외할 파일 목록에 src/shared/utils/**/*,1,0,unknown
+문승연,82,modify: vitest.config.mjs 파일에서 제외할 파일 목록을 업데이트하고  .husky/pre-push 스크립트에서 주석 처리함,1,0,unknown
+문승연,81,modify: sonar-project.properties 파일에서 테스트 커버리지 제외 패턴을 업데이트하고  src/shared 디렉토리의 파,1,0,unknown
+문승연,80,modify: sonar-project.properties 파일에서 테스트 커버리지 제외 패턴을 업데이트하고 ...,1,0,unknown
+문승연,79,Release,1,0,unknown
+문승연,78,Release,1,0,unknown
+문승연,77,modify: sonar-project.properties 파일에서 중복된 설정을 제거하고  주석을 정리함,1,0,unknown
+문승연,76,Release,0,0,unknown
+문승연,75,modify: Security Hotspots to review,0,0,unknown
+문승연,74,modify: sonar-project.properties 파일에서 테스트 커버리지 주석을 수정함,0,0,unknown
+문승연,73,환경 변수의 API URL을 bizcenter로 변경하고  불필요한 payment API 파일을 삭제하였습니다. 또한 ...,0,0,unknown
+문승연,72,modify: sonar-project.properties 파일에서 프로젝트 키를 새로운 값으로 업데이트,0,0,unknown
+문승연,71,modify: package.json에 SonarQube 스캐너 명령어 추가,0,0,unknown
+문승연,70,modify: GitLab CI 규칙에서 release 브랜치 조건 수정,0,0,unknown
+문승연,69,Feature/pre push,0,0,unknown
+문승연,68,modify: Playwright 및 E2E 테스트 설정,0,0,unknown
+문승연,65,modify: package.json 및 pnpm-lock.yaml 파일에 테스트 관련 의존성 추가 및 브라우저 스토리지 유틸리티 함수...,0,0,unknown
+문승연,48,modify: 클릭율 표시 형식을 정수 또는 소수점 한 자리로 변경,0,0,unknown
+문승연,43,Fix/test 71268,0,0,unknown
+문승연,39,modify: Sentry 및 OpenTelemetry 통합을 위한 설정 파일 추가 및 기존 파일 수정,0,0,unknown
+문승연,34,modify: 대시보드 관련 API 경로 수정 및 새로운 컴포넌트 추가,0,0,unknown
+문승연,33,modify: screens와 관련된 경로를 views로 변경하고  AppProvider를 ProviderApp으로 수정하여 컴포넌트 구조를..,0,0,unknown
+문승연,30,modify: 대시보드 관련 API 및 컴포넌트 구조 변경  Pagination 추가 및 CardDetail 컴포넌트 삭제,0,0,unknown
+문승연,27,경로 수정: TypeScript 설정 파일에서 모듈 경로를 '@app/*'에서 '@shared/*'  '@features/*' ...,0,0,unknown
+문승연,26,modify: 로그 환경 태그 설정 코드 주석 처리 및 Sentry 오류 캡처 시 에러 제목 포맷 개선,0,0,unknown
+문승연,24,컴포넌트 구조 변경 및 불필요한 모달 삭제: CpcPerformanceReviewPage의 구조를 변경하고 ...,0,0,unknown
+문승연,21,환경 변수 설정 변경 및 Sentry 이벤트 태그 추가: 각 환경에 맞는 SHORT_ENV 값을 설정하고  Sentry 이벤트에...,0,0,unknown
+문승연,20,Feature/fsd fix,0,0,unknown
+문승연,19,src 디렉토리 구조 변경 및 컴포넌트 경로 수정: Error  NotFound  Provider  Layout  Middleware ...,0,0,unknown
+문승연,18,src 디렉토리 구조 변경 및 컴포넌트 경로 수정: Error  NotFound  Provider  Layout  Middleware ...,0,0,unknown
+문승연,16,Feature/api type,0,0,unknown
+문승연,15,modify: Dockerfile 및 Dockerfile.local에서 COPY 명령어로 변경  패키지.json의 도메인 수정 ...,0,0,unknown
+문승연,14,Feature/sentry config,0,0,unknown
+문승연,13,Feature/dashboard coaunt,0,0,unknown
+문승연,12,Feature/auth check,0,0,unknown
+문승연,11,modify: 패키지 의존성 업데이트 및 환경변수 수정: @jds/theme을 0.3.12로 업데이트하고 ...,0,0,unknown
+문승연,10,modify: React Query 클라이언트 설정 개선 및 세션 만료 처리 추가,0,0,unknown
+문승연,9,modify: 대시보드 API 요청 처리 방식 개선 및 불필요한 코드 제거,0,0,unknown
+문승연,8,modify: 복원 새로운 API 및 에러 처리 컴포넌트 추가  레이아웃 및 대시보드 관련 기능 구현,0,0,unknown
+문승연,5,modify: 환경변수 조정 / fetch sample,0,0,unknown
+문승연,4,패키지 의존성 업데이트: @jds/theme 버전 0.3.11로 변경 및 Modal 컴포넌트에서 Inset 제거,0,0,unknown
+문승연,3,modify: 패키지 의존성 업데이트 및 Card 컴포넌트 수정: @jds/theme 버전 0.3.9로 업데이트  Card 컴포넌트에서 광고..,0,0,unknown
+문승연,2,feat: CPC 성과 리뷰 페이지에 CpcList 컴포넌트 추가 및 Pagination 컴포넌트 구현,0,0,unknown
+문승연,1,refactor: next.config.ts 수정 및 @jds/theme  react-hook-form  zod  eslint 등 패키지...,0,0,unknown
+김고영,592,modify: 내부 qa  speckit 문서 doc로 이동,1,0,unknown
+김고영,574,modify: skill update,1,0,unknown
+김고영,567,modify: 프로필 아이콘 변경/알림 타이틀 수정,1,0,unknown
+김고영,561,refactor: LayoutApplicantCalendar > LayoutApplicantManagement 변경,1,0,unknown
+김고영,556,fix: 캘린더 빈 리스트 디자인등 수정,1,0,unknown
+김고영,527,modify: borderWidth 제거,1,1,unknown
+김고영,519,modify: gitignore .claude 제거,1,0,unknown
+김고영,515,modify: delete root skill,1,0,unknown
+김고영,514,fix: calendar 수정/ claude skill 추가,1,0,unknown
+김고영,491,Feature/calendar modify,1,0,unknown
+김고영,485,modify: next version fetch,1,0,unknown
+김고영,484,modify: 이력서 api 수정,1,0,unknown
+김고영,479,modify: calendar/resume api update,1,0,unknown
+김고영,443,modify: bizcenter sentry 정보 수정,1,0,unknown
+김고영,442,modify: 알림페이지 추가,1,1,unknown
+김고영,438,modify: calendar jobpostingid 쿼리스트링으로 수정. 면접상세 수정,1,0,unknown
+김고영,429,modify: calendar 공고 리스트 수정  디자인 업데이트 반영,2,1,unknown
+김고영,422,modify: pdf  차단 디자인 수정,2,0,unknown
+김고영,421,modify: api update  디자인 수정,1,0,unknown
+김고영,409,Feature/resume code,5,0,unknown
+김고영,393,modify: 지원자 상세 리스트  면접일정 디자인 수정  차단내역 리스트 수정,2,1,unknown
+김고영,383,modify: 채용단계  열람  합격/불합격/취소 api,7,0,unknown
+김고영,368,fix: download api url 추가(테스트코드)  download modal props 수정,1,0,unknown
+김고영,366,modify: 이력서 뷰 수정/파일다운로드,1,0,unknown
+김고영,362,modify: api update,2,0,unknown
+김고영,359,modify: 메모 display api 추가,1,0,unknown
+김고영,358,Feature/block delete,6,1,unknown
+김고영,356,modify: download: display api 적용,1,0,unknown
+김고영,354,modify: calendar display api  필터 적용,2,1,unknown
+김고영,342,modify: jds/fetch update  calendar event api 연동,2,0,unknown
+김고영,339,modify: calendar detail,3,1,unknown
+김고영,317,modify: calendar생성  면접일정 팝오버 리팩토링,2,0,unknown
+김고영,306,modify: 지원자 상세 스텝추가,6,0,unknown
+김고영,292,Feature/applicant detail,3,1,unknown
+김고영,263,modify: 지원자상세 구조 변경.,4,1,unknown
+김고영,260,지원자 관리 구조,9,1,unknown
+김고영,225,Release,2,0,unknown
+김고영,223,modify: dashboard field명 수정,3,0,unknown
+김고영,222,modify: api 필드명 수정,3,0,unknown
+김고영,215,modify: smartfit 일별지표 api v2업데이트,4,1,unknown
+김고영,196,Release,1,0,unknown
+김고영,189,mofidy: 안내문구 추가,2,0,unknown
+김고영,187,modify: test coverage 누락된 케이스 추가,3,0,unknown
+김고영,186,modify: graph animation 수정,1,0,unknown
+김고영,183,modify: 상품일시정지 버튼명 변경/그래프 툴팁 아이콘 고정 및 위치 수정,2,0,unknown
+김고영,182,Fix/test 73108,2,0,unknown
+김고영,179,modify: chart 상단 마진 조정,2,0,unknown
+김고영,178,modify: selectbox width 고정,1,0,unknown
+김고영,177,modify: 단건조회 폴링으로 상태 변경 후  해당 jobId의 데이터만 업데이트,2,0,unknown
+김고영,174,modify: chart prev  next 버튼제어,2,1,unknown
+김고영,173,modify: 단건조회시 params page 제외,3,0,unknown
+김고영,172,modify: env url 수정,1,0,unknown
+김고영,171,Fix/test 72889,1,0,unknown
+김고영,170,modify: 지역검색 세종시 필터링 제거,1,0,unknown
+김고영,169,modify: chart Y축 데이터 수정/ 셀렉트박스 그림자 추,1,0,unknown
+김고영,168,modify: modal 디자인 수정,1,0,unknown
+김고영,166,modify: graphy 축 소수점 제거,1,0,unknown
+김고영,165,modify: card detail 지원자 분기처리,1,0,unknown
+김고영,163,modify: QA 검수 수정,1,0,unknown
+김고영,162,modify: 버튼명 변경/ 그래프 툴팁 디자인 수정,1,0,unknown
+김고영,160,modify: 삭제된 props 수정,1,0,unknown
+김고영,159,modify: card detail 색상변경/round,1,0,unknown
+김고영,158,modify: 대기중인 공고 일시정지 버튼 숨김처리/데이터 1개일때 chart ui 분기처리,1,0,unknown
+김고영,155,modify: smartfit codehub 토큰으로 수정,1,0,unknown
+김고영,152,modify: chart 디자인 수정,1,0,unknown
+김고영,150,modify: mr-notification,1,0,unknown
+김고영,148,modify: mr-notification,1,0,unknown
+김고영,146,modify: 디자인 수정/ 공고일시정지 수정,1,1,unknown
+김고영,142,modify: 스마트핏2차,16,1,unknown
+김고영,131,modify: dashboard 명칭 smartfit으로변경/fetch>abortcontroller 추가,2,0,unknown
+김고영,129,modify: 포인트 홈 문구변경,1,0,unknown
+김고영,128,modify: statusType: READY 신청 버튼 노출,1,0,unknown
+김고영,127,modify: 광고 문구수정,1,0,unknown
+김고영,126,modify: 광고 문구 상품으로 수정,1,0,unknown
+김고영,125,modify: 에러추가,1,0,unknown
+김고영,124,Fix/refresh,1,0,unknown
+김고영,123,modify: ga 타이틀 수정,1,0,unknown
+김고영,122,modify: 버튼노출상태 변경,1,0,unknown
+김고영,121,modify: 상품 신청버튼노출,1,0,unknown
+김고영,119,modify: testcode any 수정/디자인 문구변경,1,0,unknown
+김고영,116,modify: dev  prd api 호출정보 수정/로그인토큰만료시 postmessage로 통신,1,0,unknown
+김고영,114,modify: stg api 원복,1,0,unknown
+김고영,113,modify: env api AWS 내부 통신 도메인으로 수정,1,0,unknown
+김고영,112,modify: 테스트코드 수정,2,0,unknown
+김고영,111,Fix/test 71751,2,0,unknown
+김고영,110,modify: port 3000,1,0,unknown
+김고영,109,modify: docker port 30000삭제,1,0,unknown
+김고영,107,modify: 토큰 만료시reload parent,1,0,unknown
+김고영,106,Fix/husky prepush,1,0,unknown
+김고영,103,modify: payment env,1,0,unknown
+김고영,102,Fix/auth barrel,1,0,unknown
+김고영,101,modify: 스마트핏 지원자수 문구변경,1,0,unknown
+김고영,100,modify: tocken만료/문구수정,1,0,unknown
+김고영,94,Fix/payment api update,1,0,unknown
+김고영,93,modify: 대시보드 용어변경,1,0,unknown
+김고영,92,modify: 이용중 삭제된 공고 케이스 추가,1,0,unknown
+김고영,88,modify: 신청완료팝업 디자인 수정적용/console 삭제,1,0,unknown
+김고영,87,modify: 삭제된 api typecheck 에러수정,1,0,unknown
+김고영,86,modify: 대시보드 날짜 상시채용/공고게재기간으로 수정,1,0,unknown
+김고영,84,modify: 상세보기 CTR 소수점 한자리까지 제한,1,0,unknown
+김고영,67,modify: GA / Error code 추가,0,0,unknown
+김고영,66,Fix/smartfit api,0,0,unknown
+김고영,64,modify jams 버전업,0,0,unknown
+김고영,63,modify: 광고신청 팝업 디자인 수정 적용,0,0,unknown
+김고영,62,modify: 결제완료팝업 디자인 적용,0,0,unknown
+김고영,61,modify: 결제완료 - 결제금액 처리,0,0,unknown
+김고영,60,modify: jds theme 버전업,0,0,unknown
+김고영,59,Fix/test 71403,0,0,unknown
+김고영,58,modify: 결제완료 api 추가,0,0,unknown
+김고영,57,modify: 포인트 결제완료 수정,0,0,unknown
+김고영,56,modify: 결제완료팝업 수정,0,0,unknown
+김고영,55,Fix/test 71394,0,0,unknown
+김고영,54,modify: api 호출  중첩if 문 개선,0,0,unknown
+김고영,53,modify: 광고 상태에 따라 버튼 노출 수정,0,0,unknown
+김고영,52,modify: 광고추가 전 인증체크/문구수정,0,0,unknown
+김고영,51,modify: jams 버튼 - 좌측여백적용,0,0,unknown
+김고영,50,modify: TEST-71374 환불정책동의 기본 상태값 수정,0,0,unknown
+김고영,49,modify: 모달팝업 타이틀/광고상태 및 디자인 수정QA,0,0,unknown
+김고영,47,modify: 광고 신청step 변경,0,0,unknown
+김고영,46,modify: 결제및 환불정책약관/재구매안내문구 노출,0,0,unknown
+김고영,45,modify: 광고중단모달 디자인 수정,0,0,unknown
+김고영,44,modify: smart-fit 광고상태 api apyment 로 이동.,0,0,unknown
+김고영,42,modify: 상세보기 상단 지원자 수 삭제,0,0,unknown
+김고영,41,modify: 환불정책 및 상세보기 디자인 수정반영,0,0,unknown
+김고영,40,modify: 대시보드 광고신청 버튼 상태 api 적용,0,0,unknown
+김고영,38,modify: env dev api주소 변경,0,0,unknown
+김고영,37,modify: env 접속도메인 수정/pretendard loc 경로 삭제,0,0,unknown
+김고영,36,modify: 광고중단,0,0,unknown
+김고영,35,modify: 결제 api 경로/param 수정,0,0,unknown
+김고영,32,modify: 함수 usage 주석처리 / 리팩토링,0,0,unknown
+김고영,31,modify: api 업데이트  model 구조 변경,0,0,unknown
+김고영,29,modify: api path 분리,0,0,unknown
+김고영,28,modify: 결제 api 수정,2,0,unknown
+김고영,25,modify: fetch-addRequestIdToHeaders 추가,0,0,unknown
+김고영,23,modify: 더미데이터 삭제  결제 api 추가,0,0,unknown
+김고영,22,modify: payment 변경 api 적용(더미데이터),3,0,unknown
+김고영,17,modify: payment 수정,0,0,unknown
+김고영,6,modify: 모달- 광고신청/결제완료,12,0,unknown
+최문경,590,modify: 직무 Modal 검색창 placeholder 문구 변경,1,0,unknown
+최문경,584,fix: 직무 선택 모달 칩 삭제 시 카테고리 유지 버그 수정,1,0,unknown
+최문경,580,fix: 공고 목록 상태 Chip 표시 및 하단 안내 문구 수정,1,0,unknown
+최문경,578,fix: 채용절차 중복 검증 및 주소 areaCode 수정,1,0,unknown
+최문경,571,feat: 엑셀 다운로드 상태 polling 기능 추가,1,0,unknown
+최문경,569,modify: InputSalary  SelectChipBox 컴포넌트 성능 최적화,1,1,unknown
+최문경,565,Fix/job posting form,1,0,unknown
+최문경,564,Fix/job posting form,1,0,unknown
+최문경,563,Fix/job posting form,1,0,unknown
+최문경,560,Fix/job posting form,1,1,unknown
+최문경,558,fix: qa issues,1,0,unknown
+최문경,555,Fix/job posting form,8,0,unknown
+최문경,553,Fix/job posting form,1,0,unknown
+최문경,551,modify: 잡코리아 직무 스키마 변경,1,0,unknown
+최문경,550,modify: 공고 리스트 SORT_OPTIONS,1,0,unknown
+최문경,549,Fix/job posting form,1,0,unknown
+최문경,547,modify: 모두 지우기  템플릿 다시 불러오기 얼럿 추가 [TEST-75454][TEST-75456],1,0,unknown
+최문경,546,Fix/job posting form,1,0,unknown
+최문경,545,fix: qa issues [TEST-75501][TEST-75499],1,0,unknown
+최문경,543,modify: transformCareerRange,1,0,unknown
+최문경,542,Fix/job posting form,1,0,unknown
+최문경,535,modify: 대기중 공고 10개 체크  경력 미입력 버그,1,0,unknown
+최문경,533,Fix/job posting form,1,0,unknown
+최문경,530,Feature/jobs list,1,0,unknown
+최문경,525,Feature/job posting form,1,0,unknown
+최문경,523,modify: 공고 간편 재등록 수정,1,0,unknown
+최문경,520,Feature/job posting form,1,0,unknown
+최문경,513,Feature/job posting form,1,0,unknown
+최문경,506,Feature/job posting form,1,0,unknown
+최문경,501,Feature/job posting form,2,0,unknown
+최문경,500,modify: middleware,1,0,unknown
+최문경,499,Feature/job posting form,2,0,unknown
+최문경,498,modify: REBOOT -> GRAND  그랜드 버전 적용,2,0,unknown
+최문경,495,Feature/admin job posting,1,0,unknown
+최문경,492,Feature/job posting form,1,0,unknown
+최문경,488,Feature/job posting form,1,0,unknown
+최문경,477,Feature/job posting form,3,0,unknown
+최문경,475,modify: 공고 권한 관리 수정,2,1,unknown
+최문경,474,modify: LayoutWorkspace styles,1,0,unknown
+최문경,471,Feature/jobs list,1,0,unknown
+최문경,460,modify: 모집기간  공고리스트 prefetch,1,0,unknown
+최문경,458,공고관리  등록 관련 수정,1,0,unknown
+최문경,457,modify: env DISPLAY_API_URL_BIZCENTER,1,0,unknown
+최문경,456,modify: ModalRePosting  job posting list,1,0,unknown
+최문경,455,Feature/job posting,1,0,unknown
+최문경,454,Feature/job posting,1,0,unknown
+최문경,451,modify: baseURL,2,0,unknown
+최문경,450,리액트  넥스트 취약점 버전 수정,1,0,unknown
+최문경,446,refactor: jobs entities  features 위치 리팩토링,1,0,unknown
+최문경,445,refactor: jobs product  update schema,1,0,unknown
+최문경,444,modify: LayoutWorkspace  jobs product page,1,0,unknown
+최문경,437,상품 페이지 추가,1,1,unknown
+최문경,435,modify: displayBaseURL,3,0,unknown
+최문경,433,modify: 공고리스트 ui  공고등록 이전공고 가이드,1,0,unknown
+최문경,431,refactor: 공고리스트 리팩토링,2,0,unknown
+최문경,430,modify: job-posting test codes,2,0,unknown
+최문경,428,modify: validation,2,0,unknown
+최문경,427,공고관리 리스트 수정,2,0,unknown
+최문경,424,공고 리스트  공고 등록 수정,2,0,unknown
+최문경,419,modify: displayBaseURL,2,0,unknown
+최문경,417,modify: schema  etc...,1,0,unknown
+최문경,415,modify: BZWModal 딤드 클릭시 닫히지 않기,1,0,unknown
+최문경,413,공고등록 api  하드스킬 추천 api 연동,1,0,unknown
+최문경,404,fix: type errors,1,0,unknown
+최문경,402,modify: validations  schema,3,0,unknown
+최문경,396,form validation 수정,1,0,unknown
+최문경,388,Refactor job posting form: Update input fields for age  application period ...,2,0,unknown
+최문경,379,공고등록 폼 수정,2,0,unknown
+최문경,352,modify: FormAside  BZWLabel,1,2,unknown
+최문경,350,fix: type errors,1,0,unknown
+최문경,348,공고등록폼 수정,1,1,unknown
+최문경,345,공고등록 폼 수정,6,0,unknown
+최문경,343,공고등록 폼 수정,2,0,unknown
+최문경,335,zod 추가,5,0,unknown
+최문경,330,modify: 공고등록 api 연동,2,0,unknown
+최문경,323,카카오맵 추가  스텝 사이드바 수정,3,0,unknown
+최문경,322,공고등록 폼 작업,5,0,unknown
+최문경,313,fix: type error,1,0,unknown
+최문경,311,Feature/job posting form,2,1,unknown
+최문경,298,feat: ats  jobs displayFetch 추가 및 스키마 생성,3,2,unknown
+최문경,294,refactor: 공고등록폼 리팩토링,2,1,unknown
+최문경,291,공고등록 폼 모달로 변경,3,1,unknown
+최문경,287,공고등록 관련 모달 추가,2,0,unknown
+최문경,283,공고등록 폼 관련 모달 추가,3,1,unknown
+최문경,279,modify: 공고등록 뒤로가기 막기 - popstate 이벤트 추가,1,1,unknown
+최문경,276,Feature/job posting step,1,0,unknown
+최문경,266,feat: BZWRegistIcon 추가,2,1,unknown
+최문경,264,feature: BZWLogo  BZWRegistPlatform 추가,6,1,unknown
+최문경,262,modify: middleware routeHandlers handlePathRedirects 추가,2,1,unknown
+최문경,261,Feature/workspace auth prefetch,5,1,unknown
+최문경,252,메뉴 url 변경  공고 관리  지원자 관리 메뉴 추가,5,1,unknown
+최문경,242,modify: ProviderWorkspaceAuthGuard authCheck to ensureWorkspaceAuthCheck,4,1,unknown
+최문경,236,modify: 참여 완료 문구 수정 [TEST-73668],2,1,unknown
+최문경,235,modify: EmailConfirmationPage gap 삭제,2,1,unknown
+최문경,233,modify: useWorkspaceSimilarityMembers alertMessage,2,0,unknown
+최문경,232,generate-schema 수정,4,1,unknown
+최문경,228,modify: LayoutContent styles,2,1,unknown
+최문경,214,refactor: error-messages 코드 분리,4,1,unknown
+최문경,213,modify: 미들웨어 리팩토링,4,1,unknown
+최문경,210,modify: helper-utils 추가  isServerSide  isClientSide 사용,3,1,unknown
+최문경,209,modify: generate-schema 수정  api-v2 폴더 생성,4,1,unknown
+배상훈,596,지원자 관리 페이지의 정렬 기능 개선 및 사용성 향상 작업,2,1,unknown
+배상훈,577,지원자 리스트 레이아웃 및 면접제안 모달 문구 수정,1,0,unknown
+배상훈,568,메시지 API 타입 에러 수정,2,1,unknown
+배상훈,559,BZWIconEditBtn 컴포넌트 추가,1,0,unknown
+배상훈,557,지원자 리스트 기획/디자인 QA,1,0,unknown
+배상훈,548,지원자 스키마 업데이트 및 관련 타입명 변경,1,0,unknown
+배상훈,532,지원자관리 스키마 업데이트에 따른 프론트엔드 코드 수정,1,0,unknown
+배상훈,512,modify: 벌크 면접 제안 기능 개선,5,1,unknown
+배상훈,511,공고 리다이렉트 로직 개선 및 즐겨찾기 상태 동기화 개선 작업,4,1,unknown
+배상훈,510,refactor: 지원자 칸반 드래그앤드롭 @dnd-kit 기반 재구현,9,0,unknown
+배상훈,494,지원자 목록 기능의 성능 최적화 및 코드 품질 개선,31,1,unknown
+배상훈,472,지원자 관리 기능의 API 및 UX 개선,4,1,unknown
+배상훈,470,remove: notify api 삭제,1,1,unknown
+배상훈,469,remove: 지원자 결과 안내 api 삭제,1,0,unknown
+배상훈,466,modify: 지원자 목록 레이아웃 로딩 처리 및 스크롤 분기 처리,2,0,unknown
+배상훈,465,지원자 관리 레이아웃 공고 정보 영역 개선,1,0,unknown
+배상훈,462,지원자 액션바 심사 기능 개선 및 벌크 단계 이동 기능 강화,3,0,unknown
+배상훈,453,feat: 지원자 필터 API 연동,3,0,unknown
+배상훈,449,기업회원 설정 API 엔드포인트 변경,1,0,unknown
+배상훈,447,지원자 관리 스키마 업데이트,2,0,unknown
+배상훈,440,지원자 관리 스키마 업데이트,1,0,unknown
+배상훈,439,feat: 지원자 api fetch url 수정,1,0,unknown
+배상훈,432,스키마 업데이트 후 타입 에러 수정 및 테스트 코드 업데이트,3,0,unknown
+배상훈,425,feat: 지원자 관리 공고 리스트,10,0,unknown
+배상훈,420,지원자 목록 페이지의 jobPostingId 관리 방식 개선 및 관련 기능 보완,9,1,unknown
+배상훈,418,지원자 목록 페이지의 jobPostingId 관리 방식 개선 및 관련 기능 보완,1,0,unknown
+배상훈,414,지원자 목록 jobPostingId URL 쿼리스트링 관리 개선,3,0,unknown
+배상훈,410,지원자 벌크 결과 안내 API 연동,2,0,unknown
+배상훈,408,지원자 검색 기능 추가 및 타입 오류 수정,3,0,unknown
+배상훈,406,지원자 관리 API 타입 정의 개선 및 타입 단언 제거,2,0,unknown
+배상훈,403,기업회원 설정 API 연동 및 지원자 목록 개선,12,0,unknown
+배상훈,399,modify: 스키마 업데이트 후 추가된 필드 반영,4,0,unknown
+배상훈,397,fix: 타입 에러 수정,1,0,unknown
+배상훈,392,지원자관리 목록 정렬/무한 스크롤,15,1,unknown
+배상훈,380,지원자 관리 데이터 타입 수정 및 린트  타입 에러 수정,1,0,unknown
+배상훈,375,지원자 관리 액션바 API 연동,2,0,unknown
+배상훈,373,feat: 지원자 단계 이동(단일/벌크) api 연동,4,0,unknown
+배상훈,370,지원자 목록 API 연동,3,0,unknown
+배상훈,369,채용 단계 CRUD API 연동,5,0,unknown
+배상훈,360,modify: 지원자 카드 개선,1,0,unknown
+배상훈,353,지원자 목록 액션바 메뉴 구현,14,1,unknown
+배상훈,341,지원자 목록 액션바 메뉴 구현,7,1,unknown
+배상훈,338,Feature/applicant layout,8,1,unknown
+배상훈,328,지원자 목록 - 테이블/칸반 뷰 개선,13,0,unknown
+배상훈,321,feat: 지원자 목록 UI,15,0,unknown
+배상훈,318,feat: 지원자 목록 UI 개발,16,0,unknown
+배상훈,307,modify: BZWToast 컴포넌트 수정 및 code 커러리지 보완,8,1,unknown
+배상훈,303,fix: 코드리뷰 반영,2,1,unknown
+배상훈,302,Feature/bzw component modify,2,1,unknown
+배상훈,301,feat: 코드 허브 추가,6,1,unknown
+배상훈,293,feat: BZWIputBtn 컴포넌트 추가,3,1,unknown
+배상훈,290,Feature/bzw toast,3,1,unknown
+배상훈,289,modify: BZWIconBtn MR 재오픈,1,0,unknown
+배상훈,288,refactor: BZW 컴포넌트 hover 관련 리팩토링,1,0,unknown
+배상훈,286,modify: checkbox 의존성 추가,1,0,unknown
+배상훈,284,modify: TEST-73903,2,0,unknown
+배상훈,272,modify: QA 이슈 수정,2,0,unknown
+배상훈,271,modify: QA 이슈 수정,2,0,unknown
+배상훈,259,QA 이슈 수정,2,0,unknown
+배상훈,249,워크스페이스 QA 이슈 처리,3,1,unknown
+배상훈,240,feature: BZWAIBtn 컴포넌트 추가,8,1,unknown
+배상훈,239,feat: BZWBtn 컴포넌트 추가,21,1,unknown
+배상훈,237,feat: BZWLabelstatus 컴포넌트 추가,2,1,unknown
+배상훈,234,feat: BZWLabel 컴포넌트 추가,2,1,unknown
+배상훈,231,feat: BZWNoti 컴포넌트 추가,3,1,unknown
+배상훈,230,feat: BZWWsimg 컴포넌트 추가,2,1,unknown
+배상훈,227,feat: BZWAvatar 컴포넌트 추가,3,1,unknown
+배상훈,224,feat: BZWBanner 컴포넌트 추가,3,1,unknown
+배상훈,205,feat: BZTooltip 컴포넌트,23,1,unknown
+배상훈,203,feat: workspace context 삭제,5,1,unknown
+배상훈,202,feat: 워크스페이스 권한별 페이지 접근 설정,28,1,unknown
+배상훈,199,feat: 워크스페이스 네비게이션 권한 설정,6,1,unknown
+배상훈,195,refactor: 워크스페이스 권한관리 인증 헤더 리팩토링,2,1,unknown
+배상훈,194,refactor: 코드리뷰 반영 및 디자인 수정,2,1,unknown
+배상훈,192,feat: 워크스페이스 멤버관리 API 연동,22,1,unknown
+배상훈,185,fix: 삭제된 이미지 복구,1,1,unknown
+배상훈,181,feat: 권한관리 페이지 개발,24,1,unknown
+배상훈,176,feat: 비즈센터 멤버 관리 화면 UI,31,1,unknown
+배상훈,167,feature: Ag Grid Optoin add,1,1,unknown
+배상훈,161,feat: BZModal 컴포넌트 추가,5,1,unknown
+배상훈,157,feat: BZToggleGroup 컴포넌트 추가,3,1,unknown
+배상훈,156,feat: BZSelect 컴포넌트 추가,1,1,unknown
+배상훈,151,Feature/workspace management restore,5,1,unknown
+배상훈,149,modify: 비즈센터 워크스페이스 다이나믹 라우팅 복구,1,1,unknown
+배상훈,138,refactor: 동적 라우팅 복구,1,1,unknown
+배상훈,134,feat: 워크스페이스 레이아웃 개발,22,1,unknown
+배누리,593,fix: 파일명,1,0,unknown
+배누리,589,Qa/jobs,4,0,unknown
+배누리,576,fix: qa,1,0,unknown
+배누리,572,Qa/jobs,1,0,unknown
+배누리,562,fix: qa 오류,2,0,unknown
+배누리,552,fix: qa 오류,1,0,unknown
+배누리,539,fix: 오류 수정 및 기업정보 api endpoint 변경 반영,1,0,unknown
+배누리,531,modify: 이전 공고 불러오기 후 공고상세요강 가져올때 헤더 정보 제거하고 가져오기,1,0,unknown
+배누리,529,fix: AI공고등록 오류,2,0,unknown
+배누리,518,modify: 공고 등록 오류 수정,2,0,unknown
+배누리,509,modify: 템플릿타입 추가,1,0,unknown
+배누리,505,modify: 기업 정보 저장,4,0,unknown
+배누리,490,modify: 저장된 form에서 상세모집요강 변환,2,0,unknown
+배누리,487,Feature/company,1,0,unknown
+배누리,486,modify: ai builder 공고등록폼 맵핑  html 결과물 반영,2,0,unknown
+배누리,480,modify: 에디터에 파일업로드 api 반영,1,0,unknown
+배누리,478,modify: 이전 입력 내용 불러오기 api 반영  인피니트 스크롤로 변경,1,1,unknown
+배누리,452,Feature/jd 에디터 1차 (에디터 기능  디자인 반영  큰 플로우 반영),4,0,unknown
+배누리,436,002 ai job posting upload,7,0,unknown
+배누리,387,기업 정보 페이지 UI 추가,7,1,unknown
+배누리,357,채용공고 권한관리 기능을 추가,3,1,unknown
+배누리,349,Fix/typeerror,16,1,unknown
+배누리,346,Feature/prompt,5,0,unknown
+배누리,344,Feature/recruitcard,3,1,unknown
+배누리,332,feat: 공고 관리 페이지 개발,1,0,unknown
+배누리,315,Feature/editor,4,1,unknown
+배누리,314,fix: error,1,0,unknown
+배누리,312,Feature/filerecruit,2,0,unknown
+배누리,295,Feature/prompt,2,1,unknown
+배누리,285,fix: build error,1,0,unknown
+배누리,282,문서 업데이트,3,1,unknown
+배누리,281,add: JobDetailSection JD수정컴포넌트,2,1,unknown
+이길환,493,Test Coverage,1,1,unknown
+이길환,489,인사담당자 면담 제안 채팅 기능 구현,9,1,unknown

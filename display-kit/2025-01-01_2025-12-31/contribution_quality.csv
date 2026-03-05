@@ -1,0 +1,217 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+김재균,231,image 사용 필드 변경,0,0,unknown
+김재균,230,delete unused fetchmore function,0,0,unknown
+김재균,225,recommend card text 순서 변경,0,0,unknown
+김재균,222,chore: update version,0,0,unknown
+김재균,221,onboarding 로컬 저장 로직 수정,0,0,unknown
+김재균,218,온보딩 us 필터링 수정,0,0,unknown
+김재균,217,chore: update version,0,0,unknown
+김재균,216,select onboarding 중국 홍콩  일본  미국 키워드 수정,0,0,unknown
+김재균,211,반응형 스타일 수정,0,0,unknown
+김재균,210,chore: update version,0,0,unknown
+김재균,209,click path에 scCode 추가,0,0,unknown
+김재균,199,smartfit data type 수정,0,0,unknown
+김재균,196,ad banner custom pb 추가,0,0,unknown
+김재균,195,ai insight ga event 추가,0,0,unknown
+김재균,191,balancegame onboarding enum 값 추가 및 큐레이션 잡 추가 GA 반영,0,0,unknown
+김재균,190,채용관 border class 추가 및 큐레이션 job 로직 수정,0,0,unknown
+김재균,184,keyword 스크롤에 따른 gradient 노출,0,0,unknown
+김재균,181,변경된 카드 필드 반영,0,0,unknown
+김재균,180,chore: update-version,0,0,unknown
+김재균,179,섹션 내부에서 타입 오류에 따른 렌더 실패 수정,0,0,unknown
+김재균,167,benefit code 파싱 util 함수 섹션별 적용,0,0,unknown
+김재균,165,변경된 card basic 필드 반영,0,0,unknown
+김재균,164,curation job api 연동,0,0,unknown
+김재균,163,card 컴포넌트 truncate 적용,0,0,unknown
+김재균,159,section data 중  useDmp 및 scCode props 반영,0,0,unknown
+김재균,154,card 타입 추가된 theme 필드(채용관) 반영,0,0,unknown
+김재균,149,job-preference-onboarding mutation 추가,0,0,unknown
+김재균,148,섹션별 scrap 이벤트 추가,0,0,unknown
+김재균,147,공고뷰 모바일 dmp 적용,0,0,unknown
+김재균,139,tags -> benefit code 태그 사용 필드 변경,0,0,unknown
+김재균,130,공고뷰 GA 이벤트 삽입,0,0,unknown
+김재균,122,card recommendation error handling 추가,0,0,unknown
+김재균,121,logo fallback image 추가,0,0,unknown
+김재균,118,chore: update version,0,0,unknown
+김재균,117,chip style 변경 및 단일 선택으로 변경,0,0,unknown
+김재균,112,onboarding 애니메이션 추가,0,0,unknown
+김재균,108,card popularity scrap example 코드 추가,0,0,unknown
+김재균,107,util 함수 section 관리 -> 서비스 관리 변경,0,0,unknown
+김재균,106,apply button visible props 추가,0,0,unknown
+김재균,103,component render type 정의,0,0,unknown
+김재균,97,GA click event 추가 및 box onclick -> base anchor onclick으로 변경,0,0,unknown
+김재균,93,click  impression dmp 적용,0,0,unknown
+김재균,92,chore: update version,0,0,unknown
+김재균,91,chore: update version,0,0,unknown
+김재균,90,onboarding pb animation 추가,0,0,unknown
+김재균,85,onboarding fadeout animation 반영,0,0,unknown
+김재균,82,urgent-notice style 수정,0,0,unknown
+김재균,81,sdui section type에 noticeType 추가,0,0,unknown
+김재균,80,urgent-notice style 수정,0,0,unknown
+김재균,79,chore: update version,0,0,unknown
+김재균,78,urgent-notice section 제작,0,0,unknown
+김재균,77,skeleton 추가,0,0,unknown
+김재균,73,onboarding post 두번 실행되는 이슈 해결,0,0,unknown
+김재균,66,chore: update version,0,0,unknown
+김재균,65,style 수정,0,0,unknown
+김재균,64,card의 smartfit-tag -> tagAd 사용으로 변경,0,0,unknown
+김재균,62,add titlepc variant,0,0,unknown
+김재균,61,recommend card type 변경,0,0,unknown
+김재균,51,virtual 요소 생성 안되는 이슈 해결,0,0,unknown
+김재균,48,fix: notice icon naming 수정,0,0,unknown
+김재균,47,chore: update version,0,0,unknown
+김재균,46,chore: update version,0,0,unknown
+김재균,45,dropdown-product unitprice nan 이슈 해결,0,0,unknown
+김재균,42,empty card 컴포넌트 제작,0,0,unknown
+김재균,41,job-preference-onboarding hover css 추가,0,0,unknown
+김재균,40,curation job style 수정,0,0,unknown
+김재균,36,카드 호버 애니메이션 추가,0,0,unknown
+이로움,205,Feature/benefit,0,0,unknown
+이로움,201,feat: 버전 업데이트,0,0,unknown
+이로움,200,Feature/scrap,0,0,unknown
+이로움,194,Feature/tabs,0,0,unknown
+이로움,189,feat: 버전 업데이트,0,0,unknown
+이로움,188,feat: onClick 함수에 tag 타입 정보 추가,0,0,unknown
+이로움,187,fix: 버전 업데이트,0,0,unknown
+이로움,186,fix: tag click 함수 변경,0,0,unknown
+이로움,183,fix: 버전 업데이트,0,0,unknown
+이로움,182,Feature/tag,0,0,unknown
+이로움,176,fix: 버전 업데이트,0,0,unknown
+이로움,175,Feature/apply method,0,0,unknown
+이로움,174,Feature/fix jobfit,0,0,unknown
+이로움,156,fix: 공통화 로직 추가,0,0,unknown
+이로움,155,Feature/job fit,0,0,unknown
+이로움,145,fix: ad banner props type section 공통으로 수정,0,0,unknown
+이로움,143,Feature/subway,0,0,unknown
+이로움,138,fix: tab active 이전 탭으로 넘어가는 이슈 수정,0,0,unknown
+이로움,133,Feature/tabs,0,0,unknown
+이로움,127,fix: 지원방법 클릭 가능하게 수정,0,0,unknown
+이로움,110,feat: 버전 업데이트,0,0,unknown
+이로움,99,Feature/summary code,0,1,unknown
+이로움,89,remove: event propagation 삭제,0,0,unknown
+이로움,88,Feature/scrap,0,0,unknown
+이로움,87,feat: 버전 업데이트,0,0,unknown
+이로움,86,fix: 원픽 공고 리스트 레이아웃 grid 적용,0,0,unknown
+이로움,84,fix: ai 추천인재 scrap click 추가,0,0,unknown
+이로움,83,Feature/tags,0,0,unknown
+이로움,76,Feature/benefit,0,0,unknown
+이로움,70,fix: changelog 업데이트,0,0,unknown
+이로움,69,Feature/benefit,0,0,unknown
+이로움,58,fix: input native css 보다 우선순위 가져가게끔 변경,0,0,unknown
+이로움,57,Feature/test text field,0,0,unknown
+이로움,44,Feature/fix subcontent detail,0,0,unknown
+이로움,29,Feature/fix build,0,0,unknown
+이로움,8,Feature/export,0,1,unknown
+이로움,4,Feature/ai recommend,0,0,unknown
+이로움,2,fix: 원픽 추천 공고 fetch 함수 추가,0,0,unknown
+이로움,1,fix: 스마트핏 fetch 함수 추가,0,0,unknown
+이시은,233,chore: publish 0.0.125,0,0,unknown
+이시은,232,Fix/styles,0,0,unknown
+이시은,227,chore: publish 0.0.122,0,0,unknown
+이시은,226,modify: cpt carousels empty card 버튼 삭제,0,0,unknown
+이시은,224,chore: publish 0.0.120,0,0,unknown
+이시은,223,feat: emoji 추가,0,0,unknown
+이시은,220,Publish/0.0.118,0,0,unknown
+이시은,219,fix: design 이슈 수정,0,0,unknown
+이시은,215,chore: publish 0.0.115,0,0,unknown
+이시은,214,Fix/designs2,0,0,unknown
+이시은,213,chore: publish 0.0.114,0,0,unknown
+이시은,212,Fix/designs,0,0,unknown
+이시은,208,fix: sections key 추가,0,1,unknown
+이시은,207,Publish/0.0.111,0,0,unknown
+이시은,206,Fix/safari z,0,0,unknown
+이시은,204,chore: publish 0.0.109,0,0,unknown
+이시은,203,modfiy: sdui header item 타입 변경,0,0,unknown
+이시은,202,fix: ai job secton 영역 상하 패딩 제거,0,0,unknown
+이시은,193,chore: publish 0.0.101,0,0,unknown
+이시은,192,fix: 이미지 width 퍼져보이는 이슈 해결,0,0,unknown
+이시은,172,modify: cards radius 수정,0,0,unknown
+이시은,171,chore: publish 0.0.89,0,0,unknown
+이시은,170,Feat/list grid location,0,0,unknown
+이시은,169,chore: publish 0.0.88,0,0,unknown
+이시은,168,feat: card job normal 스타일 수정,0,0,unknown
+이시은,166,feat: ai section isPaid  score 필드 추가,0,0,unknown
+이시은,162,chore: publish 0.0.84,0,0,unknown
+이시은,161,modify: ai job section dot button 위공간 넓히는 작업,0,0,unknown
+이시은,160,modify: ai job section align center on singlepage,0,0,unknown
+이시은,158,chore: publish 0.0.83,0,0,unknown
+이시은,157,Feat/empty cards,0,0,unknown
+이시은,153,chore: publish 0.0.82,0,0,unknown
+이시은,152,modify: card job ai border style 수정,0,0,unknown
+이시은,151,modify: z-index 제거,0,0,unknown
+이시은,144,chore: publish 0.0.78,0,0,unknown
+이시은,142,modify: ai-jobsection 이미지 제거,0,0,unknown
+이시은,141,feat: ai-job-section title icon image 추가,0,0,unknown
+이시은,140,publish: 0.0.77,0,0,unknown
+이시은,137,feat: list community skeleton 추가,0,0,unknown
+이시은,136,chore: publish 0.0.74,0,0,unknown
+이시은,131,feat: skeleton ui 변경,0,1,unknown
+이시은,128,chore: publish 0.0.68,0,0,unknown
+이시은,126,Feat/title m,2,2,unknown
+이시은,124,chore: publish 0.0.64,0,0,unknown
+이시은,123,feat: ai job section props 수정 (sectionTitle  onClickItem),0,0,unknown
+이시은,120,chore: publish 0.0.61,0,0,unknown
+이시은,119,Fix/list basic click,0,0,unknown
+이시은,115,chore: publish 0.0.59,0,0,unknown
+이시은,114,Feat/dmp click,0,0,unknown
+이시은,113,chore: publish 0.0.58,0,0,unknown
+이시은,109,Refactor/am section,0,0,unknown
+이시은,101,chore: publish 0.0.46,0,0,unknown
+이시은,100,fix: quick menu left padding 제거,0,0,unknown
+이시은,98,fix: ai-job-section left 패딩 제거,0,0,unknown
+이시은,96,chore: 0.0.44 publish,0,0,unknown
+이시은,95,Feat/inview,0,1,unknown
+이시은,94,fix: section style 수정,0,1,unknown
+이시은,63,modify: 스타일 변경,0,1,unknown
+이시은,50,modify: tag blue 색상 bg primary -> bg blue50으로 변경,0,1,unknown
+이시은,37,Feat/skeleton am,1,1,unknown
+이시은,18,feat: sdui section component props emojiType 추가,0,1,unknown
+이시은,16,Feat/skeleton,1,1,unknown
+장호철,235,publish 0.0.126,0,0,unknown
+장호철,234,update banner alert padding,0,0,unknown
+장호철,229,publish 0.0.123,0,0,unknown
+장호철,228,fixed text and emoji,0,0,unknown
+장호철,198,publish 0.0.105,0,0,unknown
+장호철,197,add skeleton in index,0,0,unknown
+장호철,185,update ai insight section,0,1,unknown
+장호철,178,publish 0.0.93,0,0,unknown
+장호철,177,Added: univ point,0,0,unknown
+장호철,173,Delete unused values,0,0,unknown
+장호철,150,[공고뷰-Mo] add anchorId for SDUI,0,0,unknown
+장호철,146,[공고뷰-Mo] feat: Passing some data,0,0,unknown
+장호철,135,publish 0.0.73,0,0,unknown
+장호철,134,Rename Carousel-recommendataion to AI Insight and updated some values with new A,0,1,unknown
+장호철,75,publish 0.0.32,0,0,unknown
+장호철,74,fixed hydration error,0,0,unknown
+장호철,72,publish 0.0.31,0,0,unknown
+장호철,71,rever testing banners,0,0,unknown
+장호철,68,publish 0.0.29,0,0,unknown
+장호철,67,사용하지 않는 컴포넌트 삭제  임시 배너 노출용 코드 추가,0,0,unknown
+장호철,60,Publish version(0.0.27),0,0,unknown
+장호철,59,Chore: Customized info의 css 변경 (Flex to grid),0,0,unknown
+장호철,55,publish 0.0.21,0,0,unknown
+장호철,54,export banner alert,0,0,unknown
+장호철,53,publish 0.0.20,0,0,unknown
+장호철,52,banner alert 추가 (Notice 삭제),0,1,unknown
+장호철,49,Updated job card animation,2,1,unknown
+장호철,35,Update designs (CardJobPopularity  Notice),0,1,unknown
+장호철,12,publish 0.0.6,0,0,unknown
+장호철,6,공용 Ad banner 구현,1,1,unknown
+김규리,132,fix: textfield readonly 에서 controlled 로 상태 관리 시 값이 변경되지 않도록 수정,0,1,unknown
+김규리,129,feat: BaseDatePicker에 year 옵션 추가,0,1,unknown
+김규리,125,feat: Textfield 컴포넌트 readOnly 속성 추가,0,1,unknown
+김규리,116,DatePicker 개선,0,1,unknown
+김규리,39,chore: publish 0.0.16,0,0,unknown
+김규리,38,refactor: datepicker 초기 타입 설정 변경,0,1,unknown
+김규리,34,feat: 클릭시 자동으로 포커스 맞춰질 수 있도록 수정,0,1,unknown
+김규리,27,refactor: simplify BaseDatePicker input type handling,0,1,unknown
+김규리,11,feat: Tag 컴포넌트 글씨 크기 수정,0,1,unknown
+문승연,56,publish 0.0.22 with clear button bugfix and component updates,0,0,unknown
+문승연,43,Remove unnecessary padding from CarouselCardRecommend component,0,0,unknown
+문승연,5,chore: update package version to 0.0.4 and refactor base-auto-complete...,0,0,unknown
+오샘,111,Feat/am section,0,0,unknown
+오샘,105,feat: SDUISectionRenderer change,0,0,unknown
+오샘,104,feat: type fix am section components,0,0,unknown
+오샘,102,feat: SDUISection type and update related components.,0,0,unknown
+오샘,23,feat: job-filter-section key change,0,0,unknown
+오샘,7,feat: job-filter-section disabled change,0,0,unknown

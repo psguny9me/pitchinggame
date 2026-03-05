@@ -1,0 +1,75 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+유선영,73,modify: pnpm-lock.yaml에서 React 및 Next.js 버전 업데이트,0,0,unknown
+유선영,72,modify: package.json 및 pnpm-lock.yaml에서 React 및 Next.js 버전 업데이트,0,0,unknown
+유선영,70,modify: Search 컴포넌트에서 검색 기능에 featureCode 추가,0,0,unknown
+유선영,67,modify: Search 컴포넌트에서 featureType 속성을 searchFeatureCode로 변경,0,0,unknown
+유선영,66,modify: MySearch 및 Recommend 컴포넌트에서 인증 상태에 따른 API 호출 조건 개선,3,1,unknown
+유선영,65,modify: MySearch 컴포넌트에서 인증 상태에 따라 API 호출 조건 추가,2,0,unknown
+유선영,64,modify: MySearch 컴포넌트에서 인증 여부에 따라 검색 쿼리 활성화,2,0,unknown
+유선영,63,modify: 세션 만료 처리 로직 개선,2,0,unknown
+유선영,62,modify: RecentTags 및 Recommend 컴포넌트에서 쿠키 데이터 읽어오기 기능 추가,0,0,unknown
+유선영,61,modify: RecentFilter 저장 방식 변경,0,0,unknown
+유선영,60,modify: JOBKOREA_TEST_URL 환경 변수 수정 및 referer 기반 URL 로직 개선,1,0,unknown
+유선영,59,modify: API 경로 통일 및 fetch 함수 수정,2,0,unknown
+유선영,58,modify: xflowFetch 함수에 credentials 속성 추가,3,0,unknown
+유선영,57,modify: XFLOW_API_URL 환경 변수 수정,2,0,unknown
+유선영,56,modify: Sentry.beforeSend에서 특정 에러 메시지 무시 로직 추가,0,0,unknown
+유선영,55,modify: JOBKOREA_URL 환경 변수 수정,1,0,unknown
+유선영,54,modify: JOBKOREA_URL 환경 변수 수정,0,0,unknown
+유선영,53,feat: Xflow AB 테스트 추가,8,0,unknown
+유선영,52,modify: MySearchItem 컴포넌트의 새로운 직업 수 표시 수정,0,0,unknown
+유선영,51,modify: MySearch 컴포넌트 스타일 수정,0,0,unknown
+유선영,50,modify: HOST_URL 환경 변수 수정,0,0,unknown
+유선영,49,modify: CODE_HUB_URL 환경 변수 수정,0,0,unknown
+유선영,48,modify: HOST_URL 환경 변수 수정,0,0,unknown
+유선영,47,modify: JOBKOREA_URL 환경 변수 접근 방식 단순화,0,0,unknown
+유선영,46,modify: JOBKOREA_URL 환경 변수 접근 방식 개선,0,0,unknown
+유선영,45,modify: JOBKOREA_URL 환경 변수 수정,0,0,unknown
+유선영,44,modify: 브라우저 호환성 검사 기능 개선 및 자식 컴포넌트 렌더링 방식 수정,0,0,unknown
+유선영,43,modify: UnsupportedBrowser 컴포넌트에서 deviceInfo 출력 제거,0,0,unknown
+유선영,42,modify: 브라우저 호환성 검사 기능 개선 및 스타일 수정,0,0,unknown
+유선영,41,modify: 브라우저 호환성 검사 기능에 Edge 브라우저 지원 추가 및 관련 메시지 수정,0,0,unknown
+유선영,40,modify: MySearch 컴포넌트에서 모든 삭제 처리 시 확장 상태 초기화 추가,0,0,unknown
+유선영,39,feat: 브라우저 호환성 검사 및 미지원 브라우저 처리 기능 추가,0,0,unknown
+유선영,38,Feature/issue,0,0,unknown
+유선영,37,modify: GoogleAnalytics 컴포넌트에서 postSearchInternalDimension 함수 호출 주석 해제,0,0,unknown
+유선영,36,modify: 검색 컴포넌트에서 검색어 유효성 검사 로직 개선 및 스타일 수정,0,0,unknown
+유선영,35,Feature/qa,0,0,unknown
+유선영,34,feat: 애니메이션 카운터 컴포넌트 추가 및 검색 기능 개선,0,0,unknown
+유선영,33,modify: 오타 수정,0,0,unknown
+유선영,32,modify: 검색 기능에서 검색FeatureCode 조건 추가,0,0,unknown
+유선영,31,modify: 검색 기능에서 최근 필터 저장 및 로컬스토리지 연동,0,0,unknown
+유선영,30,modify: Popular 컴포넌트에서 Flex 최대 너비 조정,0,0,unknown
+유선영,29,modify: RecentTags 컴포넌트에서 태그 클릭 및 삭제 기능 개선,0,0,unknown
+유선영,28,modify: layout.tsx 메타데이터 추가,0,0,unknown
+유선영,27,modify: 환경 변수에서 JobKorea URL 변경,0,0,unknown
+유선영,26,modify: 검색 컴포넌트에서 키보드 가시성 상태 관리 추가,0,0,unknown
+유선영,25,modify: 검색 기능의 UI 개선 및 Google Analytics 이벤트 수정,0,0,unknown
+유선영,24,modify: 검색 기능에 Google Analytics 이벤트 추가,0,0,unknown
+유선영,23,modify: 검색 컴포넌트에서 API 캐시 로깅 추가 및 검색 기능 개선,0,0,unknown
+유선영,22,modify: UnsupportedBrowser 컴포넌트에 이미지 최적화 속성 추가,0,0,unknown
+유선영,21,modify: UnsupportedBrowser 컴포넌트에 이미지 최적화 속성 추가,0,0,unknown
+유선영,20,modify: SearchClient 및 UnsupportedBrowser 컴포넌트에 이미지 테스트,0,0,unknown
+유선영,19,remove: Empty 컴포넌트 삭제,0,0,unknown
+유선영,18,modify: Popular 컴포넌트에서 Block을 Flex로 변경,0,0,unknown
+유선영,17,modify: Popular 컴포넌트에서 Block을 Flex로 변경,0,0,unknown
+유선영,16,modify: 검색 경로 수정 및 불필요한 추천 API 삭제,0,0,unknown
+유선영,15,modify: MySearch 컴포넌트 개선 및 UI 요소 추가,0,0,unknown
+유선영,14,modify: MySearch 컴포넌트 개선 및 불필요한 API 삭제,0,0,unknown
+유선영,13,modify: API 경로 및 파라미터 타입 수정,0,0,unknown
+유선영,12,feat: 필터 기능 개선 및 새로운 컴포넌트 추가,1,0,unknown
+유선영,10,modify: 환경 변수 파일 업데이트 및 검색 기능 개선,1,0,unknown
+유선영,9,modify: package.json에서 Node.js 버전 업데이트,1,0,unknown
+유선영,8,modify: package.json에서 Node.js 버전 업데이트,1,0,unknown
+장호철,79,update pm config url,0,0,unknown
+장호철,78,update react 19.2.3,0,1,unknown
+장호철,77,feat: update-version-15.5.9,0,1,unknown
+장호철,76,Delete unused middleware,0,0,unknown
+장호철,75,Fixed middleware - health일 때는 API경로에 대한 접근 제한 처리 제외 ( Kubernetes의 health check..,0,0,unknown
+장호철,74,nextjs version up for security,0,0,unknown
+장호철,71,adding pm in middleware,4,0,unknown
+이동현,7,modify: Dockerfile에서 Node.js 버전 업데이트,1,0,unknown
+이동현,6,modify: next.config.ts에 개발 환경에 따른 아이콘 경로 설정 추가,1,0,unknown
+이동현,5,feat: 다양한 아이콘 SVG 파일 추가,1,0,unknown
+이동현,4,modify: Dockerfile에서 포트 및 노출 설정 제거,1,0,unknown
+이동현,2,modify: 설정 파일 및 스크립트 업데이트,3,0,unknown

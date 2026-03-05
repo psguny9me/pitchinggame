@@ -1,0 +1,176 @@
+﻿해시,작성자,메시지,날짜,변경라인,파일수,파일핵심도,변경고유율,변경유형,메시지시그널,영향범위,가치점수,등급
+cfa21571db77,장호철,Fixed TEST-75917 error,2025-12-31,13,2,0.7,1.0,0.6,1.0,0.5,76,A
+1642b6b0de23,김재균,feat: package update,2025-12-31,12,2,0.3,1.0,0.3,0.8,0.5,54,B
+142d13efe3e1,장호철,update display-kit version,2025-12-31,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+457d043d0dab,김재균,notice bar blank,2025-12-31,31,3,0.7,1.0,0.3,0.4,0.6,60,A
+85ab18f5a0ad,김재균,feat: display-kit 버전 업데이트,2025-12-30,12,2,0.3,1.0,0.3,0.8,0.5,54,B
+cb0d1ee166bb,김재균,onboarding fetch 함수 추가,2025-12-30,106,6,0.7,0.98,0.5,0.7,0.5,69,A
+0db58e4e5e44,장호철,update logo height,2025-12-30,2,1,0.7,1.0,0.3,0.4,0.5,60,A
+48832fb246a9,김재균,cookie no fetch 함수 추가,2025-12-30,122,7,0.7,0.941,0.8,0.7,0.5,75,A
+6c1b895fbf9c,장호철,Fixed version error,2025-12-30,2,1,0.7,1.0,0.3,0.9,0.5,67,A
+ca57be71e6ef,장호철,updated versioning logic  curatin banner,2025-12-30,152,8,0.7,0.955,0.8,0.4,0.5,71,A
+bbbbbf9a6199,장호철,Fixed logo issue,2025-12-30,20,6,0.3,0.825,0.3,0.9,0.5,52,B
+bb1896a1e897,장호철,fixed logo url fetching,2025-12-30,35,2,0.7,1.0,1.0,0.9,0.6,86,S
+a3dd9c8b8481,장호철,replace logger with console,2025-12-29,264,15,0.7,0.659,0.8,0.4,0.4,64,A
+e02433e66408,장호철,update curtain banner,2025-12-29,126,2,0.7,0.939,0.8,0.4,0.8,74,A
+8c6e83ed2898,장호철,deleted logger,2025-12-29,2,1,0.7,1.0,0.15,0.4,0.5,56,B
+c317bb3d9612,장호철,updated env urls,2025-12-29,79,7,0.7,0.48,0.15,0.4,0.5,45,B
+84d602ba68f8,장호철,updated pm-config version,2025-12-29,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+f2556b8d27be,김재균,feat: test logger 추가,2025-12-29,4,1,0.8,1.0,0.3,0.8,0.7,70,A
+2f279862db4d,장호철,update env url,2025-12-29,2,1,0.3,1.0,0.3,0.4,0.5,48,B
+0af3a616be04,김재균,feat: helper-utils package version up,2025-12-29,12,2,0.3,1.0,0.3,0.8,0.5,54,B
+7df4c0e19b31,장호철,Update server api url,2025-12-29,282,10,0.7,0.903,0.6,0.4,0.4,64,A
+29f8634981b2,김재균,feat: util pacakge version up,2025-12-29,12,2,0.3,1.0,0.3,0.8,0.5,54,B
+0d3fcf6ff13e,김재균,helper-utils 패키지 버전업,2025-12-29,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+fe1cada90dbe,김재균,fix: docker-cache,2025-12-29,2,1,0.3,1.0,0.3,0.9,0.5,55,B
+3843a086735b,김재균,helper 패키지 버전업,2025-12-29,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+09427a3674fc,김재균,update jds/utils,2025-12-29,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+87de99af5ee6,장호철,fixed build error,2025-12-26,1,1,0.7,1.0,0.15,0.9,0.5,63,A
+0128bf66f3df,김재균,default config extend type 추가 및 빌드에러 해결,2025-12-26,155,5,0.7,0.873,0.5,0.7,0.6,67,A
+becf307fd782,김재균,default config 실제 json 데이터로 변경,2025-12-26,626,3,0.7,0.254,0.3,0.4,0.8,48,B
+bbd41221ab0f,김재균,screen title custom props 생성 및 섹션별 애니메이션 property 추가,2025-12-26,55,8,0.8,1.0,0.6,0.7,0.5,74,A
+ed63d7dcf2bb,김재균,screen api info custom props에 추가,2025-12-26,245,13,0.8,0.712,0.8,0.7,0.4,73,A
+000f2d1138b3,장호철,updated fetching url,2025-12-24,2,1,0.7,1.0,0.9,0.4,0.5,75,A
+b29fb8566cdf,장호철,updat url test,2025-12-24,105,3,0.7,0.7,1.0,0.4,0.8,74,A
+62d0dc00bbec,장호철,test,2025-12-24,32,2,0.7,1.0,1.0,0.6,0.6,81,S
+4c840383e6cf,장호철,update url,2025-12-24,9,1,0.7,1.0,0.15,0.4,0.7,58,B
+ca51cf97151e,장호철,env 설정 변경,2025-12-23,593,2,0.3,0.21,0.3,0.4,0.8,35,C
+bac30d7dba5e,장호철,revert default config,2025-12-23,31,1,0.7,1.0,0.6,0.4,0.9,71,A
+007a88d6fecb,장호철,publish test,2025-12-23,598,5,0.7,0.211,0.3,0.4,0.6,45,B
+4c3fb743abe1,장호철,update env files and added logger,2025-12-23,39,7,0.7,1.0,0.6,0.4,0.5,67,A
+2fde52da2d8a,장호철,update env dev,2025-12-23,6,3,0.3,0.2,0.3,0.4,0.5,32,C
+328da3528af6,장호철,update display-kit version,2025-12-23,3774,2,0.3,0.348,0.3,0.4,0.8,37,C
+1f56301ed475,장호철,add isLoggedIn userName,2025-12-23,9,1,0.8,1.0,0.3,0.4,0.7,64,A
+fd54328708af,김재균,선호공고 온보딩 renderType 정의,2025-12-22,3798,7,0.8,0.353,0.3,0.4,0.5,50,B
+671ae50c8bb9,장호철,Fixed ad banner error,2025-12-22,53,4,0.8,1.0,0.6,0.9,0.6,78,A
+e697bf75d32d,장호철,update urgent notice,2025-12-19,7,2,0.8,1.0,0.3,0.4,0.5,62,A
+a984c76bf6ab,장호철,update ci file,2025-12-19,29,1,0.3,1.0,0.15,0.4,0.9,48,B
+94a325161683,장호철,update gitlab ci,2025-12-19,62,3,0.3,1.0,0.3,0.4,0.8,51,B
+f462f3214241,김재균,curation job 쿼리 제작 및 복리후생 코드 파싱 함수 제작,2025-12-18,482,13,0.8,0.387,0.5,0.4,0.4,54,B
+88c54a37c277,장호철,update pm config url,2025-12-17,8,4,0.3,0.3,0.2,0.4,0.5,31,C
+d45bab8522b4,김재균,section 데이터에 useDmp  scCode 포함,2025-12-17,28,4,0.7,0.914,0.3,0.4,0.5,58,B
+05e37515bf4f,장호철,Updated: curtain banner api,2025-12-17,64,4,0.7,1.0,0.6,0.4,0.6,68,A
+a6ac930b15dc,김재균,screen section api 연동 확인,2025-12-16,135,8,0.8,0.978,0.5,0.4,0.5,67,A
+4a2d86222f27,장호철,updated middleware and sdui server,2025-12-16,44,2,0.7,1.0,0.6,0.4,0.8,70,A
+5a4abdf1bc4a,장호철,Fixed AdBanner rendering issues,2025-12-16,149,6,0.8,1.0,0.6,0.9,0.5,78,A
+dc1db7219f0f,장호철,Update user segment with real config,2025-12-16,575,17,0.7,0.807,0.5,0.4,0.4,60,A
+c32bcea342b9,김재균,total menu mouseLeave 영역 조정 및 footer 변경사항 반영,2025-12-15,35,2,0.7,1.0,0.3,0.4,0.6,60,A
+5b4559d186ea,김재균,선호공고 선택 mutation 추가,2025-12-15,46,3,0.7,0.85,0.6,0.7,0.6,70,A
+704f6e692b1b,김재균,섹션별 scrap event 추가 및 취약점 React 버전 수정,2025-12-15,2214,3,0.3,0.184,0.2,0.8,0.8,38,C
+494f5b34d50a,장호철,update bordercolor when focusing,2025-12-12,42,3,0.7,1.0,0.15,0.4,0.6,57,B
+e7bac2f718dc,김재균,next 취약점 버전 수정,2025-12-12,38,2,0.3,0.989,0.3,0.8,0.6,54,B
+d427f88dcd37,김재균,dmp login 종속성 문제 해결,2025-12-12,28,1,0.7,1.0,0.3,0.4,0.9,64,A
+f530398640a5,김재균,h1  h2 태그 적용,2025-12-10,58,3,0.7,1.0,0.3,0.4,0.6,60,A
+9b30ce5ed2c9,김재균,modal status 변경,2025-12-08,2,1,0.7,1.0,0.3,0.4,0.5,60,A
+4656aeac9ae1,김재균,update modal ui 제작,2025-12-08,142,4,0.7,1.0,0.6,0.4,0.6,68,A
+c173ca7509a1,김재균,scrap query  mutation 함수 제작 및 authModal 적용,2025-12-04,302,9,0.7,0.643,0.5,0.4,0.5,57,B
+2c6c21e09130,김재균,util 함수 관리포인트 변경 section -> service,2025-12-04,79,4,0.7,0.644,0.8,0.4,0.6,66,A
+baff3e4bf61b,김재균,dimension fetch 함수 추가 및 GA 데이터 값 삽입,2025-12-04,307,11,0.7,1.0,0.7,0.7,0.4,73,A
+f50360e9f595,문승연,modify: RCE 패치,2025-12-04,2110,2,0.3,0.177,0.2,0.4,0.8,32,C
+1788102c90ce,김재균,jk-auth package version update 및 tracesSampleRate 1 -> 0.5 변경,2025-12-03,18,5,0.3,0.756,0.3,0.4,0.5,43,B
+bad93145193f,김재균,ga event 추가,2025-12-03,521,18,0.7,0.589,0.5,0.7,0.4,60,A
+950b62c10b37,문승연,chore: update @jds/display-kit to version 0.0.49 and refresh pnpm-lock.yaml...,2025-12-02,15,3,0.3,1.0,0.3,0.2,0.5,44,B
+d14e1e073c71,문승연,chore: update @jds/display-kit to version 0.0.48 and refresh pnpm-lock.yaml for dependency integrity,2025-12-02,190,7,0.7,0.37,0.5,0.2,0.5,49,B
+2c5e97162f45,문승연,chore: update environment configurations to include API_ROUTE_URL and adjust related files,2025-12-02,125,8,0.7,0.76,0.5,0.2,0.5,57,B
+044f981b28cb,문승연,chore: add NEXT_PUBLIC_AUTH_URL to environment configurations and update related files,2025-12-02,2347,12,0.8,0.222,0.4,0.2,0.4,45,B
+7565f7a444da,문승연,chore: update @jds/display-kit to version 0.0.43 and refresh pnpm-lock.yaml for dependency integrity,2025-12-02,12,2,0.3,1.0,0.3,0.2,0.5,44,B
+15f659f38751,문승연,chore: update @jds/display-kit to version 0.0.42 and adjust pnpm-lock.yaml for dependency integrity,2025-12-02,3778,2,0.3,0.349,0.3,0.2,0.8,34,C
+2d79a3b78772,문승연,refactor: update Sentry configuration to disable in development and adjust import paths for external,2025-12-02,1444,17,0.7,0.269,0.3,0.5,0.4,45,B
+912dbdeef8aa,문승연,feat: add Google Universal Analytics ID to environment configurations and update imports,2025-12-01,36,7,0.7,1.0,0.5,0.8,0.5,70,A
+8c37a21ed7e1,문승연,feat: integrate Braze SDK and configure Sentry for error tracking,2025-12-01,4587,27,0.7,0.382,0.4,0.8,0.4,55,B
+4d72e24942a6,김재균,display-kit 버전 업,2025-12-01,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+440a9340f0ab,김재균,dmp 적용,2025-12-01,499,9,0.7,0.733,0.7,0.4,0.5,64,A
+5c4e162145eb,문승연,modify: Suspense bug fix,2025-12-01,5,1,0.7,1.0,0.15,0.8,0.7,64,A
+3445ee7b7ddd,문승연,refactor: update import paths for externalPaths to use the new display configuration,2025-11-28,874,11,0.7,0.341,0.3,0.5,0.4,47,B
+d70f749a2a1a,문승연,refactor: correct import path for SDUI registration and update link text in CardHighTech component,2025-11-28,4,2,0.8,1.0,0.2,0.5,0.5,62,A
+fe43c008e04a,문승연,refactor: update import paths for environment configuration files,2025-11-28,2215,58,0.8,0.338,0.4,0.5,0.4,52,B
+4a16e86dcbd7,문승연,feat: Google Tag manager page view,2025-11-28,266,9,0.7,0.944,0.4,0.8,0.5,67,A
+024961e56194,김재균,display-kit version update,2025-11-28,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+8e8959f84fc7,김재균,onboarding animation package version update,2025-11-28,30,2,0.3,1.0,0.3,0.4,0.6,49,B
+be4412a78d03,문승연,refactor: replace dotnet API logo fetching with new logo fetching method,2025-11-28,20,3,0.7,1.0,0.8,0.5,0.5,74,A
+4be5227352bd,문승연,feat: 메인페이지 로고 정보 적용,2025-11-28,27,4,0.7,1.0,0.6,0.8,0.5,73,A
+088285f341c8,문승연,fix: 타입에러 수정,2025-11-28,2,1,0.7,1.0,0.1,0.9,0.5,62,A
+6d705d075d87,문승연,feat :  middleware pm 환경설정 추가,2025-11-28,730,13,0.7,0.739,0.4,0.8,0.4,62,A
+a26c03d74070,김재균,긴급 공지 모달 api 연결 및 쿠키 저장 로직 제작,2025-11-27,251,5,0.7,0.777,0.7,0.4,0.6,66,A
+f9f861633659,문승연,modify: Update environment configuration and package dependencies,2025-11-27,189,10,0.7,0.938,0.8,0.4,0.4,70,A
+8ad9028ebc72,김재균,urgent notice 추가,2025-11-27,3829,4,0.7,0.355,0.3,0.7,0.6,52,B
+02909e483d2d,문승연,Refactor: move metadata definition from layout to page component,2025-11-27,84,2,0.7,1.0,0.2,0.5,0.8,62,A
+ceaae2c291b4,장호철,Add curtain banner,2025-11-26,4200,13,0.7,0.384,0.4,0.4,0.4,49,B
+3d97a4a8c006,문승연,modify: uuid 구성,2025-11-26,118,4,0.7,1.0,0.6,0.4,0.6,68,A
+2f45481f5fe4,김재균,maintenance notice modal ui 제작,2025-11-26,118,7,0.7,0.925,0.5,0.4,0.5,63,A
+9508789e9f4d,김재균,meta 태그 및 script 주입,2025-11-26,102,4,0.7,0.968,0.5,0.4,0.6,65,A
+4a575161b702,문승연,refactor: replace AUTHORIZATION_API_URL with API_BASE_URL in environment files and update related co,2025-11-26,23,7,0.3,0.852,0.3,0.5,0.5,46,B
+47e94ef4c504,문승연,feat: add PLATFORM_TYPE and DEVICE_TYPE headers to fetch clients,2025-11-26,4,2,0.3,0.3,0.3,0.8,0.5,39,C
+52c8ea940e16,문승연,refactor: comment out Sentry error capturing in GlobalError component,2025-11-25,9,1,0.3,1.0,0.3,0.5,0.7,51,B
+c0b4d26909d8,문승연,fix: inview 시점 변경,2025-11-25,4,1,0.8,1.0,0.3,0.9,0.7,72,A
+0c9ae1935b5f,김재균,virtual issue 수정 버전업 반영,2025-11-25,12,2,0.3,1.0,0.3,0.8,0.5,54,B
+254fd63f9ca8,문승연,modify: 가이드 수정,2025-11-25,72,5,0.3,1.0,0.3,0.8,0.6,55,B
+1363f7bd6e49,문승연,refactor: comment out Sentry and OpenTelemetry integration code across multiple files,2025-11-25,316,6,0.3,0.706,0.2,0.5,0.5,41,B
+5c97a0a452a6,김재균,디자인 변경에 따른 스타일 적용,2025-11-25,18,4,0.7,1.0,0.3,0.4,0.5,60,A
+47c42da902ee,문승연,refactor: disable Sentry integration in next.config.ts and revert to default export,2025-11-25,4,1,0.3,1.0,0.3,0.5,0.7,51,B
+ffe76ea897a3,문승연,feat: add todo.md to gitignore,2025-11-24,2,1,0.3,1.0,0.3,0.8,0.5,54,B
+6528ffa1e5ba,문승연,chore: update dependencies and refactor fetch imports,2025-11-24,788,39,0.8,0.62,0.5,0.2,0.4,56,B
+17476f7e7a99,문승연,feat: integrate Sentry and OpenTelemetry for enhanced observability and update...,2025-11-24,1855,26,0.7,0.505,0.5,0.8,0.4,60,A
+9df934479c21,문승연,feat: enhance next.config.ts with image optimization settings and experimental package imports,2025-11-21,19,1,0.3,1.0,0.3,0.8,0.9,58,B
+95b90198637a,문승연,feat: add subType prop to Header component for user-specific customization,2025-11-21,1,1,0.7,1.0,0.3,0.8,0.5,66,A
+d845fdede897,문승연,fix: adjust top positioning of TotalMenu component for improved layout,2025-11-21,2,1,0.7,1.0,0.3,0.9,0.5,67,A
+920e6ab5df33,문승연,fix: remove minimum length validation for ENCRYPTION_SECRET_KEY in server environment configuration,2025-11-21,2,1,0.3,1.0,0.3,0.9,0.5,55,B
+1fade01bc080,문승연,refactor: improve scroll-in-view animation logic and adjust transition timing in globals.css,2025-11-21,42,2,0.8,1.0,0.6,0.5,0.8,74,A
+2341462fde9d,문승연,chore: update @jds/display-kit to version 0.0.14 and add scroll animation styles,2025-11-21,183,7,0.8,0.736,0.5,0.2,0.5,59,B
+33542433394b,문승연,fix: update API endpoints in authorization fetch for user and logout actions,2025-11-21,18,1,0.7,0.644,0.15,0.9,0.9,60,A
+e159c805d54e,문승연,chore: update API URLs in environment files for consistency,2025-11-21,18,2,0.3,0.612,0.3,0.2,0.5,37,C
+0139c4c483bd,문승연,modify: 인증모듈 적용,2025-11-21,6089,19,0.8,0.286,0.4,0.4,0.4,50,B
+90e2a005c6f6,문승연,refactor: update authorization fetch to use httpAuthorizationClient,2025-11-20,2,1,0.7,1.0,0.9,0.5,0.5,76,A
+22585c624812,문승연,chore: remove deprecated @jds/jams2 package from dependencies,2025-11-20,1,1,0.3,1.0,0.15,0.05,0.5,38,C
+2c49f34201a5,문승연,modify: code api 호출 함수 수정 / fetch 정리,2025-11-20,287,21,0.7,0.673,0.8,0.8,0.4,70,A
+7dcc6740024e,김규리,refactor: authorizationHttpClient 수정,2025-11-20,67,2,0.7,1.0,0.8,0.5,0.8,76,A
+4dd0eea2f5c3,김규리,fix: 불필요한 파일 삭제,2025-11-20,44,2,0.4,0.761,0.15,0.75,0.8,50,B
+0c79f091234e,김규리,Add authentication middleware and protected routes,2025-11-17,125,5,0.7,0.932,0.6,0.4,0.6,67,A
+cd239b9c0465,김규리,feat: jk-auth 0.1.4 버전으로 업데이트  헤더에서 인증 정보 가져올 수 있도록 적용,2025-11-18,66,2,0.8,1.0,0.6,0.8,0.8,79,A
+629cf990c7d5,김규리,feat: add @jds/jk-auth package and update dependencies in package.json and pnpm-lock.yaml,2025-11-18,686,2,0.3,0.599,0.3,0.8,0.8,48,B
+5478d2e08631,문승연,build: turbopack test,2025-11-20,2,1,0.3,1.0,0.3,0.4,0.5,48,B
+b8d84f965323,문승연,refactor: Update useAuthorizationCheck to export as a named export and clean up import statements in,2025-11-20,35,2,0.7,1.0,0.6,0.5,0.6,70,A
+bbf1e81ff3a9,문승연,modify: 헤더 자동완성 버그 수정 / 회원별 메뉴 수정,2025-11-20,254,13,0.7,1.0,0.6,0.8,0.4,72,A
+c8a4ad0cb22f,이동현,chore: Append a new line to .env file before adding NEXT_PUBLIC_ASSETS_PREFIX variable for better fo,2025-11-19,1,1,0.3,1.0,0.3,0.2,0.5,44,B
+ee4c29da7233,이동현,fix: Update .gitignore to exclude .idea directory and modify environment variable placeholders in .e,2025-11-19,66,6,0.3,0.892,0.3,0.9,0.5,53,B
+fc0bc6b97ff7,문승연,modify: env test,2025-11-19,5,2,0.3,0.3,0.2,0.4,0.5,31,C
+62247cb98264,문승연,Refactor API fetch calls to use a consistent httpClient instance for improved maintainability,2025-11-19,10,2,0.7,0.95,1.0,0.5,0.5,78,A
+06c27e116dc6,문승연,modify: 개발계 fetch test,2025-11-19,34,1,0.3,0.965,0.8,0.4,0.9,63,A
+68e8dcd8b31d,문승연,Refactor base API URL handling in fetch.ts to use a function for dynamic URL resolution,2025-11-19,4,1,0.3,1.0,0.2,0.5,0.7,49,B
+ce36cde48daf,문승연,Update @jds/display-kit dependency to local file reference and increment version,2025-11-19,17215,213,0.3,0.482,0.5,0.4,0.4,41,B
+74b2e9edf460,문승연,Update @jds/display-kit dependency to local file reference and increment...,2025-11-19,17735,221,0.7,0.49,0.5,0.4,0.4,53,B
+1135506ef699,문승연,Feature/bugfix,2025-11-19,1119,4,0.7,0.686,0.4,0.8,0.6,63,A
+96d00351a2c0,장호철,Dotnet client 에러 수정,2025-11-19,99,4,0.7,0.617,0.6,0.8,0.6,66,A
+e230c78ddd17,장호철,Fixed prefetching data,2025-11-19,338,13,0.7,0.411,0.6,0.9,0.4,62,A
+b45a29696d7c,문승연,Update dependencies in package.json and pnpm-lock.yaml; add...,2025-11-19,2828,15,0.7,0.261,0.4,0.4,0.4,46,B
+06741ae42eb2,문승연,Feature/quick menu,2025-11-18,348,7,0.7,0.885,0.4,0.8,0.5,66,A
+2aa79339c417,문승연,Refactor AutoComplete component: streamline onSearch prop handling and adjust Icon component size at,2025-11-18,4,2,0.7,1.0,0.2,0.5,0.5,59,B
+4c5cf8d26196,문승연,Add removal of .pnpm-store in clear-install.sh to enhance cleanup process,2025-11-18,3,1,0.3,1.0,0.3,0.4,0.7,50,B
+15a9bd51cac9,문승연,Replace @jds/jams2 with @jds/display-kit in various components and configuration files  update packa,2025-11-18,1907,29,0.8,0.721,0.4,0.4,0.4,58,B
+9a409a5ced0b,문승연,Add NODE_TLS_REJECT_UNAUTHORIZED to .npmrc  update API documentation URLs  and...,2025-11-18,24944,154,0.7,0.219,0.4,0.4,0.4,45,B
+c1612df7e6a4,장호철,Fix errors (Suspense 추가  package.json 수정),2025-11-18,9,2,0.7,1.0,0.3,0.9,0.5,67,A
+2f364cebf106,장호철,Update fetching way with server side fetching,2025-11-18,11058,13,0.8,0.238,0.4,0.4,0.4,49,B
+c9b638a8a548,문승연,Update @jds/jams2 to version 0.5.28 in package.json and pnpm-lock.yaml,2025-11-17,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+8243f29b62b4,문승연,Update @jds/jams2 to version 0.5.26  add cache option in total-menu.fetch  and...,2025-11-17,558,10,0.7,0.665,0.5,0.4,0.4,57,B
+90da00817c8c,문승연,Add UseFilterArea component to AutoComplete and update Header component,2025-11-17,10538,5,0.7,0.241,0.4,0.4,0.6,48,B
+59346c1e3027,문승연,Fix: uncomment main element in LayoutDefaultClient component,2025-11-14,2,1,0.7,1.0,0.3,0.9,0.5,67,A
+8cbe55f3264a,문승연,Feature/autocomplete,2025-11-14,11752,30,0.7,0.26,0.4,0.8,0.4,52,B
+9299a69b12cf,문승연,feat: update @jds/jams2 to version 0.5.8  add dayjs dependency  and modify...,2025-11-12,256,10,0.7,0.97,0.4,0.8,0.4,66,A
+6a319ad99110,장호철,updated jams version,2025-11-12,12,2,0.3,1.0,0.3,0.4,0.5,48,B
+6903eba64892,문승연,feat: update exampleConfig to use dynamic API base URL from client environment,2025-11-12,39,2,0.7,0.512,0.3,0.8,0.6,57,B
+224493490967,문승연,feat: add API base URL to environment and enhance header menu accessibility,2025-11-12,4,1,0.3,1.0,0.3,0.8,0.7,56,B
+a2627d78e20c,문승연,Feature/search bar,2025-11-12,10765,12,0.7,0.237,0.4,0.8,0.4,52,B
+00b2f0fc3a69,문승연,refactor: update imports and dependencies for improved consistency,2025-11-11,1232,15,0.7,0.615,0.3,0.5,0.4,52,B
+855e387e9a01,문승연,feat: add new components and assets for improved UI,2025-11-11,7630,117,0.8,0.264,0.4,0.8,0.4,55,B
+26bd0bb56bb3,문승연,refactor: restructure layout and remove unused components,2025-11-10,974,34,0.8,0.984,0.5,0.5,0.4,68,A
+865d1267f47d,이동현,feat: update Next.js configuration to enable standalone output,2025-11-07,1,1,0.3,1.0,0.3,0.8,0.5,54,B
+93336d34e469,이동현,fix: enhance Dockerfile to conditionally upload static assets,2025-11-07,13,1,0.3,0.867,0.8,0.9,0.9,69,A
+e2472fa79dc5,이동현,feat: add dynamic asset prefix handling in Next.js configuration,2025-11-07,36,3,0.3,1.0,0.3,0.8,0.6,55,B
+3c2d84ab47a2,이동현,fix: restore env-cmd package in package.json and pnpm-lock.yaml,2025-11-07,8,2,0.3,1.0,0.2,0.9,0.5,52,B
+afff05c2928e,이동현,chore: add env-cmd package and update pnpm-lock.yaml,2025-11-07,31,3,0.3,0.96,0.3,0.2,0.6,45,B
+4ff272a07664,이동현,modify: enhance Dockerfile and server configuration for asset management and environment setup,2025-11-07,297,11,0.7,1.0,0.5,0.4,0.4,64,A
+8882e8d05e37,문승연,Add .env to .gitignore to exclude environment configuration files,2025-10-31,69,5,0.3,0.238,0.3,0.4,0.6,33,C
+797113847be0,문승연,Update hostname in server configuration for local development,2025-10-31,2,1,0.3,1.0,0.3,0.4,0.5,48,B
+ea3cbefddb91,문승연,Remove .env files from .gitignore to allow for optional committing of environment configurations.,2025-10-31,2,1,0.3,1.0,0.15,0.4,0.5,44,B
+cb3ad5851ea0,문승연,Update project configuration and structure: Added ESLint and Prettier...,2025-10-28,25945,267,0.7,0.411,0.5,0.4,0.4,52,B
+38fa03acef94,문승연,Initial commit,2025-10-28,0,0,0.0,1.0,0.0,0.4,0.0,26,C

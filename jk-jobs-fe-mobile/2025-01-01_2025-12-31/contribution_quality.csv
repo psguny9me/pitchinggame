@@ -1,0 +1,69 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+이로움,70,fix: 헤더 수정,1,0,unknown
+이로움,69,feat: 에러 바운더리 추가,1,0,unknown
+이로움,68,feat: 테스트코드 셋팅,1,0,unknown
+이로움,67,Feature/code,1,0,unknown
+이로움,66,fix: sc 코드 추가,1,0,unknown
+이로움,65,Feature/header,1,0,unknown
+이로움,64,Feature/onepick,1,0,unknown
+이로움,63,Feature/benefit,1,0,unknown
+이로움,62,fix: 플러터 여부 분기 추가,1,0,unknown
+이로움,61,Feature/scrap,1,0,unknown
+이로움,60,Feature/scrap,1,0,unknown
+이로움,59,Feature/scrap,1,0,unknown
+이로움,58,Feature/tabs,1,0,unknown
+이로움,57,Feature/tag,1,0,unknown
+이로움,56,Fix/ad banner,1,0,unknown
+이로움,54,Feature/chart,1,0,unknown
+이로움,53,Feature/apply method,1,0,unknown
+이로움,52,fix: 버전 업데이트,1,0,unknown
+이로움,50,Feature/render type,0,0,unknown
+이로움,49,Feature/env,0,0,unknown
+이로움,48,Feature/docker,0,0,unknown
+이로움,47,feat: 하단 스낵바 추가,0,0,unknown
+이로움,46,feat: job-fit fetch 함수 추가,0,0,unknown
+이로움,44,Feature/smart fit,0,0,unknown
+이로움,43,feat: 광고 추가,0,0,unknown
+이로움,38,fix: 지하철 중복 버그 수정,0,0,unknown
+이로움,36,Feature/tabs,0,0,unknown
+이로움,35,Feature/onepick,0,0,unknown
+이로움,33,Feature/job fit,0,0,unknown
+이로움,32,Feature/iframe css,0,0,unknown
+이로움,31,fix: 도커 파일 수정,0,0,unknown
+이로움,30,fix: MO iframe css 파일 적용,0,0,unknown
+이로움,29,Feature/iframe,0,0,unknown
+이로움,28,feat: 폴더 구조 변경,0,0,unknown
+이로움,27,Feature/fix code,0,0,unknown
+이로움,25,Feature/remove legacy,1,0,unknown
+이로움,24,Feature/dot net,1,0,unknown
+이로움,23,Feature/utils,0,0,unknown
+이로움,22,feat: 서류합격예측대상자 배너 추가,0,0,unknown
+이로움,21,Feature/passed money,0,0,unknown
+이로움,20,Feature/shared modal,0,0,unknown
+이로움,19,Feature/apply button,0,0,unknown
+이로움,18,feat: 스크랩 토스트 추가,0,0,unknown
+이로움,17,Feature/fix company info,0,0,unknown
+이로움,15,fix: 도커 파일 업데이트,1,0,unknown
+이로움,14,Feature/company info,0,0,unknown
+이로움,13,Feature/web core,0,0,unknown
+이로움,12,Feature/next update,0,0,unknown
+이로움,11,fix: jobs - job-classification 타입 수정,0,0,unknown
+이로움,10,Feature/code,0,0,unknown
+이로움,9,Feature/code,0,0,unknown
+이로움,8,Refactor/entity,0,0,unknown
+이로움,7,Refactor/entity,0,0,unknown
+이로움,6,fix: fsd 규칙 적용,0,0,unknown
+이로움,5,Refactor/fsd,0,0,unknown
+이로움,4,feat: 광고(ads) 기능 추가,1,0,unknown
+김규리,55,fix: sendFirebaseEventLog only if isApp is true,2,1,unknown
+김규리,51,feat: AppsFlyer 트래킹 이벤트 추가,1,1,unknown
+김규리,26,feat: 입사지원 플로우 개선으로 즉시 지원 클릭시 페이지 이동 추가,0,1,unknown
+김규리,3,feat: 광고(ads) 기능 추가,3,1,unknown
+김규리,2,feat: career 엔티티 구현,0,0,unknown
+김재균,42,next 취약점 버전 수정,0,0,unknown
+김재균,41,공고뷰 모바일 dmp 적용,3,1,unknown
+김재균,37,dimension 39~42 값 삽입,4,1,unknown
+김재균,34,공고뷰 mo ga 추가,1,1,unknown
+장호철,45,Feature/fetching config,2,1,unknown
+장호철,40,Feature/adding braze,2,1,unknown
+장호철,39,251212 tracking to Release,0,0,unknown

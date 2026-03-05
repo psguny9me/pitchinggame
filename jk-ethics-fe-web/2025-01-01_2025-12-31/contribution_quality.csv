@@ -1,0 +1,40 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+서효정,39,modify: 파일 원복,0,0,unknown
+서효정,38,modify: 회신/상담 방법 수정  사용하지 않는 파일 제거,0,0,unknown
+서효정,37,modify: 수정된 문구로 제보자 보호 원칙의 신원 보호 관련 설명을 개선,0,0,unknown
+서효정,36,modify: 검수사항 작업,0,0,unknown
+서효정,35,modify: ETHICS_API_INTERNAL_URL을 https로 변경하고 파일명 조회 로직 추가,0,0,unknown
+서효정,34,update: ETHICS_API_INTERNAL_URL 추가 및 API URL 설정 변경으로 내부 URL 사용,0,0,unknown
+서효정,33,Feature/cyber sinmungo,0,0,unknown
+서효정,32,modify: ETHICS_API_INTERNAL_URL에서 포트 번호를 제거하여 URL을 간소화,0,0,unknown
+서효정,31,Feature/cyber sinmungo,0,0,unknown
+서효정,30,modify: 스테이징 환경의 호스트 URL을 jobkorea.co.kr로 변경,0,0,unknown
+서효정,29,modify: 스테이징 환경의 호스트 URL을 API 주소로 변경,0,0,unknown
+서효정,28,modify: LookupClient 및 OnlineReportTab 컴포넌트 UI 조정,0,0,unknown
+서효정,27,modify: 데이터베이스 자격 증명 가져오기 로직 개선,0,0,unknown
+서효정,26,modify: 윤리 강령 문구 업데이트,0,0,unknown
+서효정,25,modify: 검수사항 수정,1,0,unknown
+서효정,24,Feature/cyber sinmungo,1,0,unknown
+서효정,23,chore: 운영 및 스테이징 환경의 데이터베이스 URL 설정 업데이트,0,0,unknown
+서효정,22,modify: env.dev DATABASE_URL 수정,0,0,unknown
+서효정,21,feat: AWS secrets manager 추가,0,0,unknown
+서효정,20,feat: AWS secrets manager 설치,0,0,unknown
+서효정,19,modify: env.dev 수정,0,0,unknown
+서효정,18,chore: env.dev  index.js 수정,0,0,unknown
+서효정,17,remove: pnpm-workspace.yaml 제거,0,0,unknown
+서효정,16,chore: package.json 수정,0,0,unknown
+서효정,15,refactor: update prestart script and clean up pnpm-lock.yaml,0,0,unknown
+서효정,14,chore: package.json,0,0,unknown
+서효정,13,chore: docker 수정,0,0,unknown
+서효정,12,chore: docker 수정,0,0,unknown
+서효정,11,feat: Dockerfile에 prestart 스크립트 실행 추가,0,0,unknown
+서효정,10,fix: Sentry 설정 및 환경 변수 업데이트,2,0,unknown
+서효정,9,refactor: 프로젝트명 및 환경 변수 변경,2,0,unknown
+서효정,8,chore: prestart 스크립트 실행 제거,0,0,unknown
+서효정,7,"Revert ""Merge branch 'feature/cyber-sinmungo' into 'master'""",0,0,unknown
+서효정,6,Feature/cyber sinmungo,0,0,unknown
+서효정,5,chore: prestart 스크립트 실행을 위해 scripts 폴더를 standalone 빌드에 추가,1,0,unknown
+서효정,4,modify: .npmrc에 @comm 레지스트리 추가 및 package.json  pnpm-lock.yaml에...,0,0,unknown
+서효정,3,Feature/cyber sinmungo,0,0,unknown
+서효정,2,Feature/cyber sinmungo,0,0,unknown
+서효정,1,feat: 프로젝트 초기 설정 및 파일 구조 생성,3,1,unknown

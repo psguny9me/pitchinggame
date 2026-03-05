@@ -1,0 +1,11 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+문승연,10,modify: deploy config,0,0,unknown
+문승연,9,modify: deploy config,0,0,unknown
+문승연,7,modify: 환경변수 사용 설정,0,0,unknown
+문승연,6,modify: boxNode에서 strokeStyleId에 따른 borderColor 속성 추가 및 instanceNode에서 Button...,0,0,unknown
+문승연,5,modify: 텍스트 노드 처리 로직 개선 - 문장 길이에 따른 'p' 태그 추가 및 불필요한 코드 제거,0,0,unknown
+문승연,4,modify: 텍스트 노드 처리 로직 개선 - 'Pretendard' 폰트가 아닐 경우 fontFamily 스타일 추가,0,0,unknown
+문승연,3,modify: autolayout 하위 노드일 경우 width가 적용이 안되는 현상 방지,0,0,unknown
+문승연,2,modify: .gitignore에 test 추가 및 analyzer.ts에서 layoutProps 초기화 방식 변경,0,0,unknown
+문승연,1,refactor: analyzer.ts에서 컴파운드 컴포넌트 처리 로직 개선,0,0,unknown
+이로움,8,Feature/text field,0,0,unknown

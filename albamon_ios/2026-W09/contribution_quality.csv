@@ -1,0 +1,86 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+정문석,92,Feature/albamon 25909 보상형광고,0,0,unknown
+정문석,91,Feature/albamon 25909 보상형광고,0,0,unknown
+정문석,90,리부트데이 추가,0,0,unknown
+정문석,89,리부트데이 추가,0,0,unknown
+정문석,86,Release/7.3.7,0,0,unknown
+정문석,85,Release/7.3.7,0,0,unknown
+정문석,82,feat: 쿠키 개선,0,0,unknown
+정문석,81,feat: 쿠키 개선,0,0,unknown
+정문석,80,Master,0,0,unknown
+정문석,79,Feat/ios flutter rollback,0,0,unknown
+정문석,77,Feature/albamon 25322 앱접근권한 디자인변경,0,0,unknown
+정문석,75,Develop,0,0,unknown
+정문석,74,feat: ALBAMON-25154 앱스플라이어 업데이트,0,0,unknown
+정문석,73,알바지도 2.0 등,0,0,unknown
+정문석,72,[feat] 알바몬 알바지도 UIUX 개선,0,0,unknown
+정문석,69,[fix] TEST-73232  TEST-73238 홈 화면 이동 버그 수정,0,1,unknown
+정문석,67,[fix] 탭바 이동 로직 변경,0,1,unknown
+정문석,55,Feature/test 72234 제트알림 컨펌 내용 변경,0,0,unknown
+정문석,49,Feature/cookie sync sequentially,0,0,unknown
+정문석,48,Feature/cookie sync sequentially,0,0,unknown
+정문석,43,Feat: Xcode 16.4 대응 2,0,0,unknown
+정문석,42,Feat: Xcode 16.4 대응 2,0,0,unknown
+정문석,38,Feat: Xcode 16.4 대응,0,0,unknown
+정문석,37,Feat: Xcode 16.4 대응,0,0,unknown
+정문석,36,Feature/albamon 24382 여알페,0,0,unknown
+정문석,35,Feature/albamon 24382 여알페,0,0,unknown
+정문석,34,Release/7.2.22,0,0,unknown
+정문석,33,Release/7.2.22,0,0,unknown
+정문석,32,Release/7.2.21,0,0,unknown
+정문석,31,Release/7.2.21,0,0,unknown
+정문석,30,feat: ALBAMON-24132 Braze 푸시 이미지 포함 기능 추가,0,0,unknown
+정문석,29,Feature/zet map remove,0,0,unknown
+정문석,28,"Revert ""Merge branch 'feature/ZetMapRemove' into 'master'""",0,0,unknown
+정문석,27,feat: ALBAMON-24132 Braze 푸시 이미지 포함 기능 추가,0,0,unknown
+정문석,26,Feature/zet map remove,0,0,unknown
+정문석,25,"Revert ""Merge branch 'feature/ZetMapRemove' into 'develop'""",0,0,unknown
+정문석,22,Feature/zet map remove,0,0,unknown
+정문석,21,Feature/zet map remove,0,0,unknown
+정문석,20,Release/7.2.18,0,0,unknown
+정문석,19,Release/7.2.18,0,0,unknown
+정문석,18,Release/7.2.17,0,0,unknown
+정문석,17,Release/7.2.17,0,0,unknown
+정문석,16,Release/7.2.16,0,0,unknown
+정문석,15,Release/7.2.16,0,0,unknown
+정문석,14,[일반 작업] ALBAMON-23002 : 관심공고 타이틀 하드 코딩,0,0,unknown
+정문석,13,[일반 작업] ALBAMON-23002 : 관심공고 타이틀 하드 코딩,0,0,unknown
+정문석,12,7.2.14 merge,0,0,unknown
+정문석,11,7.2.14 merge,0,0,unknown
+정문석,10,Release/7.2.13,0,0,unknown
+정문석,9,Release/7.2.13,0,0,unknown
+정문석,8,Release/7.2.12,0,0,unknown
+정문석,7,Release/7.2.12,0,0,unknown
+정문석,6,Release/7.2.11,0,0,unknown
+정문석,5,Release/7.2.11,0,0,unknown
+정문석,4,Release/7.2.10,0,0,unknown
+정문석,3,Release/7.2.10,0,0,unknown
+정문석,2,Release/7.2.9,0,0,unknown
+정문석,1,Release/7.2.9,0,0,unknown
+이해주,58,[양파유닛] 쿠팡 외부 공고 지원 퍼널 구축 > 코드 안전성 확보 및 리팩토링 작업,0,1,unknown
+이해주,52,[양파유닛] 외부 지원 퍼널 구축 detection 유형추가 및 아이패드 레이아웃 대응,1,1,unknown
+이해주,50,[양파유닛] 외부 지원 퍼널 구축 (앱브릿지),7,1,unknown
+김승하,76,[hot-fix] flutter downgrade,0,0,unknown
+김승하,70,[feat] ga 라벨 값수정,0,0,unknown
+김승하,68,[stg3-m/iOS] 통합검색 > 네비게이션바 알바지도 동작하지 않음 - https://jira.jobkorea.co.kr/browse/TES,0,1,unknown
+김승하,65,[fix] GA-햄버거 분기 로직 추가.,0,1,unknown
+김승하,62,[feat] 토스트 채널링 추가,0,0,unknown
+김승하,61,[fix][stg3/iOS] 알바지도 > 햄버거 전체메뉴에서 메인으로 이동 안 됨 -  https://jira.jobkorea.co.kr/bro,0,0,unknown
+김승하,60,[fix] 로그아웃시 지도 추천 shared값 초기화,0,0,unknown
+김승하,57,[feat]IOS 권한 동의 후 작동안되는이슈 .,0,0,unknown
+김승하,56,[feat] ga fix,0,1,unknown
+김승하,54,[feat] 공고 query스트링 추가 [feat] 네이밍 오타 수정.,0,1,unknown
+김승하,51,[Feat]flutter ga+apps+braze 추가,1,1,unknown
+김승하,40,[feat] 추천지역 핫플 채널링 추가.,0,1,unknown
+김승하,39,[feat] 로그인 채널링 추가,0,0,unknown
+최재웅,66,Fix: refresh 로직 롤백,0,1,unknown
+최재웅,63,Fix:[TEST-73132] sendGoGibReadMapEvent 메서드 추가,0,0,unknown
+최재웅,53,Bar알바 로그인 + 스크랩 로그인 상태 분기,0,1,unknown
+최재웅,46,Feature/move hot spot,0,1,unknown
+최재웅,45,Feature/flutter toapp,0,1,unknown
+박동수,71,[TEST-73083] 알바지도 adfit 지면 광고 변경,0,1,unknown
+박동수,64,[TEST-72964] status bar 조정,0,1,unknown
+박동수,59,Feature/flutter firebase config,0,1,unknown
+박동수,47,Feature/flutter adfit,0,0,unknown
+박동수,44,[feat] ios 네이티브 환경 정보 채널링,0,0,unknown
+박동수,41,Feature/flutter poc flavor,0,0,unknown

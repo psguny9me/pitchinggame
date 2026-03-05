@@ -1,0 +1,118 @@
+﻿이름,MR_IID,MR제목,받은코멘트수,승인자수,CI결과
+김재균,133,feat: package update,0,0,unknown
+김재균,132,notice bar blank,0,0,unknown
+김재균,131,feat: display-kit 버전 업데이트,0,0,unknown
+김재균,130,onboarding fetch 함수 추가,0,0,unknown
+김재균,129,cookie no fetch 함수 추가,0,0,unknown
+김재균,122,feat: test logger 추가,0,0,unknown
+김재균,120,feat: helper-utils package version up,0,0,unknown
+김재균,118,feat: util pacakge version up,0,0,unknown
+김재균,117,helper-utils 패키지 버전업,0,0,unknown
+김재균,116,fix: docker-cache,0,0,unknown
+김재균,115,helper 패키지 버전업,0,0,unknown
+김재균,114,update jds/utils,0,0,unknown
+김재균,112,default config extend type 추가 및 빌드에러 해결,0,0,unknown
+김재균,111,default config 실제 json 데이터로 변경,0,0,unknown
+김재균,110,onboarding section refetch 로직 변경,0,0,unknown
+김재균,109,screen api info custom props에 추가,0,0,unknown
+김재균,107,screen title custom props 생성 및 섹션별 애니메이션 property 추가,0,0,unknown
+김재균,95,선호공고 온보딩 renderType 정의,0,0,unknown
+김재균,91,curation job 쿼리 제작 및 복리후생 코드 파싱 함수 제작,0,0,unknown
+김재균,89,section 데이터에 useDmp  scCode 포함,0,1,unknown
+김재균,86,screen section api 연동 확인,0,1,unknown
+김재균,84,total menu mouseLeave 영역 조정 및 footer 변경사항 반영,0,0,unknown
+김재균,83,선호공고 선택 mutation 추가,0,0,unknown
+김재균,82,섹션별 scrap event 추가 및 취약점 React 버전 수정,2,1,unknown
+김재균,81,next 취약점 버전 수정,0,0,unknown
+김재균,80,dmp login 종속성 문제 해결,0,0,unknown
+김재균,79,h1  h2 태그 적용,0,0,unknown
+김재균,77,modal status 변경,0,0,unknown
+김재균,76,update modal ui 제작,0,0,unknown
+김재균,75,scrap query  mutation 함수 제작 및 authModal 적용,2,1,unknown
+김재균,74,util 함수 관리포인트 변경 section -> service,0,0,unknown
+김재균,73,dimension fetch 함수 추가 및 GA 데이터 값 삽입,0,0,unknown
+김재균,72,jk-auth package version update 및 tracesSampleRate 1 -> 0.5 변경,0,0,unknown
+김재균,71,ga event 추가,0,0,unknown
+김재균,67,display-kit 버전 업,0,0,unknown
+김재균,66,dmp 적용,3,1,unknown
+김재균,64,display-kit version update,0,0,unknown
+김재균,63,onboarding animation package version update,0,0,unknown
+김재균,59,긴급 공지 모달 api 연결 및 쿠키 저장 로직 제작,0,0,unknown
+김재균,57,urgent notice 추가,0,0,unknown
+김재균,53,maintenance notice modal ui 제작,0,0,unknown
+김재균,52,virtual issue 수정 버전업 반영,0,0,unknown
+김재균,51,meta 태그 및 script 주입,0,0,unknown
+김재균,50,디자인 변경에 따른 스타일 적용,0,0,unknown
+문승연,70,chore: update @jds/display-kit to version 0.0.49 and refresh pnpm-lock.yaml...,0,0,unknown
+문승연,68,feat: integrate Braze SDK and configure Sentry for error tracking,0,0,unknown
+문승연,65,feat: Google Tag manager page view,0,0,unknown
+문승연,62,refactor: replace dotnet API logo fetching with new logo fetching method,0,0,unknown
+문승연,61,feat: 메인페이지 로고 정보 적용,0,0,unknown
+문승연,60,feat :  middleware pm 환경설정 추가,0,0,unknown
+문승연,58,modify: Update environment configuration and package dependencies,0,0,unknown
+문승연,56,Refactor: move metadata definition from layout to page component,0,0,unknown
+문승연,54,modify: uuid 구성,0,0,unknown
+문승연,49,chore: update dependencies and refactor fetch imports,0,0,unknown
+문승연,48,feat: integrate Sentry and OpenTelemetry for enhanced observability and update..,0,0,unknown
+문승연,47,chore: update @jds/display-kit to version 0.0.14 and add scroll animation styles,0,0,unknown
+문승연,45,modify: 인증모듈 적용,0,0,unknown
+문승연,44,modify: code api 호출 함수 수정 / fetch 정리,0,0,unknown
+문승연,42,modify: 헤더 자동완성 버그 수정 / 회원별 메뉴 수정,0,0,unknown
+문승연,38,Update @jds/display-kit dependency to local file reference and increment...,0,0,unknown
+문승연,37,Feature/bugfix,0,0,unknown
+문승연,34,Update dependencies in package.json and pnpm-lock.yaml; add...,0,0,unknown
+문승연,33,Feature/quick menu,0,0,unknown
+문승연,32,Add NODE_TLS_REJECT_UNAUTHORIZED to .npmrc  update API documentation URLs  and..,0,0,unknown
+문승연,28,Update @jds/jams2 to version 0.5.26  add cache option in total-menu.fetch  and..,0,0,unknown
+문승연,26,Add UseFilterArea component to AutoComplete and update Header component,0,0,unknown
+문승연,25,Feature/autocomplete,0,0,unknown
+문승연,22,feat: update @jds/jams2 to version 0.5.8  add dayjs dependency  and modify...,0,0,unknown
+문승연,20,Feature/search bar,0,0,unknown
+문승연,19,refactor: update imports and dependencies for improved consistency,0,0,unknown
+문승연,18,feat: add new components and assets for improved UI,0,0,unknown
+문승연,16,refactor: restructure layout and remove unused components,0,0,unknown
+문승연,3,Remove .env files from .gitignore to allow for optional committing of environmen,0,0,unknown
+문승연,1,Update project configuration and structure: Added ESLint and Prettier...,0,0,unknown
+장호철,128,updated versioning logic  curatin banner,0,0,unknown
+장호철,127,update curtain banner,0,0,unknown
+장호철,126,Fixed logo issue,0,0,unknown
+장호철,125,fixed logo url fetching,0,0,unknown
+장호철,124,replace logger with console,0,0,unknown
+장호철,123,updated env urls,0,0,unknown
+장호철,121,update env url,0,0,unknown
+장호철,119,Update server api url,0,0,unknown
+장호철,113,fixed build error,0,0,unknown
+장호철,108,updated fetching url,0,0,unknown
+장호철,106,updat url test,0,0,unknown
+장호철,105,test,0,0,unknown
+장호철,104,update url,0,0,unknown
+장호철,103,env 설정 변경,0,0,unknown
+장호철,102,revert default config,0,0,unknown
+장호철,101,publish test,0,0,unknown
+장호철,100,Develop to Release,0,0,unknown
+장호철,99,update env files and added logger,0,0,unknown
+장호철,98,update env dev,0,0,unknown
+장호철,97,update display-kit version,0,0,unknown
+장호철,96,add isLoggedIn userName,0,0,unknown
+장호철,94,update urgent notice,0,0,unknown
+장호철,93,Fixed ad banner error,0,0,unknown
+장호철,92,Add git lab ci,0,1,unknown
+장호철,90,update pm config url,0,0,unknown
+장호철,88,Updated: curtain banner api,1,1,unknown
+장호철,87,updated middleware and sdui server,0,1,unknown
+장호철,85,Fixed AdBanner rendering issues,0,0,unknown
+장호철,78,Update user segment with real config,1,1,unknown
+장호철,69,update bordercolor when focusing,0,0,unknown
+장호철,55,Add curtain banner,0,0,unknown
+장호철,36,Dotnet client 에러 수정,0,0,unknown
+장호철,35,Fixed prefetching data,0,0,unknown
+장호철,30,Fix errors (Suspense 추가  package.json 수정),0,1,unknown
+장호철,27,Update fetching way with server side fetching,0,1,unknown
+장호철,21,updated jams version,0,0,unknown
+이동현,39,fix: Update .gitignore to exclude .idea directory and modify environment...,0,0,unknown
+이동현,14,fix: enhance Dockerfile to conditionally upload static assets,0,0,unknown
+이동현,13,feat: add dynamic asset prefix handling in Next.js configuration,0,0,unknown
+이동현,12,fix: restore env-cmd package in package.json and pnpm-lock.yaml,0,0,unknown
+이동현,11,chore: add env-cmd package and update pnpm-lock.yaml,0,0,unknown
+이동현,10,modify: enhance Dockerfile and server configuration for asset management and env,0,0,unknown
+김규리,43,인증 모듈 추가,0,0,unknown
