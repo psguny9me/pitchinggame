@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figma JAMS to React 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Figma JAMS to React Contribution Dashboard</h1>
+  <p>2025-01-01_2025-12-31 | 2명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 9259 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+<!-- ── 커밋 가치 다차원 평가 ──────────────────────────────────── -->
+<div class="eval-section" id="commitValueSection">
+  <div class="header" style="margin-bottom:24px">
+    <h1 style="font-size:24px">커밋 가치 다차원 평가</h1>
+    <p>5차원 분석: 파일 핵심도, 변경 고유율, 변경 유형, 메시지 시그널, 영향 범위</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid" id="cvKpiGrid"></div>
+
+  <!-- Row 1: 등급 분포 + 가치 가중 기여도 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>커밋 등급 분포 (S/A/B/C/D)</h3>
+      <p class="subtitle">Stacked Bar - 개인별 등급 분포</p>
+      <canvas id="gradeDistChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>가치 가중 기여도 vs 단순 커밋 수</h3>
+      <p class="subtitle">단순 커밋 수 대비 Value Score 합산으로 실질적 기여 비교</p>
+      <canvas id="valueVsCountChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 2: 평균 점수 + 핵심 비율 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>평균 커밋 가치 점수</h3>
+      <p class="subtitle">개인별 커밋 평균 Value Score (0~100)</p>
+      <canvas id="avgValueChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>핵심 커밋 비율 (S+A 등급)</h3>
+      <p class="subtitle">전체 커밋 중 핵심적(S등급+A등급) 커밋의 비율</p>
+      <canvas id="criticalRatioChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 3: 5차원 레이더 -->
+  <div class="chart-card full-width">
+    <h3>5차원 평균 점수 레이더</h3>
+    <p class="subtitle">파일핵심도 / 변경고유율 / 변경유형 / 메시지시그널 / 영향범위 (개인별 평균)</p>
+    <canvas id="valueRadarChart" height="120"></canvas>
+  </div>
+
+  <!-- 작은 커밋 중 S등급 -->
+  <div class="table-card">
+    <h3>작은 커밋 중 S등급 (10줄 이하에서 핵심 가치)</h3>
+    <table id="smallSGradeTable"></table>
+  </div>
+
+  <!-- 큰 커밋 중 C/D등급 -->
+  <div class="table-card">
+    <h3>큰 커밋 중 C/D등급 (100줄+ 인데 기계적 작업)</h3>
+    <table id="largeLowGradeTable"></table>
+  </div>
+
+  <!-- 전체 등급 테이블 -->
+  <div class="table-card">
+    <h3>커밋 가치 종합 평가표</h3>
+    <table id="commitValueTable"></table>
+  </div>
+</div>
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | Figma JAMS to React 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "문승연", "totalCommits": 41, "codingCommits": 32, "added": 31428, "deleted": 8643, "net": 22785, "selfMR": 9, "featureMR": 9, "fixMR": 0, "fixRatio": 0.0, "avgSize": 1252, "revert": 0, "reviewerMR": 9, "focus": 100.0, "blame": 8998, "blamePct": 97.2, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 1, "glReceivedComments": 0, "ciFail": 0.0}, {"name": "이로움", "totalCommits": 10, "codingCommits": 9, "added": 433, "deleted": 174, "net": 259, "selfMR": 1, "featureMR": 1, "fixMR": 0, "fixRatio": 0.0, "avgSize": 67, "revert": 0, "reviewerMR": 1, "focus": 100.0, "blame": 261, "blamePct": 2.8, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 9, "glReceivedComments": 0, "ciFail": 0.0}];
+const monthly = {"months": ["2025-07", "2025-08"], "data": {"문승연": [5, 36], "이로움": [0, 10]}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 9259;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "문승연", "iid": "10", "title": "modify: deploy config", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "9", "title": "modify: deploy config", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "7", "title": "modify: 환경변수 사용 설정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "6", "title": "modify: boxNode에서 strokeStyleId에 따른 borderColor 속성 추가 및 instanceNode에서 Button...", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "5", "title": "modify: 텍스트 노드 처리 로직 개선 - 문장 길이에 따른 'p' 태그 추가 및 불필요한 코드 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "4", "title": "modify: 텍스트 노드 처리 로직 개선 - 'Pretendard' 폰트가 아닐 경우 fontFamily 스타일 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "3", "title": "modify: autolayout 하위 노드일 경우 width가 적용이 안되는 현상 방지", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "2", "title": "modify: .gitignore에 test 추가 및 analyzer.ts에서 layoutProps 초기화 방식 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "1", "title": "refactor: analyzer.ts에서 컴파운드 컴포넌트 처리 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이로움", "iid": "8", "title": "Feature/text field", "comments": 0, "approvers": 0, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+// ════════════════════════════════════════════════════════════════════════
+// 커밋 가치 다차원 평가
+// ════════════════════════════════════════════════════════════════════════
+
+const commitValueData = [{"name": "문승연", "total": 32, "S": 0, "A": 22, "B": 9, "C": 1, "D": 0, "avgScore": 62.2, "valueSum": 1991, "criticalPct": 68.8, "avgFC": 0.59, "avgCU": 0.82, "avgCT": 0.55, "avgMS": 0.59, "avgIS": 0.54}, {"name": "이로움", "total": 9, "S": 1, "A": 6, "B": 2, "C": 0, "D": 0, "avgScore": 68.7, "valueSum": 618, "criticalPct": 77.8, "avgFC": 0.43, "avgCU": 0.91, "avgCT": 0.79, "avgMS": 0.66, "avgIS": 0.81}];
+const smallSGrade = [];
+const largeLowGrade = [];
+
+// ── Commit Value KPIs ─────────────────────────────────────────────────
+const cvTotalCommits = commitValueData.reduce((s,d) => s + d.total, 0);
+const cvTotalS = commitValueData.reduce((s,d) => s + d.S, 0);
+const cvTotalA = commitValueData.reduce((s,d) => s + d.A, 0);
+const cvAvgScore = cvTotalCommits > 0 ? (commitValueData.reduce((s,d) => s + d.avgScore * d.total, 0) / cvTotalCommits).toFixed(1) : 0;
+const cvTotalValue = commitValueData.reduce((s,d) => s + d.valueSum, 0);
+
+const cvKpis = [
+  {value: cvTotalCommits.toLocaleString(), label: '분석 커밋 수'},
+  {value: cvTotalS.toLocaleString(), label: 'S등급 (핵심)'},
+  {value: cvTotalA.toLocaleString(), label: 'A등급 (실질적)'},
+  {value: cvAvgScore, label: '전체 평균 점수'},
+  {value: cvTotalValue.toLocaleString(), label: '가치 합산 총점'},
+  {value: cvTotalCommits > 0 ? ((cvTotalS + cvTotalA) / cvTotalCommits * 100).toFixed(1) + '%' : '0%', label: '핵심 커밋 비율'},
+];
+
+document.getElementById('cvKpiGrid').innerHTML = cvKpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── Grade Distribution Stacked Bar ────────────────────────────────────
+const gradeColors = {S:'#fbbf24', A:'#a78bfa', B:'#38bdf8', C:'#fb923c', D:'#f87171'};
+new Chart(document.getElementById('gradeDistChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: ['S','A','B','C','D'].map(grade => ({
+      label: grade + '등급',
+      data: commitValueData.map(d => d[grade]),
+      backgroundColor: gradeColors[grade],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// ── Value Sum vs Count ────────────────────────────────────────────────
+new Chart(document.getElementById('valueVsCountChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [
+      {
+        label: '가치 합산 (Value Sum)',
+        data: commitValueData.map(d => d.valueSum),
+        backgroundColor: '#a78bfa88',
+        borderColor: '#a78bfa',
+        borderWidth: 2,
+        borderRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '단순 커밋 수',
+        data: commitValueData.map(d => d.total),
+        type: 'line',
+        borderColor: '#38bdf8',
+        backgroundColor: '#38bdf833',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        yAxisID: 'y1',
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      y: {beginAtZero: true, position: 'left', grid: {color: '#1e293b'},
+          title: {display: true, text: 'Value Sum', color: '#94a3b8'}},
+      y1: {beginAtZero: true, position: 'right', grid: {drawOnChartArea: false},
+           title: {display: true, text: '커밋 수', color: '#94a3b8'}},
+    }
+  }
+});
+
+// ── Average Value Score Chart ─────────────────────────────────────────
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '평균 가치 점수',
+      data: commitValueData.map(d => d.avgScore),
+      backgroundColor: commitValueData.map(d =>
+        d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── Critical Ratio Chart ──────────────────────────────────────────────
+new Chart(document.getElementById('criticalRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '핵심 커밋 비율 (%)',
+      data: commitValueData.map(d => d.criticalPct),
+      backgroundColor: commitValueData.map(d =>
+        d.criticalPct >= 70 ? '#4ade80' : d.criticalPct >= 60 ? '#38bdf8' : d.criticalPct >= 50 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 5-Dimension Radar Chart ───────────────────────────────────────────
+new Chart(document.getElementById('valueRadarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['파일 핵심도', '변경 고유율', '변경 유형', '메시지 시그널', '영향 범위'],
+    datasets: commitValueData.map((d, i) => ({
+      label: d.name,
+      data: [
+        Math.round((d.avgFC || 0) * 100),
+        Math.round((d.avgCU || 0) * 100),
+        Math.round((d.avgCT || 0) * 100),
+        Math.round((d.avgMS || 0) * 100),
+        Math.round((d.avgIS || 0) * 100),
+      ],
+      borderColor: COLORS[i % COLORS.length],
+      backgroundColor: COLORS[i % COLORS.length] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top', labels: {padding: 10, usePointStyle: true}}},
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {stepSize: 25, color: '#64748b', backdropColor: 'transparent'},
+        grid: {color: '#334155'},
+        pointLabels: {color: '#94a3b8', font: {size: 12}},
+      }
+    }
+  }
+});
+
+// ── Small S-Grade Table ───────────────────────────────────────────────
+if (smallSGrade.length > 0) {
+  document.getElementById('smallSGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${smallSGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000">${r.score}점</span></td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Large Low-Grade Table ─────────────────────────────────────────────
+if (largeLowGrade.length > 0) {
+  document.getElementById('largeLowGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>등급</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${largeLowGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines.toLocaleString()}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff">${r.grade}</span></td>
+      <td>${r.score}점</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Commit Value Summary Table ────────────────────────────────────────
+const cvSorted = [...commitValueData].sort((a,b) => b.valueSum - a.valueSum);
+document.getElementById('commitValueTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th>
+    <th>S</th><th>A</th><th>B</th><th>C</th><th>D</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvSorted.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${d.name}</td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="color:#38bdf8">${d.B}</td>
+    <td style="color:#fb923c">${d.C}</td>
+    <td style="color:#f87171">${d.D}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct >= 70 ? '<span class="badge badge-low">' + d.criticalPct + '%</span>' : d.criticalPct >= 55 ? '<span class="badge badge-mid">' + d.criticalPct + '%</span>' : '<span class="badge badge-high">' + d.criticalPct + '%</span>'}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+
+</script>
+</body>
+</html>

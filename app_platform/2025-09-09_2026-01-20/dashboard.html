@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>잡코리아 앱 플랫폼 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>잡코리아 앱 플랫폼 Contribution Dashboard</h1>
+  <p>2025-09-09_2026-01-20 | 8명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 352064 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+<!-- ── 커밋 가치 다차원 평가 ──────────────────────────────────── -->
+<div class="eval-section" id="commitValueSection">
+  <div class="header" style="margin-bottom:24px">
+    <h1 style="font-size:24px">커밋 가치 다차원 평가</h1>
+    <p>5차원 분석: 파일 핵심도, 변경 고유율, 변경 유형, 메시지 시그널, 영향 범위</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid" id="cvKpiGrid"></div>
+
+  <!-- Row 1: 등급 분포 + 가치 가중 기여도 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>커밋 등급 분포 (S/A/B/C/D)</h3>
+      <p class="subtitle">Stacked Bar - 개인별 등급 분포</p>
+      <canvas id="gradeDistChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>가치 가중 기여도 vs 단순 커밋 수</h3>
+      <p class="subtitle">단순 커밋 수 대비 Value Score 합산으로 실질적 기여 비교</p>
+      <canvas id="valueVsCountChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 2: 평균 점수 + 핵심 비율 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>평균 커밋 가치 점수</h3>
+      <p class="subtitle">개인별 커밋 평균 Value Score (0~100)</p>
+      <canvas id="avgValueChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>핵심 커밋 비율 (S+A 등급)</h3>
+      <p class="subtitle">전체 커밋 중 핵심적(S등급+A등급) 커밋의 비율</p>
+      <canvas id="criticalRatioChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 3: 5차원 레이더 -->
+  <div class="chart-card full-width">
+    <h3>5차원 평균 점수 레이더</h3>
+    <p class="subtitle">파일핵심도 / 변경고유율 / 변경유형 / 메시지시그널 / 영향범위 (개인별 평균)</p>
+    <canvas id="valueRadarChart" height="120"></canvas>
+  </div>
+
+  <!-- 작은 커밋 중 S등급 -->
+  <div class="table-card">
+    <h3>작은 커밋 중 S등급 (10줄 이하에서 핵심 가치)</h3>
+    <table id="smallSGradeTable"></table>
+  </div>
+
+  <!-- 큰 커밋 중 C/D등급 -->
+  <div class="table-card">
+    <h3>큰 커밋 중 C/D등급 (100줄+ 인데 기계적 작업)</h3>
+    <table id="largeLowGradeTable"></table>
+  </div>
+
+  <!-- 전체 등급 테이블 -->
+  <div class="table-card">
+    <h3>커밋 가치 종합 평가표</h3>
+    <table id="commitValueTable"></table>
+  </div>
+</div>
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 잡코리아 앱 플랫폼 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "신동현", "totalCommits": 788, "codingCommits": 377, "added": 76082, "deleted": 54819, "net": 21263, "selfMR": 184, "featureMR": 162, "fixMR": 17, "fixRatio": 9.2, "avgSize": 347, "revert": 1, "reviewerMR": 184, "focus": 86.3, "blame": 32258, "blamePct": 9.2, "glReviewComments": 99, "glApprovals": 67, "glReviewedMRs": 106, "glReceivedComments": 196, "ciFail": 0.0}, {"name": "이해주", "totalCommits": 958, "codingCommits": 787, "added": 274626, "deleted": 186625, "net": 88001, "selfMR": 83, "featureMR": 36, "fixMR": 38, "fixRatio": 45.8, "avgSize": 586, "revert": 8, "reviewerMR": 83, "focus": 88.0, "blame": 77877, "blamePct": 22.1, "glReviewComments": 31, "glApprovals": 25, "glReviewedMRs": 45, "glReceivedComments": 51, "ciFail": 0.0}, {"name": "김승하", "totalCommits": 607, "codingCommits": 359, "added": 117818, "deleted": 45826, "net": 71992, "selfMR": 167, "featureMR": 85, "fixMR": 34, "fixRatio": 20.4, "avgSize": 455, "revert": 0, "reviewerMR": 167, "focus": 78.8, "blame": 45879, "blamePct": 13.0, "glReviewComments": 10, "glApprovals": 170, "glReviewedMRs": 254, "glReceivedComments": 27, "ciFail": 0.0}, {"name": "임희강", "totalCommits": 390, "codingCommits": 246, "added": 46324, "deleted": 22664, "net": 23660, "selfMR": 56, "featureMR": 15, "fixMR": 41, "fixRatio": 73.2, "avgSize": 280, "revert": 0, "reviewerMR": 56, "focus": 89.4, "blame": 18457, "blamePct": 5.2, "glReviewComments": 94, "glApprovals": 50, "glReviewedMRs": 117, "glReceivedComments": 191, "ciFail": 0.0}, {"name": "최재웅", "totalCommits": 851, "codingCommits": 705, "added": 477387, "deleted": 347059, "net": 130328, "selfMR": 59, "featureMR": 32, "fixMR": 22, "fixRatio": 37.3, "avgSize": 1169, "revert": 1, "reviewerMR": 59, "focus": 84.9, "blame": 96487, "blamePct": 27.4, "glReviewComments": 19, "glApprovals": 73, "glReviewedMRs": 120, "glReceivedComments": 11, "ciFail": 0.0}, {"name": "임동현", "totalCommits": 563, "codingCommits": 432, "added": 171561, "deleted": 31589, "net": 139972, "selfMR": 64, "featureMR": 29, "fixMR": 32, "fixRatio": 50.0, "avgSize": 470, "revert": 0, "reviewerMR": 64, "focus": 83.7, "blame": 69987, "blamePct": 19.9, "glReviewComments": 8, "glApprovals": 76, "glReviewedMRs": 147, "glReceivedComments": 43, "ciFail": 0.0}, {"name": "변지운", "totalCommits": 192, "codingCommits": 140, "added": 36260, "deleted": 22027, "net": 14233, "selfMR": 39, "featureMR": 39, "fixMR": 0, "fixRatio": 0.0, "avgSize": 416, "revert": 0, "reviewerMR": 39, "focus": 88.5, "blame": 7800, "blamePct": 2.2, "glReviewComments": 21, "glApprovals": 104, "glReviewedMRs": 146, "glReceivedComments": 184, "ciFail": 0.0}, {"name": "조인영", "totalCommits": 29, "codingCommits": 23, "added": 6936, "deleted": 2565, "net": 4371, "selfMR": 3, "featureMR": 3, "fixMR": 0, "fixRatio": 0.0, "avgSize": 413, "revert": 0, "reviewerMR": 3, "focus": 85.3, "blame": 3319, "blamePct": 0.9, "glReviewComments": 44, "glApprovals": 20, "glReviewedMRs": 36, "glReceivedComments": 68, "ciFail": 0.0}];
+const monthly = {"months": ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01"], "data": {"신동현": [0, 28, 75, 222, 463], "이해주": [97, 151, 295, 253, 162], "김승하": [0, 35, 118, 256, 198], "임희강": [0, 16, 74, 98, 202], "최재웅": [10, 70, 187, 376, 208], "임동현": [0, 53, 138, 190, 182], "변지운": [0, 14, 39, 62, 77], "조인영": [0, 7, 5, 16, 1]}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 352064;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "신동현", "iid": "1136", "title": "feat(home): 푸시 알림 설정 변경 시 Braze 이벤트 전송 추가", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "신동현", "iid": "1130", "title": "feat(notification_setting  settings): executeUseCase 패턴 적용 및 Braze 이벤트 연동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1129", "title": "test: Filter  Search  Settings 등 위젯 테스트 대규모 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1118", "title": "feat(FindJob): 필터 미설정 시 SDUI 섹션 및 구분선 숨김 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1112", "title": "fix(FilterKeywordInput): 키보드 위 자동완성 영역 고려한 스크롤 위치 계산 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1110", "title": "refactor(style): JkExtendedValue 중복 상수를 JkAppSize로 마이그레이션", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "신동현", "iid": "1107", "title": "AppBar 높이 56pt 통일 및 아이콘 버튼 패턴 적용", "comments": 1, "approvers": 2, "ci": "unknown"}, {"name": "신동현", "iid": "1106", "title": "feat(TEST-77773): 슈퍼기업관 placeholder 중복 방지 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1104", "title": "fix: 스마트핏 섹션을 empty 판정 카운트에서 제외", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1098", "title": "refactor(ios): 앱 아이콘을 Xcode 15+ 단일 이미지 방식으로 현대화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1082", "title": "refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1079", "title": "refactor(find_job): DMP 로깅용 정렬값을 별도 필드로 분리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1076", "title": "feat(find_job): DMP 로깅에 정렬 옵션(sort) 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1071", "title": "fix(filter): 직무 필터 카운트 계산 시 상위/하위 코드 모두 포함", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1069", "title": "fix(find_job): 로딩 상태 해제 위치 수정 및 중복 호출 방지", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1062", "title": "feat(bottom_sheet): DetailItem 칩 레이블에 autoTextSize 옵션 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1061", "title": "feat(analytics): 필터 초기화 버튼 GA 이벤트 트래킹 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1050", "title": "fix: 채용공고 화면 Empty State 조기 표시 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1049", "title": "[Remove] Quick Actions (앱 바로가기) 기능 전체 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1045", "title": "[GA] 공통 필터 이벤트 탭 라벨에 접두사 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1034", "title": "featureCode", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1030", "title": "[GA] 필터 GA 이벤트 전송 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1026", "title": "체크 아이콘 컬러 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1022", "title": "[TEST-77682] My필터 선택 시 공고 수 조회 및 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1019", "title": "executeUseCase 사용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1016", "title": "fix(ui): 필터 버튼 그라데이션 stops 및 색상 간소화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1015", "title": "체크 아이콘 컬러변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1002", "title": "fix(ui): AppBar 우측 버튼 크기 및 위치 정렬 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "1000", "title": "feat(GA): 통합필터 GA 이벤트 트래킹 상세화 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "999", "title": "feat(TEST-77603): UI 수정 요청 사항 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "998", "title": "test: AppAppBar.basic 마이그레이션을 위한 테스트 업데이트 (Red Phase)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "997", "title": "feat(TEST-77604): 필터 버튼 그라데이션 효과 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "996", "title": "feat(TEST-77570): 키워드 필터 허용 문자에 중점(·) 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "986", "title": "feat: Inject FilterCodeListUseCase into FilterController", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "980", "title": "test(filter): 경력 슬라이더 0년 시작 Extension 테스트 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "976", "title": "[refactor] Remove SavedCondition mock and migrate filter models to proper archit", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "971", "title": "refactor(filter): 합격축하금 필터 GA 이벤트를 활성화 시에만 추적", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "970", "title": "fix(find_job): 이메일 접수 방식 라벨을 온라인으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "967", "title": "refactor(filter): GA 라벨 통합 - CommonSavedFilterName으로 isPinned 기반 통합", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "966", "title": "refactor(filter): MyFilterBar 오버레이 제거 및 레이아웃 간소화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "965", "title": "[refactor] Migrate to SearchResultSortType enum and remove mock dependencies", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "963", "title": "fix: 최근 필터 리스트 스크롤 끝 도달 시 항목 dispose 방지", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "961", "title": "feat(toast): AppToast에 bottomOffset 파라미터 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "953", "title": "fix(filter): 급여 필터 필드의 null 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "952", "title": "fix(filter): 업종 서브코드 필터링 시 빈 코드리스트 예외 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "951", "title": "[refactor] Mock 검색 관련 코드 제거 및 테스트 의존성 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "949", "title": "[GA] 필터 GA 이벤트 filterName 수정 및 경력 이벤트 개별 발송 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "946", "title": "[GA] 필터 바텀시트 GA 이벤트에 진입 경로(entrySource) 타입 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "945", "title": "feat(TEST-77387): 스마트핏 공고 ID 분리 관리 및 새로고침 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "933", "title": "fix(TEST-77393): CollapsedChipView 오른쪽 패딩 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "929", "title": "feat(TEST-77274): 필터 탭바 인디케이터 및 칩 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "924", "title": "feat(TEST-77370): 공고찾기 정렬 드롭다운 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "922", "title": "feat(TEST-76953): SmartFitSection 카드 개수별 렌더링 전략 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "920", "title": "[TEST-76851] Perf: RecentFilterCard에 AutomaticKeepAliveClientMixin 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "914", "title": "[fix] 급여 슬라이더 블리딩 방지 - active 트랙 높이 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "911", "title": "Fix: 접수 유형 텍스트 용어 통일 (이메일 지원 → 이메일 접수)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "909", "title": "[Feature] Display '연봉 전체' for full salary range in recent filters", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "905", "title": "refactor(test): JobCardInfoMock을 test/fixtures로 이관", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "904", "title": "[style] 일자리찾기 정렬 드롭다운 너비 조정 (120px → 140px)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "901", "title": "[TEST-77274] 필터 탭바 레이블 패딩 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "900", "title": "feat(TEST-77328): FINDJOB_LIST 전용 읽음 표시 처리 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "897", "title": "feat(TEST-77327): 추천 검색어 표시 조건에 최근 검색어 체크 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "895", "title": "[TEST-77274] 검색 진입 시 필터 툴팁 위치 조정 및 키워드 입력 자동 스크롤 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "889", "title": "fix : 콘텐츠 화면 기본 타이틀 '취업전략' → '콘텐츠' 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "888", "title": "[TEST-77286] 검색 결과 건수 포맷팅 및 UI 갱신 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "887", "title": "[TEST-77274] 필터 슬라이더 tick mark를 thumb 영역 밖에만 표시하도록 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "884", "title": "[TEST-76554] 연봉 필터 전체 선택 시 최소값을 슬라이더 최소값으로 설정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "883", "title": "[TEST-75952] SelectionBottomSheet UI 개선 및 TopShadowClipper 공통화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "879", "title": "[TEST-77271] 검색 홈 화면 진입 시 지역 필터 동기화 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "877", "title": "[TEST-76829] 핀 추가 실패 시 마이핀 공고 건수 조회 누락 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "876", "title": "[TEST-75965] 연봉 필터 슬라이더 thumb 외곽선 및 그림자 효과 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "875", "title": "[TEST-77246] 검색 결과 정렬 타입 JsonValue 값 API 스펙에 맞게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "863", "title": "feat(GA): 필터 적용 시 통합검색결과보기_(필터명) GA 이벤트 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "861", "title": "[TEST-76710] 필터 탭바 레이아웃 개선 및 전체 필터 탭 제외", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "856", "title": "[TEST-77012] 검색 결과 연관 키워드 섹션 하단 패딩 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "855", "title": "[TEST-76544] feat: 경력 년수 표시 기준 10년 이상으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "854", "title": "[TEST-77012] 검색 화면 자동완성 섹션 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "842", "title": "refactor(TEST-77041): 필터 화면 채용공고 건수 최대값 제한 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "838", "title": "fix(TEST-75184): 핀 설정/해제 시 기존 필터의 jobCount 유실 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "836", "title": "feat(GA): 주요 화면 GA 페이지뷰 추적 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "832", "title": "feat(GA): GA 페이지 트래킹 정의 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "830", "title": "feat(GA): 최근필터 적용 시 GA 이벤트 추적 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "826", "title": "feat: JOB찾기 영역 GA 이벤트 정의 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "825", "title": "fix: DI 설정 및 테스트 코드 문법 오류 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "824", "title": "feat(TEST-77132): searchResult 진입 시 필터 카운트에서 포함단어 제외", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "823", "title": "test: 테스트 코드 대규모 리팩토링 및 안정화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "814", "title": "feat(filter): My필터 자동 선택 및 필터 비교 로직 개선 [TEST-76743]", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "813", "title": "feat(bottom-sheet): 바텀시트 푸터 상단 그림자 클리핑 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "812", "title": "refactor: 일자리 찾기 빈 상태 화면 스타일 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "811", "title": "[TEST-75965] feat: 필터 화면 슬라이더 UI/UX 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "810", "title": "[TEST-75973] feat: AppButton iconSize 파라미터 추가 및 복지 바텀시트 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "806", "title": "[TEST-77026] 필터 칩 색상 스타일 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "805", "title": "[TEST-76680] feat: 정렬 드롭다운 스크롤 시 자동 닫힘 기능 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "803", "title": "fix(find_job): FilterBar 배지 clipping 문제 해결", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "801", "title": "feat: 바텀시트에 useFullWidth 옵션 추가 (Z폴드 대응)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "799", "title": "feat(TEST-76690): 복리후생 검색 결과 리스트 스크롤 동적 제어", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "797", "title": "[TEST-76193] 필터 탭 keyword 섹션 제목 동적 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "796", "title": "feat(TEST-76789): CardJobBasic viewedLabel 컬러 조건부 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "788", "title": "[TEST-76700] 필터 바 하단 구분선 색상 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "787", "title": "feat(filter): SearchJobCountUseCase 조건부 분기 구현 [TEST-77041]", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "785", "title": "feat(TEST-76808): 핀 추가 실패 시 MY 필터 목록 갱신 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "784", "title": "fix(TEST-76820): 페이지네이션 hasMore 계산 로직 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "781", "title": "feat(TEST-76812): 키워드 필터 조건 체크 및 태그 표시 기능 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "779", "title": "feat(TEST-76829): 핀 설정 후 새 서버 필터 공고 건수 조회 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "778", "title": "refactor(mock): 코드 스타일 및 lint 규칙 준수를 위한 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "777", "title": "[TEST-76838] 로그아웃 시 지원공고제외 필터 자동 제거 및 로그인 체크 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "776", "title": "[TEST-76857] 필터 화면 공고 건수 표시 최대값 제한 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "775", "title": "[TEST-76851] test: RecentFilterController 테스트 환경 구성", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "774", "title": "refactor: presentation/mock 폴더의 더 이상 사용되지 않는 Mock 파일 삭제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "759", "title": "fix(filter): 복리후생 필터 빈 선택 상태에서 적용 버튼 활성화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "756", "title": "feat(filter): 연봉 슬라이더 조작 시 연봉 타입 자동 설정 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "752", "title": "fix(filter): 경력 필터 최대값 범위 표시 형식 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "747", "title": "fix(filter): 경력 필터 동일 년수 표시 형식 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "744", "title": "refactor(salary): PayType별 급여 표시 포맷팅 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "738", "title": "fix: SmartFit 삽입 인덱스 계산 시 빈 데이터 검증 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "737", "title": "refactor: Mock 파일들을 test/fixtures로 이동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "734", "title": "refactor: SmartFit 채용공고 목록 개수 계산 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "731", "title": "style: 정렬 드롭다운 메뉴 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "727", "title": "refactor: 최근 필터 저장 로직 호출 위치 개선 (TEST-76534)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "726", "title": "feat(filter): 로그인 필요 태그 선택 후 마이필터 목록 갱신", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "714", "title": "refactor: UI 디자인 시스템 일관성 개선 및 Android 텍스트 입력 버그 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "706", "title": "feat(find_job): Empty State 표시 시 Footer/구분선/헤더 숨김 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "703", "title": "[TEST-76617] fix: 즉시 지원 버튼 로그인 화면 이동 시 결과 대기 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "702", "title": "[TEST-75908] FilterBar 설정 아이콘 색상 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "701", "title": "fix(ui): 필터 툴팁 위치 및 드롭다운 아이콘 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "698", "title": "feat(filter): My필터 선택 시 UI 상태 동기화 및 JkTextField textAlign 지원", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "697", "title": "feat(filter): 복리후생 검색 결과 하단 탭 시 검색 초기화 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "696", "title": "[TEST-76617] feat: 즉시지원 버튼 클릭 시 로그인 체크 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "694", "title": "feat(find_job): Empty State 표시 조건 로직 추가 및 테스트 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "690", "title": "refactor(filter): RecentFilter 네비게이션 로직을 Controller로 이동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "685", "title": "feat(filter): 모든 서버 필터 카운트 조회 및 헤더 현황 동적 표시", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "684", "title": "feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "683", "title": "feat(TEST-76340): SmartFit 섹션 UI 개선 및 광고 표시 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "682", "title": "feat(find_job): SmartFitSection 카드에 isAdSection 파라미터 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "681", "title": "fix(find_job): 정렬 드롭다운 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "678", "title": "feat(filter): 필터 이름 입력 시 특수문자 제한 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "675", "title": "fix(recent_filter): 로그인 화면 이동 시 결과 대기 옵션 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "674", "title": "fix(my_filter): 칩 리스트 최소 너비 보장을 위한 ConstrainedBox 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "671", "title": "fix(TEST-76523): 2뎁스 바텀시트 좌우 항목 높이 48px로 통일", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "670", "title": "fix(filter): 키워드 필터 UI 텍스트 '키워드'를 '단어'로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "669", "title": "fix(filter): 필터 화면 툴팁 위치 offset 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "668", "title": "fix(recent-filter): 핀 고정/해제 실패 시 에러 토스트로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "666", "title": "feat: SelectionBottomSheetView에 hideFooterWhenEmpty 옵션 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "665", "title": "refactor(find_job): 채용공고 지원 버튼 클릭 핸들러를 Controller로 이동 [TEST-76380]", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "664", "title": "fix(filter-bar): 사용자 스크롤 전까지 그라데이션 표시 유지", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "662", "title": "fix(find_job): Footer 상단 간격 증가 [TEST-76066]", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "660", "title": "feat(filter): 연봉 필터 동일 값 선택 시 단일 표시 [TEST-76433]", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "658", "title": "feat(filter): 슬라이더 동일 값 표시 개선 [TEST-76418]", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "656", "title": "fix: SmartFitSection UI 스타일 및 Mock 파라미터 타입 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "645", "title": "feat(filter): 검색 화면에서 필터 진입 시 검색 컨텍스트 전달 기능 구현", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "642", "title": "refactor(benefit): 복리후생 검색바를 공통 위젯으로 교체", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "640", "title": "fix: 드롭다운 메뉴 offset 조정 및 mock 파일 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "639", "title": "feat(filter_bar): 스크롤 끝 감지 및 그라데이션 동적 표시 기능 추가 [TEST-75908]", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "635", "title": "feat(recent_filter): 핀 고정된 필터의 공고 카운트 조회 및 표시 기능 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "632", "title": "MY필터 바 기능 구현 및 최근 필터 UseCase 연동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "627", "title": "[TEST-75861] 구인공고 리스트 헤더 섹션 padding 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "626", "title": "feat(TEST-76105): 필터바 설정 버튼 카운트에서 칩 필터 제외", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "625", "title": "feat(TEST-75985): ChipInput 읽기 전용 모드 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "624", "title": "fix(strings): 키워드 필터 툴팁 문구 명확성 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "623", "title": "fix(TEST-75930): 산업 필터 중분류별 선택 카운트가 표시되지 않는 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "621", "title": "fix: 필터바 리스트 끝 패딩 값 조정 (64px → 54px)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "612", "title": "feat(AppTabBar): labelPadding 파라미터 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "611", "title": "feat(TEST-76098): 선택 항목 칩 목록 가로 스크롤 UI로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "610", "title": "fix(filter): 필터 UI 라벨명 및 헤더 구분선 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "609", "title": "fix(TEST-76144): 직무/산업 바텀시트 재진입 시 칩 스크롤 미동작 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "602", "title": "fix: 급여 필터 입력 필드 단위 표시 텍스트 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "600", "title": "fix: 경력 슬라이더 전체 선택 텍스트를 '경력 전체'로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "594", "title": "[fix] CardJobBasic 하단 패딩 조건부 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "593", "title": "[TEST-76066] 일자리찾기 화면 콘텐츠와 푸터 사이 간격 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "592", "title": "[TEST-76076] 메뉴에서 로그인 버튼 클릭 시 메뉴 닫기", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "591", "title": "[TEST-76042] refactor: 권한 안내 화면 확인 버튼 색상 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "590", "title": "fix(TEST-75949): 필터 툴팁 위치 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "578", "title": "feat(TEST-75924): 필터 복원 시 직무/산업 항목에 부모 카테고리명 표시", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "577", "title": "refactor(TEST-75912): 필터 컨트롤러 초기 선택 복원 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "575", "title": "fix(menu): 빠른 화면 전환 시 크래시 방지를 위해 safeNotifyListener 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "574", "title": "feat(TEST-75957): 급여 슬라이더 단위 세분화 및 트랙 탭 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "572", "title": "feat(TEST-75985): 키워드 입력 문자 제한 및 길이 제한 기능 구현", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "571", "title": "feat(TEST-75987): 키워드 입력 최대 개수 검증 및 UX 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "570", "title": "[TEST-75908] FilterBarSettingsButton 선택 상태 시각적 피드백 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "565", "title": "feat(TEST-75972): BenefitSearchBar에 onTapOutside 콜백 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "564", "title": "feat(filter): 복리후생 검색 결과에서 최대 10개 초과 시 토스트 표시", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "563", "title": "feat(TEST-75861): 채용공고 탭 콘텐츠 레이아웃 간격 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "562", "title": "fix(TEST-75966): 필터 화면 키보드 포커스 해제 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "561", "title": "feat(TEST-75905): 지역/직무/산업 선택 제한 해제", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "신동현", "iid": "560", "title": "feat(TEST-75968): 급여 필터 입력 필드 자릿수 제한 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "559", "title": "fix(TEST-75914): 등록일 필터 토글 해제 기능 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "558", "title": "fix(TEST-75933): CardJobBasic 카드 UI 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "549", "title": "fix(filter): 직무 선택 중분류 카운트 조회 시 mappingCode 폴백 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "547", "title": "feat(TEST-75927): 지역/산업 바텀시트 타이틀 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "546", "title": "TEST-75760 - feat(find-job): 스마트핏 노출 로직 개선 및 페이지 사이즈 고정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "542", "title": "[TEST-75852] feat: 채용공고 화면에 AppFooterWidget 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "541", "title": "TEST-75850 - feat(search): 필터 카운트를 개별 항목 수 기준으로 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "537", "title": "feature: 급여 필터 UX 개선 및 타입별 상태 보존", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "535", "title": "style: FilterBar 컴포넌트 UI 스타일 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "530", "title": "feat(TEST-75845): FilterRequestBody 필터 카운트에 빠른 설정 및 등록일 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "528", "title": "refactor(filter): FilterBarType에서 employmentType(고용형태) 필터 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "527", "title": "fix: 필터 등록일(period) 복원 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "525", "title": "refactor(filter-type-parser): API 키 기반 FilterType 매칭 로직으로 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "524", "title": "refactor: Hierarchical Selection 바텀시트 고정 높이 계산 제거 및 Expanded 기반 유연한 레이아웃으로 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "523", "title": "feat(TEST-75861): 채용공고 카드 버튼 스타일 및 목록 헤더 UI 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "519", "title": "feat(filter-bar): 서비스 탭 웹뷰 이동 기능 구현 및 네이밍 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "512", "title": "[TEST-75738] 앱바 알림 액션 헬퍼 추출 및 공통화", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "510", "title": "[TEST-75739] 채용공고 화면 검색 버튼 동작 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "509", "title": "feat(find_job): 앱바 메뉴 버튼에 네비게이션 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "503", "title": "refactor: 필터 하단바 초기화 버튼 제거 및 lazy loading 상수 추출", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "498", "title": "refactor: CardJobBasic 탭 동작을 LinkUtil 서비스로 위임", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "495", "title": "refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "491", "title": "style(filter): excludeApplied 필터 아이콘 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "478", "title": "feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "444", "title": "feat(FilterBarController): 검색 조건 저장/로드 기능 추가", "comments": 7, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "430", "title": "feat : FilterRouteParams DTO 도입 및 검색 화면 키워드 전달", "comments": 11, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "427", "title": "feat(AppTabBar): tabAlignment 파라미터 추가", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "400", "title": "refactor: PushConsentDialog API 단순화 - onClosePressed에 doNotShowAgain 상태 전달", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "345", "title": "feature : iOS Rich Push 알림 지원 및 Notification Service Extension 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "343", "title": "[feat] 필터 화면 공고 카운트 표시 기능 구현", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "313", "title": "[refactor] 화면 방향 설정을 Mock에서 UseCase 패턴으로 리팩토링", "comments": 7, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "294", "title": "Feat: 검색 결과 화면 FilterBar 통합 및 스크롤 상태 관리 개선", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "293", "title": "refactor : 설정 화면 하단 SafeArea 처리 개선", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "278", "title": "feat(find_job): 채용공고 목록 정렬 드롭다운 기능 구현", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "277", "title": "feat(filter): FilterBar에서 필터 화면 특정 섹션으로 자동 스크롤 기능 구현", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "265", "title": "[refactor] FilterBar 컨트롤러 통합 - FindJob/SearchResult 공통화", "comments": 13, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "263", "title": "[test] Presentation Layer 단위 테스트 추가 - Filter  Location  Menu  PhotoEdit  Search ", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "243", "title": "[feat] 채용공고 찾기 화면에 스마트핏 섹션 및 필터 시스템 개선", "comments": 6, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "242", "title": "feat(filter): 핀 필터와 로컬 필터 분리 구현", "comments": 10, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "208", "title": "refactor(notification_setting): Mock 의존성 제거 및 Domain 모델 직접 사용", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "197", "title": "feat(find_job): 일자리찾기 탭 UI 컴포넌트 구현 및 리팩토링", "comments": 12, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "196", "title": "refactor(selection): View 초기화 중복 방지 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "184", "title": "Add: 최근 필터 기능 구현", "comments": 14, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "175", "title": "refactor: Restructure filter models and update data types", "comments": 10, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "163", "title": "refactor: 사진 편집 바텀시트 반환값 기반 아키텍처로 개선", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "155", "title": "refactor: 바텀시트 매니저의 콜백 패턴을 반환값 패턴으로 리팩토링", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "154", "title": "refactor : 공통 앱바 컴포넌트로 통합", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "133", "title": "feat: 필터 화면 핵심 기능 구현 (Presentation Layer)", "comments": 12, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "132", "title": "feature: 직무 선택 바텀시트 구현", "comments": 10, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "103", "title": "feat: 알림 설정 개인정보 동의 및 실제 UseCase 연동 구현", "comments": 8, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "92", "title": "feat: 설정 화면 소셜 로그인 UI 개선 및 앱 업데이트 기능 추가", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "65", "title": "[feat] iOS capabilities 설정 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "62", "title": "feat: Quick Actions 기능 구현 (홈 스크린 단축키)", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "61", "title": "feat: ASIS 알림설정 화면 이관 (Android → Flutter)", "comments": 13, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "48", "title": "refactor: 설정 화면 문자열 상수화 및 오픈소스 라이선스 기능 구현", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "38", "title": "refactor: ClassicNumeric 클래스를 static const 방식으로 단순화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "35", "title": "refactor: ClassicNumeric 싱글톤 패턴으로 변경 및 불필요한 상수 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "34", "title": "feat: 기존 iOS 설정 이관", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "24", "title": "refactor : ASIS 상수 네이밍을 Classic으로 변경", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "23", "title": "feat : ASIS 전환용 임시 상수 파일 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1142", "title": "[FIX] iOS WebView 히스토리 백 처리 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "1141", "title": "[CHORE] Braze 로그인/로그아웃 이벤트 및 상태 속성 전송 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1139", "title": "[FEATURE] 로딩 상태 관리 최적화 및 코드 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1137", "title": "[FIX] 네비게이션 라우터 extension pop 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1116", "title": "[FIX] Mjobkorea 쿠키 검증 및 보정 인터셉터 추가", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "1068", "title": "[FEATURE] 웹뷰 인터렉션 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "1067", "title": "[FIX/TEST-77730] 쿠키 파싱 예외 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1056", "title": "[FIX] 각종 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "1055", "title": "[FIX] QR 라우트 디폴트 설정 페이지 추가 및 PC 보기 로직 작동 로직 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "1052", "title": "[FIX] 불필요 warmup 로직 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1042", "title": "[FIX/TEST-77479] Android에서 Apple 로그인 시 form 데이터 추출 실패 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1041", "title": "[FEATURE] 웹뷰 jank 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "1029", "title": "[FIX] : MjobkoreaCookie 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "995", "title": "fix(TEST-77467): 로그인 취소 시 WebView 닫기 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "988", "title": "[FIX]content 탭에도 투앱 title 조작할 수 있도록 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "944", "title": "[FEATURE/FIX] Content Ready 감지 전략을 플랫폼별 최적화로 개선 및 웜업 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "943", "title": "[REFACTOR] 로깅 시스템 정리 및 통일", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "934", "title": "app-develop -> develop (01.13 21:18)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "928", "title": "[FIX/TEST-77376] : QA 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "926", "title": "[FIX/TEST-77336] toapp close sub > uiType 명시 시 opener viewType 비교 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "918", "title": "[FIX/TEST-77303] : AI Insight 섹션 gradient 효과를 위한 패딩 조정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "894", "title": "[FIX/TEST-77175  TEST-75020]  Review Home 자동 스크롤 방지 및 키워드 쿠키 동기화 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "893", "title": "[REFACTOR] : Isolate를 사용하여 DMP 로그 전송 성능 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "892", "title": "[FIX/TEST-77315] gomain home이 들어오면 탭스캐폴드 홈으로 랜딩하도록 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "885", "title": "[FIX} 로그아웃 이후 콘텐츠  my탭에서 바텀탭 클릭 시 상단으로 이동 안하는 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "882", "title": "[FIX/TEST-77245) pull-to-refresh 시 sectionListKey 증가 방지", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "872", "title": "[FIX/TEST-76520] : 공고 없는 경우 인기공고 보러가기 선택 시 헤더 오류 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "868", "title": "[FIX] 검색 > pull to refresh 적용 건 롤백", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "867", "title": "[FIX/TEST-77093] : subPopupUrl 처리 시 탭 URL 감지 로직  개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "857", "title": "[FIX]: CardSwiper numberOfCardsDisplayed 동적 설정으로 assertion 오류 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "852", "title": "[FIX] 검색화면 > pull to refresh 인디케이터 상단 필터뷰에 가려지는 이슈 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "839", "title": "[FIX] 로그아웃 후 쿠키를 삭제하여 웹뷰가 로그인으로 리다이렉트 시키는 로직 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "827", "title": "[FEATURE]: Pull-to-Refresh 구현(홈  잡찾기  검색 **스크롤 구조** 변경)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "821", "title": "[FIX/TEST-75020] Review 페이지 새로고침 시 키워드 유지되도록 쿠키 주입 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "820", "title": "[FEATURE / FIX] 웹뷰 로딩 로직 개선 및 QA 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "786", "title": "[FIX] : webview controller 직접 사용으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "773", "title": "[FIX] 주요 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "754", "title": "[FEATURE] AppDialog 디자인시스템", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "이해주", "iid": "749", "title": "feat(TEST-76464): 광고 배너 레이아웃 조정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "743", "title": "[FIX] : 웹뷰 기본 제목 설정 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "732", "title": "[FIX] QA 이슈 수정 및 메인 홈 로딩 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "715", "title": "[FEATURE] 공고상세에는 리뉴얼된 앱바를 노출 하도록 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "712", "title": "[FEATURE/TEST-76162]: 커스텀 스켈레톤 쉬머 위젯 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "695", "title": "[FEATURE] 메인홈 스크롤 포퍼먼스 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "667", "title": "[FEAT] 홈 헤더 스크롤 애니메이션 활성화 및 AI Insight Aurora 효과 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "654", "title": "[FIX/ TEST-75843] : Cold start 시 딥링크 중복 실행 방지", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "653", "title": "[FIX]: QA 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "652", "title": "FIX(TEST-76269): TS_XML 파라미터 중복 추가 방지", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "648", "title": "[FEATURE] 플랫폼 텍스트 크기 설정 무시하도록 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "622", "title": "[FEATURE]: AI Insight 섹션에 Aurora 효과 적용 (merge 이슈 수정)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "614", "title": "[feat]: AI Insight 섹션에 Aurora 효과 적용", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "613", "title": "[FIX-TEST-76162]  WebView 로드 전 스켈레톤 배경 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "601", "title": "[CHORE] 의존성 패키지 버전 업데이트 및 고정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "599", "title": "[FIX] SectionBuilder에서 mounted 체크 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "596", "title": "[FIX] IOS 네이버 로그인 패키지 고정 및 코드 안전성 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "595", "title": "[FIX] QA이슈 수정 및 코드 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "543", "title": "[FIX]: 네이버 로그인 IPA 환경 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "521", "title": "[FIX] : 네이버 로그인 URL scheme 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "516", "title": "FIX(TEST-75716): TabController 로그인 체크 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "505", "title": "[FIX] QA 이슈 수정건", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "504", "title": "[FIX] 웹뷰 QA이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "494", "title": "[FEATURE] 탭바 공통 인터렉션 및 리프레시 로직 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "481", "title": "[FIX]: 파일 다운로드 완료 알림 개선 및 폴링 메커니즘 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "477", "title": "[FIX / REFACTOR] : QA이슈 수정 및 코드 리팩토링", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "463", "title": "[FEATURE] : 페이스북 로그인 노출조건 정책 적용 (원격 핸들링 기초 구조 설정)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "457", "title": "[FIX] 쿠키 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "453", "title": "[FIX] QA 이슈 수정 (쿠키 개선)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "452", "title": "[FIX] QA 이슈수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "443", "title": "[REFACTOR] 쿠키 복구 로직 패턴변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "422", "title": "[REFACTOR  FEATURE] JK Client 개선 1차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "421", "title": "FEATURE : 쿠키 복구 로직 안정성 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "412", "title": "[FEATURE] Loading Bar 스타일 적용 및 progress tracking 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "411", "title": "[REFACTOR] 쿠키 관리 시스템 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "410", "title": "[FIX] QA 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "402", "title": "[FEATURE] 쿠키 정보 버튼을 FloatingDebugButton으로 이동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "398", "title": "[FIX] InAppWebView DatePicker를 위한 Material Components 의존성 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "397", "title": "[FEATURE] 패스워드 TextField 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "388", "title": "[FIX] QA 이슈 수정 (login handler navigation  쿠키 싱크 로직 개선)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "384", "title": "[FEATUR] 앱 진입 > 권한 화면 노출 시점 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "378", "title": "[FIX] 쿠키 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "366", "title": "[FIX] 백버튼 핸들링 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "365", "title": "[FIX] 만료된 쿠키 필터링 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "364", "title": "[FEATURE] 비밀번호 재시도 화면 UI 리팩토링 및 공통 컴포넌트 적용", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "349", "title": "[FEATURE] 쿠키 관리 및 세션 안정성 개선 + 401 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "348", "title": "[FEATURE] 전수 검사 QA 이슈 대응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "346", "title": "[FEATURE] 비밀번호 재입력이 필요한 case 화면 및 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "333", "title": "[FIX] 기타 QA 개선건 작업", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "332", "title": "[FEATURE] 로그인 로직 개선 및 QA 이슈수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "331", "title": "[FIX] 로그인 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "330", "title": "[FIX]: shoudOverride 디바운스 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "329", "title": "[FIX] 전수 검사 QA 이슈 대응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "328", "title": "[FIX] 전수검사 > QA 이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "322", "title": "app develop -> develop", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "321", "title": "[FIX] 전수 검사 QA이슈 대응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "319", "title": "[FIX] : iOS 앱 초기화 중 간헐적 멈춤 현상 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "305", "title": "[FEATURE] 서브도메인 서비스 호환 작업 (AI agent 페이지 붙이기 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "288", "title": "[FEATURE] showDiaog closeDialog 앱브릿지 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "287", "title": "[FIX] : iOS 26커스텀 알럿 노출 로직 롤백", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "284", "title": "[FIX] 웹뷰 네비게이션 로직 개선 및 QA 검수 대응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "283", "title": "[FIX] QA 검수 대응 (로그인  authhandler 리팩토링)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "275", "title": "[FIX] 소셜 계정 연동 로그인 세션 유실 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "273", "title": "[FIX] QA 이슈 수정 및 as-is mainsub 로직 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "272", "title": "[FIX] : 사전검수 QA 이슈 수정 6차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "268", "title": "[FEATURE] : webview >linearProgressindiactor 트랜지션 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "267", "title": "[FEATURE] 카카오톡 비즈   라인 공유하기 기능 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "262", "title": "[FIX] 사전검수 대응 6차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "261", "title": "[FIX] 사전 검수 QA 대응 5차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "260", "title": "[FEATURE] 사전검수 QA 이슈 대응 3차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "253", "title": "[FIX] Android JWT Scope 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "248", "title": "[FEATURE] 네이티브 트랜지션을 유지하면서 웹뷰 인스턴스 재활용 로직(keepAlive) 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "247", "title": "[FIX] 사전 검수 QA 이슈 수정 3차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "246", "title": "[FEATURE] 사전검수 QA 이슈 수정 2차", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "244", "title": "[FIX] 로그인 쿠키 이슈 수정 및 qa이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "239", "title": "[FIX] : 로그인 회원가입 qa 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "228", "title": "[FEATURE] : 웹뷰 안전성 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "226", "title": "[FEATURE] debug banner 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "225", "title": "[FIX] 로그인/회원가입 각종 오류 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "224", "title": "[REFACTOR] AppUserSession 리팩토링 댜응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "223", "title": "[FEATURE] 소셜 계정 연동화면 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "222", "title": "app-dev - > dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "221", "title": "[REFACTOR] UserService → AppUserSession 통합 세션 관리 시스템 마이그레이션", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "216", "title": "[FEATURE] AppStart API 성공 시 UserService 메모리 동기화 누락 문제 해결", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "215", "title": "[FEATURE] 웹뷰 앱브릿지 기능 추가 및 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "206", "title": "[FEATURE] photo deeplink 결과 값에 따라 웹뷰를 리프레시하는 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "205", "title": "[FEATURE] 웹뷰 기능개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "204", "title": "[FEATURE] 로그인 기능 개선 및 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "195", "title": "[FEATURE] GNB 아이콘 변경 및 취업 인사이트 웹뷰 연동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "193", "title": "[FEATURE] AppCookie 로그인 쿠키를 헤더 형식 반환하는 메소드 추가", "comments": 1, "approvers": 2, "ci": "unknown"}, {"name": "이해주", "iid": "190", "title": "[FIX] User Session 동기화 개선", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "189", "title": "[FIX] 웹뷰 네비게이션 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "188", "title": "[FEATURE] 소셜 로그인 연동 및 중복 계정 처리 기능 개선", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "185", "title": "[FEATURE] BaseController onInit에 BuildContext 전달 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "183", "title": "[FEATURE] 검색 필터 저장 toapp 기능 추가 및 검색화면  url 호출 useCase 개발", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "174", "title": "[FEATURE] 쿠키 관리 아키텍처 통합 및 재구조화 (자동로그인 이슈 해결)", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "158", "title": "[FEATURE] WebView 네비게이션 안정성 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "157", "title": "[FIX] iOS > 앱 재시작 시 쿠키 유실 문제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "156", "title": "[FEATURE / REFACTOR] 로그인  회원가입 화면 UI 리뉴얼 작업 및 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "151", "title": "[REFACTOR] 로그인 쿠키 useCase 모듈 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "146", "title": "[FIX] 계정 전환 시 이전 계정 쿠키 잔존 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "145", "title": "[FIX] photo deeplinkHandler 앱브릿지 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "144", "title": "[FEATURE] 로그인화면 UI 적용 1차", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "143", "title": "[FEATURE] : 간편 로그인(빠른 로그인) 기능 1차 구현", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "142", "title": "[ENHACNCE] 안드로이드 PredictiveBackPageTransitionsBuilder 네비게이션 트랜지션 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "141", "title": "[FIX] BaseScreen > PopScope 이벤트가 트리거 안되는 이슈", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "138", "title": "[FIX] QR popUntilOrPush 네비게이션 메소드 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "136", "title": "[FEATURE / REFACTOR] 웹뷰 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "135", "title": "[FEATURE] 디자인 시스템 TextField 구현", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "129", "title": "[FEATURE] 로그인 Oauth 응답 필드 스토리지 저장 로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "125", "title": "[FEATURE] 웹뷰 로딩 인터렉션 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "124", "title": "[FEATURE] JK 개편 탭 구조 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "123", "title": "[FEATURE] 로그인 / 회원가입 1차 구현", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "118", "title": "[FEATURE] bottomSheet 유틸리티 클래스 safeArea 패딩 값 속성 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "107", "title": "[FIX] 웹뷰 MissingPluginException 이슈 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "106", "title": "[FIX] 쿠키 관리 시스템 개선", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "100", "title": "[FEATURE] 로그인 as-is UI화면 구현 (새로운 디자인 적용 전)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "87", "title": "[FIX] iOS에서 SPA 동적 렌더링이 간헐적으로 실패하는 문제 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "79", "title": "[FEATURE] 소셜 회원가입 완료 기능 1차 마이그레이션", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "78", "title": "[REFACTOR] base 웹뷰 모듈 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "59", "title": "[REFACTOR] WebView Handlers 패턴 매칭 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "50", "title": "[ENHANCE] 플랫폼별 웹뷰 최적화 마무리 작업", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "40", "title": "[MERGE] app-develop -> develop", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "32", "title": "[UPDATE] app-develop -> develop", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "29", "title": "[FEATURE] UserService(세션) 모듈 추가 로그인 쿠키 및 세션 로직 개선", "comments": 9, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "27", "title": "[FEATURE] BottomSheet 유틸리티 클래스 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "21", "title": "[FIX] 플랫폼별 loadUrl 트랜지션 최적화 작업 및 webview instance 재활용 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "20", "title": "[ENHANCE] 안드로이드 웹뷰 포퍼먼스 개선을 위한 Impeller 렌더링 엔진 비활성화", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "19", "title": "[REFACTOR] 싱글레포 멀티앱 → 싱글앱 리팩토링 (알바몬 걷어내기)", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "18", "title": "[FEATURE] 싱글 웹뷰 인스턴스 라우팅 시스템 구현", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "17", "title": "[FIX] firebase 패캐지 의존성 충돌 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "16", "title": "[FEATURE] 웹뷰 로직 개선 및 ID/PW 로그인 1차 마이그레이션", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "14", "title": "[REFACTOR] : Navigation Handler Enum 제거 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "13", "title": "[FIX] : 네비게이션 UIController 앱브릿지 개선 및 기타 수정건", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "11", "title": "[REFACTOR] 웹뷰 라우팅 구조 개선 (argument 전달 방식)", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "10", "title": "[FEATURE] : 웹뷰 네비게이션 1차 연동 및 구조 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "9", "title": "[REFACTOR] Getx 패키지 걷어내기 작업 (StateManagement  Navigation)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "8", "title": "[FEATURE] NavigationHandler  FullWebview  BaseWebview 구조 개선 작업", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "7", "title": "[FEATURE] AOS 커스텀 네비게이션 트랜지션 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "6", "title": "[FEATURE] 웹뷰 모듈 (BaseWebView) 구조 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "5", "title": "[FEATURE] VersionService 모듈 구현", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "4", "title": "[FEATURE] JK 웹뷰모듈 마이그레이션 1차 작업", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "3", "title": "[FEATURE] JK/AM 바텀 레이아웃 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "이해주", "iid": "2", "title": "[FEATURE] 초기 프로젝트 구조 설계 및 작성", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1140", "title": "fix: Braze 이벤트/속성 전송 로직 개선 및 익명 사용자 데이터 병합 대응", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1134", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1132", "title": "feat: AppsFlyer/Braze 연동 개선 및 WebView Referer 헤더 지원", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1126", "title": "app dev- > dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1120", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1117", "title": "refactor: UserIdentity.tsNo를 nullable-safe 패턴으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1114", "title": "refactor: Sentry prod 환경 제한 및 광고 배너 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1102", "title": "app dev- > dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1100", "title": "dev -> main", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1097", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1096", "title": "fix: 검색 결과 DMP 로그에 budgetId 파라미터 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1093", "title": "fix: 검색 결과 DMP 노출 로그 누락 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1089", "title": "페이지 인덱스추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1088", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1081", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1080", "title": "feat: Android App Links 우회하여 기업회원 로그인/회원가입 외부 브라우저 열기", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1072", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1065", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1059", "title": "feat: 최근 검색어 마이그레이션 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1058", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1054", "title": "fix: headhunting 경로 uitype=15(본창)로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1053", "title": "app dev-> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1039", "title": "app dev- > dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1035", "title": "feat: Braze/AppsFlyer 이벤트 추적 개선 및 Push 알림 설정 연동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1033", "title": "app dev-> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "1018", "title": "[Fix] 앱스 플라이어이 키값 변경.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1017", "title": "[Fix] 앱스 플라이어이 키값 변경.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1010", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1008", "title": "fix: Braze QA 기능 추가 및 기타등등", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "1004", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "991", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "987", "title": "fix: 개인정보 동의 Braze 이벤트 추가 및 광고 관련 버그 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "975", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "973", "title": "refactor: 스플래시 광고 타임아웃 및 로그인 Braze 연동 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "972", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "960", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "955", "title": "feat: Footer 데이터를 Firebase Remote Config로 동적 관리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "948", "title": "feat: Debug Banner에 DMP 탭 추가하여 공고 클릭 시 SC Code 확인 가능", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "939", "title": "refactor: GA4 dimension 주입 로직 개선 및 점검 날짜 포맷 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "937", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "935", "title": "feat: Braze QA gaCustom 서버 연동 및 디버그 코드 정리", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "김승하", "iid": "932", "title": "app dev-> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "931", "title": "feat: Braze QA 커스텀 이벤트 추가 및 타임스탬프 포맷 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "916", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "913", "title": "feat: 디버그 패널에 런타임 환경 변경 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "899", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "898", "title": "fix: appVersionInfo null 처리 개선 - 기본값 제거 및 안전한 플로우 보장", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "896", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "881", "title": "feat: DMP3 - 서버 색상 지원 및 브레이즈 검수 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "874", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "871", "title": "appdev-  > dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "866", "title": "feat: 푸시 동의 7일 재노출 로직 및 검색 결과 DMP 연동 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "860", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "859", "title": "feat: DMP GA 및 Braze 이벤트 연동 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "844", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "835", "title": "feat: DMP 스크랩 로그를 Controller 레이어로 이동하여 지면 정보 포함", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "829", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "819", "title": "feat: DMP 트래킹 시스템 통합 및 섹션별 공고 카드 DMP 로그 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "808", "title": "chore: Android 스플래시 리소스 및 마이그레이션 검증 문서 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "807", "title": "feat: Braze 이벤트/속성 Native 1:1 매핑 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "804", "title": "feat: GaTracker에 커스텀 디멘션 지원 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "791", "title": "feat: 공고 카드 이미지 placeholder 개선 및 QA 피드백 반영", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "790", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "767", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "762", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "755", "title": "fix: 홈 헤더 아이콘 색상 및 SVG 품질 개선 (디자인 QA)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "753", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "748", "title": "feat: 푸시 동의 '다시 보지 않기' 기능 및 스낵 알림 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "735", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "729", "title": "refactor: 앱 초기화 API 응답 구조 개선 및 DTO 정리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "713", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "711", "title": "feat: 잡찾기/검색결과 화면에 Scroll-to-Top 버튼 추가 및 광고 관련 기능 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "699", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "686", "title": "feat: AppButtonTop 공통 위젯 추가 및 하드코딩 스타일 디자인 시스템 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "679", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "677", "title": "fix: QA 피드백 반영 - 스플래시 로고  UI 색상 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "659", "title": "refactor: 스낵 알림 중복 표시 기준을 notificationType으로 변경 및 광고 배너 border 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "655", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "647", "title": "feat: AppsFlyer 이벤트 트래킹 확장 및 광고 배너 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "637", "title": "App develop -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "631", "title": "appdev-> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "629", "title": "feat: 선호공고 영역 UI 디자인 개선 및 홈 화면 API 실패 처리 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "618", "title": "fix: AI Insight 툴팁 위치 및 PM 팝업 일정 노출 오류 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "607", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "603", "title": "feat: 예방 점검 공지 팝업 구현 및 Clean Architecture UseCase 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "597", "title": "app dev- > dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "589", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "588", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "585", "title": "feat: 예방정비(메인터넌스) 정보 조회 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "582", "title": "fix: AI Insight 섹션 디자인 검수 반영 및 버튼 컴포넌트 피그마 스펙 매칭", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "581", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "580", "title": "refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "573", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "557", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "556", "title": "fix: AI Insight 섹션 디자인 QA 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "552", "title": "fix: 홈 화면 UI/UX 개선 및 폴드 접힘 시 말줄임 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "538", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "522", "title": "refactor: 홈 화면 스낵바/배너 컴포넌트 분리 및 피그마 디자인 QA 반영", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "517", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "506", "title": "appdev->dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "496", "title": "fix: iOS 인앱결제 취소/에러 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "489", "title": "refactor: curation_job_section 위젯을 개별 파일로 분리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "480", "title": "feat: 이미지 empty placeholder 통합 및 잡카드 이미지 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "470", "title": "refactor: 홈 스낵 알림 로직을 seen 기반으로 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "468", "title": "feat: CurationJobSection에 비로그인 시 로그인 유도 배너 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "466", "title": "feat: ContentCard 콘텐츠 타입별 배경 스타일 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "465", "title": "fix: 홈 화면 안정성 개선 및 UI 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "462", "title": "fix: 큐레이션 공고 이모지 및 AppImage 에러 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "456", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "455", "title": "feat(ai-insight): AI Insight 섹션 디자인 시스템 적용 및 피그마 시안 일치", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "449", "title": "feat: 콘텐츠 이미지 URL 빌더 추가 및 홈 섹션 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "447", "title": "feat: 큐레이션 잡 카드 반응형 및 캐러셀 자동 스크롤 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "446", "title": "feat: 홈 화면 UI 개선 및 광고/툴팁 안정성 강화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "438", "title": "fix: 큐레이션 공고 이모지 및 잡찾기 탭명 오류 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "437", "title": "feat(AppTabBar): tabAlignment 파라미터 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "432", "title": "refactor: 온보딩 직무선택 섹션 로딩/에러/빈데이터 시 숨김 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "426", "title": "feat: 광고 및 플로팅 알림 예외처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "423", "title": "[feat] 잡온보딩 예외처리 + 타임아웃 시간 12->3 max큐 3->5", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "418", "title": "feat: 홈 화면 알림 탭 이동 및 CardSwiper 스크롤 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "415", "title": "feat: 앱 초기화 실패/점검/업데이트 팝업 처리 로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "414", "title": "fix: iOS 최초 실행 시 _widgetController LateInitializationError 방어 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "413", "title": "feat: 개인화 스낵 알림 기능 개선 및 숨기기 로직 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "396", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "394", "title": "feat: 온보딩 잡 선택 섹션 UI 개선 및 스와이프 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "386", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "383", "title": "feat: GetFilterTypeFilterDisplayUseCase v1.3.0 - title 필드 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "382", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "380", "title": "feat: FilterType UseCase에 iconPath  requiresLogin 추가 및 테스트 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "379", "title": "feat: 필터 화면 최초 진입 여부 확인 UseCase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "374", "title": "feat: 급여형태(PayType) 필터 UseCase 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "372", "title": "feat: 고용형태(EmploymentType)  빠른설정(FilterType) 필터 UseCase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "371", "title": "feat: 디버그 배너 UI 개선 및 GA4 핸들러 Android 호환성 강화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "362", "title": "[fix] 인앱결제 수정 및 추가 개발", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "361", "title": "[fix] Release 빌드 네이버 로그인 실패 및 상단바 UI 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "356", "title": "fix: iOS 푸시 알림 토큰 전송 방식 수정 (APNS 토큰 사용)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "354", "title": "refactor: 광고 WebView 위젯 분리 (고정 높이 vs 동적 높이)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "353", "title": "feat: 파워링크 광고 클릭 시 외부 브라우저로 열기 및 동적 높이 지원", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "352", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "351", "title": "feat: 파워링크 광고 클릭 시 외부 브라우저로 열기", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "342", "title": "fix: QnA 댓글 이미지 업로드 및 지도보기 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "341", "title": "appdev-> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "336", "title": "[chore] 개발 환경 배너 모드 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "327", "title": "[feat]안드로이드 백그라운드 딥링크 이슈 수정  네이버 맵 화면 기능 개발", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "317", "title": "fix: iOS Braze 푸시 알림 설정 수정 - push.automation 기반으로 전환", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "307", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "306", "title": "[Feat]ai agent sample", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "300", "title": "[hot-fix] braze_key값 정상화", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "297", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "296", "title": "feat: Android 폴드/태블릿 화면 방향 설정 기능 및 기업회원 앱 업데이트 로그인 유지 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "292", "title": "fix: 기업/서치펌 회원 마이그레이션 스킵 및 안내 다이얼로그 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "289", "title": "feat: Braze/AppsFlyer 초기화 통합 및 ATT 타이밍 최적화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "282", "title": "feat: 카카오 로그인 및 AppsFlyer 딥링크 설정 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "276", "title": "fix: 스플래시 광고 로그 전송 API 누락 필드 및 설정값 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "274", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "269", "title": "feat: 광고 시스템 개선 및 스플래시 로그 API 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "258", "title": "Feature/power link2", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "250", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "241", "title": "feat: 기업회원 자동 로그인 차단을 위한 마이그레이션 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "236", "title": "feat: 파워링크 광고 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "220", "title": "feat: AdFit ID 등록 이슈 수정 및 WebView 설정 개선", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "219", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "218", "title": "[feat] 탈옥/루팅 체크 및 iOS 인앱 결제 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "213", "title": "appdev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "209", "title": "feat: AdFit 광고 InAppWebView 포크로 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "200", "title": "[fix] 이것저것 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "191", "title": "feat: 안드로이드 뒤로가기 처리 및 홈스크린 메뉴 적용", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "179", "title": "feat: 광고 배너 Native WebView 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "168", "title": "feat: 광고 배너 테스트 구현 및 자동 로그인 구조 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "149", "title": "appdev -> dev 땡겨오기", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "148", "title": "feat: 앱 자동 로그인 및 스토리지 마이그레이션 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "126", "title": "[feat] 검색 자동완성 기능 usecase", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "121", "title": "[feat] 메뉴 API usecase 수정 및 구조 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "119", "title": "feat: Main 화면 푸시 동의 UseCase 및 화면 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "112", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "109", "title": "feat: 데이터 절약 모드 및 프로필 편집 기능 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "102", "title": "refactor: 메인 Bottom Sheet 데이터 구조 변경 및 문서 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "99", "title": "feat: 메인 Bottom Sheet 기능을 Clean Architecture로 구현", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "95", "title": "feat: iOS Native 키체인 TS_NO 마이그레이션 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "91", "title": "refactor: 앱 초기화 아키텍처를 Clean Architecture로 전면 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "88", "title": "[feat] FCM 토큰 API 호출 기능 추가", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "83", "title": "app dev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "82", "title": "[feat] AI 에이전트 프로젝트 가이드 및 Claude 팀 설정 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "80", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "77", "title": "[Feat] 앱스타트 2차작업.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "74", "title": "[feat] appstart작업 1차", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "60", "title": "[feat] ATT 추가 + 파베 init 위치 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "58", "title": "[feat]  tsno 스토리지로 변경 + init flow 순서변경.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "57", "title": "appdev -> dev", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "56", "title": "[feat] Flavor 런타임 선택", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "51", "title": "app dev -> dev", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "44", "title": "[Feat] firebase settings", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "41", "title": "[Feat] 내부 스토리지데이터 마이그레이션  2차", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "15", "title": "[Feat] init flow", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "1138", "title": "검색 화면 키보드 및 자동완성 UX 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1127", "title": "iOS. 에서 swipe back 이 안되서 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1124", "title": "검색 홈 및 검색 결과 화면의 자동완성 UX 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1122", "title": "홈 광고 key 'spaceHome' 으로 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1115", "title": "캐싱 로직 변경. 캐싱을 컨트롤러에서 수행하고 사용하는 곳으로 전달.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1113", "title": "검색 결과에서 마지막으로 저장한 키워드 따로 저장해서 필요 한 영역에 사용하게 수정 (필터 조회 및 새로 고침 시에)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1105", "title": "기다릴 필요 없는 공고들은 따로 비동기 로드 후 갱신하도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1101", "title": "유저 이름을 가져오는 API 를 이용하여 검색 홈에서 설정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1095", "title": "_currentPage 를 직접 ++ 하지 않고 +1  해서 다음 페이지를 호출 후 데이터가 있을 경우 _currentPage 설정하게 수정 (", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1092", "title": "모음이 있는 경우 -> 모음만 있는경우 정규식으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1091", "title": "검색 시 포매터 삭제 (입력은 되도록) 이후 검색 모음 들어 있을 경우 empty 화면 노출", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1085", "title": "검색 결과에 usecase에 enum 자체를 넘기게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1078", "title": "검색 결과 에서 페이징 feature code 안 넣고 있어 수정  DMP 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1075", "title": "DMP에 Sort 추가  검색어 입력 시 Formatter 설정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1066", "title": "featurecode 없이검색 시에도 featureCode 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1057", "title": "필터 영역을 헤더 영역에 위치 시켜 당겨서 새로고침에 문제 없게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1051", "title": "canPop 을. iOS android 분기 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1046", "title": "검색결과에서 이동시  wait 가 무지. 걸려있어 수정. 검색 홈  검색 결과 swipe back 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1040", "title": "하이테크 노출되는 문구 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1036", "title": "검색 결과. GA 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1031", "title": "자동완성 검색시에 feature 코드 있으면 request 에 추가 후 검색", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1028", "title": "구독상태가 빠져있어서 갱신 안되는 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1027", "title": "광고 UI 갱신 수정  하이테크 이동 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1025", "title": "필요 없는 스크랩 상태 업데이트가 들어가 있어 삭제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1024", "title": "검색 결과 화면 수정 원복 (잘못 수정된 부분이 들어가 버려 원복 하였습니다.)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "1014", "title": "CPC  CPT 상품 추가 호출 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "1009", "title": "타이틀 노출 로직 수정  노출되는 문구 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "989", "title": "GA 이벤트 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "981", "title": "검색 결과 화면에서 기업 외에 배너가 있어 해당 배너일 경우 노출 및 이동 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "978", "title": "prd 서버 기업명과 상이하게 노출되는 문제 수정  복리 후생 노출 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "969", "title": "읽음 처리 영역에 isViewed 처리 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "968", "title": "상세 호출 시 sccode 추가. 및 logpath=1 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "958", "title": "검색 결과 카드에서 태그 영역에 원픽이면 좌측에 이미지 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "957", "title": "https://jira.jobkorea.co.kr/browse/TEST-77477 몇 분  몇 시간 전 등록일 경우 'n분 전 등록'/'n시간 ", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "956", "title": "검색 결과 GA 수정 (https://jira.jobkorea.co.kr/browse/TEST-77438)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "950", "title": "잘못된 온보딩 문구 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "940", "title": "검색영역 스크랩 Mock 사용하는 부분이 남아있어 삭제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "930", "title": "기존 경력 이상 로직 삭제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "925", "title": "색 결과 화면에서 원픽  스토리 공고 좌우 페이저로 사용하던 부분 단순 리스트로 변경 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "923", "title": "원픽 공고 영역 수정 (바뀐 API 에 맞게 수정)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "917", "title": "필요 없이 있는 usecase삭제 (읽음 처리 관련)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "915", "title": "온보딩 가이드 라인 팝업 문구 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "912", "title": "태그 텍스트 변경 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "910", "title": "검색 결과 카드에서 x년↑ 안붙어 있으면 붙이게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "906", "title": "검색 카드 관련 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "902", "title": "디자인 이슈들 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "851", "title": "이번주 공채 소식 안나오는 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "846", "title": "처음 가이드 팝업 로티 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "845", "title": "검색결과에서 등록  마감 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "841", "title": "정렬 할 때에 result 초기화 이후 _fetchSearchResult 자체를 기다리게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "834", "title": "필터 영역 상단에 잘리지 않도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "818", "title": "합격 축하금 계산식 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "816", "title": "검색 결과 화면에서 top 100 호출 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "802", "title": "읽음 처리 서비스 사용하도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "800", "title": "인기 top 100 선택 시 이동하게 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "798", "title": "검색 결과 마감 표시 수정  검색 결과 필터 아래쪽에 1줄 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "794", "title": "공고 우측 앱 이미지 호출 전 사전 로딩 수행해서 이미지 에러 노출 되는지 확인후 노출 하게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "793", "title": "스토리 공고 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "782", "title": "앱 버튼이 와측 아이콘 우측 아이콘 선택이 잘 안되는 이슈 있어 선택 영역을 나누도록 수정 하였습니다.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "780", "title": "release 모드에서 갱신 되지 않는 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "771", "title": "선택 영역 수정. 꽉차게  검색 결과에서 자동완성 수정하다가 딤이 없어져서 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "770", "title": "검색 결과 컨트롤러에서 executeUsecase사용하지 않는 부분 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "768", "title": "검색 결과 이미지 로고 만들어서 넣게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "764", "title": "알바몬 iOS 이동 안하는 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "763", "title": "UI 이슈 수정  AppImage사용하게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "760", "title": "자동완성 리스트 노출 시 스크롤 가능하게 수정 (https://jira.jobkorea.co.kr/browse/TEST-76872)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "758", "title": "하이테크 노출 및 알바몬 넛지 노출 조건 및 순서 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "750", "title": "알바몬 넛지 기능 수정 (High 이슈)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "745", "title": "QA 이슈 수정 : 디자인 수정 및 이동 기업 이동 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "739", "title": "홈 화면에서 사용하는 검색 창 변경 및 에러 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "736", "title": "https://jira.jobkorea.co.kr/browse/TEST-76809 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "721", "title": "TEST_76706 : 마지막 스크롤 시 스크롤 버벅임 현상 발생됨 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "720", "title": "https://jira.jobkorea.co.kr/browse/TEST-76620", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "719", "title": "https://jira.jobkorea.co.kr/browse/TEST-76491 UI 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "718", "title": "검색 결과 스크롤 시 로고 영역이 로딩 완료 되기 전까지 노출되지 않게 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "717", "title": "딤처리 해제만 되고 키패드 ON 상태 유지됨", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "704", "title": "검색 홈 지역 필터 연동 및 최근 필터 저장 구현", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "700", "title": "검색결과 화면 당겨서 새로고침 추가.", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "692", "title": "검색 QA 대응 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "651", "title": "검색 QA 이슈 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "636", "title": "그라디에이션 애니메이션을 우선 공통 검색 헤더에서 삭제", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "608", "title": "스마트픽 영역 개선 및 스크랩 버튼 통합", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "583", "title": "로티 애니메이션에 겹쳐서 페이드인 페이드 아웃 애니메이션 적용하게 해달라는 요청이 있어 (자연스럽게 보이기 위해) 해당 요건 추가하였습니다.", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "569", "title": "검색 결과 화면 수정", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "551", "title": "온보딩 팝업 수정 ( 로티 애니메이션으로 수정 )", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "515", "title": "검색 결과 화면에서 필터 리프레시 되도록 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "475", "title": "검색바 컴포넌트 리팩토링", "comments": 1, "approvers": 2, "ci": "unknown"}, {"name": "임희강", "iid": "439", "title": "검색 결과 아이템 경로 변경 -> component/job_card", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "395", "title": "DialogManager 공통 설정 중앙화 및 AppButton 패딩 기능 추가", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "389", "title": "홈 온보딩 팝업 다이얼로그 구현", "comments": 12, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "358", "title": "검색 결과 화면 노출 로직 기획에 맞게 수정 및 테스트를 위한 설정 수정", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "315", "title": "검색 결과 없음 UI/UX 개선 및 인기 공고 표시 기능 추가", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "298", "title": "검색 결과 화면에 스마트핏 섹션 추가 등", "comments": 9, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "285", "title": "검색 홈 추천 검색어 노출 수정 및 동의 팝업 노출 로직 수정", "comments": 10, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "264", "title": "검색 화면에 파워링크 광고 배너 추가", "comments": 9, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "254", "title": "검색 결과 화면 리팩토링 및 공용 컴포넌트 통합", "comments": 15, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "235", "title": "로딩 다이얼로그 구현 및 HTML 다이얼로그 테스트 인프라 추가", "comments": 7, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "202", "title": "검색 결과 화면 추가 및 구조 개선", "comments": 24, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "180", "title": "검색 홈 영역을 mock에서 실제 API로 변경", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "167", "title": "ASIS 검색 화면 구현", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "147", "title": "홈 스크린 진입 시 푸시 동의 팝업 노출 수정", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "139", "title": "자동완성 검색어  자동완성 검색 회사 실제 Domain 에서 호출하게 수정.", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "110", "title": "## 검색 화면 신규 구현: 주석 간결화  상수 추출  의존성 주입 패턴 적용", "comments": 16, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "98", "title": "공통 사용 위한 ClassicAppbar 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "71", "title": "마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정", "comments": 34, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "53", "title": "Feature/app develop/popup retry", "comments": 10, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "1131", "title": "Fix/small error", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1119", "title": "fix : sentry scrollable error 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1109", "title": "fix : dmp value  gender => M F null  UUID 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1099", "title": "fix : 인기 공고 impression 누락", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1090", "title": "AppUserSession MemberInfo 동기화 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1087", "title": "DMP 검색 조건 로그 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1086", "title": "App develop", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1083", "title": "refactor(find_job): UseCase 정렬 파라미터 타입을 SortOptionType enum으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1073", "title": "fix : dmp 수정중", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1023", "title": "TEST-77630 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "1021", "title": "feature : featureType 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1013", "title": "스마트핏 직무 요청 body 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1007", "title": "슈퍼 채용관 랜덤 노출 로직 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "1003", "title": "CodeHub Race Condition 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "1001", "title": "TEST-77400 회색화면 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "990", "title": "fix : 큐레이션 라벨 들썩들썩 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "984", "title": "Catalog 동기화 아키텍처 개선 및 Asset Fallback 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "977", "title": "fix : 지역 2depth에 일본 중국 미국 홍콩 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "974", "title": "코드 허브 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "954", "title": "fix : 통검-스마트픽 + includeData 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "938", "title": "검색 결과 DMP 로그 속성 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "921", "title": "Dynamic URL 수정 건 및 scCode 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "891", "title": "fix : 전시 version <-> section 간극 극복 로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "886", "title": "CPC/CPT 상품 트래킹 시스템 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "864", "title": "fix : TEST-76479 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "853", "title": "DMP Data Tracking 필드 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "849", "title": "feature : change start post dto", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "848", "title": "fix : 산업 군 중복 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "843", "title": "잡찾기 지면 spacing 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "840", "title": "feature : applicationRegAt 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "837", "title": "dmp space 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "831", "title": "fix: placeHolder actionUrl 변환", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "822", "title": "해외 지역 데이터 조회 기능 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "817", "title": "Tracking 필드 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "815", "title": "합격축하금 DTO 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "792", "title": "Feature/ga action", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "783", "title": "Sync Outlink UseCase 추가 및 필터 초기화 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "766", "title": "JobResDto 및 경력 라벨 표시 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "751", "title": "필터 중복 제거 및 Placeholder 라벨 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "742", "title": "GA4 공고 Custom Dimensions 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "733", "title": "잡찾기/검색 버그 수정 모음", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "728", "title": "refactor : page to limit", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "725", "title": "최근 필터 저장 로직 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "724", "title": "잡찾기  검색 페이징 인덱스 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "716", "title": "FilterRequestBody 리팩토링 및 ListType Enum 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "707", "title": "JobViewType 도입 및 카드 위젯 아키텍처 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "693", "title": "fix: 직무 필터 중복 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "691", "title": "모든 SDUI Section Empty 여부 확인", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "689", "title": "feat(TEST-76326): 조회한 공고 열람 기록 추적 및 배경색 변경 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "687", "title": "일자리 찾기 QA 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "680", "title": "카탈로그 동기화 CDN → BFF API 마이그레이션", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "676", "title": "Viewed Jobs 저장 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "672", "title": "BaseAsyncSection buildHeader 분리 및 동적 헤더 타이틀 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "663", "title": "JobDisplayHelper lookup 통합 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "649", "title": "fix/count-use-case → develop", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "646", "title": "ListCardLogoSmallSection 리네이밍 및 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "644", "title": "fix: build_error", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "641", "title": "필터별 공고수 UseCase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "638", "title": "fix : revert 된 파일 복귀", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "633", "title": "Placeholder 카드 기능 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "630", "title": "UseCase - selectedDisplayName 로직 개선 및 OnBoarding 지역 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "628", "title": "직무 필터 - 3depth '전체' 항목 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "616", "title": "서버 필터 언핀 시 로컬 저장 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "615", "title": "exception  error 위젯 제거 하도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "606", "title": "Fix/qa 26 01 02", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "598", "title": "RecentFilter UseCase", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "586", "title": "refactor: 홈 화면 스크롤 성능 최적화 및 위젯 분리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "554", "title": "CompanyType Enum 통합 및 UseCase 단순화", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "548", "title": "통합 검색 스마트핏 UseCase 추가 및 선호공고 미노출 대응(content)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "544", "title": "feature : pageSize 수정 및 파라미터 4칸으로 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "534", "title": "cookieNo생성 UseCase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "533", "title": "QA 및 AD 라벨 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "526", "title": "fix: mockData누락 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "518", "title": "fix:mock 데이터 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "514", "title": "feature : payType nullable", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "513", "title": "fix : 검색 도메인 변경 적용  logo_card error 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "508", "title": "통합 검색 UseCase 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "502", "title": "합격축하금 필터 토글 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "501", "title": "공고 검색 건수 조회 API 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "500", "title": "Find Job New - SDUI 기반 섹션 시스템 확장", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "499", "title": "refactor: deprecated된 mock UseCase 제거 및 core UseCase로 교체", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "497", "title": "Find Job New - SDUI 기반 섹션 시스템 확장", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "492", "title": "style(filter): excludeApplied 필터 아이콘 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "490", "title": "fix : 개인화 알림 parser수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "487", "title": "FilterItemMapper → GetFindJobFilterBarDisplayUseCase 마이그레이션", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "486", "title": "미등록 RenderType 경고 위젯 추가 + API Enums 갱신", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "485", "title": "fix : build_error 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "484", "title": "SectionBuilderWidget HomeSduiController 의존성 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "483", "title": "feature : job찾기 segment분리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "482", "title": "feat: 저장된 필터 복원 시 Display 데이터 변환 로직 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "479", "title": "공고 검색 API 및 스마트핏 검색 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "476", "title": "공고 검색 API 및 필터 모델 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "473", "title": "필터 아키텍처 리팩토링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "464", "title": "SDUI Interface 개선 및 검색조건 아키텍처", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "458", "title": "SDUI Interface 개선 및 공고찾기 화면 SDUI 적용", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "445", "title": "큐레이션 공고 API 응답 구조 수정 및 TypeError 예외 처리 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "442", "title": "큐레이션 잡 섹션 광고  더보기 추가  섹션당 패딩 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "436", "title": "CurationJobSection type 필드 추가 및 헤더 표시", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "435", "title": "UrgentNoticeSection (긴급 공지 섹션) 신규 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "433", "title": "CDN Catalog DTO 필드 추가 및 섹션 배경색 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "431", "title": "AI Insight 섹션 리팩토링 및 데이터 구조 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "429", "title": "Feature/job search usecase", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "420", "title": "섹션 시스템 개선 - 헤더 숨김  에러 UI 상세화  API 스킵 기능", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "417", "title": "섹션 헤더 Emoji 지원 및 Curation Job 빈 데이터 처리 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "409", "title": "온보딩 저장 기능 유연화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "408", "title": "Exception 처리 개선 및 SDUI 파싱 에러 Sentry 통합", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "407", "title": "AdBanner 섹션 마이그레이션", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "405", "title": "feat: Screen 카탈로그 실제 CDN 연동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "404", "title": "홈 섹션 최소 버전 필터링 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "403", "title": "feat: 온보딩 진행 단계 조회 UseCase 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "399", "title": "feature/onboardingAndJobCardDefault 변경 명세서", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "392", "title": "Feature/onboarding and job card default", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "387", "title": "[Feature] 선호공고 선택 샘플 구현", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "385", "title": "[Feature] 온보딩 공고 선택 섹션 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "375", "title": "[Feature] CurationJobSection 키워드 칩 인터랙션 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "373", "title": "[Feature] Job Scrap UseCase 및 필터 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "367", "title": "[Feature] 홈 화면 섹션 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "363", "title": "[Feature] Segment UseCase 구현 및 HomeController 연동", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "357", "title": "[fix]  .jobko.io domain 쿠키 발리지 않는 이슈", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "350", "title": "[Refactor] 미사용 DTO 및 Domain Model 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "339", "title": "[Feature] 온보딩 지역 필터 UseCase 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "338", "title": "[Feature] 홈 콘텐츠 섹션 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "335", "title": "Swagger DTO 자동 생성 시스템", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "334", "title": "feature: BFF Display Main DTO 자동 생성 스크립트 및 DTO 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "326", "title": "지역 필터 UseCase 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "325", "title": "Filter UseCase 자동화 시스템 도입", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "324", "title": "feature: API spec enum 자동 생성 (64개 신규  4개 업데이트)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "323", "title": "enums 자동 생성용 claude slash command 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "318", "title": "Fix/member system no type", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "304", "title": "CodeHub DisplayModel UseCase 추상화 및 필터 UseCase 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "301", "title": "메인 홈 SDUI 아키텍처 전면 개편 - Server-Driven UI 기반 섹션 렌더링", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "286", "title": "fix : usecase 내 누락된 result 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "251", "title": "마케팅 푸시 동의 여부 알림 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "245", "title": "fix : 간편 로그인 삭제 문구 수정 및 임시 UI적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "234", "title": "fix : keyChain 저장 로직 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "233", "title": "fix : init_api 405 error 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "231", "title": "fix : 설정 - 자동로그인 여부 비활성화시 로그아웃되지 않도록 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "230", "title": "feature : flavor 선택 다이얼로그 slot 임시 disabled 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "217", "title": "fix : 설정 - 자동로그인 여부 shared memory에 동기화 하여 관리하도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "211", "title": "iOS : ts_no 생성시 keychain 저장  디버그 flavor 다이얼로그 내 keychain 삭제 버튼 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "210", "title": "flavor subDomain 설정 일부 url에만 적용되던 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "201", "title": "InitTask 유틸리티 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "181", "title": "앱 초기화 프로세스 개선 1차", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "173", "title": "최근 검색어 CRUD 기능 구현", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "171", "title": "메뉴 데이터 캐싱 로직 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "170", "title": "Feature/search usecase task1", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "166", "title": "fix : ts_no lazy initialize 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "165", "title": "fix : interceptor 나중에 init제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "161", "title": "공통 exception 1차", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "159", "title": "chore : freezed & annotation version up", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "128", "title": "feature : code-hub prod stg 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "127", "title": "fix : CDN version check 직렬로 이동", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "122", "title": "code_hub DB적재 시스템 & 지역 검색 필터 usecase", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "96", "title": "BFF - API 연동 기본 셋팅", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "93", "title": "fix : query -> field로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "84", "title": "Feature/app setting list", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "76", "title": "init_api호출 로직 추가 및 자동로그인 usecase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "68", "title": "앱 설정 - 기본 get usecase 구현 및 적용  tobe-자동로그인 상태 변경", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "64", "title": "chore : init 시나리오 확인 쉽도록 logger 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "63", "title": "Feature/app core setting", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "42", "title": "Feature/sdui test", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "39", "title": "Feature/sdui test update", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "12", "title": "data <-> domain 계층", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "1133", "title": "Fix: 유니버셜링크 외부인입케이스 헤더정리 https://jira.jobkorea.co.kr/browse/TEST-77778", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1125", "title": "Fix: AI인사이트 문구 150자 +더보기 로직에서  높이기반(5줄) 더보기 로직으로 변경 https://jira.jobkorea.co.kr/", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "1121", "title": "Fix: 앱 백키로 끈다음에 딥링크 받으면 앱 두개되는현상 수정(안드) https://jira.jobkorea.co.kr/browse/TEST-", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1094", "title": "Feat: 유니버셜/앱링크 엣지케이스 시스템 제작 https://jira.jobkorea.co.kr/browse/TEST-77778?filter", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1084", "title": "Fix: 이미지 캐시추가 + 테마관 반잘라 편집하는 이미지 캐시사이즈 명시", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1077", "title": "Update HttpOverrides comment to clarify its purpose for non-API network calls...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1070", "title": "Fix: 콜드스타트 앱링크 미동작 수정 https://jira.jobkorea.co.kr/browse/TEST-77503", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "1064", "title": "Fix: 스플래시 800ms 안에 재빌드콜 오면 무시", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1060", "title": "fix: 검색 totop버튼 바텀패딩 추가 https://jira.jobkorea.co.kr/browse/TEST-76862", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1048", "title": "Fix/donny3", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "1044", "title": "feat: 컨텐츠 플레이스홀더 정규식 좀더추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "1043", "title": "Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정 https://jira.jobkorea.co.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1037", "title": "Fix/donny3", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1020", "title": "Fix: 안드로이드 빠르게 백키 두번 누르면 두번째 이후 액션 먹히는 문제 수정 https://jira.jobkorea.co.kr/browse/", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1012", "title": "Fix: 홈화면 온보딩 2단계 완료후 심하게 덜그럭거리는 현상 수정. https://jira.jobkorea.co.kr/browse/TEST-7", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "1006", "title": "Fix: 온보딩 2차 완료 -> 로그인 후 상단 로그인필요한 영역 계속 스켈레톤 보이는 문제 수정...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "992", "title": "Fix: 섹션 더보기페이지 타이틀 다른거 수정 https://jira.jobkorea.co.kr/browse/TEST-77567", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "982", "title": "Fix: vip 상품cardjobThumbnailHorizontal 더보기페이지에서 같은 이미지 쓰도록 수정...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "979", "title": "ㅋㅋㅋ", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "964", "title": "Fix: 홈 온보딩 2단계 이후 자동새로고침 제거 https://jira.jobkorea.co.kr/browse/TEST-77066", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "942", "title": "Fix/donny", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "936", "title": "Fix/donny", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "919", "title": "Fix: 잡코로고 플레이스홀더 공고카드에서 한번 쭉 잡았음https://jira.jobkorea.co.kr/browse/TEST-75855", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "908", "title": "Misc: 칼라값 피그마 토큰기반(JAMS2.0피그마기준) 업데이트 260113", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "878", "title": "Fix/donny", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "869", "title": "Fix: 특정 폰에서 2열캐로셀페이저 1열만 나오는것 수정 https://jira.jobkorea.co.kr/browse/TEST-77178", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "865", "title": "Fix: 온보딩 상태 안고쳐짐 (첫접속시 안뜸  x눌렀는데 안닫힘) 수정 https://jira.jobkorea.co.kr/browse/TEST", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "858", "title": "Fix/donny", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "850", "title": "Feat: 클래리티 화면명(웹뷰는 url)매칭", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "809", "title": "Fix: CarouselCardLogoSmallPaginationSection 1페이지 구성일때 카드너비 꽉차게 조절  페이지카운터 폰트...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "789", "title": "디자인QA", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "769", "title": "Fix: findjob 디자인현행화(간격맞춤  사이즈다른 캐로셀 처리)https://jira.jobkorea.co.kr/browse/TEST-7", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "765", "title": "Fix: JOB찾기 A타입 아이템 충분하지않은(2개이하)인경우 좌우로 꽉차서 노출되도록 수정 https://jira.jobkorea.co.kr/", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "757", "title": "Fix: 온보딩 링크유틸로 오는경우 처리 잘 안됨문제 수정https://jira.jobkorea.co.kr/browse/TEST-76841", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "741", "title": "Fix: 이력서 등록된 회원이면서 온보딩 2단계만 진행한경우  무한으로 2단계 명륜진사갈비 즐기는 현상 수정...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "723", "title": "Fix: 오버레이웹뷰 켜져있을때 탭이동 명령어 왔을때 제대로 동작 안하는 이슈 수정 패밀리앱 깔려있음 이동처리 (없으면 스토어)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "710", "title": "Fix: 온보딩 7일 미노출 https://jira.jobkorea.co.kr/browse/TEST-76450", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "709", "title": "Develop appdev sync", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "705", "title": "Fix: 온보딩 이력서등록플래그(지역/직무 있음 플래그) 보고 1단계 스킵가능하게 변경 https://jira.jobkorea.co.kr/bro", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "688", "title": "Fix: 잡카드에서 쓰는 추천/핵심채용관(CarouselCardLogoSmallPaginationSection) 2단뷰 좌우로 넓게표시...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "650", "title": "Fix/donny qa2", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "643", "title": "홈화면 프리미어섹션 AD딱지 디자인변경  aiinsight 타이틀폰트 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "620", "title": "Feat: 홈섹션 상세보기페이지에서  홈 아이템 순서 유지하기위해 캐시기능 추가(상세페이지에서만 씀)...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "619", "title": "Feat: 홈 섹션간 마진 설정로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "617", "title": "Fix: 로그아웃시 홈에 있는 웹뷰들 새주소로 로드 안되는현상 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "605", "title": "Fix: 프리미어(cardjobimagebanner) 로고 안나오게 조치  디자인 현행화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "604", "title": "Feat: screen으로 탭안에 있는 페이지 가려고할때 앱스킴 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "587", "title": "Fix/home qa", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "568", "title": "fix: 온보딩 1단계 진행중 2단계처럼 취급되는현상 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "555", "title": "Fix/home", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "539", "title": "Resolve merge conflict", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "536", "title": "home QA 처리", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "511", "title": "Feat: 웹뷰섹션 높이상한선 정함. 좌우로는 무한 늘어나지만  높이는 피그마 설계기준까지만.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "493", "title": "Fix/home", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "488", "title": "Fix/home", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "474", "title": "Fix: jsbridge 로 오는경우  콘텐츠 탭으로(메인화면 계열임) 이동하는 url일경우  정확하게 타겟페이지로 이동 안되는 문제 수정...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "472", "title": "Feat: toapp 스키마 jobkorea 스키마로 전환하건 아니건 모두 호한 가능하도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "471", "title": "Fix/home", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "469", "title": "Refactor: Update imports and modify onboarding section loading to be unawaited..", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "467", "title": "CPC  공고 QA  온보딩 앱완료 (웹작업은 남음)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "461", "title": "Fix: 홈푸터 접힘상태 관리로직 개선  안드폰 안꺼지게(디버그환경) 환경설정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "460", "title": "Misc: UA 맨끝에 Flutter/(버전) 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "454", "title": "Fix/home", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "448", "title": "Fix 스크랩 수정  CardJobThumnailHorizontal디자인수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "441", "title": "Fix/home qa", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "440", "title": "feat: 홈 공지사항 1개 롤링으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "434", "title": "Feat: 스크랩 로티 작업완료", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "428", "title": "Misc: 아이콘(기본 이모지 sns) 다운스크립트와 실제 아이콘 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "425", "title": "Feat/scrap sync", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "424", "title": "Feat: toapp sendFirebaseEventLog 추가 (액션은 기존 firebaseevent 동일)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "419", "title": "Feat: 홈섹션 이동하는거 일괄추가  이미지위젯 기본이미지  에러이미지 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "416", "title": "Refactor: Update dependency imports and remove unused code", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "406", "title": "Appdev > Develop", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "381", "title": "Fix: 웹섹션 PR리뷰 반영  중복기능 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "377", "title": "Feat: 웹섹션 Raw json 떨구는 기능 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "376", "title": "웹뷰섹션", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "370", "title": "Feat/websection", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "369", "title": "Misc: ha 명령어 질문프리셋 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "360", "title": "검색 딥링크 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "359", "title": "Feat: 앱리뷰 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "355", "title": "Feat: screen 계열 딥링크 액션 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "344", "title": "QA 2건 수정 (딥링크/웹뷰)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "340", "title": "Misc: Dart AST tool 추가  ha명령어에 주입함", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "337", "title": "Refactor : 앱스킴서비스->링크유틸 이름변경", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임동현", "iid": "314", "title": "Fix/donny qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "310", "title": "Env: 안드로이드 빠진 메니페스트 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "309", "title": "Fix/deeplink splash", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "302", "title": "Fix/deeplink splash", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "299", "title": "Feat: DMP 지원용 usecase 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "290", "title": "웹-> 앱 이동시 액션처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "280", "title": "Feat: 슬라이더  구분선(세퍼레이터) 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "279", "title": "Fix: ios avoidbottominset 제외  화면키우는 코드 추가  (키보드 올릴때 영역 이상하게 줄어드는 버그수정...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "271", "title": "Feat: 앱버튼 마이크로인터렉션 추가 / 32사이즈 폰트크기 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "270", "title": "Fix: iOS 웹뷰 텍스트필드 포커스 이동시 웹뷰영역 기괴하게 줄어드는 현상 수정 (플러터 버그...", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "임동현", "iid": "259", "title": "Fix/donny qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "255", "title": "Fix/donny qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "252", "title": "Feat/appbar", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "240", "title": "Fix: gomain toapp 시 탭에 해당하는 url이 아닐경우  gosub처럼 새창뜨게 수정....", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "238", "title": "feat: DMP", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "237", "title": "Doc: 지라용 유저 롤 기록", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "232", "title": "Feat/appscheme", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "229", "title": "misc: ha 명령어 하드코딩path 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "214", "title": "feat: 유니버셜링크 처리  gemini 시스템프롬프트 활용 커맨드 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "199", "title": "Feat: 팝업웹뷰 추가  reload toapp/딥링크 동작하도록 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "198", "title": "Feat: 유니버셜/앱링크 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "194", "title": "Fix: File_handler에 들어있는 photo 명령어 제거  attachphoto 로 통합.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "187", "title": "refactor: Update navigation handler and app scheme parser for improved deep link", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "182", "title": "fix: AppText style 변경 시 UI 미반영 버그 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "172", "title": "feat: 앱스킴(투앱) 1차완", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "169", "title": "feat: Fastlane 세팅완료 Add Firebase configuration and Fastlane setup for Android an", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "140", "title": "Feat: 섹션웹뷰 추가", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "137", "title": "Misc: 클로드스킬 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "131", "title": "Feat: 공통위젯", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "130", "title": "Feat: 홈스크린 재빌드시 컨트롤러 재사용하도록 옵션추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "120", "title": "feat: AppScheme Service for toapp  deeplink unified system", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "116", "title": "feat: Implement Braze integration for event tracking and push notifications", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "115", "title": "feat: Integrate AppsFlyer SDK", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "114", "title": "Fix: Enhance dependency injection for deeplink services", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "113", "title": "Chore:Remove pubspec.lock  Podfile.lock file", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "105", "title": "딥링크", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "104", "title": "refactor: 마감 임박 바텀시트 API 업데이트 및 매니저/테스트 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "97", "title": "Feat: FCM", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "94", "title": "Feat: 파이어베이스 푸시", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "81", "title": "Refactor: WebView Appscheme", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "75", "title": "Feat: share 계열 toapp 포팅", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "73", "title": "appdev 빌드오류 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "72", "title": "Fix: fullwebview switch~case 누락수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "70", "title": "Chore/gitignore 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "69", "title": "Feat: AppToast 제작", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "67", "title": "웹뷰와 네이티브 간 통신을 위한 앱스킴(App Scheme) 인터페이스 구현", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "55", "title": "홈 화면 섹션 위젯 구조 개선 및 추천 콘텐츠 섹션 추가", "comments": 5, "approvers": 2, "ci": "unknown"}, {"name": "임동현", "iid": "52", "title": "Feat/clarity", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "49", "title": "Misc/claudeskill commonwidget", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "47", "title": "Refactor : text 위젯 모두 apptext로 전환", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "46", "title": "Misc : 피그마에서 icon 임포트 / 앱 내 마이그레이션", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "43", "title": "Feat: 디자인시스템 Label 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "36", "title": "Feat: 디자인시스템 공통 버튼 컴포넌트 구현", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "30", "title": "Feat: 공통이미지위젯 작성  AppImage  cachednetworkImage -> extendedImage", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "28", "title": "Feat: 디자인시스템 사이즈 반영(figma 상 float)", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임동현", "iid": "25", "title": "Feat/dsg", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "1135", "title": "온보딩 지역 >. 중국국가 하위리스트를 nation + city 로 융합하는 구조로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1111", "title": "[TEST-77814] 특정 지역에서 '전지역' 중복이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1108", "title": "푸시메세지 긴 케이스에서 짤리는 현상 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1063", "title": "검색결과 dimension74 오류 값 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1047", "title": "검색결과 페이지 트래킹 dimension 적용 + unawaited", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1038", "title": "[GA] 검색결과 페이지 재검색 시  태깅 + featureCode 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1032", "title": "[TEST-77428] 검색결과 직접태깅 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "1011", "title": "Feature/jobfind tag", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "993", "title": "[TEST-77550] 통합필터 GA 페이지트래킹 URL 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "985", "title": "Feature/test 77398", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "983", "title": "[TEST-77428] 검색결과화면 GA 자동완성 클릭 이벤트 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "962", "title": "[GA] 검색필터바 태깅 작업", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "959", "title": "Feature/ga tag qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "947", "title": "dimension 67 68 69 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "941", "title": "[TEST-77428] 검색 홈 GA 이슈 건 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "927", "title": "GA 리스트 sc 코드  페이지 태깅", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "907", "title": "[TEST-76288] 검색홈에서 지역 필터 '전체' 카운팅안됨", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "변지운", "iid": "903", "title": "오타 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "890", "title": "디멘션 이슈 작업 및 보완", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "870", "title": "GA Home 작업", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "862", "title": "[TEST-77135] 온보딩 직무 4개 초과 시  얼럿 제거 + 텍스트컬러 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "847", "title": "[TEST-77102] 하단 여백 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "795", "title": "[GA] 검색결과 > 채용공고 태깅 샘플 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "761", "title": "[TEST-76764] 필터 데이터 비교 기준 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "740", "title": "GAFilter 네이밍 충돌하여 네이밍 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "722", "title": "GA 검색홈화면 작업", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "673", "title": "Feature/ga", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "661", "title": "GA 상수화 작업 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "657", "title": "[TEST-76313] 검색홈화면 지역필터 선택 후 displayName 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "634", "title": "Feature/ga presentation", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "567", "title": "메뉴 앵커 기준 변경 ( 카테고리 1뎁스 기준이 아닌 2뎁스로 변경됨 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "566", "title": "Feature/onboardin location grid", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "553", "title": "[TEST_75760] 온보딩 텍스트 짤리는 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "550", "title": "[TEST-75786] 온보딩 > 지역 중분류 바텀시트에서 전체 클릭 시 선택했던 항목들 해제 처리 안됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "540", "title": "[TEST-75803] 직무 선택 4개 제한 넘버링 표기", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "532", "title": "Feature/onboarding qa byun", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "529", "title": "[TEST-75804] 온보딩 바텀 시트 내 버튼 디자인 상이 ( 온보딩 액션버튼 하단 쉐도우 제거 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "507", "title": "(프리젠테이션 레이어 사용)GA4 트래커 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "459", "title": "[TEST-75515] 온보딩 바텀시트 디자인 상이", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "401", "title": "[지역필터] Mock 데이터를 usecase 로 교체", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "391", "title": "Feature/onboarding byun", "comments": 30, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "347", "title": "요청자 : 이시연 / 메뉴 브랜드스토리 배너 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "312", "title": "[QA] 메뉴  프로필편집 디자인 수정", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "308", "title": "[TEST-75091] 프로필 편집화면 문구 크기 오류 건 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "295", "title": "Feature/menu issue", "comments": 10, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "291", "title": "fix: Add const constructors to filter button part files", "comments": 7, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "249", "title": "[TEST-74818] 버튼 UI 이슈 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "212", "title": "filter 위젯  분리", "comments": 12, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "207", "title": "Feature/profile image", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "186", "title": "지역온보딩 DSG 적용 및 디자인 수정 + 미사용코드 제거", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "178", "title": "Menu DSG 적용", "comments": 6, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "162", "title": "[지역필터] Figma DSG 적용 + 지역 Usecase 적용 + 테스트코드 수정", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "160", "title": "메뉴 화면 작업 ( Usecase 연동 및 목데이터 제거 ) + 테스트코드 수정", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "153", "title": "Feature/photoedit", "comments": 11, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "117", "title": "IDE에서 에러로 표기되어서 수정 ( 빌드에는 영향 없음 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "111", "title": "[빌드에러] 지역필터 관련 작업에서 잘못된 ASSET 참조", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "86", "title": "메뉴화면 UI개발", "comments": 21, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "85", "title": "지역 필터 UI 작업완료", "comments": 21, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "54", "title": "Feature/location ui", "comments": 15, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "26", "title": "Feature/photo edit", "comments": 22, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "579", "title": "feat(menu): 메뉴 Anchor 자동 스크롤 및 선택 동기화 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "576", "title": "[TEST-75092] [mts/iOS] 프로필 사진 편집 화면 > 파일크기 안내문구 AS-IS와 다름", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "311", "title": "메인 팝업 변경된 디자인 적용", "comments": 24, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "266", "title": "[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "256", "title": "[TEST-74795] [mts][공통] 헤더 영역 이전 버튼 AS-IS와 다름", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "134", "title": "검색 > 저장한 조건 Bottom Sheet 구현", "comments": 17, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "45", "title": "앱 접근 권한 허용 안내 화면 구현", "comments": 21, "approvers": 1, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+// ════════════════════════════════════════════════════════════════════════
+// 커밋 가치 다차원 평가
+// ════════════════════════════════════════════════════════════════════════
+
+const commitValueData = [{"name": "신동현", "total": 377, "S": 58, "A": 195, "B": 121, "C": 3, "D": 0, "avgScore": 65.8, "valueSum": 24797, "criticalPct": 67.1, "avgFC": 0.65, "avgCU": 0.86, "avgCT": 0.49, "avgMS": 0.69, "avgIS": 0.63}, {"name": "이해주", "total": 787, "S": 111, "A": 443, "B": 224, "C": 9, "D": 0, "avgScore": 65.9, "valueSum": 51852, "criticalPct": 70.4, "avgFC": 0.61, "avgCU": 0.84, "avgCT": 0.54, "avgMS": 0.7, "avgIS": 0.67}, {"name": "김승하", "total": 359, "S": 47, "A": 201, "B": 110, "C": 1, "D": 0, "avgScore": 66.7, "valueSum": 23942, "criticalPct": 69.1, "avgFC": 0.65, "avgCU": 0.84, "avgCT": 0.51, "avgMS": 0.75, "avgIS": 0.64}, {"name": "임희강", "total": 247, "S": 31, "A": 132, "B": 79, "C": 5, "D": 0, "avgScore": 65.2, "valueSum": 16112, "criticalPct": 66.0, "avgFC": 0.66, "avgCU": 0.84, "avgCT": 0.5, "avgMS": 0.67, "avgIS": 0.61}, {"name": "최재웅", "total": 705, "S": 131, "A": 372, "B": 181, "C": 21, "D": 0, "avgScore": 66.9, "valueSum": 47131, "criticalPct": 71.3, "avgFC": 0.75, "avgCU": 0.7, "avgCT": 0.53, "avgMS": 0.73, "avgIS": 0.62}, {"name": "임동현", "total": 432, "S": 65, "A": 182, "B": 176, "C": 9, "D": 0, "avgScore": 63.9, "valueSum": 27619, "criticalPct": 57.2, "avgFC": 0.52, "avgCU": 0.84, "avgCT": 0.51, "avgMS": 0.8, "avgIS": 0.69}, {"name": "변지운", "total": 140, "S": 14, "A": 67, "B": 58, "C": 1, "D": 0, "avgScore": 63.4, "valueSum": 8877, "criticalPct": 57.9, "avgFC": 0.7, "avgCU": 0.83, "avgCT": 0.45, "avgMS": 0.53, "avgIS": 0.64}, {"name": "조인영", "total": 23, "S": 1, "A": 6, "B": 15, "C": 1, "D": 0, "avgScore": 55.0, "valueSum": 1264, "criticalPct": 30.4, "avgFC": 0.46, "avgCU": 0.81, "avgCT": 0.43, "avgMS": 0.55, "avgIS": 0.62}];
+const smallSGrade = [{"hash": "438fa9d5a82d", "author": "최재웅", "message": "fix:초기화 상태 저장되지 않도록 수정", "date": "2026-01-07", "lines": 10, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 1.0, "ms": 0.9, "is_": 0.9, "score": 98, "grade": "S"}, {"hash": "f08313956a9e", "author": "김승하", "message": "[Fix] 앱스 플라이어이 키값 변경.", "date": "2026-01-15", "lines": 10, "files": 3, "fc": 1.0, "cu": 1.0, "ct": 1.0, "ms": 0.9, "is_": 0.5, "score": 94, "grade": "S"}, {"hash": "ee404e82eb68", "author": "임동현", "message": "Fix: API오류(아마 네트워크오류) 에서 온보딩 바텀시트 노출문제 수정 https://jira.jobkorea.co.kr/browse/TEST-77527", "date": "2026-01-15", "lines": 6, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 1.0, "ms": 1.0, "is_": 0.7, "score": 94, "grade": "S"}, {"hash": "25d17700d292", "author": "최재웅", "message": "feature : 신입 + 경력 라벨 생성 로직 수정", "date": "2025-12-03", "lines": 8, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 1.0, "ms": 0.8, "is_": 0.7, "score": 94, "grade": "S"}, {"hash": "3bb609b6322b", "author": "김승하", "message": "[Fix] 앱스 플라이어이 키값 변경.", "date": "2026-01-15", "lines": 4, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 93, "grade": "S"}, {"hash": "1dd247e74d7e", "author": "최재웅", "message": "fix : 경력 N년 이상", "date": "2026-01-13", "lines": 5, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 93, "grade": "S"}, {"hash": "da839ecbb90a", "author": "최재웅", "message": "fix : 경력 수상하던 이슈 수정", "date": "2026-01-13", "lines": 5, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 93, "grade": "S"}, {"hash": "eec89ed63649", "author": "신동현", "message": "fix(filter): 최근 필터 태그에서 불필요한 경력 타입 제외", "date": "2026-01-08", "lines": 6, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 1.0, "ms": 0.9, "is_": 0.7, "score": 92, "grade": "S"}, {"hash": "bdca601bab77", "author": "최재웅", "message": "fix : 경력무관 => 경력", "date": "2026-01-07", "lines": 2, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.5, "score": 91, "grade": "S"}, {"hash": "03c2cd6ec83c", "author": "임희강", "message": "스크롤 버벅임 현상 발생됨 수정", "date": "2026-01-07", "lines": 5, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 1.0, "ms": 0.8, "is_": 0.7, "score": 91, "grade": "S"}, {"hash": "7c5f6bb0d968", "author": "최재웅", "message": "fix : 경력 무관 display_name tnwjd", "date": "2026-01-06", "lines": 2, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.5, "score": 91, "grade": "S"}, {"hash": "0e8357edee73", "author": "최재웅", "message": "fix: 애매한 라벨명 수정", "date": "2026-01-02", "lines": 6, "files": 3, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.5, "score": 91, "grade": "S"}, {"hash": "fd82712dabdf", "author": "최재웅", "message": "fix : DMP 적재용 검색 필터 payType null조건 변겅", "date": "2026-01-14", "lines": 7, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 90, "grade": "S"}, {"hash": "fc3eb23d73a6", "author": "신동현", "message": "fix: 스마트핏 로드 스킵 조건을 전체 공고 수 기준으로 변경", "date": "2026-01-07", "lines": 4, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 90, "grade": "S"}, {"hash": "6381af94a9c7", "author": "임동현", "message": "Fix: 홈컨트롤러 빌드에러 수정", "date": "2025-12-09", "lines": 5, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 90, "grade": "S"}, {"hash": "5dea8f98c2e0", "author": "임동현", "message": "Fix: mainsub 웹뷰 앱바 메뉴뜨기 처리", "date": "2025-12-03", "lines": 9, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.9, "is_": 0.7, "score": 90, "grade": "S"}];
+const largeLowGrade = [{"hash": "9eb01862bc35", "author": "최재웅", "message": "delete : 사용하지 않는 DTO 및 Domain Model 정리 (88개 파일)", "date": "2025-12-16", "lines": 10940, "files": 88, "fc": 0.6, "cu": 0.184, "ct": 0.15, "ms": 0.3, "is_": 0.4, "score": 34, "grade": "C"}, {"hash": "709fb239229c", "author": "이해주", "message": "refactor(single-app-refactor) : 불필요 md docs 제거 및 경로 변경", "date": "2025-10-15", "lines": 5145, "files": 8, "fc": 0.3, "cu": 0.598, "ct": 0.15, "ms": 0.35, "is_": 0.5, "score": 35, "grade": "C"}, {"hash": "95db60aac18d", "author": "최재웅", "message": "refactor : 사용하지 않는 section 및 파일 위치 정리", "date": "2025-12-09", "lines": 4588, "files": 25, "fc": 0.3, "cu": 0.193, "ct": 0.5, "ms": 0.5, "is_": 0.4, "score": 37, "grade": "C"}, {"hash": "fa4b3a4fc153", "author": "임희강", "message": "네이밍 방식에 따라 이름 변경", "date": "2025-12-30", "lines": 3417, "files": 22, "fc": 0.3, "cu": 0.399, "ct": 0.5, "ms": 0.4, "is_": 0.4, "score": 39, "grade": "C"}, {"hash": "4e67d63b176c", "author": "임희강", "message": "검색 바 이름 AppSearchInput -> SearchAll 로 변경", "date": "2025-12-30", "lines": 3410, "files": 22, "fc": 0.3, "cu": 0.397, "ct": 0.5, "ms": 0.4, "is_": 0.4, "score": 39, "grade": "C"}, {"hash": "522e1a2c7c79", "author": "조인영", "message": "코드 리뷰 사항 반영", "date": "2025-12-17", "lines": 3401, "files": 33, "fc": 0.3, "cu": 0.479, "ct": 0.4, "ms": 0.4, "is_": 0.4, "score": 39, "grade": "C"}, {"hash": "0ee41a096c20", "author": "최재웅", "message": "refactor : 사용하지 않는 dto cdn 제거", "date": "2025-12-10", "lines": 2918, "files": 25, "fc": 0.3, "cu": 0.199, "ct": 0.15, "ms": 0.35, "is_": 0.4, "score": 26, "grade": "C"}, {"hash": "be4ee63e576d", "author": "최재웅", "message": "delete : 사용하지 않는 파일 정리", "date": "2025-12-15", "lines": 2710, "files": 18, "fc": 0.7, "cu": 0.19, "ct": 0.15, "ms": 0.3, "is_": 0.4, "score": 37, "grade": "C"}, {"hash": "593cb4ed4a92", "author": "최재웅", "message": "refactor : exception 및 mock 데이터 강화", "date": "2025-12-20", "lines": 2705, "files": 14, "fc": 0.3, "cu": 0.257, "ct": 0.2, "ms": 0.5, "is_": 0.4, "score": 31, "grade": "C"}, {"hash": "58aa090bd1cb", "author": "최재웅", "message": "chore : 기존 jobcard legacy 폴더로 이동", "date": "2025-12-08", "lines": 2636, "files": 14, "fc": 0.3, "cu": 0.42, "ct": 0.2, "ms": 0.2, "is_": 0.4, "score": 29, "grade": "C"}, {"hash": "384cdb6fe3b2", "author": "최재웅", "message": "refactor : BaseAsyncSection 적용", "date": "2025-12-10", "lines": 2595, "files": 12, "fc": 0.3, "cu": 0.265, "ct": 0.5, "ms": 0.5, "is_": 0.4, "score": 38, "grade": "C"}, {"hash": "489f62e91292", "author": "최재웅", "message": "refactor: dto위치 remote 하위로 이동", "date": "2025-09-16", "lines": 2429, "files": 36, "fc": 0.3, "cu": 0.602, "ct": 0.2, "ms": 0.5, "is_": 0.4, "score": 38, "grade": "C"}, {"hash": "976eb1acd4ad", "author": "최재웅", "message": "refactor : widget 폴더 구조 리팩토링", "date": "2025-10-24", "lines": 2257, "files": 19, "fc": 0.3, "cu": 0.189, "ct": 0.4, "ms": 0.5, "is_": 0.4, "score": 34, "grade": "C"}, {"hash": "bcd195b1b7ff", "author": "임동현", "message": "style: 예제용 파일 대상파일과 이름 비슷하게 변경", "date": "2025-10-23", "lines": 2124, "files": 4, "fc": 0.3, "cu": 0.224, "ct": 0.4, "ms": 0.1, "is_": 0.6, "score": 31, "grade": "C"}, {"hash": "53345eae113f", "author": "최재웅", "message": "render_type 별 분기 위젯 생성", "date": "2025-10-23", "lines": 1887, "files": 13, "fc": 0.3, "cu": 0.189, "ct": 0.5, "ms": 0.4, "is_": 0.4, "score": 35, "grade": "C"}];
+
+// ── Commit Value KPIs ─────────────────────────────────────────────────
+const cvTotalCommits = commitValueData.reduce((s,d) => s + d.total, 0);
+const cvTotalS = commitValueData.reduce((s,d) => s + d.S, 0);
+const cvTotalA = commitValueData.reduce((s,d) => s + d.A, 0);
+const cvAvgScore = cvTotalCommits > 0 ? (commitValueData.reduce((s,d) => s + d.avgScore * d.total, 0) / cvTotalCommits).toFixed(1) : 0;
+const cvTotalValue = commitValueData.reduce((s,d) => s + d.valueSum, 0);
+
+const cvKpis = [
+  {value: cvTotalCommits.toLocaleString(), label: '분석 커밋 수'},
+  {value: cvTotalS.toLocaleString(), label: 'S등급 (핵심)'},
+  {value: cvTotalA.toLocaleString(), label: 'A등급 (실질적)'},
+  {value: cvAvgScore, label: '전체 평균 점수'},
+  {value: cvTotalValue.toLocaleString(), label: '가치 합산 총점'},
+  {value: cvTotalCommits > 0 ? ((cvTotalS + cvTotalA) / cvTotalCommits * 100).toFixed(1) + '%' : '0%', label: '핵심 커밋 비율'},
+];
+
+document.getElementById('cvKpiGrid').innerHTML = cvKpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── Grade Distribution Stacked Bar ────────────────────────────────────
+const gradeColors = {S:'#fbbf24', A:'#a78bfa', B:'#38bdf8', C:'#fb923c', D:'#f87171'};
+new Chart(document.getElementById('gradeDistChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: ['S','A','B','C','D'].map(grade => ({
+      label: grade + '등급',
+      data: commitValueData.map(d => d[grade]),
+      backgroundColor: gradeColors[grade],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// ── Value Sum vs Count ────────────────────────────────────────────────
+new Chart(document.getElementById('valueVsCountChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [
+      {
+        label: '가치 합산 (Value Sum)',
+        data: commitValueData.map(d => d.valueSum),
+        backgroundColor: '#a78bfa88',
+        borderColor: '#a78bfa',
+        borderWidth: 2,
+        borderRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '단순 커밋 수',
+        data: commitValueData.map(d => d.total),
+        type: 'line',
+        borderColor: '#38bdf8',
+        backgroundColor: '#38bdf833',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        yAxisID: 'y1',
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      y: {beginAtZero: true, position: 'left', grid: {color: '#1e293b'},
+          title: {display: true, text: 'Value Sum', color: '#94a3b8'}},
+      y1: {beginAtZero: true, position: 'right', grid: {drawOnChartArea: false},
+           title: {display: true, text: '커밋 수', color: '#94a3b8'}},
+    }
+  }
+});
+
+// ── Average Value Score Chart ─────────────────────────────────────────
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '평균 가치 점수',
+      data: commitValueData.map(d => d.avgScore),
+      backgroundColor: commitValueData.map(d =>
+        d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── Critical Ratio Chart ──────────────────────────────────────────────
+new Chart(document.getElementById('criticalRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '핵심 커밋 비율 (%)',
+      data: commitValueData.map(d => d.criticalPct),
+      backgroundColor: commitValueData.map(d =>
+        d.criticalPct >= 70 ? '#4ade80' : d.criticalPct >= 60 ? '#38bdf8' : d.criticalPct >= 50 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 5-Dimension Radar Chart ───────────────────────────────────────────
+new Chart(document.getElementById('valueRadarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['파일 핵심도', '변경 고유율', '변경 유형', '메시지 시그널', '영향 범위'],
+    datasets: commitValueData.map((d, i) => ({
+      label: d.name,
+      data: [
+        Math.round((d.avgFC || 0) * 100),
+        Math.round((d.avgCU || 0) * 100),
+        Math.round((d.avgCT || 0) * 100),
+        Math.round((d.avgMS || 0) * 100),
+        Math.round((d.avgIS || 0) * 100),
+      ],
+      borderColor: COLORS[i % COLORS.length],
+      backgroundColor: COLORS[i % COLORS.length] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top', labels: {padding: 10, usePointStyle: true}}},
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {stepSize: 25, color: '#64748b', backdropColor: 'transparent'},
+        grid: {color: '#334155'},
+        pointLabels: {color: '#94a3b8', font: {size: 12}},
+      }
+    }
+  }
+});
+
+// ── Small S-Grade Table ───────────────────────────────────────────────
+if (smallSGrade.length > 0) {
+  document.getElementById('smallSGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${smallSGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000">${r.score}점</span></td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Large Low-Grade Table ─────────────────────────────────────────────
+if (largeLowGrade.length > 0) {
+  document.getElementById('largeLowGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>등급</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${largeLowGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines.toLocaleString()}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff">${r.grade}</span></td>
+      <td>${r.score}점</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Commit Value Summary Table ────────────────────────────────────────
+const cvSorted = [...commitValueData].sort((a,b) => b.valueSum - a.valueSum);
+document.getElementById('commitValueTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th>
+    <th>S</th><th>A</th><th>B</th><th>C</th><th>D</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvSorted.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${d.name}</td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="color:#38bdf8">${d.B}</td>
+    <td style="color:#fb923c">${d.C}</td>
+    <td style="color:#f87171">${d.D}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct >= 70 ? '<span class="badge badge-low">' + d.criticalPct + '%</span>' : d.criticalPct >= 55 ? '<span class="badge badge-mid">' + d.criticalPct + '%</span>' : '<span class="badge badge-high">' + d.criticalPct + '%</span>'}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+
+</script>
+</body>
+</html>

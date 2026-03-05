@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알바몬 Android 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>알바몬 Android Contribution Dashboard</h1>
+  <p>2026-W09 | 4명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 67148 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 알바몬 Android 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "박동수", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 63066, "blamePct": 52.5, "glReviewComments": 3, "glApprovals": 4, "glReviewedMRs": 8, "glReceivedComments": 0, "ciFail": 0.0}, {"name": "김승하", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 1331, "blamePct": 1.1, "glReviewComments": 0, "glApprovals": 2, "glReviewedMRs": 3, "glReceivedComments": 0, "ciFail": 0.0}, {"name": "이해주", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 2179, "blamePct": 1.8, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 0, "glReceivedComments": 3, "ciFail": 0.0}, {"name": "최재웅", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 572, "blamePct": 0.5, "glReviewComments": 0, "glApprovals": 3, "glReviewedMRs": 12, "glReceivedComments": 1, "ciFail": 0.0}];
+const monthly = {"months": [], "data": {}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 67148;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "박동수", "iid": "129", "title": "Feature/reboot new home", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "128", "title": "Release/5.4.3", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "127", "title": "Feature/test 78403 ga", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "126", "title": "[ALBAMON-26056] adpopcorn sdk 3.9.8", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "125", "title": "[ALBAMON-25909] adpopcorn 3.9.7", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "124", "title": "Feature/agp upgrade", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "123", "title": "Release/5.4.2", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "122", "title": "Feature/albamon 25909 adpopcorn", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "121", "title": "[feat] 알바지도 속성필터 연동 toapp 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "120", "title": "Release/5.4.1", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "119", "title": "Feature/albamon 25476 roboot after", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "118", "title": "[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "117", "title": "[TEST-77406] 청소년 계정 로그아웃 시 메인 > 하는 일 영역에서 'bar 알바 제외' 체크박스 미노출됨  [TEST-77408]...", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "116", "title": "feat: Add Flutter user info channeling method", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "114", "title": "Release/5.3.5", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "113", "title": "[fix] 통합검색 > 검색화면 > 전체메뉴 진입 edge to edge 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "112", "title": "Feature/albamon 25128 ad phase2", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "111", "title": "Feature/albamon 25021 community", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "110", "title": "[fix] 취약점 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "109", "title": "[fix] 플러터 엔진 캐시 접근 예외 처리 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "108", "title": "Release/5.3.4", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "107", "title": "[fix] 알바지도 웜스타트 오류 - 앱종료시 메모리 완전제거   uimode 변경시 activity 재생성 안하도록 막음", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "105", "title": "Feature/edge to edge", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "103", "title": "Feature/naver map delete", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "102", "title": "Release/5.3.3", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "101", "title": "Feature/albamon 25322 permission", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "98", "title": "Feature/albamon 25120 model", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "94", "title": "[fix] cast exception 크래시 방어코드 삽입", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "93", "title": "feature : 외부지원 퍼널 > View-ViewModel 기본 구조 구축", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "92", "title": "[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "91", "title": "[TEST-73083] 알바지도 adfit 광고 지면 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "90", "title": "[TEST-73241][TEST-73243] as-is main edge to edge ui 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "88", "title": "Flutter/test 73204 edgetoedge", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "86", "title": "[TEST-72964] status bar 투명 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "83", "title": "Feature/albamon 25087 web local test", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "82", "title": "Feature/test 72900 firebase config", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "80", "title": "Release/5.2.23", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "79", "title": "Feature/flutter firebase config", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "78", "title": "Feature/albamon 25061 adpopcorn version up", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "77", "title": "[ALBAMON-25012] 브레이즈 SDK version up", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "76", "title": "Feature/albamon 24380 close adpopcorn", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "73", "title": "Release/5.2.22", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "72", "title": "[TEST-72661] 메인 추천영역 갱신", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "71", "title": "Feature/test 72234 alarm msg", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "68", "title": "Feature/flutter adfit", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "66", "title": "[crash] 플러터 엔진 크래시 임시저장", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "63", "title": "Feature/flutter environment", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "62", "title": "Release/5.2.21", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "61", "title": "Feature/fluuter poc flavor", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "58", "title": "[TEST-43834] 알림 비허용 상태에서 맞춤알바 알림 토글 on으로 변경 > toapp 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "57", "title": "Feature/test 71894 google login", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "56", "title": "[ALBAMON-24704]  알람설정 > 채팅알림 toast 문구 수정 및 커스텀 토스트 프레임 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "55", "title": "Feature/albamon 24606 moni3d", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "54", "title": "[ALBAMON-24602] ISMS-P > 채팅 진입시 동의 여부 팝업 관련 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "52", "title": "[feat] cookie url 테섭 하드코딩 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "51", "title": "Release/5.2.20", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "50", "title": "Feature/albamon 24606 moni3d", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "49", "title": "Feature/albamon 24450 ga search", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "48", "title": "Feature/albamon 24668 summer event", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "47", "title": "Feature/albamon 24589 target sdk35", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "46", "title": "Release/5.2.19", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "45", "title": "Feature/albamon 24589 target sdk35", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "43", "title": "Feature/albamon 24131 braze push", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "42", "title": "Feature/albamon 24510 pass", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "41", "title": "Feature/albamon 24382 summer event", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "40", "title": "Release/5.2.18", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "39", "title": "Feature/albamon 24316 location", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "38", "title": "Release/5.2.17", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "37", "title": "Feature/albamon 24338 naver map", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "36", "title": "Release/5.2.16", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "35", "title": "Feature/albamon 23320 translate", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "34", "title": "Release/5.2.15", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "33", "title": "[ALBAMON-24105] 프랜차이즈 로그인 채팅 접속 불가 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "32", "title": "[ALBAMON-22249] 알바몬제트 - 맵 진입 버튼 삭제", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "31", "title": "Release/5.2.14", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "30", "title": "[ALBAMON-23948] 구글 로그인 실패 오류   [ALBAMON-23951] 구글 로그인 실패시 메세지 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "29", "title": "[TEST-69510] 소셜로그인시 랜딩 오류 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "28", "title": "[ALBAMON-23981] 로그인 - 회원가입 tvc 이미지 교체", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "27", "title": "Release/5.2.13", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "26", "title": "[ALBAMON-23814] 스플래시 디폴트 로고 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "25", "title": "Feature/test 69333 ad reward", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "24", "title": "Feature/albamon 23240 crash", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "23", "title": "Release/5.2.12", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "22", "title": "Feature/albamon 23240 reward ad", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "21", "title": "Release/5.2.11", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "20", "title": "[ALBAMON-23002] 전체메뉴 > 스크랩알바  최근본알바 진입시 상단 타이틀 \"관심공고\" 로 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "19", "title": "Release/5.2.10", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "18", "title": "[TEST-57908] 내 주변 인재 > 리스트 뷰 > 지도버튼 동작 오류 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "17", "title": "[APP] 웹 파일 업로드 방식 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "16", "title": "Feature/albamon 22772 google login", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "15", "title": "Release/5.2.9", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "14", "title": "Feature/albamon 23093 logo", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "13", "title": "Release/5.2.8", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "12", "title": "[TEST-67875] 로그인 > tvc 이미지 교체", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "11", "title": "Feature/albamon 23078 search ui", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "10", "title": "Release/5.2.7", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "9", "title": "[TEST-67014] 알바몬제트 스크랩 동기화 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "8", "title": "Feature/albamon 22990 logo", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "7", "title": "Release/5.2.6", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "6", "title": "[TEST-67382] 프랜차이즈 로그인 > 알바토크 글쓰기 시도 > 로그아웃 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "5", "title": "Feature/albamon 21817 onboarding", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "4", "title": "Feature/albamon 20757 albamap", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "3", "title": "Release/5.2.5", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "2", "title": "Feature/albamon 22659 scrap", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "1", "title": "[ALBAMON-22605] 프랜차이즈 회원 > 채팅 버튼 선택 시 알럿 문구 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "106", "title": "[fix] 폴더블 폰 여러번 접었다 폈다 하면 죽는 현상 수정.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "104", "title": "[Feat] fix black screen", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "100", "title": "[fix] 5.3.2(275) 지도 모듈만 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "99", "title": "[feat] 알바지도 배포 dev -> master", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "97", "title": "[fix] 웹에서 카카오로 로그인시 플러터 canPop로직 작동 안하는 현상 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "96", "title": "gohome 다시수정..", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "95", "title": "[feat] 웜스타트 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "89", "title": "[feat] 웜스타트 오류 수정.+ 토스트 스타일통일.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "87", "title": "[fix] GA-햄버거 분기 로직 추가.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "84", "title": "[fix] 토스트 채널링 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "81", "title": "[fix] 로그아웃시 지도 추천지역값 초기화", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "75", "title": "[feat] GA수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "74", "title": "[feat] 공고 query스트링 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "69", "title": "[Feat]flutter ga+apps+braze 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "65", "title": "[feat] 위치 권한 로직수정.", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "김승하", "iid": "59", "title": "[feat] islogin 채널링 추가.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "53", "title": "[feat] 폴더블폰 접었다피면 오류 나는 현상 수정.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이해주", "iid": "70", "title": "[양파유닛] 외부 지원 퍼널 구축", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "85", "title": "Fix:[TEST-73132] sendGoGibReadMapEvent 채널링메서드 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "67", "title": "Feat: sendGoMapToHotSpotEvent 메서드 추가 및 params 존재시 호출", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "64", "title": "Feature/flutter to app", "comments": 0, "approvers": 1, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+
+
+</script>
+</body>
+</html>

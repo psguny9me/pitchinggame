@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알바맵 모듈 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>알바맵 모듈 Contribution Dashboard</h1>
+  <p>2026-W09 | 5명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 36740 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 알바맵 모듈 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "최재웅", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 22539, "blamePct": 52.9, "glReviewComments": 7, "glApprovals": 30, "glReviewedMRs": 42, "glReceivedComments": 2, "ciFail": 0.0}, {"name": "김승하", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 13022, "blamePct": 30.5, "glReviewComments": 1, "glApprovals": 28, "glReviewedMRs": 49, "glReceivedComments": 8, "ciFail": 0.0}, {"name": "박동수", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 1048, "blamePct": 2.5, "glReviewComments": 0, "glApprovals": 6, "glReviewedMRs": 17, "glReceivedComments": 2, "ciFail": 0.0}, {"name": "임동현", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 131, "blamePct": 0.3, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 0, "glReceivedComments": 0, "ciFail": 0.0}, {"name": "정문석", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 0, "revert": 0, "reviewerMR": 0, "focus": 0.0, "blame": 0, "blamePct": 0.0, "glReviewComments": 0, "glApprovals": 2, "glReviewedMRs": 3, "glReceivedComments": 0, "ciFail": 0.0}];
+const monthly = {"months": [], "data": {}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 36740;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "최재웅", "iid": "121", "title": "fix: 공고레이아웃 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "110", "title": "fix: 권한 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "108", "title": "fix: f=>w cookie sync 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "107", "title": "Hotfix/sentry version", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "106", "title": "Fix: ios 팝업떴는지 여부 파악용 상수 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "104", "title": "Fix: 광고 10 30 50 ...인덱스에 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "101", "title": "Dimmed 영역 상태바까지 확장  로딩 케이스 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "100", "title": "2025/09/09 QA", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "99", "title": "2025/09/11 QA-jw", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "97", "title": "2025/09/08 QA 처리건", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "96", "title": "2025/09/05 QA 처리건", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "95", "title": "2025/09/03 QA 처리건", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "93", "title": "쿠키 오염으로 api에 잘못된 쿠키 발려있던 이슈 수정", "comments": 0, "approvers": 2, "ci": "unknown"}, {"name": "최재웅", "iid": "92", "title": "[stg3] statusbar 화이트 배경색 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "91", "title": "Qa/09-08-JW", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "89", "title": "[TEST-73132] [stg3] 근무지 지도 > 근처 알바정보 클릭하여 지도 노출 시 기존 리스트 노출 갱신 안됨", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "87", "title": "Qa/09 05 jw", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "85", "title": "QA-2025/09/04 12건", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "82", "title": "30. [TEST-72907] [stg3-m] 공고 핀 선택 시 노출되는 바텀시트 > 스크랩 버튼 탭 시 동작 없음", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "80", "title": "37. [TEST-72850] 지도 상세 필터 스크롤 시 그라데이션 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "78", "title": "Fix: N개 공고 result.failure 구현 누락 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "77", "title": "Fix: 처음 맵 초기화시 크로스헤어 on되지 않도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "76", "title": "Fix/test 72919", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "75", "title": "Fix/test 72915", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "74", "title": "Fix/test 72885", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "73", "title": "Fix: 스팟명 수정 버튼문구 저장 -> 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "70", "title": "Fix: 검색하는 모니 이미지 교체 및 사이즈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "69", "title": "Fix/test 72882", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "68", "title": "Fix/test 72881", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "66", "title": "Fix/test 72872", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "65", "title": "Feature/map interaction bug fix", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "64", "title": "Feature/loc my location sort", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "62", "title": "Feat: N개 공고 바텀시트내 정렬 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "61", "title": "Feature/improve interaction", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "59", "title": "Feature/n adfit", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "58", "title": "Feat: 전체공고 단일 공고 정렬 타입 동기화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "56", "title": "Feat: 공고 viewtype 분기 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "54", "title": "Feature/new loader", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "53", "title": "Feature/deny bar", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "51", "title": "Feature/divide map", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "48", "title": "Feature/divide map", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "46", "title": "Feat: 리스트 내 공고뷰 로직 usecase로 이동", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "44", "title": "Feature/sort type", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "42", "title": "공고리스트 new api 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "38", "title": "Feature/toapp move hotspot", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "36", "title": "Feature/scrap", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "29", "title": "Feature/map bottomsheet", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "25", "title": "Feat: 공고리스트 상태관리 방식 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "24", "title": "Feature/bottomsheet direct search", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "최재웅", "iid": "22", "title": "Feature/filter bottonsheet job", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "19", "title": "Feature/search current loc", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "18", "title": "Fix/sliver list frame drop", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "17", "title": "Fix/ios sliverlist frame drop", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "16", "title": "Fix/naver map jank", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "15", "title": "Feature/optimize bottomsheet", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "14", "title": "공고 리스트  N개 공고리스트 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "12", "title": "Feature/n recruit list opt", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "7", "title": "Feature/new ui", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "5", "title": "Feat: bottomsheet draggable -> modal로 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "4", "title": "Feature/new ui", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "3", "title": "Feature/new ui", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "2", "title": "Feature/new ui", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "최재웅", "iid": "1", "title": "Feature/init structure", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "128", "title": "[feat] os 11 12대응.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "125", "title": "[fix] 가로 세로 회전 맵 재생성 막기. [fix] 바텀시트 maxheight 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "120", "title": "[fix] flutter 버전 낮추기.", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "113", "title": "dev -> master", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "112", "title": "[hot-fix] 알바지도 새로고침 + 안드로이드 즐겨찾기 마이그레이션 안되는 현상.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "111", "title": "[hot-fix] 알바 지도 모듈 (1.0.1) iOS: 7.3.1(7) AOS: 5.3.1(274)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "109", "title": "[feat] GPS 꺼져있을때 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "105", "title": "[feat] ] [ALBAMON-23319] 알바지도 UIUX 개선 - https://jira.jobkorea.co.kr/browse/ALBAM", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "103", "title": "[feat] 테스트 코드 없애기 +.Pin  API 호출전에 웹뷰 쿠키 싱크 맞추기", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "102", "title": "[stg3] 줌 레벨에 따라 핀의 공고 우선순위 달라짐 - [feat] https://jira.jobkorea.co.kr/browse/TEST-", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "98", "title": "[fix] qa대응", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "94", "title": "[fix] 검수", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "90", "title": "[feat] qa검수 대응 9월8일", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "88", "title": "[feat] 바텀시트 키보드올라올떄 지도 빌드 안되게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "86", "title": "[fix] QA 검수", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "84", "title": "[fix] 지도 검수", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "83", "title": "[fix] 지도 검수 대응", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "81", "title": "[fix] [stg3-m] 알바지도 > 공고 150개 이상 그룹 핀 노출 여부 - https://jira.jobkorea.co.kr/browse", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "79", "title": "[fix] qa 9월2일자", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "72", "title": "[fix][mts3] 추천위치 바로가기 > \"우리집 근처\" 가 \"희망 근무지\" 문구로 노출됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "71", "title": "[feat] 9/1 qa2차", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "67", "title": "[Feat] 9/1 검수 대응", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "63", "title": "[Feat] ga추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "60", "title": "[Feat] 핫스팟 + 추천지역 클릭시 핫스팟 오버레이 추가 api적용   쿠키 에러 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "57", "title": "[feat] 네이밍 오타 수정. [feat] 앱스 이벤트 추가.[feat] 공고 query스트링 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "55", "title": "[Feat]라이브러리 버전 전체 고정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "52", "title": "[feat]핀 + 클러스터링 관련 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "50", "title": "[feat] 급여 API 수정 추천 선택시 안가지는 현상 위치 권한 동의 후에 캐시 동기화 현재 위치 아이콘 변경.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "49", "title": "[feat] ga + apps추가.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "47", "title": "[feat] 브레이즈 추가.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "45", "title": "dev -> master", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "43", "title": "[feat] [디자인] 급여핀 시급별 색깔 추가 + 센트리 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "41", "title": "[feat] 클러스터링 조건 수정  임시로 n개공고 디자인수정.(추후 디자인 나오면 또 수정해야함)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "40", "title": "[Feature] 클러스터링 알고리즘 변경   Pin API 추가  핀 디자인 변경", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "37", "title": "[feat] 위치 권한 로직수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "35", "title": "[feat] 급여핀 이미지 변경", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "31", "title": "[Feat] 핫픽스  추천지역 로직수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "30", "title": "[feat] 핫플 알바 API 추가 및 로직 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "28", "title": "[feat] 폴더블폰 접었다 폈다 에러수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "27", "title": "[Feat]지역 검색 API적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "26", "title": "[feat] 지역 검색 전체 삭제 디자인 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "23", "title": "- [Feat] 내스팟 작업 마무리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "21", "title": "[fix] 스팟 설정 임시 커밋.", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "20", "title": "[Feat] 권한 관련 로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "13", "title": "[Feat] 지역 검색 + 뒤로가기 채널링 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "10", "title": "[Feat] 급여 제작 핀 + N개 공고핀", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "9", "title": "[Feat] 스위치 추가 + 핫스팟 오버레이 +clustering 만지작 한거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "김승하", "iid": "8", "title": "[Feat] 원거리 근거리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "김승하", "iid": "6", "title": "[Feat] 핫스팟 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "156", "title": "Release/260211", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "155", "title": "android agp 호환성을 위한 라이브러리 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "154", "title": "속성필터-로컬화", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "149", "title": "feat: Implement filter title management and API integration", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "147", "title": "Implement DMP logging functionality in the Albamon map module", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "140", "title": "feat: 공고 리스트 아이템 스크랩 버튼 터치 영역 확대", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "133", "title": "Refactor drag end logic in bottom sheets to snap to the nearest position based..", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "119", "title": "[ALBAMON-25384] 알바지도 리스트 등록일 추가", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "박동수", "iid": "39", "title": "Feature/adfit", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "34", "title": "Feature/environment config", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "박동수", "iid": "32", "title": "Merge branch 'develop' into feature/build-variants", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임동현", "iid": "11", "title": "Feat: 쿠키 동기화 작업  AlbamonMapContainer 위젯 생명주기와  네이티브웹뷰 호출 타이밍으로 싱크 맞춤", "comments": 0, "approvers": 0, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+
+
+</script>
+</body>
+</html>

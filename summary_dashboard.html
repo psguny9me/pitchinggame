@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>크로스 프로젝트 종합 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a; --card: #1e293b; --card-hover: #334155;
+    --border: #334155; --text: #e2e8f0; --text-dim: #94a3b8;
+    --accent: #38bdf8; --accent2: #a78bfa;
+    --green: #4ade80; --red: #f87171; --orange: #fb923c; --yellow: #facc15;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; min-height: 100vh;
+  }
+  .header { text-align: center; margin-bottom: 32px; padding: 32px 0 24px; border-bottom: 1px solid var(--border); }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .header p { color: var(--text-dim); font-size: 14px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: transform 0.2s; }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .kpi-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .chart-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .chart-card .subtitle { font-size: 12px; color: var(--text-dim); margin-top: -12px; margin-bottom: 16px; }
+  .full-width { margin-bottom: 24px; }
+  .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; overflow-x: auto; margin-bottom: 24px; }
+  .table-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th { font-weight: 600; color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; position: sticky; top: 0; background: var(--card); }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 700; margin-right: 6px; }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+  .project-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .project-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: var(--text); transition: all 0.2s; }
+  .project-link:hover { border-color: var(--accent); background: rgba(56, 189, 248, 0.06); transform: translateY(-1px); }
+  .project-link .pl-icon { font-size: 20px; flex-shrink: 0; }
+  .project-link .pl-name { font-weight: 600; font-size: 14px; }
+  .project-link .pl-period { font-size: 11px; color: var(--text-dim); }
+  .project-link .pl-arrow { margin-left: auto; color: var(--text-dim); font-size: 16px; }
+  .footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 24px; color: var(--text-dim); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Cross-Project Contribution Dashboard</h1>
+  <p>2025-01-01_2025-12-31 | 20개 프로젝트 | 34명</p>
+</div>
+
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<div class="table-card" id="projectLinksCard">
+  <h3>프로젝트별 대시보드</h3>
+  <div class="project-links" id="projectLinks"></div>
+</div>
+
+<div class="table-card">
+  <h3>엔지니어별 대시보드</h3>
+  <p style="color:var(--text-dim);font-size:13px;margin-bottom:12px">개인별 기여도, 프로젝트 타임라인, 서비스 영역 분석</p>
+  <a href="persons/index.html" class="project-link" style="max-width:300px">
+    <span class="pl-icon">👤</span>
+    <div><div class="pl-name">엔지니어별 기여도 분석</div><div class="pl-period">개인 대시보드 목록</div></div>
+    <span class="pl-arrow">→</span>
+  </a>
+</div>
+
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>개발자별 전체 커밋 수</h3>
+    <p class="subtitle">모든 프로젝트 합산</p>
+    <canvas id="totalCommitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>개발자별 순 기여 라인</h3>
+    <p class="subtitle">모든 프로젝트 합산</p>
+    <canvas id="totalNetChart"></canvas>
+  </div>
+</div>
+
+<div class="chart-card full-width">
+  <h3>프로젝트별 기여 분포</h3>
+  <p class="subtitle">각 개발자가 어느 프로젝트에 얼마나 기여했는지</p>
+  <canvas id="projectMatrixChart" height="120"></canvas>
+</div>
+
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>코드리뷰 활동 (전체)</h3>
+    <p class="subtitle">리뷰 코멘트 + MR 승인 합산</p>
+    <canvas id="reviewActivityChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>참여 프로젝트 수</h3>
+    <p class="subtitle">개발자당 기여한 프로젝트 수</p>
+    <canvas id="projectCountChart"></canvas>
+  </div>
+</div>
+
+
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>전체 가치 합산 (Value Sum)</h3>
+    <p class="subtitle">모든 프로젝트 커밋 가치 점수 합산</p>
+    <canvas id="valueSumChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>전체 평균 커밋 가치 점수</h3>
+    <p class="subtitle">가중 평균 (0~100)</p>
+    <canvas id="avgScoreChart"></canvas>
+  </div>
+</div>
+
+
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+
+<div class="table-card">
+  <h3>커밋 가치 종합</h3>
+  <table id="cvTable"></table>
+</div>
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 크로스 프로젝트 종합 대시보드
+</div>
+
+<script>
+const members = [{"name": "신동현", "totalCommits": 1316, "codingCommits": 816, "added": 180237, "deleted": 78210, "net": 102027, "selfMR": 184, "blame": 32258, "glReviewComments": 255, "glApprovals": 102, "projectCount": 2}, {"name": "김규리", "totalCommits": 1254, "codingCommits": 814, "added": 151099, "deleted": 77359, "net": 73740, "selfMR": 437, "blame": 53764, "glReviewComments": 29, "glApprovals": 20, "projectCount": 6}, {"name": "이로움", "totalCommits": 1183, "codingCommits": 811, "added": 319984, "deleted": 116483, "net": 203501, "selfMR": 372, "blame": 96093, "glReviewComments": 62, "glApprovals": 51, "projectCount": 6}, {"name": "이해주", "totalCommits": 958, "codingCommits": 787, "added": 274626, "deleted": 186625, "net": 88001, "selfMR": 83, "blame": 80056, "glReviewComments": 31, "glApprovals": 25, "projectCount": 3}, {"name": "최재웅", "totalCommits": 851, "codingCommits": 705, "added": 477387, "deleted": 347059, "net": 130328, "selfMR": 59, "blame": 119598, "glReviewComments": 26, "glApprovals": 109, "projectCount": 4}, {"name": "문승연", "totalCommits": 843, "codingCommits": 635, "added": 534972, "deleted": 453880, "net": 81092, "selfMR": 201, "blame": 246369, "glReviewComments": 76, "glApprovals": 48, "projectCount": 7}, {"name": "최문경", "totalCommits": 703, "codingCommits": 440, "added": 136412, "deleted": 70003, "net": 66409, "selfMR": 217, "blame": 67274, "glReviewComments": 35, "glApprovals": 19, "projectCount": 2}, {"name": "유선영", "totalCommits": 636, "codingCommits": 334, "added": 157944, "deleted": 48919, "net": 109025, "selfMR": 302, "blame": 66137, "glReviewComments": 21, "glApprovals": 23, "projectCount": 4}, {"name": "임희강", "totalCommits": 621, "codingCommits": 425, "added": 76676, "deleted": 37909, "net": 38767, "selfMR": 60, "blame": 33874, "glReviewComments": 135, "glApprovals": 103, "projectCount": 2}, {"name": "김승하", "totalCommits": 607, "codingCommits": 359, "added": 117818, "deleted": 45826, "net": 71992, "selfMR": 167, "blame": 60232, "glReviewComments": 11, "glApprovals": 204, "projectCount": 4}, {"name": "임동현", "totalCommits": 563, "codingCommits": 432, "added": 171561, "deleted": 31589, "net": 139972, "selfMR": 64, "blame": 70118, "glReviewComments": 8, "glApprovals": 76, "projectCount": 2}, {"name": "변지운", "totalCommits": 456, "codingCommits": 362, "added": 53005, "deleted": 29467, "net": 23538, "selfMR": 42, "blame": 17130, "glReviewComments": 43, "glApprovals": 194, "projectCount": 2}, {"name": "이영철", "totalCommits": 379, "codingCommits": 228, "added": 2413295, "deleted": 2068186, "net": 345109, "selfMR": 151, "blame": 184696, "glReviewComments": 0, "glApprovals": 2, "projectCount": 3}, {"name": "조인영", "totalCommits": 377, "codingCommits": 309, "added": 36590, "deleted": 20652, "net": 15938, "selfMR": 3, "blame": 3319, "glReviewComments": 52, "glApprovals": 49, "projectCount": 2}, {"name": "장호철", "totalCommits": 247, "codingCommits": 132, "added": 30747, "deleted": 20359, "net": 10388, "selfMR": 106, "blame": 5659, "glReviewComments": 11, "glApprovals": 27, "projectCount": 8}, {"name": "김재균B", "totalCommits": 241, "codingCommits": 131, "added": 14247, "deleted": 3510, "net": 10737, "selfMR": 110, "blame": 1473, "glReviewComments": 0, "glApprovals": 7, "projectCount": 1}, {"name": "김재균", "totalCommits": 237, "codingCommits": 117, "added": 18290, "deleted": 8949, "net": 9341, "selfMR": 114, "blame": 10566, "glReviewComments": 0, "glApprovals": 6, "projectCount": 4}, {"name": "이시은", "totalCommits": 207, "codingCommits": 108, "added": 17302, "deleted": 6234, "net": 11068, "selfMR": 93, "blame": 4400, "glReviewComments": 0, "glApprovals": 0, "projectCount": 2}, {"name": "김승미", "totalCommits": 205, "codingCommits": 139, "added": 91971, "deleted": 35700, "net": 56271, "selfMR": 9, "blame": 66058, "glReviewComments": 278, "glApprovals": 40, "projectCount": 2}, {"name": "김고영", "totalCommits": 157, "codingCommits": 40, "added": 96572, "deleted": 15347, "net": 81225, "selfMR": 95, "blame": 18146, "glReviewComments": 15, "glApprovals": 23, "projectCount": 2}, {"name": "배상훈", "totalCommits": 130, "codingCommits": 98, "added": 98784, "deleted": 32563, "net": 66221, "selfMR": 12, "blame": 62773, "glReviewComments": 38, "glApprovals": 36, "projectCount": 2}, {"name": "이동현", "totalCommits": 128, "codingCommits": 68, "added": 41410, "deleted": 136673, "net": -95263, "selfMR": 60, "blame": 13754, "glReviewComments": 0, "glApprovals": 0, "projectCount": 6}, {"name": "서효정", "totalCommits": 94, "codingCommits": 57, "added": 144155, "deleted": 2640, "net": 141515, "selfMR": 37, "blame": 141671, "glReviewComments": 0, "glApprovals": 0, "projectCount": 1}, {"name": "오샘", "totalCommits": 57, "codingCommits": 45, "added": 1512, "deleted": 999, "net": 513, "selfMR": 12, "blame": 698, "glReviewComments": 0, "glApprovals": 14, "projectCount": 2}, {"name": "최소희", "totalCommits": 53, "codingCommits": 39, "added": 43990, "deleted": 18005, "net": 25985, "selfMR": 14, "blame": 18853, "glReviewComments": 28, "glApprovals": 17, "projectCount": 1}, {"name": "배누리", "totalCommits": 53, "codingCommits": 32, "added": 45356, "deleted": 9222, "net": 36134, "selfMR": 0, "blame": 40215, "glReviewComments": 0, "glApprovals": 0, "projectCount": 1}, {"name": "허승원", "totalCommits": 27, "codingCommits": 23, "added": 1324, "deleted": 516, "net": 808, "selfMR": 0, "blame": 246, "glReviewComments": 0, "glApprovals": 0, "projectCount": 1}, {"name": "박창협", "totalCommits": 17, "codingCommits": 14, "added": 14886, "deleted": 13575, "net": 1311, "selfMR": 2, "blame": 3071, "glReviewComments": 18, "glApprovals": 15, "projectCount": 1}, {"name": "임유리", "totalCommits": 12, "codingCommits": 11, "added": 16481, "deleted": 3987, "net": 12494, "selfMR": 1, "blame": 14415, "glReviewComments": 3, "glApprovals": 0, "projectCount": 1}, {"name": "이길환", "totalCommits": 7, "codingCommits": 5, "added": 4891, "deleted": 721, "net": 4170, "selfMR": 0, "blame": 3880, "glReviewComments": 0, "glApprovals": 0, "projectCount": 2}, {"name": "오은지", "totalCommits": 5, "codingCommits": 5, "added": 21756, "deleted": 6664, "net": 15092, "selfMR": 0, "blame": 14505, "glReviewComments": 0, "glApprovals": 2, "projectCount": 1}, {"name": "이승원", "totalCommits": 3, "codingCommits": 2, "added": 84, "deleted": 66, "net": 18, "selfMR": 0, "blame": 34, "glReviewComments": 0, "glApprovals": 0, "projectCount": 1}, {"name": "박동수", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "blame": 64114, "glReviewComments": 3, "glApprovals": 10, "projectCount": 3}, {"name": "정문석", "totalCommits": 0, "codingCommits": 0, "added": 0, "deleted": 0, "net": 0, "selfMR": 0, "blame": 0, "glReviewComments": 8, "glApprovals": 7, "projectCount": 2}];
+const projectNames = ["agent-fe", "albamap2_module", "albamon_android", "albamon_ios", "app_platform", "boilerplate-front", "display-kit", "figma-plugin-jams-to-react", "jams", "jk-bizcenter-fe-web", "jk-chat-bizcenter-fe", "jk-display-fe-web", "jk-ethics-fe-web", "jk-jobs-fe-mobile", "jk-jobs-fe-web", "jk-resume-fe", "jk-search-fe-mobile", "jobkorea_android", "jobkorea_ios", "search-front"];
+const projectMatrix = {"김고영": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 155, "jk-chat-bizcenter-fe": 2, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "김규리": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 31, "figma-plugin-jams-to-react": 0, "jams": 65, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 6, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 31, "jk-jobs-fe-web": 640, "jk-resume-fe": 481, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "김승미": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 9, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 196, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "김승하": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 607, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "김재균": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 134, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 91, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 11, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 1, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "김재균B": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 241, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "문승연": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 20, "figma-plugin-jams-to-react": 41, "jams": 194, "jk-bizcenter-fe-web": 245, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 107, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 65, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 171}, "박동수": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "박창협": {"agent-fe": 17, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "배누리": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 53, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "배상훈": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 106, "jk-chat-bizcenter-fe": 24, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "변지운": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 192, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 264, "jobkorea_ios": 0, "search-front": 0}, "서효정": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 94, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "신동현": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 788, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 528, "search-front": 0}, "오샘": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 20, "figma-plugin-jams-to-react": 0, "jams": 37, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "오은지": {"agent-fe": 5, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "유선영": {"agent-fe": 60, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 53, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 126, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 397}, "이길환": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 4, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 3, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "이동현": {"agent-fe": 12, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 14, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 66, "jk-resume-fe": 1, "jk-search-fe-mobile": 10, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 25}, "이로움": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 154, "figma-plugin-jams-to-react": 10, "jams": 202, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 336, "jk-jobs-fe-web": 455, "jk-resume-fe": 26, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "이승원": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 3, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "이시은": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 126, "figma-plugin-jams-to-react": 0, "jams": 81, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "이영철": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 37, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 65, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 277}, "이해주": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 958, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "임동현": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 563, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "임유리": {"agent-fe": 12, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "임희강": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 390, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 231, "jobkorea_ios": 0, "search-front": 0}, "장호철": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 66, "figma-plugin-jams-to-react": 0, "jams": 67, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 77, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 10, "jk-jobs-fe-web": 2, "jk-resume-fe": 8, "jk-search-fe-mobile": 10, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 7}, "정문석": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "조인영": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 29, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 348, "search-front": 0}, "최문경": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 173, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 530, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "최소희": {"agent-fe": 53, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "최재웅": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 851, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 0}, "허승원": {"agent-fe": 0, "albamap2_module": 0, "albamon_android": 0, "albamon_ios": 0, "app_platform": 0, "boilerplate-front": 0, "display-kit": 0, "figma-plugin-jams-to-react": 0, "jams": 0, "jk-bizcenter-fe-web": 0, "jk-chat-bizcenter-fe": 0, "jk-display-fe-web": 0, "jk-ethics-fe-web": 0, "jk-jobs-fe-mobile": 0, "jk-jobs-fe-web": 0, "jk-resume-fe": 0, "jk-search-fe-mobile": 0, "jobkorea_android": 0, "jobkorea_ios": 0, "search-front": 27}};
+const projectLinks = [{"id": "agent-fe", "period": "2025-01-01_2025-12-31", "link": "agent-fe/2025-01-01_2025-12-31/dashboard.html"}, {"id": "albamap2_module", "period": "2026-W09", "link": "albamap2_module/2026-W09/dashboard.html"}, {"id": "albamon_android", "period": "2026-W09", "link": "albamon_android/2026-W09/dashboard.html"}, {"id": "albamon_ios", "period": "2026-W09", "link": "albamon_ios/2026-W09/dashboard.html"}, {"id": "app_platform", "period": "2025-09-09_2026-01-20", "link": "app_platform/2025-09-09_2026-01-20/dashboard.html"}, {"id": "boilerplate-front", "period": "2025-01-01_2025-12-31", "link": "boilerplate-front/2025-01-01_2025-12-31/dashboard.html"}, {"id": "display-kit", "period": "2025-01-01_2025-12-31", "link": "display-kit/2025-01-01_2025-12-31/dashboard.html"}, {"id": "figma-plugin-jams-to-react", "period": "2025-01-01_2025-12-31", "link": "figma-plugin-jams-to-react/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jams", "period": "2025-01-01_2025-12-31", "link": "jams/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-bizcenter-fe-web", "period": "2025-01-01_2025-12-31", "link": "jk-bizcenter-fe-web/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-chat-bizcenter-fe", "period": "2025-01-01_2025-12-31", "link": "jk-chat-bizcenter-fe/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-display-fe-web", "period": "2025-01-01_2025-12-31", "link": "jk-display-fe-web/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-ethics-fe-web", "period": "2025-01-01_2025-12-31", "link": "jk-ethics-fe-web/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-jobs-fe-mobile", "period": "2025-01-01_2025-12-31", "link": "jk-jobs-fe-mobile/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-jobs-fe-web", "period": "2025-01-01_2025-12-31", "link": "jk-jobs-fe-web/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-resume-fe", "period": "2025-01-01_2025-12-31", "link": "jk-resume-fe/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jk-search-fe-mobile", "period": "2025-01-01_2025-12-31", "link": "jk-search-fe-mobile/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jobkorea_android", "period": "2025-01-01_2025-12-31", "link": "jobkorea_android/2025-01-01_2025-12-31/dashboard.html"}, {"id": "jobkorea_ios", "period": "2025-01-01_2025-12-31", "link": "jobkorea_ios/2025-01-01_2025-12-31/dashboard.html"}, {"id": "search-front", "period": "2025-01-01_2025-12-31", "link": "search-front/2025-01-01_2025-12-31/dashboard.html"}];
+
+// 프로젝트 링크 렌더링
+const platformIcon = (id) => {
+  if (id.includes('ios')) return '🍎';
+  if (id.includes('android')) return '🤖';
+  if (id.includes('module') || id.includes('map')) return '📦';
+  return '📁';
+};
+document.getElementById('projectLinks').innerHTML = projectLinks.map(p => {
+  if (!p.link) return '';
+  return `<a href="${p.link}" class="project-link">
+    <span class="pl-icon">${platformIcon(p.id)}</span>
+    <div><div class="pl-name">${p.id}</div><div class="pl-period">${p.period}</div></div>
+    <span class="pl-arrow">→</span>
+  </a>`;
+}).join('');
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const names = members.map(m => m.name);
+
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// KPI
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalBlame = members.reduce((s,m) => s + m.blame, 0);
+const totalReview = members.reduce((s,m) => s + m.glReviewComments + m.glApprovals, 0);
+const kpis = [
+  {value: '20', label: '프로젝트'},
+  {value: '34', label: '개발자'},
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalReview.toLocaleString(), label: '리뷰 활동'},
+];
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// 전체 커밋 수 차트
+new Chart(document.getElementById('totalCommitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '전체 커밋', data: members.map(m => m.totalCommits),
+      backgroundColor: COLORS[0], borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// 순 기여 차트
+new Chart(document.getElementById('totalNetChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '순 기여 라인', data: members.map(m => m.net),
+      backgroundColor: members.map(m => m.net >= 0 ? '#4ade80' : '#f87171'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// 프로젝트 매트릭스 (Stacked Bar)
+new Chart(document.getElementById('projectMatrixChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: projectNames.map((pn, i) => ({
+      label: pn,
+      data: names.map(name => projectMatrix[name] ? (projectMatrix[name][pn] || 0) : 0),
+      backgroundColor: COLORS[i % COLORS.length],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// 리뷰 활동 차트
+new Chart(document.getElementById('reviewActivityChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// 참여 프로젝트 수 차트
+new Chart(document.getElementById('projectCountChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '프로젝트 수', data: members.map(m => m.projectCount),
+      backgroundColor: COLORS[2], borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: projectNames.length + 1, grid: {color: '#1e293b'}}}
+  }
+});
+
+
+const cvData = [{"name": "이해주", "total": 787, "S": 111, "A": 443, "valueSum": 51852, "avgScore": 65.9, "criticalPct": 70.4}, {"name": "신동현", "total": 816, "S": 70, "A": 366, "valueSum": 49979, "avgScore": 61.3, "criticalPct": 53.4}, {"name": "이로움", "total": 811, "S": 23, "A": 360, "valueSum": 48650, "avgScore": 60.0, "criticalPct": 47.2}, {"name": "김규리", "total": 814, "S": 30, "A": 354, "valueSum": 48327, "avgScore": 59.4, "criticalPct": 47.2}, {"name": "최재웅", "total": 705, "S": 131, "A": 372, "valueSum": 47131, "avgScore": 66.9, "criticalPct": 71.3}, {"name": "문승연", "total": 635, "S": 20, "A": 247, "valueSum": 36528, "avgScore": 57.5, "criticalPct": 42.0}, {"name": "임희강", "total": 426, "S": 49, "A": 256, "valueSum": 28094, "avgScore": 65.9, "criticalPct": 71.6}, {"name": "임동현", "total": 432, "S": 65, "A": 182, "valueSum": 27619, "avgScore": 63.9, "criticalPct": 57.2}, {"name": "최문경", "total": 440, "S": 5, "A": 192, "valueSum": 25642, "avgScore": 58.3, "criticalPct": 44.8}, {"name": "김승하", "total": 359, "S": 47, "A": 201, "valueSum": 23942, "avgScore": 66.7, "criticalPct": 69.1}, {"name": "변지운", "total": 362, "S": 27, "A": 212, "valueSum": 23358, "avgScore": 64.5, "criticalPct": 66.0}, {"name": "유선영", "total": 334, "S": 17, "A": 193, "valueSum": 20719, "avgScore": 62.0, "criticalPct": 62.9}, {"name": "조인영", "total": 309, "S": 20, "A": 148, "valueSum": 18916, "avgScore": 61.2, "criticalPct": 54.4}, {"name": "이영철", "total": 228, "S": 1, "A": 101, "valueSum": 12739, "avgScore": 55.9, "criticalPct": 44.7}, {"name": "김승미", "total": 139, "S": 0, "A": 65, "valueSum": 8020, "avgScore": 57.7, "criticalPct": 46.8}, {"name": "김재균B", "total": 131, "S": 2, "A": 50, "valueSum": 7439, "avgScore": 56.8, "criticalPct": 39.7}, {"name": "장호철", "total": 132, "S": 3, "A": 56, "valueSum": 7421, "avgScore": 56.2, "criticalPct": 44.7}, {"name": "김재균", "total": 117, "S": 0, "A": 50, "valueSum": 6649, "avgScore": 56.9, "criticalPct": 42.7}, {"name": "이시은", "total": 108, "S": 0, "A": 30, "valueSum": 5764, "avgScore": 53.4, "criticalPct": 27.8}, {"name": "배상훈", "total": 98, "S": 0, "A": 25, "valueSum": 5455, "avgScore": 55.7, "criticalPct": 25.5}, {"name": "이동현", "total": 68, "S": 0, "A": 17, "valueSum": 3570, "avgScore": 52.5, "criticalPct": 25.0}, {"name": "서효정", "total": 57, "S": 0, "A": 16, "valueSum": 3063, "avgScore": 53.7, "criticalPct": 28.1}, {"name": "오샘", "total": 45, "S": 1, "A": 11, "valueSum": 2405, "avgScore": 53.4, "criticalPct": 26.7}, {"name": "최소희", "total": 39, "S": 1, "A": 19, "valueSum": 2309, "avgScore": 59.2, "criticalPct": 51.3}, {"name": "김고영", "total": 40, "S": 0, "A": 12, "valueSum": 2225, "avgScore": 55.6, "criticalPct": 30.0}, {"name": "배누리", "total": 32, "S": 0, "A": 11, "valueSum": 1849, "avgScore": 57.8, "criticalPct": 34.4}, {"name": "허승원", "total": 23, "S": 0, "A": 3, "valueSum": 1140, "avgScore": 49.6, "criticalPct": 13.0}, {"name": "박창협", "total": 14, "S": 1, "A": 5, "valueSum": 815, "avgScore": 58.2, "criticalPct": 42.9}, {"name": "임유리", "total": 11, "S": 0, "A": 3, "valueSum": 616, "avgScore": 56.0, "criticalPct": 27.3}, {"name": "오은지", "total": 5, "S": 0, "A": 3, "valueSum": 306, "avgScore": 61.2, "criticalPct": 60.0}, {"name": "이길환", "total": 5, "S": 0, "A": 0, "valueSum": 257, "avgScore": 51.4, "criticalPct": 0.0}, {"name": "이승원", "total": 2, "S": 0, "A": 2, "valueSum": 129, "avgScore": 64.5, "criticalPct": 100.0}];
+
+new Chart(document.getElementById('valueSumChart'), {
+  type: 'bar',
+  data: {
+    labels: cvData.map(d => d.name),
+    datasets: [{
+      label: '가치 합산', data: cvData.map(d => d.valueSum),
+      backgroundColor: '#a78bfa88', borderColor: '#a78bfa', borderWidth: 2, borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+new Chart(document.getElementById('avgScoreChart'), {
+  type: 'bar',
+  data: {
+    labels: cvData.map(d => d.name),
+    datasets: [{
+      label: '평균 점수', data: cvData.map(d => d.avgScore),
+      backgroundColor: cvData.map(d => d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+
+// 종합 테이블
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>프로젝트</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여</th><th>MR머지</th><th>리뷰코멘트</th><th>MR승인</th><th>Blame</th>
+  </tr></thead>
+  <tbody>${members.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600"><a href="persons/${encodeURIComponent(m.name)}/dashboard.html" style="color:var(--accent);text-decoration:none">${m.name}</a></td>
+    <td>${m.projectCount}</td>
+    <td>${m.totalCommits.toLocaleString()}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()}</td>
+    <td>${m.selfMR}</td>
+    <td>${m.glReviewComments}</td>
+    <td>${m.glApprovals}</td>
+    <td>${m.blame.toLocaleString()}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+document.getElementById('cvTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th><th>S</th><th>A</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvData.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600"><a href="persons/${encodeURIComponent(d.name)}/dashboard.html" style="color:var(--accent);text-decoration:none">${d.name}</a></td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+</script>
+</body>
+</html>

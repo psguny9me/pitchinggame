@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>잡코리아 iOS (추천2.0) 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>잡코리아 iOS (추천2.0) Contribution Dashboard</h1>
+  <p>2025-01-01_2025-12-31 | 2명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 0 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+<!-- ── 커밋 가치 다차원 평가 ──────────────────────────────────── -->
+<div class="eval-section" id="commitValueSection">
+  <div class="header" style="margin-bottom:24px">
+    <h1 style="font-size:24px">커밋 가치 다차원 평가</h1>
+    <p>5차원 분석: 파일 핵심도, 변경 고유율, 변경 유형, 메시지 시그널, 영향 범위</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid" id="cvKpiGrid"></div>
+
+  <!-- Row 1: 등급 분포 + 가치 가중 기여도 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>커밋 등급 분포 (S/A/B/C/D)</h3>
+      <p class="subtitle">Stacked Bar - 개인별 등급 분포</p>
+      <canvas id="gradeDistChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>가치 가중 기여도 vs 단순 커밋 수</h3>
+      <p class="subtitle">단순 커밋 수 대비 Value Score 합산으로 실질적 기여 비교</p>
+      <canvas id="valueVsCountChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 2: 평균 점수 + 핵심 비율 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>평균 커밋 가치 점수</h3>
+      <p class="subtitle">개인별 커밋 평균 Value Score (0~100)</p>
+      <canvas id="avgValueChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>핵심 커밋 비율 (S+A 등급)</h3>
+      <p class="subtitle">전체 커밋 중 핵심적(S등급+A등급) 커밋의 비율</p>
+      <canvas id="criticalRatioChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 3: 5차원 레이더 -->
+  <div class="chart-card full-width">
+    <h3>5차원 평균 점수 레이더</h3>
+    <p class="subtitle">파일핵심도 / 변경고유율 / 변경유형 / 메시지시그널 / 영향범위 (개인별 평균)</p>
+    <canvas id="valueRadarChart" height="120"></canvas>
+  </div>
+
+  <!-- 작은 커밋 중 S등급 -->
+  <div class="table-card">
+    <h3>작은 커밋 중 S등급 (10줄 이하에서 핵심 가치)</h3>
+    <table id="smallSGradeTable"></table>
+  </div>
+
+  <!-- 큰 커밋 중 C/D등급 -->
+  <div class="table-card">
+    <h3>큰 커밋 중 C/D등급 (100줄+ 인데 기계적 작업)</h3>
+    <table id="largeLowGradeTable"></table>
+  </div>
+
+  <!-- 전체 등급 테이블 -->
+  <div class="table-card">
+    <h3>커밋 가치 종합 평가표</h3>
+    <table id="commitValueTable"></table>
+  </div>
+</div>
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 잡코리아 iOS (추천2.0) 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "신동현", "totalCommits": 528, "codingCommits": 439, "added": 104155, "deleted": 23391, "net": 80764, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 290, "revert": 1, "reviewerMR": 0, "focus": 84.1, "blame": 0, "blamePct": 0.0, "glReviewComments": 156, "glApprovals": 35, "glReviewedMRs": 37, "glReceivedComments": 86, "ciFail": 0.0}, {"name": "조인영", "totalCommits": 348, "codingCommits": 286, "added": 29654, "deleted": 18087, "net": 11567, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 166, "revert": 0, "reviewerMR": 0, "focus": 80.9, "blame": 0, "blamePct": 0.0, "glReviewComments": 8, "glApprovals": 29, "glReviewedMRs": 40, "glReceivedComments": 234, "ciFail": 0.0}];
+const monthly = {"months": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10"], "data": {"신동현": [0, 0, 0, 15, 32, 59, 261, 50, 105, 6], "조인영": [6, 15, 11, 25, 49, 44, 187, 1, 10, 0]}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 0;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "신동현", "iid": "235", "title": "검색 화면 UX 개선 및 불필요한 API 호출 제거", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "234", "title": "채용 추천 공통 코드 아키텍처 리팩토링 - Manager 중심 구조로 전환", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "231", "title": "[TEST-73933] 연령 범위 데이터 구조 개선 및 빌드 버전 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "229", "title": "[TEST-73918] 추천 공고 상세 > 어학시험 점수 표시 형식 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "228", "title": "[TEST-73912] 추천 공고 상세 > 근무지 표시 로직 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "227", "title": "[TEST-73907] 추천 공고 상세 > 기업정보 없을 때 탭 뷰 숨김 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "226", "title": "[TEST-73904] 추천 공고 상세 > 좌표 정보가 없을 때 지도보기 버튼 숨김 처리", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "225", "title": "[TEST-73892] 추천 공고 상세 > 근무조건 뷰 레이아웃 개선 및 코드 포맷팅", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "224", "title": "[TEST-73885] 추천 공고 상세 > 기업정보에 직원수 표시 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "223", "title": "[TEST-73884] 추천 공고 상세 > 복리후생에 기타 항목 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "222", "title": "[TEST-73870] [mts/iOS] 근무시간 > workWeekType이 NONE인 경우 workWeekDescription 우선 표시", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "221", "title": "[TEST-73895] 추천 공고 사전 인터뷰 데이터 구조 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "220", "title": "[TEST-73859] 추천 공고 상세 > 고용형태에 관리자 입력 기타 정보 표시 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "219", "title": "[appsflyer] 추천 공고 지원 시 AppsFlyer 이벤트 추적 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "214", "title": "[TEST-73844] 추천 공고 상세 - 경력 표시명 변경 ('무관' → '경력무관')", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "213", "title": "TEST-73868 채용공고 상세 화면의 텍스트 스타일 메서드를 Legacy 버전으로 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "212", "title": "[TEST-73885] 추천 공고 상세 - 기업정보 섹션 직원수 항목 제거 및 코드 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "210", "title": "TEST-73854 AI 추천 2.0 채용공고 상세 - 고용 기간 타입 처리 로직 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "209", "title": "[TEST-73843] AI 추천 2.0 채용공고 상세 - 관심기업 기능 개선 및 버전 업데이트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "208", "title": "채용 추천 기능 개선 - 공통 코드 관리 시스템 및 상세 정보 UI 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "206", "title": "AI 추천 2.0 채용공고 상세 - DMP 로그 API 버전 업데이트 및 UI 개선", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "204", "title": "AI 추천 2.0 공고 지원 - AppsFlyer 이벤트 트래킹 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "203", "title": "AI 추천 공고 조회 AppsFlyer 트래킹 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "201", "title": "AI 추천 2.0 채용공고 상세 - 기업정보 지도 보기 기능 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "200", "title": "AI 추천 2.0 채용공고 상세 - 기업정보 카드 UI 구현", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "198", "title": "채용 추천 모집요강 UI 고도화 및 데이터 표시 로직 정교화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "196", "title": "채용 추천 공통 코드 아키텍처 리팩토링 - Manager 중심 구조로 전환", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "195", "title": "TEST-73273", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "194", "title": "Search 모듈 기본 구조 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "192", "title": "Search 모듈 Google Analytics 이벤트 트래킹 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "신동현", "iid": "188", "title": "QA - TEST73308", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "186", "title": "Firebase 이슈 대응", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "185", "title": "TEST-73273", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "184", "title": "TEST-73273: 웹뷰 스켈레톤 영역 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "183", "title": "TEST-73264", "comments": 1, "approvers": 2, "ci": "unknown"}, {"name": "신동현", "iid": "182", "title": "스켈레톤", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "181", "title": "이력서 업데이트시 toapp 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "180", "title": "STG 환경 추천 2.0 비활성화", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "179", "title": "Log", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "178", "title": "Cookie", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "177", "title": "광고", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "176", "title": "간편지원설정 화면에서 이력서 관리 및 작성 화면 연동", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "175", "title": "로그", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "174", "title": "GA 추적 기능 강화 및 추천 콘텐츠 정보 확장", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "171", "title": "코드 정리 및 기타 이슈 대응", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "170", "title": "자체 이슈", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "169", "title": "QA", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "168", "title": "GA/서버 방어코드", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "167", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "163", "title": "UI/방어코드", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "162", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "159", "title": "웹뷰  GA", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "158", "title": "History", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "155", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "154", "title": "GA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "149", "title": "GA", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "148", "title": "메인/GA", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "144", "title": "QA/GA", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "140", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "136", "title": "광고", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "135", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "131", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "128", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "127", "title": "상시지원", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "124", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "122", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "120", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "116", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "111", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "109", "title": "QA", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "104", "title": "수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "102", "title": "서버 오류 대응  간편지원 대응", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "99", "title": "패드  캐시", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "97", "title": "메인 디자인", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "95", "title": "이슈 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "90", "title": "스낵바", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "88", "title": "화면 연동  스켈레톤", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "85", "title": "화면 연동", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "84", "title": "API 오류모듈 일괄적용", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "83", "title": "공고 상세 이미지", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "81", "title": "공고상세", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "79", "title": "공고상세", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "77", "title": "구조  디자인  성능개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "76", "title": "디자인", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "75", "title": "디자인", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "73", "title": "광고", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "70", "title": "API", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "69", "title": "API", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "68", "title": "메인 디자인", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "66", "title": "광고", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "64", "title": "빌드 설정 변경", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "63", "title": "리뷰 반영", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "62", "title": "Moya", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "60", "title": "Swagger API 이관", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "58", "title": "추천 2.0 Swagger API 정의 이관", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "57", "title": "메인 디자인", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "55", "title": "공고상세 확대보기", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "54", "title": "추천 탭 작업", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "53", "title": "공고 상세 기능 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "49", "title": "테마 리스트", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "48", "title": "API 케이스 오류 대응", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "47", "title": "Alert 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "46", "title": "메인 로직 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "44", "title": "불필요 로직 제거", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "40", "title": "추천 메인 화면 UI 개선 및 스크랩/지원 기능 구현", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "39", "title": "애니메이션 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "37", "title": "API 규격 변경 대응", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "36", "title": "밀어서 지원하기 공용 컴포넌트 생성", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "34", "title": "TextBuilder 기능 확장", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "31", "title": "화면 작업", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "29", "title": "메인 화면 개선", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "28", "title": "공고상세", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "27", "title": "네비게이션  Xcode 버전 오류  오픈소스", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "26", "title": "네트워크 작업", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "25", "title": "DI", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "22", "title": "Hot Reload", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "19", "title": "TextBuilder 기능 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "18", "title": "펠리컨 제거", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "신동현", "iid": "15", "title": "Skeleton", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "232", "title": "[TEST-73849] 기업정보 > 복리후생 2개 이상일때  접힘처리된 부분 일부 노출됨  [TEST-73872] 원픽공고 > 직원수 노출...", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "230", "title": "[TEST-73842] [mts] 기업정보 없을 때  기업정보 영역이 보이지 않도록 수정  [TEST-73879] [mts/iOS] 일반공고..", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "218", "title": "Qa/test 73865 test 73872 test 73876 test 73914 test 73915", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "217", "title": "[TEST-73863] [mts] 급여 > 주급/일급/시급/건별   금액 뒤 '이상' 문구 노출됨  [TEST-73865] [mts/iOS]..", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "216", "title": "[TEST-73862] 급여 > 연봉 정보 등록한 값과 상이하게 노출됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "215", "title": "[TEST-73842] [mts] 기업정보 없을 때  기업정보 영역이 보이지 않도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "211", "title": "[TEST-73849] [mts/iOS] 기업정보 > 복리후생 2개 이상일때  접힘처리된 부분 일부 노출됨  기타 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "205", "title": "AI 추천 2.0 채용공고 상세 조회 - 기업정보 > 직무/산업 정보 추출 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "202", "title": "AI 추천 2.0 채용공고 상세 조회 - 기업정보 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "199", "title": "AI 추천 2.0 채용공고 상세 조회 - 기업정보 추가 (진행 중)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "197", "title": "AI 추천 2.0 채용공고 상세 조회 - 기업정보 추가 (진행 중)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "191", "title": "Firebase  AppsFlyerLib 버전 업데이트", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "190", "title": "[JK-25472] 잡코리아 모델 영역 제거", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "189", "title": "[JK-25472] 잡코리아 모델 영역 제거", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "187", "title": "[TEST-73265] [mts] 간편지원 설정 바텀시트로 이력서 작성화면 이동 > 완성 후 AI추천 공고 확인 하기 > 홈/채용공고/원픽 탭 ", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "173", "title": "[TEST-73188] 이력서 완성 화면 > AI추천 이동 후 온보딩 이탈 > 홈 버튼 선택 시 MY 이동되는 이슈 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "172", "title": "온보딩 애니메이션 개선  앱을 실행하고 장시간 방치했을 경우 -> 웹뷰에 로그인 쿠키가 없음 -> 웹은 로그아웃 상태  앱은 로그인 상태일 경우", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "166", "title": "iPad 가로/세로 모드 변경 시 발생한 이슈 처리  온보딩 클릭 이벤트 GA 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "165", "title": "AI추천 탭 수정 : 디자인 이슈 처리 - Divider 두께 및 투명도 변경", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "164", "title": "AI추천 탭 수정 : UP 표시 기한 설정  디자인 이슈 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "161", "title": "온보딩 배경 애니메이션 안드로이드와 비슷하게 동작되도록 다시 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "160", "title": "[TEST-71908] 비로그인 > 공고 여러개 선택 후 밀어서 지원하기 > 로그인 후 밀어서 지원 시도 시 오류 처리 - 선택된 이력서...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "157", "title": "[TEST-71888] [stg-m/iOS] 다중 지원 > 간편지원 설정에서 밀어서 지원하기 선택 시 오류 토스트 메시지 노출되고 무한 로딩 (", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "156", "title": "AI추천 2.0 탭 메뉴 이미지 추가 및 적용  원픽 탭 메뉴 말풍선 hidden 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "153", "title": "카드 스와이프를 연속적으로 짧고 빠르게 할 경우 발생한 버그 처리", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "152", "title": "이력서 설정 클릭 이벤트 GA 전송 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "151", "title": "온보딩 GA 전송 처리 : 클릭 이벤트 추가  페이지 전송 함수 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "150", "title": "이력서 설정 페이지 GA 전송  밀어서 지원하기 API 호출 시 테마 서비스 코드 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "147", "title": "온보딩 GA 페이지 전송  확인용 로그 주석 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "146", "title": "[TEST-71776] 온보딩 프로세스 추천 공고 하단으로 스크롤 안되는 현상 다시 처리 (임시방편 처리 -> 추후 처리해야 함!)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "145", "title": "온보딩 화면 닫기 분기 처리  서버 에러 발생 시 화면 추가  온보딩 닫기 Alert 문구 수정", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "143", "title": "AutoHeightBottomSheet 에 Drag 이벤트 추가 : Content 높이의 30% 이상 아래로 Drag 하면 Bottom Shee", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "142", "title": "카드가 드래그 중 일 때  카드 내부의 스크롤뷰 스크롤 비활성화 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "141", "title": "[TEST-71776] [stg-m/ios] 온보딩 프로세스 추천 공고 하단으로 스크롤 안되는 현상 처리 - 카드 내부 스크롤뷰 추가 ...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "139", "title": "온보딩 카드를 드래그 해서 헤더 영역으로 올렸을 경우 안드로이드와 동일하게 동작되도록 처리 (기존: 헤더 영역에 의해 카드가 가려짐 ->...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "138", "title": "직무 선택 화면에서 이전 버튼을 눌러서 직군 선택 화면으로 전환될 때  직군 항목이 살짝 위로 올라갔다가 내려오는 현상 처리 =...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "137", "title": "온보딩 카드 스와이프 화면 수정 : 카드 스와이프 가이드 애니메이션에서 오버레이가 잔상을 남기면서 사라지는 현상 처리  카드 드래그할 때...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "134", "title": "[TEST-71660] [mts2/iOS] 간편지원 설정 바텀시트 호출될때 효과 적용된 것처럼 보여지는 현상 처리  AI추천 선택 이미지 안드로", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "133", "title": "탭바에 서비스명 반영 -> AI추천 (대문자  띄어쓰기 없이)  탭바 레이블만이라도 반영(홈 - 채용공고 - AI추천 - 원픽 - MY) ...", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "132", "title": "햅틱 추가  기업/서치펌 회원 탭 메뉴 추가 (진행 중)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "130", "title": "공고 마감일이 \"오늘\"일 경우 처리  카드 스와이프 화면이 바로 노출될 경우 스텝 인디케이터 제거 처리", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "129", "title": "해외 거주 여부 추가 작업", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "126", "title": "이력서 설정 화면 로딩뷰 적용", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "125", "title": "온보딩 화면 로딩뷰 적용 : 카드 스와이프를 모두 완료하여 결과 API 를 호출할 때만 로딩뷰 노출", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "123", "title": "Recommend/resume settings", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "121", "title": "온보딩 디자인 안드로이드와 맞춤", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "119", "title": "내부에서 확인한 이슈 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "118", "title": "QA 이슈 2개 처리 + 온보딩 디자인 수정", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "117", "title": "카드 스택 영역의 최소 높이를 구하기 위한 상수값 조정 (기존: 396 -> 변경: 376)  카드 스와이프 화면 TODO 처리 :...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "115", "title": "QA 대응 : [TEST-71452] [mts2] 간편지원 설정 > 첨부파일 영역 [파일구분] 미노출 - 말줄임 표시 이슈 처리", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "114", "title": "[TEST-71467] [mts2] 메인 > 간편지원 설정 수정 요청 : 이력서 설정 타이틀 수정 & 추천 서비스용 간편지원 이력서 변경 성공 ", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "113", "title": "[TESET-71437] 온보딩 공고뷰에서 기업명/공고명/근무지 주소 말줄임 표시되는 이슈 처리  기업 로고 이미지 \"로딩 중\" Lottie A", "comments": 7, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "112", "title": "결과 화면 Lottie Animation 처리 후 발생한 사이드 이슈 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "110", "title": "QA 대응 - 5개 이슈 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "108", "title": "결과 화면 Lottie Animation 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "107", "title": "[일반 작업] TestFlight 업로드  주석 오타 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "106", "title": "[일반 작업] TestFlight 업로드  주석 오타 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "105", "title": "Assets > 하트 이모지 유니코드 수정 (기존: 2764 -> 변경: 2764-fe0f)", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "103", "title": "연락처 정보 모델 > 해외 거주 여부 멤버변수 제거 및 제거에 따른 해외 거주 로직 수정  이력서 설정 ViewModel 수정 :...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "101", "title": "변경된 온보딩 디자인 반영  온보딩 버그 처리", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "100", "title": "Recommend/resume settings", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "98", "title": "이력서 설정 화면 구현", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "96", "title": "이력서 설정 화면 구현 (진행 중)", "comments": 12, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "94", "title": "Recommend/resume settings", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "93", "title": "RecommendOnboardingViewModel 수정 : 초기화 함수로 전달된 파라미터 처리 구문 수정  온보딩 결과 전송을...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "92", "title": "연락처 편집 모드일 경우에는 저장 버튼 비활성화 처리  ResumeEditForm 코드를 ResumeSection 에 병합 (병합 후...", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "91", "title": "이력서 설정 저장 기능 구현  온보딩 필요 여부 로컬 데이터 파일명 변경", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "89", "title": "이력서 설정 화면 구현 (진행 중)", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "86", "title": "이력서 설정 화면", "comments": 13, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "82", "title": "온보딩 화면 버그 처리", "comments": 9, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "80", "title": "화면 연동 : 추천 탭 메뉴 클릭하면 추천 메인 (또는 온보딩) 화면이 노출되도록 구현  NavigationWrap &...", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "78", "title": "카드 스와이프 화면 버튼 부활에 따른 처리  RecommendCard 모델 현행화  온보딩 화면 X 버튼 잘 눌리게 처리 및 로직 수정 ...", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "74", "title": "iOS 버전에 관계없이 completion이 있는 withAnimation을 사용할 수 있는 함수 추가  이력서 설정 화면에서 키보드가 올라왔을", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "72", "title": "수정된 온보딩 디자인 반영 1", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "71", "title": "SVG 파일 이미지도 로드되도록 수정  잡코리아 커스텀 이미지 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "67", "title": "Recommend/custom emoji", "comments": 13, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "65", "title": "Mock 데이터 수정  Recommend Card 모델 멤버 변수 추가  닫기 버튼 클릭 시 그만 할래요/계속 할래요 Alert 처리  의존성 ", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "61", "title": "온보딩 branch & feature/recommend branch merge", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "59", "title": "코드 리뷰 사항 반영  투명 배경을 가진 UIHostingController 생성  모델 분리", "comments": 12, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "56", "title": "추천 이력서 설정 와이어 프레임 구현", "comments": 22, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "52", "title": "[일반 작업] TestFlight 업로드", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "51", "title": "[일반 작업] TestFlight 업로드", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "45", "title": "추천 채용공고 카드 스와이프 화면 버그 수정", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "43", "title": "온보딩 디자인 적용 4.3 - 추천 채용공고 카드 스와이프  직군/직무 선택 화면 버그 수정  Image resource 사용 구문으로 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "42", "title": "온보딩 디자인 적용 4.1 - 추천 채용공고 카드 스와이프 화면 (진행 중)", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "41", "title": "Recommend/onboarding", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "38", "title": "온보딩 디자인 적용 2 - 직군/직무 화면 디자인 적용", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "35", "title": "Recommend/onboarding", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "33", "title": "[일반 작업] 오타 수정 (recommand -> recommend)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "32", "title": "feature/오타수정 보안취약점조치 홈페이지-즉시지원로그인flow추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "30", "title": "Recommend/onboarding", "comments": 33, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "23", "title": "Recommend/onboarding", "comments": 10, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "21", "title": "Tinder Swipe 테스트로 구현한 소스 TOBE 구조로 정리  웹뷰 스크롤 이벤트만 허용하고 그 외 이벤트 막을 수 있는지 확인", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "17", "title": "[일반 작업] [JK-24416] 데이터스토리 제거 작업 요청", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "16", "title": "[일반 작업] [JK-24416] 데이터스토리 제거 작업 요청", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "14", "title": "[일반 작업  UI 수정] [TEST-68040] [MA][iOS18](기업회원) 4시간 이후 간헐적 세션 아웃 안됨  [JK-24244] 잡코", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "13", "title": "[일반 작업  UI 수정] [TEST-68040] [MA][iOS18](기업회원) 4시간 이후 간헐적 세션 아웃 안됨  [JK-24244] 잡코", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "12", "title": "[버그 수정] [TEST-68040] [MA][iOS18](기업회원) 4시간 이후 간헐적 세션 아웃 안됨", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "11", "title": "[버그 수정] [TEST-68040] [MA][iOS18](기업회원) 4시간 이후 간헐적 세션 아웃 안됨", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "10", "title": "[새 기능] [JK-23715] [MA] 시스템 정기점검 공지 팝업 관리자 추가 후속  - 웹 다이어로그 팝업 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "9", "title": "[새 기능] [JK-23715] [MA] 시스템 정기점검 공지 팝업 관리자 추가 후속  - 웹 다이어로그 팝업 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "8", "title": "[버그 수정] [TEST-67730][mts20][iOS] 기업/서치펌 로그인유지 ON > 2시간 방치 후 진입 시 세션유지됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "7", "title": "[버그 수정] [TEST-67730][mts20][iOS] 기업/서치펌 로그인유지 ON > 2시간 방치 후 진입 시 세션유지됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "6", "title": "[버그 수정] [TEST-67447] 앱 설치 후 첫 실행 시  기업/서치펌 회원 로그인 > 전체 메뉴 - 홈 클릭 > (하단 탭 메뉴) 기업회", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "5", "title": "[버그 수정] [TEST-67447] 앱 설치 후 첫 실행 시  기업/서치펌 회원 로그인 > 전체 메뉴 - 홈 클릭 > (하단 탭 메뉴) 기업회", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "4", "title": "전체 메뉴 소스 수정  통합 PM 구성에 따른 PM 페이지 개편  기타 작업", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "3", "title": "전체 메뉴 소스 수정  통합 PM 구성에 따른 PM 페이지 개편  기타 작업", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "조인영", "iid": "2", "title": "[버그 수정  일반 작업] [JK-23511] 전체 메뉴 이슈 처리  기타 작업", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "조인영", "iid": "1", "title": "[버그 수정  일반 작업] [JK-23511] 전체 메뉴 이슈 처리  기타 작업", "comments": 0, "approvers": 1, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+// ════════════════════════════════════════════════════════════════════════
+// 커밋 가치 다차원 평가
+// ════════════════════════════════════════════════════════════════════════
+
+const commitValueData = [{"name": "신동현", "total": 439, "S": 12, "A": 171, "B": 231, "C": 25, "D": 0, "avgScore": 57.4, "valueSum": 25182, "criticalPct": 41.7, "avgFC": 0.52, "avgCU": 0.81, "avgCT": 0.5, "avgMS": 0.46, "avgIS": 0.6}, {"name": "조인영", "total": 286, "S": 19, "A": 142, "B": 121, "C": 4, "D": 0, "avgScore": 61.7, "valueSum": 17652, "criticalPct": 56.3, "avgFC": 0.57, "avgCU": 0.87, "avgCT": 0.48, "avgMS": 0.62, "avgIS": 0.6}];
+const smallSGrade = [{"hash": "20dc1734bcc2", "author": "신동현", "message": "검색 쿼리 빌드 로직 개선 - 지역 필터 처리 및 코드 가독성 향상", "date": "2025-09-29", "lines": 5, "files": 1, "fc": 1.0, "cu": 1.0, "ct": 0.9, "ms": 0.6, "is_": 0.7, "score": 88, "grade": "S"}, {"hash": "87cd3c17aa0f", "author": "조인영", "message": "[TEST-71908] 비로그인 > 공고 여러개 선택 후 밀어서 지원하기 > 로그인 후 밀어서 지원 시도 시 오류 처리 - 선택된 이력서 저장이 끝나기 전에 다중 공고 지원이 되어", "date": "2025-07-28", "lines": 10, "files": 1, "fc": 0.7, "cu": 0.978, "ct": 1.0, "ms": 0.7, "is_": 0.9, "score": 85, "grade": "S"}, {"hash": "1c6258481d14", "author": "신동현", "message": "스크랩", "date": "2025-08-01", "lines": 6, "files": 2, "fc": 1.0, "cu": 0.867, "ct": 0.9, "ms": 0.4, "is_": 0.5, "score": 81, "grade": "S"}, {"hash": "1cca4dc7a4c3", "author": "조인영", "message": "[TEST-71908] 비로그인 > 공고 여러개 선택 후 밀어서 지원하기 > 로그인 후 밀어서 지원 시도 시 오류 - 선택된 이력서 저장이 끝나기 전에 다중 공고 지원이 되어서 이", "date": "2025-07-29", "lines": 4, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.7, "is_": 0.7, "score": 81, "grade": "S"}, {"hash": "3854c715dae6", "author": "조인영", "message": "[TEST-71443] [mts2] 온보딩 1단계 > 영문 최대 10자 노출 후 말줄임 표시되는 이슈 처리", "date": "2025-07-14", "lines": 5, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.7, "is_": 0.7, "score": 81, "grade": "S"}];
+const largeLowGrade = [{"hash": "93ae2a0aeee5", "author": "신동현", "message": "JAMS 디자인 시스템 적용 및 Assets 구조 개선", "date": "2025-09-04", "lines": 4550, "files": 125, "fc": 0.3, "cu": 0.066, "ct": 0.4, "ms": 0.6, "is_": 0.4, "score": 33, "grade": "C"}, {"hash": "58334139d45b", "author": "신동현", "message": "메인", "date": "2025-07-03", "lines": 2542, "files": 1, "fc": 0.3, "cu": 0.143, "ct": 0.3, "ms": 0.4, "is_": 0.9, "score": 34, "grade": "C"}, {"hash": "215875c96f9e", "author": "신동현", "message": "Jams", "date": "2025-09-04", "lines": 2303, "files": 57, "fc": 0.3, "cu": 0.087, "ct": 0.3, "ms": 0.4, "is_": 0.4, "score": 28, "grade": "C"}, {"hash": "b11d38f75e77", "author": "신동현", "message": "메인 UI", "date": "2025-07-01", "lines": 1378, "files": 5, "fc": 0.3, "cu": 0.29, "ct": 0.4, "ms": 0.4, "is_": 0.6, "score": 37, "grade": "C"}, {"hash": "e8e2f186fb9c", "author": "신동현", "message": "TOBE", "date": "2025-04-09", "lines": 1250, "files": 42, "fc": 0.3, "cu": 0.064, "ct": 0.3, "ms": 0.4, "is_": 0.4, "score": 28, "grade": "C"}, {"hash": "73656bceb4e1", "author": "신동현", "message": "스켈레톤", "date": "2025-07-08", "lines": 473, "files": 9, "fc": 0.3, "cu": 0.297, "ct": 0.5, "ms": 0.4, "is_": 0.5, "score": 38, "grade": "C"}, {"hash": "befc6b55d87f", "author": "신동현", "message": "추천 화면 작업", "date": "2025-05-23", "lines": 389, "files": 12, "fc": 0.3, "cu": 0.448, "ct": 0.3, "ms": 0.4, "is_": 0.4, "score": 35, "grade": "C"}, {"hash": "0073205dd195", "author": "신동현", "message": "DSG", "date": "2025-09-03", "lines": 362, "files": 9, "fc": 0.3, "cu": 0.222, "ct": 0.3, "ms": 0.4, "is_": 0.5, "score": 32, "grade": "C"}, {"hash": "5cfa0828fed2", "author": "신동현", "message": "에러 화면 구성", "date": "2025-07-12", "lines": 217, "files": 7, "fc": 0.3, "cu": 0.36, "ct": 0.3, "ms": 0.4, "is_": 0.5, "score": 35, "grade": "C"}, {"hash": "edf1c18fa575", "author": "조인영", "message": "온보딩 디자인 적용 4.3 - 추천 채용공고 카드 스와이프  직군/직무 선택 화면 버그 수정  Image resource 사용 구문으로 수정", "date": "2025-05-30", "lines": 196, "files": 14, "fc": 0.3, "cu": 0.268, "ct": 0.3, "ms": 0.8, "is_": 0.4, "score": 38, "grade": "C"}, {"hash": "593012dc32f5", "author": "신동현", "message": "공고뷰 스켈레톤", "date": "2025-08-18", "lines": 107, "files": 5, "fc": 0.3, "cu": 0.393, "ct": 0.3, "ms": 0.4, "is_": 0.6, "score": 36, "grade": "C"}];
+
+// ── Commit Value KPIs ─────────────────────────────────────────────────
+const cvTotalCommits = commitValueData.reduce((s,d) => s + d.total, 0);
+const cvTotalS = commitValueData.reduce((s,d) => s + d.S, 0);
+const cvTotalA = commitValueData.reduce((s,d) => s + d.A, 0);
+const cvAvgScore = cvTotalCommits > 0 ? (commitValueData.reduce((s,d) => s + d.avgScore * d.total, 0) / cvTotalCommits).toFixed(1) : 0;
+const cvTotalValue = commitValueData.reduce((s,d) => s + d.valueSum, 0);
+
+const cvKpis = [
+  {value: cvTotalCommits.toLocaleString(), label: '분석 커밋 수'},
+  {value: cvTotalS.toLocaleString(), label: 'S등급 (핵심)'},
+  {value: cvTotalA.toLocaleString(), label: 'A등급 (실질적)'},
+  {value: cvAvgScore, label: '전체 평균 점수'},
+  {value: cvTotalValue.toLocaleString(), label: '가치 합산 총점'},
+  {value: cvTotalCommits > 0 ? ((cvTotalS + cvTotalA) / cvTotalCommits * 100).toFixed(1) + '%' : '0%', label: '핵심 커밋 비율'},
+];
+
+document.getElementById('cvKpiGrid').innerHTML = cvKpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── Grade Distribution Stacked Bar ────────────────────────────────────
+const gradeColors = {S:'#fbbf24', A:'#a78bfa', B:'#38bdf8', C:'#fb923c', D:'#f87171'};
+new Chart(document.getElementById('gradeDistChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: ['S','A','B','C','D'].map(grade => ({
+      label: grade + '등급',
+      data: commitValueData.map(d => d[grade]),
+      backgroundColor: gradeColors[grade],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// ── Value Sum vs Count ────────────────────────────────────────────────
+new Chart(document.getElementById('valueVsCountChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [
+      {
+        label: '가치 합산 (Value Sum)',
+        data: commitValueData.map(d => d.valueSum),
+        backgroundColor: '#a78bfa88',
+        borderColor: '#a78bfa',
+        borderWidth: 2,
+        borderRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '단순 커밋 수',
+        data: commitValueData.map(d => d.total),
+        type: 'line',
+        borderColor: '#38bdf8',
+        backgroundColor: '#38bdf833',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        yAxisID: 'y1',
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      y: {beginAtZero: true, position: 'left', grid: {color: '#1e293b'},
+          title: {display: true, text: 'Value Sum', color: '#94a3b8'}},
+      y1: {beginAtZero: true, position: 'right', grid: {drawOnChartArea: false},
+           title: {display: true, text: '커밋 수', color: '#94a3b8'}},
+    }
+  }
+});
+
+// ── Average Value Score Chart ─────────────────────────────────────────
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '평균 가치 점수',
+      data: commitValueData.map(d => d.avgScore),
+      backgroundColor: commitValueData.map(d =>
+        d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── Critical Ratio Chart ──────────────────────────────────────────────
+new Chart(document.getElementById('criticalRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '핵심 커밋 비율 (%)',
+      data: commitValueData.map(d => d.criticalPct),
+      backgroundColor: commitValueData.map(d =>
+        d.criticalPct >= 70 ? '#4ade80' : d.criticalPct >= 60 ? '#38bdf8' : d.criticalPct >= 50 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 5-Dimension Radar Chart ───────────────────────────────────────────
+new Chart(document.getElementById('valueRadarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['파일 핵심도', '변경 고유율', '변경 유형', '메시지 시그널', '영향 범위'],
+    datasets: commitValueData.map((d, i) => ({
+      label: d.name,
+      data: [
+        Math.round((d.avgFC || 0) * 100),
+        Math.round((d.avgCU || 0) * 100),
+        Math.round((d.avgCT || 0) * 100),
+        Math.round((d.avgMS || 0) * 100),
+        Math.round((d.avgIS || 0) * 100),
+      ],
+      borderColor: COLORS[i % COLORS.length],
+      backgroundColor: COLORS[i % COLORS.length] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top', labels: {padding: 10, usePointStyle: true}}},
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {stepSize: 25, color: '#64748b', backdropColor: 'transparent'},
+        grid: {color: '#334155'},
+        pointLabels: {color: '#94a3b8', font: {size: 12}},
+      }
+    }
+  }
+});
+
+// ── Small S-Grade Table ───────────────────────────────────────────────
+if (smallSGrade.length > 0) {
+  document.getElementById('smallSGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${smallSGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000">${r.score}점</span></td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Large Low-Grade Table ─────────────────────────────────────────────
+if (largeLowGrade.length > 0) {
+  document.getElementById('largeLowGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>등급</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${largeLowGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines.toLocaleString()}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff">${r.grade}</span></td>
+      <td>${r.score}점</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Commit Value Summary Table ────────────────────────────────────────
+const cvSorted = [...commitValueData].sort((a,b) => b.valueSum - a.valueSum);
+document.getElementById('commitValueTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th>
+    <th>S</th><th>A</th><th>B</th><th>C</th><th>D</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvSorted.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${d.name}</td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="color:#38bdf8">${d.B}</td>
+    <td style="color:#fb923c">${d.C}</td>
+    <td style="color:#f87171">${d.D}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct >= 70 ? '<span class="badge badge-low">' + d.criticalPct + '%</span>' : d.criticalPct >= 55 ? '<span class="badge badge-mid">' + d.criticalPct + '%</span>' : '<span class="badge badge-high">' + d.criticalPct + '%</span>'}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+
+</script>
+</body>
+</html>

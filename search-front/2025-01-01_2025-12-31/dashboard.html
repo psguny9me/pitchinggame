@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>잡코리아 검색 프론트 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>잡코리아 검색 프론트 Contribution Dashboard</h1>
+  <p>2025-01-01_2025-12-31 | 6명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 86592 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+<!-- ── 커밋 가치 다차원 평가 ──────────────────────────────────── -->
+<div class="eval-section" id="commitValueSection">
+  <div class="header" style="margin-bottom:24px">
+    <h1 style="font-size:24px">커밋 가치 다차원 평가</h1>
+    <p>5차원 분석: 파일 핵심도, 변경 고유율, 변경 유형, 메시지 시그널, 영향 범위</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid" id="cvKpiGrid"></div>
+
+  <!-- Row 1: 등급 분포 + 가치 가중 기여도 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>커밋 등급 분포 (S/A/B/C/D)</h3>
+      <p class="subtitle">Stacked Bar - 개인별 등급 분포</p>
+      <canvas id="gradeDistChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>가치 가중 기여도 vs 단순 커밋 수</h3>
+      <p class="subtitle">단순 커밋 수 대비 Value Score 합산으로 실질적 기여 비교</p>
+      <canvas id="valueVsCountChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 2: 평균 점수 + 핵심 비율 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>평균 커밋 가치 점수</h3>
+      <p class="subtitle">개인별 커밋 평균 Value Score (0~100)</p>
+      <canvas id="avgValueChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>핵심 커밋 비율 (S+A 등급)</h3>
+      <p class="subtitle">전체 커밋 중 핵심적(S등급+A등급) 커밋의 비율</p>
+      <canvas id="criticalRatioChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 3: 5차원 레이더 -->
+  <div class="chart-card full-width">
+    <h3>5차원 평균 점수 레이더</h3>
+    <p class="subtitle">파일핵심도 / 변경고유율 / 변경유형 / 메시지시그널 / 영향범위 (개인별 평균)</p>
+    <canvas id="valueRadarChart" height="120"></canvas>
+  </div>
+
+  <!-- 작은 커밋 중 S등급 -->
+  <div class="table-card">
+    <h3>작은 커밋 중 S등급 (10줄 이하에서 핵심 가치)</h3>
+    <table id="smallSGradeTable"></table>
+  </div>
+
+  <!-- 큰 커밋 중 C/D등급 -->
+  <div class="table-card">
+    <h3>큰 커밋 중 C/D등급 (100줄+ 인데 기계적 작업)</h3>
+    <table id="largeLowGradeTable"></table>
+  </div>
+
+  <!-- 전체 등급 테이블 -->
+  <div class="table-card">
+    <h3>커밋 가치 종합 평가표</h3>
+    <table id="commitValueTable"></table>
+  </div>
+</div>
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 잡코리아 검색 프론트 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "유선영", "totalCommits": 397, "codingCommits": 197, "added": 41785, "deleted": 17370, "net": 24415, "selfMR": 200, "featureMR": 193, "fixMR": 0, "fixRatio": 0.0, "avgSize": 300, "revert": 1, "reviewerMR": 200, "focus": 100.0, "blame": 26444, "blamePct": 30.5, "glReviewComments": 5, "glApprovals": 7, "glReviewedMRs": 28, "glReceivedComments": 310, "ciFail": 0.0}, {"name": "이영철", "totalCommits": 277, "codingCommits": 146, "added": 2212920, "deleted": 2048138, "net": 164782, "selfMR": 131, "featureMR": 131, "fixMR": 0, "fixRatio": 0.0, "avgSize": 29185, "revert": 0, "reviewerMR": 131, "focus": 100.0, "blame": 53786, "blamePct": 62.1, "glReviewComments": 0, "glApprovals": 1, "glReviewedMRs": 1, "glReceivedComments": 130, "ciFail": 0.0}, {"name": "문승연", "totalCommits": 171, "codingCommits": 124, "added": 35270, "deleted": 130094, "net": -94824, "selfMR": 47, "featureMR": 46, "fixMR": 0, "fixRatio": 0.0, "avgSize": 1333, "revert": 0, "reviewerMR": 47, "focus": 100.0, "blame": 5885, "blamePct": 6.8, "glReviewComments": 6, "glApprovals": 1, "glReviewedMRs": 2, "glReceivedComments": 46, "ciFail": 0.0}, {"name": "이동현", "totalCommits": 25, "codingCommits": 13, "added": 425, "deleted": 166, "net": 259, "selfMR": 12, "featureMR": 11, "fixMR": 1, "fixRatio": 8.3, "avgSize": 45, "revert": 0, "reviewerMR": 12, "focus": 100.0, "blame": 224, "blamePct": 0.3, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 3, "glReceivedComments": 16, "ciFail": 0.0}, {"name": "허승원", "totalCommits": 27, "codingCommits": 23, "added": 1324, "deleted": 516, "net": 808, "selfMR": 0, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 80, "revert": 0, "reviewerMR": 0, "focus": 100.0, "blame": 246, "blamePct": 0.3, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 0, "glReceivedComments": 10, "ciFail": 0.0}, {"name": "장호철", "totalCommits": 7, "codingCommits": 4, "added": 877, "deleted": 845, "net": 32, "selfMR": 3, "featureMR": 1, "fixMR": 0, "fixRatio": 0.0, "avgSize": 430, "revert": 0, "reviewerMR": 3, "focus": 100.0, "blame": 7, "blamePct": 0.0, "glReviewComments": 0, "glApprovals": 0, "glReviewedMRs": 0, "glReceivedComments": 11, "ciFail": 0.0}];
+const monthly = {"months": ["2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"], "data": {"유선영": [2, 20, 148, 42, 65, 27, 58, 9, 6, 20], "이영철": [14, 64, 199, 0, 0, 0, 0, 0, 0, 0], "문승연": [7, 111, 52, 1, 0, 0, 0, 0, 0, 0], "이동현": [4, 2, 18, 0, 0, 0, 1, 0, 0, 0], "허승원": [0, 0, 19, 7, 1, 0, 0, 0, 0, 0], "장호철": [0, 0, 0, 0, 0, 0, 0, 0, 0, 7]}};
+const modules = {"names": [], "data": {}};
+const totalBlame = 86592;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "유선영", "iid": "437", "title": "test: window 유틸리티 함수의 팝업 열기 관련 테스트 코드 간소화", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "436", "title": "test: 쿠키 및 URL 관련 유틸리티 함수 테스트 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "435", "title": "From release into master", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "430", "title": "modify: middleware 함수 수정", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "유선영", "iid": "428", "title": "modify: Sentry DSN을 2로 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "427", "title": "modify: Sentry DSN을 4에서 2로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "426", "title": "modify: Sentry 인증 토큰 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "425", "title": "modify: Sentry DSN 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "423", "title": "modify: Sentry 설정에서 DMP API 관련 모든 에러 무시 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "420", "title": "modify: Sentry 설정 및 DSN 업데이트", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "419", "title": "modify: next.config.ts에서 에러 메시지 문자열을 변경하고 주석 처리 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "418", "title": "modify: JobList 컴포넌트에 uuid 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "417", "title": "feat: DMP 스크랩 로그 기능 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "416", "title": "feat: SEO noindex 처리 기능 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "415", "title": "modify: CardJob 컴포넌트에서 사용자 유형에 따른 클릭 핸들링 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "414", "title": "modify: 링크 URL 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "413", "title": "modify: Hydration 컴포넌트에서 코드 프리패치 추가 및 useGetCode 훅 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "412", "title": "modify: useGetCode 훅 롤백", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "411", "title": "modify: JobList 컴포넌트에서 데이터 유효성 검사 및 메모이제이션 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "409", "title": "modify: 지역 코드 분석 테스트 및 직무 분류 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "408", "title": "modify: 직무 분류 표시 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "407", "title": "modify: JobList 및 ProductList 컴포넌트에서 지역 코드 및 텍스트 처리 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "406", "title": "modify: 환경 변수 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "405", "title": "modify: 환경 변수 및 API 관련 설정 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "404", "title": "modify: ProductList 컴포넌트의 budgetId 타입 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "403", "title": "* modify: Search 페이지에서 xflow 관련 코드 주석 처리", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "402", "title": "modify: JobList 컴포넌트에서 불필요한 쿼리 제거 및 A/B 테스트 관련 코드 주석 처리", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "401", "title": "modify: 클릭 영역 수정", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "400", "title": "modify: xflow Default 값 변경", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "399", "title": "modify: CardJob 컴포넌트의 Typography 크기 변경", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "398", "title": "modify: CompanyLogo 컴포넌트의 레이아웃 개선 및 CardJob에서의 사용 방식 변경", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "397", "title": "modify: CompanyLogo 및 Title 컴포넌트의 onClick 핸들러 수정", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "396", "title": "modify: ProductList 컴포넌트에 회사 링크 추가 및...", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "395", "title": "modify: JobkoreaSearchDisplayCompanyControllerDtoRequestCompanyRequest의...", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "393", "title": "modify: BadgeItem 및 CardJob 컴포넌트의 props 이름 변경", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "392", "title": "modify: GrayChip 컴포넌트에 Block 컴포넌트 추가 및 area 관련 유틸리티 함수 테스트 코드 작성", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "391", "title": "modify: 급여 타입에 따른 payRange 포맷팅 함수 추가 및 관련 테스트 코드 작성", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "390", "title": "modify: GrayChip 컴포넌트에 HTML 엔티티 디코딩 기능 추가", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "389", "title": "modify: PowerLink 및 ProfessionalRecruitment 컴포넌트의 버튼 크기 변경", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "388", "title": "modify: GrayChip 컴포넌트의 급여 타입 표시 로직 개선", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "387", "title": "modify: BadgeItem 및 GrayChip 컴포넌트에 급여 타입 코드 추가", "comments": 6, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "386", "title": "modify: 인증 성공 시 jobStatus refetch 조건 추가", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "385", "title": "modify: JobList 컴포넌트에서 A/B 테스트를 위한 데이터 가져오기 로직 추가", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "384", "title": "modify: JobList 컴포넌트의 정렬 및 검색 기능 개선", "comments": 5, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "383", "title": "modify: CardJob 및 JobList 컴포넌트 개선", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "382", "title": "modify: 검색 기능 개선 및 컴포넌트 정리", "comments": 4, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "381", "title": "modify: XFLOW_API_URL을 prd.jobko.io로 변경 및 fetch.ts에서 불필요한 로그 제거", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "380", "title": "modify: /experiments 경로에 대한 응답 로그 추가", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "379", "title": "modify: log 추가", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "378", "title": "modify: XFLOW_API_URL을 jobko.io로 변경", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "377", "title": "modify: JobList 및 ProductList 컴포넌트에 rt 속성 추가 및 setCurrentApplyJob 함수 수정", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "376", "title": "modify: JobList 및 ProductList 컴포넌트에서 xflowExperiments 그룹을 URL에 추가하여 링크 업데이트", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "375", "title": "modify: professionalRecruitmentData 접근 방식 개선", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "373", "title": "modify: 검색 기능 개선 및 컴포넌트 정리", "comments": 17, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "371", "title": "modify: UUID 관리 로직 및 Search 페이지 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "370", "title": "modify: xflow 관련 환경 변수 추가 및 API 호출 로직 구현", "comments": 2, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "369", "title": "modify: header 버전업 적용", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "368", "title": "modify: header 버전업 적용", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "367", "title": "modify: @jk/react-pc-header 패키지 버전 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "366", "title": "modify: @jds/header를 @jk/react-pc-header로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "365", "title": "modify: 패키지 의존성 업데이트 및 레이아웃 파일 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "364", "title": "modify: 스마트핏 공고 point api에 sccode 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "363", "title": "feat: GitLab CI 설정 추가 및 @jds/mrnotification 패키지 설치", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "362", "title": "* modify: fetchCode 함수에서 캐시 히트 및 미스 로그 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "361", "title": "* modify: fetchCode 함수에서 캐시 히트 및 미스 로그 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "360", "title": "modify: fetch timeout 설정 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "359", "title": "modify: API 요청의 타임아웃 설정 주석 처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "358", "title": "modify: Dockerfile에서 Node.js 이미지에 alias 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "357", "title": "modify: API 응답 파라미터 및 타입 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "356", "title": "modify: fetch 함수에서 응답의 Content-Type 검증 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "355", "title": "modify: font width 값 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "354", "title": "modify: API 캐시 기능 추가 및 메모리 캐시 사용 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "353", "title": "modify: 텍스트 색상 변경 및 CSS 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "352", "title": "modify: setCookie 함수에 도메인 인자 추가 및 테스트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "351", "title": "* modify: master 병합", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "349", "title": "modify: setCookie 함수에 도메인 인자 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "348", "title": "modify: useGetCode 훅에서 API 호출 방식을 httpClient로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "347", "title": "modify: useGetCode 훅에서 API 호출 URL 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "346", "title": "modify: API 호출 URL 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "345", "title": "modify: API 타임아웃 설정 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "344", "title": "modify: API 타임아웃 설정 및 fetch 함수에 타임아웃 기능 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "343", "title": "modify: SearchChildrenClient 및 Pagination 컴포넌트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "342", "title": "modify: @jds/theme 패키지 버전 업데이트 및 페이지네이션 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "341", "title": "modify: Sentry 설정에서 리플레이 통합 주석 처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "340", "title": "modify: SearchChildrenClient 컴포넌트의 JobList 렌더링 조건 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "339", "title": "modify: SearchChildrenClient 컴포넌트에 useSearchParams 추가 및 JobList 렌더링 조건 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "338", "title": "modify: SearchChildrenClient 컴포넌트에 productList prop 추가 및 JobList 조건부 렌더링 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "337", "title": "modify: FilterJob 및 FilterLevel 컴포넌트에 Skeleton 로딩 UI 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "336", "title": "modify: Search 페이지의 키워드 분석 로직 개선 및 Pagination 조건 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "335", "title": "modify: @jds/theme 및 @jk/react-share 패키지 버전 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "334", "title": "modify: useGetCode API 호출 경로 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "333", "title": "modify: useGetCode API 호출 경로 수정 및 자격 증명 포함", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "332", "title": "fix: useGetCode 캐시 병합 로직 개선 및 로딩 UI 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "331", "title": "modify: @jds/theme 패키지 버전 업데이트 및 컴포넌트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "330", "title": "modify: CardCommon 컴포넌트에서 회사 로고 조건부 렌더링 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "329", "title": "modify: 환경 변수 URL 수정 및 배너 텍스트 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "328", "title": "modify: CardCommon 및 CardCpc 컴포넌트에서 뱃지 및 이미지 처리 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "327", "title": "modify: Search 및 Filter 컴포넌트에서 Hydration 최적화", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "326", "title": "fix: 불필요한 console.log 제거 및 fetchCode.ts에서 로그 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "325", "title": "modify: tab 위치 변경 및 연관검색어 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "323", "title": "modify: 컴포넌트 스타일 및 클릭 이벤트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "322", "title": "modify: CardAlbamon 및 CardCompany 컴포넌트 배경색 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "321", "title": "modify: QuickMenu 및 CardCpc 컴포넌트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "320", "title": "modify: API 요청 데이터 처리 방식 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "317", "title": "modify: jk 패키지 설치 및 cpc 상품 추가  ui 변경", "comments": 8, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "316", "title": "modify: fetchCodeHub에서 ServiceChannel 헤더 제거", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "315", "title": "* modify: master 병합", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "314", "title": "modify: 필터 리스트 컴포넌트에 필터 쿼리 키 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "313", "title": "modify: 운영 체제 및 클라이언트 타입 판별 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "312", "title": "modify: 광고 타겟팅 필터링 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "311", "title": "modify: 직업 분류 코드 파싱 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "310", "title": "modify: 운영 체제 판별 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "308", "title": "modify: Search 페이지 메타데이터에 robots 속성 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "307", "title": "remove: getChipText 유틸리티 함수 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "305", "title": "modify: Search 페이지의 canonical URL 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "303", "title": "modify: 광고 배너 로그 생성 및 클라이언트 타입 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "302", "title": "modify: dmp 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "301", "title": "modify: 검색 데이터 요청에 React 캐시 적용", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "유선영", "iid": "300", "title": "modify: 광고 배너 쿼리 파라미터 수정 및 페이지 번호에 따른 키 설정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "299", "title": "modify: 광고 배너 쿼리 파라미터 추가 및 페이지 번호에 따른 로그 초기화", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "297", "title": "modify: 광고 배너 기능 추가 및 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "296", "title": "modify: User-Agent 헤더 처리 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "295", "title": "modify: referer 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "294", "title": "modify: 검색 기능의 키워드 처리 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "293", "title": "modify: 광고 링크 응답 처리 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "292", "title": "modify: 페이지 번호 처리 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "291", "title": "modify: 검색 기능 및 광고 링크 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "283", "title": "modify: headers 변수 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "279", "title": "modify: console log 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "277", "title": "modify: console log 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "276", "title": "modify: 환경 변수 스크립트 태그 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "275", "title": "modify: check log 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "273", "title": "modify: ga page_view 호출 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "271", "title": "modify: 컴포넌트 개선 및 속성 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "270", "title": "modify: ga 불필요한 값 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "269", "title": "modify: ga 페이지뷰 호출방식 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "267", "title": "modify: 인기검색어  최근검색어 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "266", "title": "modify: Google Analytics 내부 차원 데이터 처리 방식 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "262", "title": "modify: ga 호출 오류 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "260", "title": "modify: Google Analytics 내부 차원 데이터 추가 및 SearchPage 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "258", "title": "modify: Google Analytics 컴포넌트 수정 및 SearchPage에 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "256", "title": "modify: ga 호출 오류 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "255", "title": "modify: 파일삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "254", "title": "Feature/ga", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "253", "title": "modify: 검색 기능 개선 및 MySearch 컴포넌트 통합", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "246", "title": "modify: 마이검색 산업 저장로직 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "244", "title": "modify: CardCommon 컴포넌트에 jobTitlePaid 스타일 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "238", "title": "modify: qa 이슈 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "235", "title": "modify: length error 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "233", "title": "modify: 모달 물음표 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "231", "title": "modify: 알림 API의 페이지네이션 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "230", "title": "Feature/ga", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "228", "title": "modify: 환경 변수 업데이트 및 이미지 URL 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "226", "title": "modify: ga 수정 및 company logo img 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "224", "title": "modify: ga 수정 및 env 104로 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "221", "title": "modify: 이미지 url 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "218", "title": "modify: ga 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "216", "title": "modify: ga 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "213", "title": "modify: 급여 타입 명칭 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "211", "title": "Feature/ga", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "209", "title": "modify: 알람 쿼리의 페이지네이션 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "208", "title": "modify: 검색 기능 개선 및 정규식 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "207", "title": "modify: 환경 변수 수정 및 검색 기능 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "206", "title": "modify: 정규식 수정 및 기업 경력 텍스트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "205", "title": "modify: autoComplete input삭제버튼 수정 및 line 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "200", "title": "Feature/ga", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "197", "title": "modify: windowTop값 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "196", "title": "modify: 마이검색 페이지만 있을때 저장되는 부분 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "195", "title": "modify: 공고 회사네임 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "193", "title": "modify: 게임잡 링크 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "192", "title": "modify: 즉시지원버튼  게임잡공고링크  구조화데이터  마이검색 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "191", "title": "modify: TEST-70046 에러 수정_markHighlightedText 정규식 부분", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "190", "title": "Feature/scroll", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "188", "title": "Feature/design", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "187", "title": "Feature/test 70014", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "181", "title": "Feature/test 69943", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "172", "title": "modify: QA 이슈 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "169", "title": "modify: 빌드에러수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "168", "title": "modify: QA 이슈 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "157", "title": "Feature/ga", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "152", "title": "modify: 필터 초기화 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "151", "title": "modify: 스켈레톤 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "146", "title": "modify: QA 이슈 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "143", "title": "modify: tab 관련 이슈 처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "139", "title": "modify: 필터 관련 이슈 처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "137", "title": "modify: 탭 조건 수정 및 마이검색 공백 저장 오류 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "135", "title": "modify: 탭 조건 수정 및 QA 대응", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "133", "title": "modify: 탭 리다이렉트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "132", "title": "Feature/test 69904", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "128", "title": "feat: 쿠키 ID 조회 API 및 쿼리 훅 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "126", "title": "modify: 필터 컴포넌트에서 선택된 항목 표시 조건 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "124", "title": "modify: FilterBottom 컴포넌트에서 급여 단위 표시 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "122", "title": "modify: 알바몬 API 호출 조건 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "121", "title": "modify: 필터 및 검색 관련 컴포넌트 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "119", "title": "Feature/issue", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "111", "title": "modify: codeFilter삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "110", "title": "Feature/filter", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "105", "title": "Feature/search", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "97", "title": "Feature/scrap", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "94", "title": "Feature/company list", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "81", "title": "Feature/like", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "70", "title": "Feature/list", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "68", "title": "modify: 검색 페이지 및 컴포넌트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "65", "title": "modify: 필터 컴포넌트 및 benefit 코드 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "57", "title": "modify: SearchPage에서 searchParams 타입 변경 및 서버 환경 변수 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "51", "title": "modify: autoComplete 스토리지 값 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "50", "title": "modify: 패키지 버전 업데이트 및 search 컴포넌트 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "43", "title": "modify: 컴포넌트 이름 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "41", "title": "Feature/image", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "40", "title": "modify: 다이렉트 컨텐츠 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "37", "title": "modify: search icon 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "29", "title": "Feature/ui", "comments": 7, "approvers": 0, "ci": "unknown"}, {"name": "유선영", "iid": "11", "title": "Feature/header", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "290", "title": "Feature/ua", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "289", "title": "modify: optional", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "288", "title": "modify: alarm", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "286", "title": "modify: 공고 에러 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "285", "title": "modify: pagination -1 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "281", "title": "modify: 원복", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "280", "title": "modify: config", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "278", "title": "modify: Search 경로 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "268", "title": "modify: sentry comment", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "263", "title": "modify: error name", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "261", "title": "Feature/sentry", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "259", "title": "modify: capture sentry display api log", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "257", "title": "modify: Search env 로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "252", "title": "modify: env", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "251", "title": "modify: path Search -> NewSearch 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "250", "title": "modify: sentry docs", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "249", "title": "modify: dmp 코드 리팩토링", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "248", "title": "modify: 알람 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "247", "title": "modify: ip", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "245", "title": "modify: 알람 dotnet api 로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "242", "title": "modify: my검색 로그인 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "241", "title": "modify: benefit 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "240", "title": "modify:  optional 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "239", "title": "modify: optional 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "237", "title": "modify: log", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "236", "title": "modify: dmp log 확인", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "234", "title": "modify: memsysno", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "232", "title": "modify:  modal auth", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "229", "title": "modify: dmp error log 확인 위한 디버깅 로직 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "227", "title": "modify: 알림 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "225", "title": "modify: dmp log", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "223", "title": "modify: sentry capture module", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "222", "title": "modify: 검색 reload", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "220", "title": "modify: hover color", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "219", "title": "feat: impression log", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "212", "title": "Feature/dmp", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "210", "title": "modify: dmpProvider", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "204", "title": "modify: error instance", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "202", "title": "modify: theme version", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "201", "title": "modify: line css", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "199", "title": "modify: 알림 read 상태변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "198", "title": "Feature/auto", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "189", "title": "modify: 자동완성", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "186", "title": "modify: page 제외", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "185", "title": "modify: my search 페이지네이션", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "184", "title": "modify: sentry option", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "183", "title": "Feature/sentry 8", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "182", "title": "Feature/alarm", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "180", "title": "Feature/alarm", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "179", "title": "modify: pagination", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "178", "title": "modify: env 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "177", "title": "modify: 불필요한 env 정리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "175", "title": "modify: alarm text", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "174", "title": "modify: env", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "173", "title": "modify: 공고번호 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "171", "title": "modify: 날짜형식 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "170", "title": "modify: 디자인 검수", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "167", "title": "modify: env 정리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "166", "title": "modify: query", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "165", "title": "modify: redirect", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "164", "title": "modify: redirect url", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "163", "title": "modify: alarm 문구 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "162", "title": "modify: 쿼리스트링 라우터 이동시 계산", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "161", "title": "modify: menu 클릭 조건", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "159", "title": "modify: type errror", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "158", "title": "Feature/alarm", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "156", "title": "modify: alarm empty text", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "155", "title": "Feature/alarm", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "153", "title": "modify: docker install", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "150", "title": "modify: 통합검색 x아이콘 표시 조건 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "149", "title": "modify: sort", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "148", "title": "Feature/auto complete", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "147", "title": "Feature/auto complete", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "145", "title": "Feature/auto complete", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "144", "title": "modify: advrecentkeyword tobe와 연동", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "142", "title": "modify: node version", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "141", "title": "modify: keyword 길이", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "140", "title": "feat: volta setting", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "138", "title": "Feature/searchparams", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "136", "title": "Feature/area", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "134", "title": "modify: max-http-header-size 옵션 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "131", "title": "modify: 알림 없을때 예외처리ㅏ", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "130", "title": "modify: 알람 목록 리팩토링", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "129", "title": "modify: env 오류 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "109", "title": "modify: profile-title 개인회원 접근권한", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "108", "title": "modify: alarm 소스 리팩토링", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "106", "title": "modify: total-menu jts로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "104", "title": "modify: 즉시지원  포지션제안 로직 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "100", "title": "modify: header feature", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "96", "title": "modify: type error", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "95", "title": "modify: 알림 페이지 네이션 구현", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "93", "title": "modify: 검색조건 중복저장 로직 예외처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "89", "title": "modify: 알림 카드 리팩토링", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "88", "title": "Feature/params", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "87", "title": "modify: generate-schema", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "80", "title": "modify: process.env.NODE_TLS_REJECT_UNAUTHORIZED", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "79", "title": "modify: 파일명 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "78", "title": "modify: 폴더구조 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "77", "title": "modify: 로컬스토리지 로직 정리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "76", "title": "feat: mict api", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "75", "title": "Feature/params", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "74", "title": "Feature/params", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "73", "title": "modify: code data", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "72", "title": "modfiy: filter hook", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "71", "title": "Feature/params", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "69", "title": "feat: useSearchManager hook", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "67", "title": "remove: useQueryString", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "64", "title": "modify: search params 정리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "63", "title": "modify: 3depth", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "62", "title": "modify: 인기공고  공채소식", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "60", "title": "modify: redirect 조건 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "58", "title": "modify: total menu slot", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "53", "title": "modify: pagination", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "52", "title": "modify: env", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "49", "title": "modify: total-menu style", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "46", "title": "modify: header params", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "44", "title": "modify: code data", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "38", "title": "Feature/header", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "36", "title": "modify: generaete schgema type error", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "27", "title": "feat: code map", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "26", "title": "modify: code 임시 json으로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "18", "title": "modify: type error", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "17", "title": "feat: code schema", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "16", "title": "modify: pay enum", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "15", "title": "feat: enum", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "14", "title": "modify: 3depth code", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "12", "title": "feat: code data", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "10", "title": "modify: fetch code", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "9", "title": "Feature/code api", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "6", "title": "modify: code", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이영철", "iid": "4", "title": "feat: area code api", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "298", "title": "modify: @jds/theme 마이너 버전 업데이트로 인한 마이그레이션", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "287", "title": "Feature/hotfix", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "265", "title": "modify: auth API 오류 처리 및 Sentry 통합", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "243", "title": "modify: DefaultLayout zIndex 값 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "217", "title": "feat: QuickMenu 컴포넌트 스타일 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "215", "title": "modify: @jds/theme 패키지 버전 업데이트 및 컴포넌트 스타일", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "214", "title": "modify: 검색 쿼리 파라미터 처리 및 PowerLink 컴포넌트 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "127", "title": "Feature/test 69838", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "125", "title": "modify: parseQueryStringToText 유틸리티 코드 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "123", "title": "modify: MySearchModal에서 검색조건 저장 알림 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "120", "title": "modify: 검색 조건 최대 개수 초과 에러 메시지 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "118", "title": "modify: MySearchItem 및 MySearchModal 컴포넌트 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "117", "title": "modify: MySearchModal 빈 상태 렌더링 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "116", "title": "modify: MySearch 컴포넌트 인증 로직 수정 및 MySearchModal 빈 상태 높이 조정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "115", "title": "modify: 검색 기능 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "113", "title": "modify: textParser의 min  max 값을 천 단위로 포맷팅", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "112", "title": "modify: textParser의 benefit 필드에서 originName을 tagDisplayName으로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "107", "title": "modify: 클라이언트 API 경로를 '/jobs-client'로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "102", "title": "modify: @jds/theme 패키지를 0.2.19에서 0.2.20으로 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "101", "title": "modify: 패키지 버전 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "99", "title": "Feature/seo script", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "98", "title": "modify: 검색 페이지 메타데이터", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "66", "title": "modify: @jds/header 및 @jds/theme 패키지 버전 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "61", "title": "modify: autoComplete update", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "56", "title": "remove: MySearchItem 및 MySearchModal 컴포넌트 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "55", "title": "modify: ModalAuth 컴포넌트의 너비 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "54", "title": "modify: MySearchItem 및 MySearchModal 컴포넌트 추가 및 상태 관리 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "48", "title": "Feature/public stu", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "47", "title": "modify: 로그아웃 기능 추가 및 헤더 컴포넌트 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "45", "title": "modify: DefaultLayout 컴포넌트에 스크롤 이벤트 및 관련 검색 기능 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "42", "title": "modify: 환경 변수 파일에 JOBKOREA_URL 추가 및 글로벌 에러 처리 리디렉션 구현", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "39", "title": "modify: 검색 조건 파싱 및 API 요청 로직 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "35", "title": "Feature/docker", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "34", "title": "modify: API 프록시 라우트 및 환경 변수 설정 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "33", "title": "modify: 검색 관련 컴포넌트 및 상태 관리 개선", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "32", "title": "modify: 패키지 버전 업데이트 및 불필요한 auth-sample 컴포넌트 삭제", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "31", "title": "modify: DefaultLayout 컴포넌트에 quickMenu props 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "30", "title": "remove: Search 컴포넌트 스타일 파일 삭제 및 레이아웃 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "28", "title": "modify: @jds/theme 패키지를 0.1.37로 업데이트 / Parallel Routes 적용", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "25", "title": "remove: SearchClient 컴포넌트 삭제 및 layout.tsx 파일 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "24", "title": "modify: @jds/theme 패키지를 0.1.36으로 업데이트 및 CardPaid 컴포넌트의 FilllineButton을 SupportBu", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "23", "title": "modify: @jds/theme 패키지를 0.1.35로 업데이트 및 최근 검색어 컴포넌트 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "22", "title": "modify: PowerLink 컴포넌트 수정 및 광고 스크립트 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "21", "title": "modify: 패키지 의존성 업데이트 및 레이아웃 개선", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "20", "title": "feat: Footer 컴포넌트 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "문승연", "iid": "19", "title": "modify: tanstack Query 사용 규칙 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "8", "title": "feat: Add new components for job recruitment page", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "문승연", "iid": "5", "title": "feat: Cursor IDE 규칙 설정 파일 추가 및 컴포넌트 구조 정의", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이동현", "iid": "374", "title": "modify: dev 환경변수에서 JOBKOREA_URL 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "272", "title": "modify: Hotjar 설정 ID 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "203", "title": "modify: DMP API 관련 환경 변수 추가 및 API 경로 통합", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "194", "title": "modify: NewSearch 경로 리다이렉트 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "114", "title": "modify: 에러 아이콘 경로를 환경 변수로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "103", "title": "modify: Dockerfile에서 NEXT_PUBLIC_ASSETS_PREFIX 환경 변수 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "91", "title": "modify: favicon.ico 파일 추가 및 이미지 경로 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "90", "title": "modify: 아이콘 및 로고 이미지 경로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "86", "title": "modify: 환경 변수 스크립트 경로 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "85", "title": "* modify: assetPrefix 설정 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "84", "title": "modify: ASSET_PREFIX 환경 변수 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "83", "title": "modify: assetPrefix 환경 변수 추가", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "82", "title": "modify: assetPrefix 설정 변경", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "59", "title": "modify: RootLayout에 Hotjar 스크립트 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "이동현", "iid": "13", "title": "modify: fetch", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "이동현", "iid": "3", "title": "feat: sonarqube 연동", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "허승원", "iid": "350", "title": "env(prd): pointmeter host 정정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "허승원", "iid": "304", "title": "Git Commit ID 를 NextJS Build ID 및 Sentry Release로 사용", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "허승원", "iid": "284", "title": "사내 OTEL 기반 Observability 연동", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "허승원", "iid": "282", "title": "채용정보+기업정보+알바몬 공고 병렬 호출 + 알바몬 공고 예외 처리", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "허승원", "iid": "160", "title": "env: Update server urls", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "허승원", "iid": "92", "title": "외부 CDN 사용: NextJS assetPrefix 를 구동 시점에 치환", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "장호철", "iid": "434", "title": "update pm config url", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "장호철", "iid": "433", "title": "update react 19.2.3", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "장호철", "iid": "432", "title": "feat: update-version-15.5.9", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "장호철", "iid": "431", "title": "보안 이슈 해결을 위해 Nextjs version 업데이트", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "장호철", "iid": "424", "title": "Adding pm in middleware", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "장호철", "iid": "422", "title": "새로운 디자인 업데이트 및 일부 사항 수정", "comments": 5, "approvers": 0, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+// ════════════════════════════════════════════════════════════════════════
+// 커밋 가치 다차원 평가
+// ════════════════════════════════════════════════════════════════════════
+
+const commitValueData = [{"name": "유선영", "total": 197, "S": 13, "A": 124, "B": 55, "C": 5, "D": 0, "avgScore": 63.7, "valueSum": 12546, "criticalPct": 69.5, "avgFC": 0.65, "avgCU": 0.83, "avgCT": 0.49, "avgMS": 0.65, "avgIS": 0.56}, {"name": "이영철", "total": 146, "S": 0, "A": 85, "B": 58, "C": 3, "D": 0, "avgScore": 58.9, "valueSum": 8606, "criticalPct": 58.2, "avgFC": 0.63, "avgCU": 0.8, "avgCT": 0.48, "avgMS": 0.43, "avgIS": 0.54}, {"name": "문승연", "total": 124, "S": 5, "A": 65, "B": 53, "C": 1, "D": 0, "avgScore": 60.7, "valueSum": 7525, "criticalPct": 56.5, "avgFC": 0.59, "avgCU": 0.89, "avgCT": 0.42, "avgMS": 0.55, "avgIS": 0.6}, {"name": "이동현", "total": 13, "S": 0, "A": 7, "B": 6, "C": 0, "D": 0, "avgScore": 59.2, "valueSum": 769, "criticalPct": 53.8, "avgFC": 0.56, "avgCU": 0.95, "avgCT": 0.35, "avgMS": 0.56, "avgIS": 0.57}, {"name": "허승원", "total": 23, "S": 0, "A": 3, "B": 16, "C": 4, "D": 0, "avgScore": 49.6, "valueSum": 1140, "criticalPct": 13.0, "avgFC": 0.3, "avgCU": 0.85, "avgCT": 0.36, "avgMS": 0.52, "avgIS": 0.64}, {"name": "장호철", "total": 4, "S": 0, "A": 2, "B": 1, "C": 1, "D": 0, "avgScore": 52.2, "valueSum": 209, "criticalPct": 50.0, "avgFC": 0.5, "avgCU": 0.75, "avgCT": 0.38, "avgMS": 0.4, "avgIS": 0.68}];
+const smallSGrade = [{"hash": "8ca993027d57", "author": "유선영", "message": "* modify: 운영 체제 판별 로직 수정", "date": "2025-06-24", "lines": 10, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 1.0, "ms": 0.8, "is_": 0.9, "score": 87, "grade": "S"}, {"hash": "237f27c03868", "author": "유선영", "message": "* modify: 클라이언트 타입 반환 로직 수정", "date": "2025-06-25", "lines": 10, "files": 3, "fc": 0.7, "cu": 1.0, "ct": 1.0, "ms": 0.8, "is_": 0.5, "score": 83, "grade": "S"}, {"hash": "834b179722d2", "author": "유선영", "message": "* modify: useGetCode 훅에서 API 호출 URL 수정", "date": "2025-07-29", "lines": 4, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.7, "score": 82, "grade": "S"}, {"hash": "02a42fee193a", "author": "유선영", "message": "* modify: API 호출 URL 수정", "date": "2025-07-29", "lines": 5, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.7, "score": 82, "grade": "S"}, {"hash": "49be849b7e2a", "author": "유선영", "message": "* modify: useGetCode API 호출 경로 수정", "date": "2025-07-23", "lines": 4, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.7, "score": 82, "grade": "S"}, {"hash": "29d3ae387d42", "author": "유선영", "message": "* modify: useGetCode API 호출 경로 수정 및 자격 증명 포함", "date": "2025-07-23", "lines": 4, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.7, "score": 82, "grade": "S"}, {"hash": "8dc9bbe1b6a2", "author": "유선영", "message": "* modify: 직업 분류 코드 파싱 로직 개선", "date": "2025-06-25", "lines": 7, "files": 1, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.6, "is_": 0.7, "score": 80, "grade": "S"}, {"hash": "d05e12ad8987", "author": "문승연", "message": "modify: 클라이언트 API 경로를 '/Search'로 변경", "date": "2025-05-09", "lines": 3, "files": 1, "fc": 0.8, "cu": 1.0, "ct": 0.9, "ms": 0.4, "is_": 0.7, "score": 80, "grade": "S"}];
+const largeLowGrade = [{"hash": "3c9ac4c1faf3", "author": "이영철", "message": "* modify: docker install", "date": "2025-05-14", "lines": 1805, "files": 4, "fc": 0.3, "cu": 0.247, "ct": 0.3, "ms": 0.4, "is_": 0.6, "score": 33, "grade": "C"}, {"hash": "bab34ae3e3a1", "author": "문승연", "message": "feat: SelectBoxText 컴포넌트 추가 및 클라이언트 페이지 수정", "date": "2025-03-31", "lines": 1520, "files": 2, "fc": 0.3, "cu": 0.241, "ct": 0.2, "ms": 0.8, "is_": 0.8, "score": 39, "grade": "C"}, {"hash": "1deb8f9daf6a", "author": "장호철", "message": "* Renamed package name", "date": "2025-12-16", "lines": 1480, "files": 2, "fc": 0.3, "cu": 0.184, "ct": 0.2, "ms": 0.4, "is_": 0.8, "score": 32, "grade": "C"}, {"hash": "9d7180549bd5", "author": "허승원", "message": "사내 Observability OTEL 연동 준비", "date": "2025-05-28", "lines": 632, "files": 7, "fc": 0.3, "cu": 0.322, "ct": 0.4, "ms": 0.4, "is_": 0.5, "score": 36, "grade": "C"}];
+
+// ── Commit Value KPIs ─────────────────────────────────────────────────
+const cvTotalCommits = commitValueData.reduce((s,d) => s + d.total, 0);
+const cvTotalS = commitValueData.reduce((s,d) => s + d.S, 0);
+const cvTotalA = commitValueData.reduce((s,d) => s + d.A, 0);
+const cvAvgScore = cvTotalCommits > 0 ? (commitValueData.reduce((s,d) => s + d.avgScore * d.total, 0) / cvTotalCommits).toFixed(1) : 0;
+const cvTotalValue = commitValueData.reduce((s,d) => s + d.valueSum, 0);
+
+const cvKpis = [
+  {value: cvTotalCommits.toLocaleString(), label: '분석 커밋 수'},
+  {value: cvTotalS.toLocaleString(), label: 'S등급 (핵심)'},
+  {value: cvTotalA.toLocaleString(), label: 'A등급 (실질적)'},
+  {value: cvAvgScore, label: '전체 평균 점수'},
+  {value: cvTotalValue.toLocaleString(), label: '가치 합산 총점'},
+  {value: cvTotalCommits > 0 ? ((cvTotalS + cvTotalA) / cvTotalCommits * 100).toFixed(1) + '%' : '0%', label: '핵심 커밋 비율'},
+];
+
+document.getElementById('cvKpiGrid').innerHTML = cvKpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── Grade Distribution Stacked Bar ────────────────────────────────────
+const gradeColors = {S:'#fbbf24', A:'#a78bfa', B:'#38bdf8', C:'#fb923c', D:'#f87171'};
+new Chart(document.getElementById('gradeDistChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: ['S','A','B','C','D'].map(grade => ({
+      label: grade + '등급',
+      data: commitValueData.map(d => d[grade]),
+      backgroundColor: gradeColors[grade],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// ── Value Sum vs Count ────────────────────────────────────────────────
+new Chart(document.getElementById('valueVsCountChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [
+      {
+        label: '가치 합산 (Value Sum)',
+        data: commitValueData.map(d => d.valueSum),
+        backgroundColor: '#a78bfa88',
+        borderColor: '#a78bfa',
+        borderWidth: 2,
+        borderRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '단순 커밋 수',
+        data: commitValueData.map(d => d.total),
+        type: 'line',
+        borderColor: '#38bdf8',
+        backgroundColor: '#38bdf833',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        yAxisID: 'y1',
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      y: {beginAtZero: true, position: 'left', grid: {color: '#1e293b'},
+          title: {display: true, text: 'Value Sum', color: '#94a3b8'}},
+      y1: {beginAtZero: true, position: 'right', grid: {drawOnChartArea: false},
+           title: {display: true, text: '커밋 수', color: '#94a3b8'}},
+    }
+  }
+});
+
+// ── Average Value Score Chart ─────────────────────────────────────────
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '평균 가치 점수',
+      data: commitValueData.map(d => d.avgScore),
+      backgroundColor: commitValueData.map(d =>
+        d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── Critical Ratio Chart ──────────────────────────────────────────────
+new Chart(document.getElementById('criticalRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '핵심 커밋 비율 (%)',
+      data: commitValueData.map(d => d.criticalPct),
+      backgroundColor: commitValueData.map(d =>
+        d.criticalPct >= 70 ? '#4ade80' : d.criticalPct >= 60 ? '#38bdf8' : d.criticalPct >= 50 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 5-Dimension Radar Chart ───────────────────────────────────────────
+new Chart(document.getElementById('valueRadarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['파일 핵심도', '변경 고유율', '변경 유형', '메시지 시그널', '영향 범위'],
+    datasets: commitValueData.map((d, i) => ({
+      label: d.name,
+      data: [
+        Math.round((d.avgFC || 0) * 100),
+        Math.round((d.avgCU || 0) * 100),
+        Math.round((d.avgCT || 0) * 100),
+        Math.round((d.avgMS || 0) * 100),
+        Math.round((d.avgIS || 0) * 100),
+      ],
+      borderColor: COLORS[i % COLORS.length],
+      backgroundColor: COLORS[i % COLORS.length] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top', labels: {padding: 10, usePointStyle: true}}},
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {stepSize: 25, color: '#64748b', backdropColor: 'transparent'},
+        grid: {color: '#334155'},
+        pointLabels: {color: '#94a3b8', font: {size: 12}},
+      }
+    }
+  }
+});
+
+// ── Small S-Grade Table ───────────────────────────────────────────────
+if (smallSGrade.length > 0) {
+  document.getElementById('smallSGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${smallSGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000">${r.score}점</span></td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Large Low-Grade Table ─────────────────────────────────────────────
+if (largeLowGrade.length > 0) {
+  document.getElementById('largeLowGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>등급</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${largeLowGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines.toLocaleString()}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff">${r.grade}</span></td>
+      <td>${r.score}점</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Commit Value Summary Table ────────────────────────────────────────
+const cvSorted = [...commitValueData].sort((a,b) => b.valueSum - a.valueSum);
+document.getElementById('commitValueTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th>
+    <th>S</th><th>A</th><th>B</th><th>C</th><th>D</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvSorted.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${d.name}</td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="color:#38bdf8">${d.B}</td>
+    <td style="color:#fb923c">${d.C}</td>
+    <td style="color:#f87171">${d.D}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct >= 70 ? '<span class="badge badge-low">' + d.criticalPct + '%</span>' : d.criticalPct >= 55 ? '<span class="badge badge-mid">' + d.criticalPct + '%</span>' : '<span class="badge badge-high">' + d.criticalPct + '%</span>'}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+
+</script>
+</body>
+</html>

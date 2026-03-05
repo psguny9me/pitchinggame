@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>잡코리아 Android (추천2.0) 기여도 대시보드</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --orange: #fb923c;
+    --yellow: #facc15;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .chart-card .subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+  .table-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-high { background: rgba(248, 113, 113, 0.2); color: var(--red); }
+  .badge-mid { background: rgba(251, 146, 60, 0.2); color: var(--orange); }
+  .badge-low { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }
+  .rank-other { background: var(--border); color: var(--text-dim); }
+
+  .bar-inline {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .eval-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  .score-bar-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 70px;
+    text-align: right;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .score-bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    width: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>잡코리아 Android (추천2.0) Contribution Dashboard</h1>
+  <p>2025-01-01_2025-12-31 | 2명 분석</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid" id="kpiGrid"></div>
+
+<!-- Row 1: Commits + Code Lines -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>커밋 수 비교</h3>
+    <p class="subtitle">전체 커밋 vs 순수 코딩 커밋 (non-merge)</p>
+    <canvas id="commitsChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드 기여량 (라인)</h3>
+    <p class="subtitle">추가 / 삭제 / 순 기여</p>
+    <canvas id="linesChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 2: Monthly Trend -->
+<div class="chart-card full-width">
+  <h3>월별 커밋 추이</h3>
+  <canvas id="monthlyChart" height="100"></canvas>
+</div>
+
+<!-- Row 3: Blame + MR/Review -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>현재 코드 소유권 (git blame)</h3>
+    <p class="subtitle">코드베이스 24747 라인 기준</p>
+    <canvas id="blameChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 머지 & 코드리뷰</h3>
+    <p class="subtitle">본인 MR 머지 / 타인 MR 리뷰(머지) / 리뷰 코멘트 작성</p>
+    <canvas id="reviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 4: Quality Metrics -->
+<div class="grid-3">
+  <div class="chart-card">
+    <h3>Feature vs Fix MR 비율</h3>
+    <p class="subtitle">브랜치 네이밍 기반 분류</p>
+    <canvas id="fixRatioChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>평균 커밋 크기 (라인)</h3>
+    <p class="subtitle">커밋당 평균 변경 라인 수</p>
+    <canvas id="commitSizeChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>코드리뷰 활동</h3>
+    <p class="subtitle">리뷰 코멘트 작성 / MR 승인 횟수</p>
+    <canvas id="glReviewChart"></canvas>
+  </div>
+</div>
+
+<!-- Row 5: Module Heatmap -->
+<div class="chart-card full-width">
+  <h3>모듈별 기여 분포</h3>
+  <p class="subtitle">Stacked Bar - 각 모듈별 개발자 기여 커밋 수</p>
+  <canvas id="moduleChart" height="120"></canvas>
+</div>
+
+<!-- Summary Table -->
+<div class="table-card">
+  <h3>종합 기여도 테이블</h3>
+  <table id="summaryTable"></table>
+</div>
+
+<!-- Review Table -->
+<div class="table-card">
+  <h3>코드리뷰 상세</h3>
+  <table id="reviewTable"></table>
+</div>
+
+
+<!-- CI Failure Rate -->
+<div class="grid-2">
+  <div class="chart-card">
+    <h3>CI 실패율 (%)</h3>
+    <p class="subtitle">머지된 MR 기준 CI 파이프라인 실패 비율</p>
+    <canvas id="ciFailChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>MR 받은 코멘트 수</h3>
+    <p class="subtitle">본인 MR에 대해 동료로부터 받은 리뷰 코멘트</p>
+    <canvas id="receivedCommentsChart"></canvas>
+  </div>
+</div>
+
+<!-- MR Quality Detail Table -->
+<div class="table-card">
+  <h3>MR 품질 상세</h3>
+  <table id="qualityTable"></table>
+</div>
+
+
+
+<!-- ── 커밋 가치 다차원 평가 ──────────────────────────────────── -->
+<div class="eval-section" id="commitValueSection">
+  <div class="header" style="margin-bottom:24px">
+    <h1 style="font-size:24px">커밋 가치 다차원 평가</h1>
+    <p>5차원 분석: 파일 핵심도, 변경 고유율, 변경 유형, 메시지 시그널, 영향 범위</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid" id="cvKpiGrid"></div>
+
+  <!-- Row 1: 등급 분포 + 가치 가중 기여도 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>커밋 등급 분포 (S/A/B/C/D)</h3>
+      <p class="subtitle">Stacked Bar - 개인별 등급 분포</p>
+      <canvas id="gradeDistChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>가치 가중 기여도 vs 단순 커밋 수</h3>
+      <p class="subtitle">단순 커밋 수 대비 Value Score 합산으로 실질적 기여 비교</p>
+      <canvas id="valueVsCountChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 2: 평균 점수 + 핵심 비율 -->
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>평균 커밋 가치 점수</h3>
+      <p class="subtitle">개인별 커밋 평균 Value Score (0~100)</p>
+      <canvas id="avgValueChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>핵심 커밋 비율 (S+A 등급)</h3>
+      <p class="subtitle">전체 커밋 중 핵심적(S등급+A등급) 커밋의 비율</p>
+      <canvas id="criticalRatioChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Row 3: 5차원 레이더 -->
+  <div class="chart-card full-width">
+    <h3>5차원 평균 점수 레이더</h3>
+    <p class="subtitle">파일핵심도 / 변경고유율 / 변경유형 / 메시지시그널 / 영향범위 (개인별 평균)</p>
+    <canvas id="valueRadarChart" height="120"></canvas>
+  </div>
+
+  <!-- 작은 커밋 중 S등급 -->
+  <div class="table-card">
+    <h3>작은 커밋 중 S등급 (10줄 이하에서 핵심 가치)</h3>
+    <table id="smallSGradeTable"></table>
+  </div>
+
+  <!-- 큰 커밋 중 C/D등급 -->
+  <div class="table-card">
+    <h3>큰 커밋 중 C/D등급 (100줄+ 인데 기계적 작업)</h3>
+    <table id="largeLowGradeTable"></table>
+  </div>
+
+  <!-- 전체 등급 테이블 -->
+  <div class="table-card">
+    <h3>커밋 가치 종합 평가표</h3>
+    <table id="commitValueTable"></table>
+  </div>
+</div>
+
+
+
+
+<div class="footer">
+  Generated by contrib-analyzer | 잡코리아 Android (추천2.0) 기여도 분석 대시보드
+</div>
+
+<script>
+// ── DATA (Jinja2 주입) ──────────────────────────────────────────────────
+const members = [{"name": "임희강", "totalCommits": 231, "codingCommits": 179, "added": 30352, "deleted": 15245, "net": 15107, "selfMR": 4, "featureMR": 0, "fixMR": 0, "fixRatio": 0.0, "avgSize": 254, "revert": 0, "reviewerMR": 4, "focus": 71.3, "blame": 15417, "blamePct": 62.3, "glReviewComments": 41, "glApprovals": 53, "glReviewedMRs": 58, "glReceivedComments": 49, "ciFail": 0.0}, {"name": "변지운", "totalCommits": 264, "codingCommits": 222, "added": 16745, "deleted": 7440, "net": 9305, "selfMR": 3, "featureMR": 2, "fixMR": 0, "fixRatio": 0.0, "avgSize": 108, "revert": 0, "reviewerMR": 3, "focus": 60.7, "blame": 9330, "blamePct": 37.7, "glReviewComments": 22, "glApprovals": 90, "glReviewedMRs": 107, "glReceivedComments": 108, "ciFail": 0.0}];
+const monthly = {"months": ["2025-05", "2025-06", "2025-07", "2025-08", "2025-09"], "data": {"임희강": [22, 26, 143, 22, 18], "변지운": [12, 30, 179, 34, 9]}};
+const modules = {"names": ["presentation", "domain", "data", "config", "utils", "di"], "data": {"임희강": [212, 76, 59, 40, 29, 13], "변지운": [244, 53, 50, 14, 19, 3]}};
+const totalBlame = 24747;
+
+const COLORS = [
+  '#38bdf8','#a78bfa','#4ade80','#fb923c',
+  '#f87171','#facc15','#2dd4bf','#f472b6',
+  '#818cf8','#34d399','#e879f9','#fbbf24',
+];
+const COLORS_ALPHA = COLORS.map(c => c + '33');
+const names = members.map(m => m.name);
+
+// ── KPI CARDS ──────────────────────────────────────────────────────────
+const totalCommits = members.reduce((s,m) => s + m.totalCommits, 0);
+const totalNet = members.reduce((s,m) => s + m.net, 0);
+const totalMR = members.reduce((s,m) => s + m.selfMR, 0);
+const totalReviewComments = members.reduce((s,m) => s + m.glReviewComments, 0);
+const totalApprovals = members.reduce((s,m) => s + m.glApprovals, 0);
+
+const kpis = [
+  {value: totalCommits.toLocaleString(), label: '전체 커밋'},
+  {value: totalNet.toLocaleString(), label: '순 기여 라인'},
+  {value: totalBlame.toLocaleString(), label: '코드베이스 라인'},
+  {value: totalMR.toLocaleString(), label: 'MR 머지'},
+  {value: totalReviewComments.toLocaleString(), label: '리뷰 코멘트'},
+  {value: totalApprovals.toLocaleString(), label: 'MR 승인'},
+];
+
+document.getElementById('kpiGrid').innerHTML = kpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── CHART DEFAULTS ─────────────────────────────────────────────────────
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ── 1. COMMITS CHART ──────────────────────────────────────────────────
+new Chart(document.getElementById('commitsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '전체 커밋', data: members.map(m => m.totalCommits), backgroundColor: COLORS[0], borderRadius: 6},
+      {label: '코딩 커밋', data: members.map(m => m.codingCommits), backgroundColor: COLORS[1], borderRadius: 6},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 2. LINES CHART ────────────────────────────────────────────────────
+new Chart(document.getElementById('linesChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '추가', data: members.map(m => m.added), backgroundColor: '#4ade8066', borderColor: '#4ade80', borderWidth: 1, borderRadius: 4},
+      {label: '삭제', data: members.map(m => -m.deleted), backgroundColor: '#f8717166', borderColor: '#f87171', borderWidth: 1, borderRadius: 4},
+      {label: '순 기여', data: members.map(m => m.net), backgroundColor: '#38bdf866', borderColor: '#38bdf8', borderWidth: 2, borderRadius: 4, type: 'bar'},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 3. MONTHLY TREND ──────────────────────────────────────────────────
+if (monthly.months && monthly.months.length > 0) {
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'line',
+    data: {
+      labels: monthly.months,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: monthly.data[name] || [],
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: COLORS_ALPHA[i % COLORS.length],
+        fill: false,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        borderWidth: 2.5,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: {mode: 'index', intersect: false},
+      plugins: {legend: {position: 'top'}},
+      scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+    }
+  });
+}
+
+// ── 4. BLAME PIE ──────────────────────────────────────────────────────
+new Chart(document.getElementById('blameChart'), {
+  type: 'doughnut',
+  data: {
+    labels: names,
+    datasets: [{
+      data: members.map(m => m.blame),
+      backgroundColor: COLORS.slice(0, names.length),
+      borderColor: '#1e293b',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {position: 'right', labels: {padding: 12, usePointStyle: true}},
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const v = ctx.raw;
+            const pct = totalBlame > 0 ? (v / totalBlame * 100).toFixed(1) : 0;
+            return ` ${ctx.label}: ${v.toLocaleString()} 라인 (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── 5. REVIEW CHART ───────────────────────────────────────────────────
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '본인 MR 머지', data: members.map(m => m.selfMR), backgroundColor: COLORS[0], borderRadius: 4},
+      {label: '타인 MR 머지 (리뷰)', data: members.map(m => m.reviewerMR), backgroundColor: COLORS[2], borderRadius: 4},
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[3], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 6. FIX RATIO CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('fixRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: 'Feature MR', data: members.map(m => m.featureMR), backgroundColor: '#4ade80', borderRadius: 4},
+      {label: 'Fix MR', data: members.map(m => m.fixMR), backgroundColor: '#f87171', borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true, grid: {color: '#1e293b'}},
+      y: {stacked: true}
+    }
+  }
+});
+
+// ── 7. COMMIT SIZE CHART ──────────────────────────────────────────────
+new Chart(document.getElementById('commitSizeChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '평균 변경 라인',
+      data: members.map(m => m.avgSize),
+      backgroundColor: members.map(m => m.avgSize > 400 ? '#fb923c' : m.avgSize > 300 ? '#facc15' : '#4ade80'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 8. GL REVIEW CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('glReviewChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [
+      {label: '리뷰 코멘트 작성', data: members.map(m => m.glReviewComments), backgroundColor: COLORS[1], borderRadius: 4},
+      {label: 'MR 승인', data: members.map(m => m.glApprovals), backgroundColor: COLORS[5], borderRadius: 4},
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 9. MODULE STACKED BAR ─────────────────────────────────────────────
+if (modules.names && modules.names.length > 0) {
+  const topModules = modules.names.slice(0, 15);
+  new Chart(document.getElementById('moduleChart'), {
+    type: 'bar',
+    data: {
+      labels: topModules,
+      datasets: names.map((name, i) => ({
+        label: name,
+        data: topModules.map(mod => {
+          const idx = modules.names.indexOf(mod);
+          return idx >= 0 && modules.data[name] ? modules.data[name][idx] : 0;
+        }),
+        backgroundColor: COLORS[i % COLORS.length],
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: {legend: {position: 'top'}},
+      scales: {
+        x: {stacked: true},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+      }
+    }
+  });
+}
+
+// ── SUMMARY TABLE ─────────────────────────────────────────────────────
+const sorted = [...members].sort((a,b) => b.totalCommits - a.totalCommits);
+const rankBadge = (i) => {
+  const cls = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+  return `<span class="rank-badge ${cls}">${i+1}</span>`;
+};
+const fixBadge = (ratio) => {
+  if (ratio >= 50) return `<span class="badge badge-high">${ratio}%</span>`;
+  if (ratio >= 20) return `<span class="badge badge-mid">${ratio}%</span>`;
+  return `<span class="badge badge-low">${ratio}%</span>`;
+};
+const barInline = (val, max, color) => {
+  const pct = max > 0 ? Math.round(val / max * 100) : 0;
+  return `<span class="bar-inline" style="width:${pct}px;background:${color}"></span>`;
+};
+const maxCommits = Math.max(...members.map(m => m.totalCommits), 1);
+const maxNet = Math.max(...members.map(m => m.net), 1);
+const maxBlame = Math.max(...members.map(m => m.blame), 1);
+
+document.getElementById('summaryTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>전체커밋</th><th>코딩커밋</th>
+    <th>순기여(라인)</th><th>MR머지</th><th>fix비율</th>
+    <th>커밋크기</th><th>Revert</th><th>Blame</th><th>집중도</th>
+  </tr></thead>
+  <tbody>${sorted.map((m, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${m.name}</td>
+    <td>${m.totalCommits.toLocaleString()} ${barInline(m.totalCommits, maxCommits, COLORS[0])}</td>
+    <td>${m.codingCommits.toLocaleString()}</td>
+    <td>${m.net.toLocaleString()} ${barInline(m.net, maxNet, '#4ade80')}</td>
+    <td>${m.selfMR}</td>
+    <td>${fixBadge(m.fixRatio)}</td>
+    <td>${m.avgSize}</td>
+    <td>${m.revert > 0 ? '<span style="color:var(--red)">' + m.revert + '</span>' : '0'}</td>
+    <td>${m.blame.toLocaleString()} (${m.blamePct}%) ${barInline(m.blame, maxBlame, COLORS[1])}</td>
+    <td>${m.focus}%</td>
+  </tr>`).join('')}</tbody>
+`;
+
+// ── REVIEW TABLE ──────────────────────────────────────────────────────
+const reviewSorted = [...members].sort((a,b) => (b.glReviewComments + b.glApprovals) - (a.glReviewComments + a.glApprovals));
+document.getElementById('reviewTable').innerHTML = `
+  <thead><tr>
+    <th>이름</th><th>리뷰 코멘트 작성</th><th>MR 승인</th>
+    <th>리뷰한 MR 수</th><th>본인 MR 받은 코멘트</th><th>리뷰 활동 총합</th>
+  </tr></thead>
+  <tbody>${reviewSorted.map(m => {
+    const total = m.glReviewComments + m.glApprovals;
+    return `<tr>
+      <td style="font-weight:600">${m.name}</td>
+      <td>${m.glReviewComments}</td>
+      <td>${m.glApprovals}</td>
+      <td>${m.glReviewedMRs}</td>
+      <td>${m.glReceivedComments}</td>
+      <td style="font-weight:700;color:var(--accent)">${total}</td>
+    </tr>`;
+  }).join('')}</tbody>
+`;
+
+
+// ════════════════════════════════════════════════════════════════════════
+// MR 품질 시각화
+// ════════════════════════════════════════════════════════════════════════
+const quality = [{"name": "임희강", "iid": "183", "title": "근무 위치 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "182", "title": "AI 추천 공고 상세 화면 개선 및 데이터 표시 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "180", "title": "https://jira.jobkorea.co.kr/browse/TEST-73870", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "179", "title": "QA 모집요강  기업정보 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "177", "title": "공고 상세", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "176", "title": "공고 화면 탭 추가  원픽 기업정보 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "175", "title": "수정 커밋", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "173", "title": "AI 추천 공고 상세 화면 개선 및 데이터 매핑 로직 보완", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "172", "title": "onepick 기업 정보 추가 및 onepick 에서 공고 상세 노출 수정  모집 요강 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "170", "title": "Splash 에서 GlobalScope 로 enumInfo 정보를 가져온다고 해도 씹히는걸로 보이고 좋은 방법은 아닌것 같아 mainViewmo", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "169", "title": "모집 요강 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "168", "title": "모집 요강 수정 중", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "165", "title": "DMP 로그 동작 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "164", "title": "딥링크 검색 이동 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "163", "title": "검색 디자인 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "158", "title": "검색 디자인 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "156", "title": "바텀 시트 영역에 사이즈 및 영역 조정 되는 부분 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "154", "title": "기획 확인 하여 맞지 않는 부분 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "150", "title": "검색 영역 애니메이션 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "148", "title": "공고 상세에 영역 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "145", "title": "검색 애니메이션 및 기능 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "142", "title": "검색 개편 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "140", "title": "스켈레톤 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "139", "title": "스켈레톤 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "138", "title": "merge develop to search-develop", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "136", "title": "firebase 에  state:0 에러 발생 막기 위한 동시성 방어 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "135", "title": "스켈레톤 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "132", "title": "검색 홈 영역 UI 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "129", "title": "스켈레톤 디자인 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "128", "title": "staging 환경에서 AI 추천 API 호출 되지 않도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "126", "title": "DMP 로그  호출 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "125", "title": "검색 수정 및 API 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "123", "title": "검색 API 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "122", "title": "캐시 저장 시 로그인 확인 로직 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "121", "title": "검색 홈 틀 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "119", "title": "공통 적이고 반복적으로 사용되는 중복 코드 UseCase 제거 및 실제 호출 하는 Manager 추가 (AiRecoAuthManager)", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "118", "title": "API 호출 관련 ( RetrofitManager 수정 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "117", "title": "API 호출 영역 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "115", "title": "QA 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "112", "title": "https://jira.jobkorea.co.kr/browse/TEST-72487 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "110", "title": "스켈레톤 수정  jira 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "107", "title": "메인 앵커 이동 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "106", "title": "AI 추천에서는 앱버전과 플랫폼을 실어서 보내주게끔 수정.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "105", "title": "다이얼로그 잘 못 수정 된 부분 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "104", "title": "간편지원 설정 등록 유도 팝업 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "101", "title": "ClckType 에 NetworkError 호출 시 토스트 메세지 노출 될 수 있도록 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "99", "title": "logActivity에 받는값 없는데 String 받고 있어서 강제 종료 발생 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "97", "title": "GA추가  지원하기 시 스크랩 리스트에Homepage 지원 하기가 있는지 여부 확인하여 GA 호출", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "96", "title": "GA 이벤트 트래킹 수정 입니다.", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "95", "title": "QA 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "93", "title": "팝업 노출 등 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "92", "title": "R tft/ai hklim fix issue", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "91", "title": "QA 수정  상세 웹뷰 8.0 이하 버전에서 죽지 않도록 수정  GA 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "89", "title": "ThemeList 에서 LazyColumn 으로 바꾼 후 nextPage 호출 안되는 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "87", "title": "QA 이슈 수정  낮은 버전 강제 종료 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "84", "title": "GA 호출 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "82", "title": "PAGE GA 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "80", "title": "상세 화면 페이저 좌우 이동 1.3 초 디바운스 주게 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "79", "title": "QA 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "78", "title": "R tft/ai hklim fix issue", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "75", "title": "디자인 가이드 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "73", "title": "TEST-71692", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "72", "title": "메인 리스트 앵커 이벤트 및 로직 수정 (테스트. 하여 확인)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "71", "title": "QA 이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "70", "title": "이슈 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "68", "title": "mainList 동작 수정 ( 스티키 앵크 추가 및 선택에 따라 동작 하도록 수정 )", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "67", "title": "날짜 표시 수정 (D 및 시간 표시 로직 수정)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "65", "title": "로딩 바 노출 ( 임시 노출 이라 추후 디자인 적용 하겠습니다. )", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "63", "title": "Text 계산이 큰 화면에서는 많이 틀어져서 다시 계산하는 로직이 필요해 다른 계산 Text 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "62", "title": "QA 이슈 수정 중", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "60", "title": "테마 리스트 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "59", "title": "메인 리스트 스크롤 애니메이션 수정 (expand 도우 scroll 들어와도 정상 동작 하도록 수정)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "58", "title": "이슈 수정 -71481  71473", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "57", "title": "상세 화면 갱신 문제 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "56", "title": "메인 리스트  테마리스트 갱신 로직 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "54", "title": "AnimatedItemList 만들어서 지원 시 애니메이션 적용", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "52", "title": "앱 테마 변경으로 배경색 설정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "51", "title": "상세 화면 들어와서 네이티브 안나오는 문제 해결 위해 스크롤 트리거를 통해 진입 후 최초 1회 살짝 움직여 주는 로직 추가", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "50", "title": "R tft/ai main list", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "49", "title": "이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "48", "title": "이슈 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "47", "title": "상세보기 및 밀어서 지원하기 버튼 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "46", "title": "지원하기 및 스크랩 갱신 문제 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "43", "title": "상세 화면에서 지원 시도시 이력서 여부 확인 후 바텀 시트 노출 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "42", "title": "푸터 추가  웹뷰 로딩 검토", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "41", "title": "스켈레톤 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "39", "title": "캐싱 로직 추가 ( 로그인  로그아웃 캐시 따로 관리  만료 관리)", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "38", "title": "지원 API 수정 및 지원 로직 수정 (지원 후 동작 등)", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "37", "title": "지원하기 수정  스크랩 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "34", "title": "메인 리스트 동작 수정 (자동 열림)", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "32", "title": "TextStyle  스크랩  내부 구조  디자인 수정", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "31", "title": "상세보기 수정  토스트 팝업 수정  지원하기 및 스크랩 버튼 수정", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "29", "title": "상세 보기 디자인 및 기능 수정", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "27", "title": "메인리스트  더보기 리스트 디자인 적용. API 적용", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "25", "title": "resource 의 dimen 사용하게 수정  메인 리스트 수정중", "comments": 7, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "24", "title": "w600 설정이 잘못되어서 설졍 변경", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "23", "title": "MainListScreen 에 메뉴 및 탭을 컴포즈로 add", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "21", "title": "swipeable 동작 및 UI 수정 (메인 리스트 및 더보기 리스트 영역)", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "19", "title": "API 추가 ( 우선 LIST 부터 추가  온보딩 추가 예정)", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "17", "title": "공고 상세 수정  AiRecoAct 정리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "16", "title": "메인 리스트 및 더보기 리스트 수정 계속", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "14", "title": "지원  스크랩 추가 및 수정", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "11", "title": "스크랩 추가 및 메인 리스트 기능 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "10", "title": "이미지 변경", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "9", "title": "토스트 팝업 및 커스텀 다이얼로그 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "8", "title": "밀어서 지원하기 버튼 추가", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "6", "title": "공고 상세 화면 수정", "comments": 1, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "4", "title": "R tft/main list", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "임희강", "iid": "2", "title": "메인 list 추가 및 전체 UI 수정", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "임희강", "iid": "1", "title": "스켈레톤 적용 및 리스트 이동  mock data 로 임의의 UI로 노출하게 수정", "comments": 3, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "189", "title": "[GA] ai추천 > 입사지원 태깅 dimension 정보 누락 건 수정", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "188", "title": "Feature/aireco detail issue", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "187", "title": "[TEST-74264] 저장 조건 클릭 시 바텀시트 자동 닫힘 기능 추가", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "184", "title": "[TEST-73926] 요청자 :  송경하 / 폴드 지도보기 이슈", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "181", "title": "[TEST-73853] 직무 산업 탭 태그 2줄 초과  이하 감지", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "178", "title": "Feature/jk 25457 apps flyer tag ai reco", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "174", "title": "Feature/benefit location", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "171", "title": "Feature/company info", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "162", "title": "Feature/qa search", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "159", "title": "Feature/qa search", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "157", "title": "Feature/search filter", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "155", "title": "Feature/search saved condition", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "153", "title": "미사용코드 제거 및 자동완성어 FeatureCode 누락된 부분 수정 +  기타 건 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "149", "title": "저장조건팝업  지역팝업 기능 완료", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "147", "title": "Feature/search saved condition", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "144", "title": "변우석 제거", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "143", "title": "Feature/search click keyword", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "141", "title": "Feature/search saved condition", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "137", "title": "Release/4.2.4", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "134", "title": "Feature/search cookie", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "131", "title": "Search bottomsheet ui", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "127", "title": "Release/4.2.3", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "124", "title": "검색 > 지역설정 팝업 틀", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "120", "title": "Feature/byun", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "116", "title": "Release/4.2.1", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "114", "title": "[TEST-72332] 간편지원 설정 등록 유도 팝업 > 나중에 할래요 선택 > 로그아웃 후 로그인 시 팝업 노출 됨", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "113", "title": "Feature/qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "111", "title": "Feature/qa", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "109", "title": "Feature/r qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "108", "title": "Feature/r qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "103", "title": "Feature/r hotfix", "comments": 2, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "100", "title": "AI추천 메인화면  리스트에 사용하는 배너의 홈페이지 지원 시  로그 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "98", "title": "선택한 아이템이 1개이고 홈페이지 지원인 경우 가상페이지 태깅 + 중복코드 제거 및", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "94", "title": "Feature/byun test", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "90", "title": "Feature/byun qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "88", "title": "Feature/byunbyun", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "86", "title": "Feature/byun issue", "comments": 1, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "83", "title": "Feature/qa byun", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "81", "title": "Feature/log", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "77", "title": "하단 탭 구성 변경 AI 추천 추가 및  커리어 탭 제거", "comments": 0, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "76", "title": "Feature/테스트", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "69", "title": "Feature/is enable apply", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "66", "title": "Feature/test qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "64", "title": "Feature/byun qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "61", "title": "Feature/byun qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "55", "title": "Feature/main qa", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "45", "title": "Feature/etc byun", "comments": 3, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "44", "title": "AI추천 기타 이슈 처리 및 기능개선", "comments": 8, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "40", "title": "Feature/etc", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "36", "title": "AI추천 메인에 종속되어있는 마이페이지 및 메뉴화면 동작가능하도록 처리", "comments": 0, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "33", "title": "Feature/resume", "comments": 9, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "30", "title": "Feature/error handle", "comments": 8, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "26", "title": "Api+design", "comments": 18, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "22", "title": "공통으로 에러 처리가능한 핸들러 추가", "comments": 6, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "20", "title": "요청자 : 신동현 / ActivityViewModel 네이밍 변경 및 종속된 usecase 분리   온보딩 여부 플래그 값들은 외부에서 받아오도", "comments": 7, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "18", "title": "이력서 간편지원 와이어프레임 구현", "comments": 11, "approvers": 0, "ci": "unknown"}, {"name": "변지운", "iid": "15", "title": "Feature/resume", "comments": 5, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "13", "title": "온보딩 디자인 작업 완료", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "7", "title": "Feature/onboarding review", "comments": 4, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "5", "title": "Feature/onboarding result", "comments": 7, "approvers": 1, "ci": "unknown"}, {"name": "변지운", "iid": "3", "title": "Ai Recommendation Onboarding Build Up", "comments": 1, "approvers": 0, "ci": "unknown"}];
+
+// ── CI 실패율 차트 ─────────────────────────────────────────────────────
+new Chart(document.getElementById('ciFailChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: 'CI 실패율 (%)',
+      data: members.map(m => m.ciFail),
+      backgroundColor: members.map(m =>
+        m.ciFail >= 30 ? '#f87171' : m.ciFail >= 15 ? '#fb923c' : '#4ade80'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 받은 코멘트 차트 ────────────────────────────────────────────────
+new Chart(document.getElementById('receivedCommentsChart'), {
+  type: 'bar',
+  data: {
+    labels: names,
+    datasets: [{
+      label: '받은 코멘트 수',
+      data: members.map(m => m.glReceivedComments),
+      backgroundColor: COLORS[3],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── MR 품질 상세 테이블 ────────────────────────────────────────────────
+if (quality.length > 0) {
+  const ciBadge = (ci) => {
+    if (ci === 'success') return '<span class="badge badge-low">성공</span>';
+    if (ci === 'failed') return '<span class="badge badge-high">실패</span>';
+    return '<span class="badge badge-mid">' + (ci || '-') + '</span>';
+  };
+  document.getElementById('qualityTable').innerHTML = `
+    <thead><tr>
+      <th>이름</th><th>MR #</th><th>MR 제목</th><th>받은 코멘트</th><th>승인자 수</th><th>CI 결과</th>
+    </tr></thead>
+    <tbody>${quality.map(q => `<tr>
+      <td style="font-weight:600">${q.name}</td>
+      <td>#${q.iid}</td>
+      <td style="text-align:left;max-width:350px;white-space:normal;font-size:12px">${q.title}</td>
+      <td>${q.comments}</td>
+      <td>${q.approvers}</td>
+      <td>${ciBadge(q.ci)}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+
+
+// ════════════════════════════════════════════════════════════════════════
+// 커밋 가치 다차원 평가
+// ════════════════════════════════════════════════════════════════════════
+
+const commitValueData = [{"name": "임희강", "total": 179, "S": 18, "A": 124, "B": 36, "C": 1, "D": 0, "avgScore": 66.9, "valueSum": 11982, "criticalPct": 79.3, "avgFC": 0.67, "avgCU": 0.89, "avgCT": 0.5, "avgMS": 0.72, "avgIS": 0.56}, {"name": "변지운", "total": 222, "S": 13, "A": 145, "B": 64, "C": 0, "D": 0, "avgScore": 65.2, "valueSum": 14481, "criticalPct": 71.2, "avgFC": 0.62, "avgCU": 0.93, "avgCT": 0.55, "avgMS": 0.52, "avgIS": 0.63}];
+const smallSGrade = [{"hash": "2f4017fc8b32", "author": "임희강", "message": "4.2.2 수정 (일반 로그인 체크 하는 부분 -> 개인 로그인 체크 수정)", "date": "2025-09-01", "lines": 2, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.5, "score": 87, "grade": "S"}, {"hash": "984ac6ef3034", "author": "변지운", "message": "기업회원  서치펌 회원이 스크랩 시도 시  로그인화면 노출", "date": "2025-07-14", "lines": 9, "files": 2, "fc": 0.9, "cu": 1.0, "ct": 1.0, "ms": 0.4, "is_": 0.5, "score": 83, "grade": "S"}, {"hash": "3e9351f8af55", "author": "변지운", "message": "[TEST-71579] 리스트 > 지원 가능한 건 + 불가능한 건  선택 후 지원 시  다이얼로그  토스트 모두 노출", "date": "2025-07-20", "lines": 4, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.7, "ms": 0.7, "is_": 0.7, "score": 82, "grade": "S"}, {"hash": "51e5499eeb6f", "author": "변지운", "message": "유저 이력서 설정 값  기업회원일 경우는 제외", "date": "2025-07-19", "lines": 2, "files": 1, "fc": 0.9, "cu": 1.0, "ct": 0.9, "ms": 0.4, "is_": 0.5, "score": 81, "grade": "S"}, {"hash": "848715aa1726", "author": "임희강", "message": "공고 상세 스켈레톤 loading 관련 잘못 수정된 부분 있어 수정 하였습니다.", "date": "2025-09-16", "lines": 4, "files": 2, "fc": 0.7, "cu": 1.0, "ct": 0.9, "ms": 0.8, "is_": 0.5, "score": 80, "grade": "S"}];
+const largeLowGrade = [];
+
+// ── Commit Value KPIs ─────────────────────────────────────────────────
+const cvTotalCommits = commitValueData.reduce((s,d) => s + d.total, 0);
+const cvTotalS = commitValueData.reduce((s,d) => s + d.S, 0);
+const cvTotalA = commitValueData.reduce((s,d) => s + d.A, 0);
+const cvAvgScore = cvTotalCommits > 0 ? (commitValueData.reduce((s,d) => s + d.avgScore * d.total, 0) / cvTotalCommits).toFixed(1) : 0;
+const cvTotalValue = commitValueData.reduce((s,d) => s + d.valueSum, 0);
+
+const cvKpis = [
+  {value: cvTotalCommits.toLocaleString(), label: '분석 커밋 수'},
+  {value: cvTotalS.toLocaleString(), label: 'S등급 (핵심)'},
+  {value: cvTotalA.toLocaleString(), label: 'A등급 (실질적)'},
+  {value: cvAvgScore, label: '전체 평균 점수'},
+  {value: cvTotalValue.toLocaleString(), label: '가치 합산 총점'},
+  {value: cvTotalCommits > 0 ? ((cvTotalS + cvTotalA) / cvTotalCommits * 100).toFixed(1) + '%' : '0%', label: '핵심 커밋 비율'},
+];
+
+document.getElementById('cvKpiGrid').innerHTML = cvKpis.map(k =>
+  `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`
+).join('');
+
+// ── Grade Distribution Stacked Bar ────────────────────────────────────
+const gradeColors = {S:'#fbbf24', A:'#a78bfa', B:'#38bdf8', C:'#fb923c', D:'#f87171'};
+new Chart(document.getElementById('gradeDistChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: ['S','A','B','C','D'].map(grade => ({
+      label: grade + '등급',
+      data: commitValueData.map(d => d[grade]),
+      backgroundColor: gradeColors[grade],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      x: {stacked: true},
+      y: {stacked: true, beginAtZero: true, grid: {color: '#1e293b'}}
+    }
+  }
+});
+
+// ── Value Sum vs Count ────────────────────────────────────────────────
+new Chart(document.getElementById('valueVsCountChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [
+      {
+        label: '가치 합산 (Value Sum)',
+        data: commitValueData.map(d => d.valueSum),
+        backgroundColor: '#a78bfa88',
+        borderColor: '#a78bfa',
+        borderWidth: 2,
+        borderRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '단순 커밋 수',
+        data: commitValueData.map(d => d.total),
+        type: 'line',
+        borderColor: '#38bdf8',
+        backgroundColor: '#38bdf833',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        yAxisID: 'y1',
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top'}},
+    scales: {
+      y: {beginAtZero: true, position: 'left', grid: {color: '#1e293b'},
+          title: {display: true, text: 'Value Sum', color: '#94a3b8'}},
+      y1: {beginAtZero: true, position: 'right', grid: {drawOnChartArea: false},
+           title: {display: true, text: '커밋 수', color: '#94a3b8'}},
+    }
+  }
+});
+
+// ── Average Value Score Chart ─────────────────────────────────────────
+new Chart(document.getElementById('avgValueChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '평균 가치 점수',
+      data: commitValueData.map(d => d.avgScore),
+      backgroundColor: commitValueData.map(d =>
+        d.avgScore >= 68 ? '#4ade80' : d.avgScore >= 64 ? '#38bdf8' : d.avgScore >= 60 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── Critical Ratio Chart ──────────────────────────────────────────────
+new Chart(document.getElementById('criticalRatioChart'), {
+  type: 'bar',
+  data: {
+    labels: commitValueData.map(d => d.name),
+    datasets: [{
+      label: '핵심 커밋 비율 (%)',
+      data: commitValueData.map(d => d.criticalPct),
+      backgroundColor: commitValueData.map(d =>
+        d.criticalPct >= 70 ? '#4ade80' : d.criticalPct >= 60 ? '#38bdf8' : d.criticalPct >= 50 ? '#facc15' : '#fb923c'
+      ),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {legend: {display: false}},
+    scales: {x: {beginAtZero: true, max: 100, grid: {color: '#1e293b'}}}
+  }
+});
+
+// ── 5-Dimension Radar Chart ───────────────────────────────────────────
+new Chart(document.getElementById('valueRadarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['파일 핵심도', '변경 고유율', '변경 유형', '메시지 시그널', '영향 범위'],
+    datasets: commitValueData.map((d, i) => ({
+      label: d.name,
+      data: [
+        Math.round((d.avgFC || 0) * 100),
+        Math.round((d.avgCU || 0) * 100),
+        Math.round((d.avgCT || 0) * 100),
+        Math.round((d.avgMS || 0) * 100),
+        Math.round((d.avgIS || 0) * 100),
+      ],
+      borderColor: COLORS[i % COLORS.length],
+      backgroundColor: COLORS[i % COLORS.length] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: {legend: {position: 'top', labels: {padding: 10, usePointStyle: true}}},
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {stepSize: 25, color: '#64748b', backdropColor: 'transparent'},
+        grid: {color: '#334155'},
+        pointLabels: {color: '#94a3b8', font: {size: 12}},
+      }
+    }
+  }
+});
+
+// ── Small S-Grade Table ───────────────────────────────────────────────
+if (smallSGrade.length > 0) {
+  document.getElementById('smallSGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${smallSGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000">${r.score}점</span></td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Large Low-Grade Table ─────────────────────────────────────────────
+if (largeLowGrade.length > 0) {
+  document.getElementById('largeLowGradeTable').innerHTML = `
+    <thead><tr>
+      <th>작성자</th><th>커밋 해시</th><th>변경 라인</th><th>메시지</th><th>등급</th><th>가치 점수</th>
+    </tr></thead>
+    <tbody>${largeLowGrade.map(r => `<tr>
+      <td style="font-weight:600">${r.author}</td>
+      <td style="font-family:monospace;font-size:11px">${r.hash}</td>
+      <td>${r.lines.toLocaleString()}</td>
+      <td style="text-align:left;max-width:300px;white-space:normal;font-size:12px">${r.message}</td>
+      <td><span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff">${r.grade}</span></td>
+      <td>${r.score}점</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+// ── Commit Value Summary Table ────────────────────────────────────────
+const cvSorted = [...commitValueData].sort((a,b) => b.valueSum - a.valueSum);
+document.getElementById('commitValueTable').innerHTML = `
+  <thead><tr>
+    <th>순위</th><th>이름</th><th>총커밋</th>
+    <th>S</th><th>A</th><th>B</th><th>C</th><th>D</th>
+    <th>평균점수</th><th>가치합산</th><th>핵심비율</th>
+  </tr></thead>
+  <tbody>${cvSorted.map((d, i) => `<tr>
+    <td>${rankBadge(i)}</td>
+    <td style="font-weight:600">${d.name}</td>
+    <td>${d.total}</td>
+    <td style="color:#fbbf24;font-weight:600">${d.S}</td>
+    <td style="color:#a78bfa">${d.A}</td>
+    <td style="color:#38bdf8">${d.B}</td>
+    <td style="color:#fb923c">${d.C}</td>
+    <td style="color:#f87171">${d.D}</td>
+    <td style="font-weight:700;color:${d.avgScore >= 67 ? 'var(--green)' : d.avgScore >= 63 ? 'var(--accent)' : 'var(--orange)'}">${d.avgScore}</td>
+    <td style="font-weight:700;color:var(--accent)">${d.valueSum.toLocaleString()}</td>
+    <td>${d.criticalPct >= 70 ? '<span class="badge badge-low">' + d.criticalPct + '%</span>' : d.criticalPct >= 55 ? '<span class="badge badge-mid">' + d.criticalPct + '%</span>' : '<span class="badge badge-high">' + d.criticalPct + '%</span>'}</td>
+  </tr>`).join('')}</tbody>
+`;
+
+
+
+</script>
+</body>
+</html>
